@@ -1,0 +1,25 @@
+{
+  "name": "linguagram-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linguagram/Linguagram-Server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Linguagram/Linguagram-Server/issues"
+  },
+  "homepage": "https://github.com/Linguagram/Linguagram-Server#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "pg": "^8.8.0",
+    "sequelize": "^6.28.0"
+  }
+}
