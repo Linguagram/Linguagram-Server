@@ -81,5 +81,9 @@ module.exports = (sequelize, DataTypes) => {
     user.password = generateHash(user.password)
   });
 
+  User.addHook('beforeUpdate', (user, options) => {
+    if (user.password) user.password = generateHash(user.password)
+  });
+
   return User;
 };
