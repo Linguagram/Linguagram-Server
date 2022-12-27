@@ -36,7 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {msg: 'Friend ID is required'}
       }
     },
-    isAccepted: DataTypes.BOOLEAN,
+    isAccepted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   }, {
     sequelize,
     modelName: 'Friendship',

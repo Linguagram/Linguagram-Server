@@ -68,6 +68,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    // Fredy: ini dibiarin gini kah? yang penting di create modelnya lah ya
     country: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
     verified: DataTypes.BOOLEAN,
