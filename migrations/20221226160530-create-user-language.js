@@ -15,10 +15,18 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       },
       LanguageId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Languages',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

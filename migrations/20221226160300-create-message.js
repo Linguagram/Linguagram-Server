@@ -13,15 +13,27 @@ module.exports = {
         type: Sequelize.TEXT
       },
       MediaId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Media',
+          key: 'id'
+        }
       },
       UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       },
       GroupId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Groups',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

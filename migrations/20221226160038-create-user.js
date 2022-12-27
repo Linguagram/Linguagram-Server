@@ -33,7 +33,11 @@ module.exports = {
         defaultValue: false,
       },
       AvatarId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Media',
+          key: 'id'
+        },
       },
       createdAt: {
         allowNull: false,

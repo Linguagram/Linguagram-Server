@@ -9,6 +9,6 @@ const verifyPassword = (pwd, hashedPwd) => {
 }
 
 module.exports = {
-    generateHashedPassword, 
+    generateHashedPassword,
     verifyPassword
 }
