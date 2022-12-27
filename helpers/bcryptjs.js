@@ -1,14 +1,14 @@
 const bcrypt = require('bcryptjs')
 
-const generateHashedPassword = (pwd) => {
-    return bcrypt.hashSync(pwd, 8)
+const generateHash = (payload) => {
+    return bcrypt.hashSync(payload, 8)
 }
 
-const verifyPassword = (pwd, hashedPwd) => {
-    return bcrypt.compareSync(pwd, hashedPwd)
+const verifyHash = (payload, hash) => {
+    return bcrypt.compareSync(payload, hash)
 }
 
 module.exports = {
-    generateHashedPassword,
-    verifyPassword
+    generateHash,
+    verifyHash
 }

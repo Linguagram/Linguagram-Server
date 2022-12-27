@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 
-const {generateHashedPassword} = require('../helpers/bcryptjs')
+const {generateHash} = require('../helpers/bcryptjs')
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -78,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.addHook('beforeCreate', (user, options) => {
-    user.password = generateHashedPassword(user.password)
+    user.password = generateHash(user.password)
   });
 
   return User;
