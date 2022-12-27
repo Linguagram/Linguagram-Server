@@ -25,7 +25,7 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      email: {
+      country: {
         type: Sequelize.STRING
       },
       verified: {
@@ -37,7 +37,7 @@ module.exports = {
         references: {
           model: 'Media',
           key: 'id'
-        },
+        }
       },
       createdAt: {
         allowNull: false,
