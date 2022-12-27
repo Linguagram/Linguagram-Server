@@ -1,6 +1,7 @@
 const { Friendship, Group, Groupmember, Language, Media, Message, Schedule, User, Userlanguage, Userschedule } = require('../models')
-const { verifyHash } = require('../helpers/bcryptjs')
-const { signToken } = require('../helpers/jwt')
+const { generateHash, verifyHash } = require('../helpers/bcryptjs')
+const { signToken, verifyToken } = require('../helpers/jwt')
+const { sendMail } = require('../helpers/nodemailer')
 
 class Controller {
 
@@ -17,6 +18,9 @@ class Controller {
            delete newUser.dataValues.password
 
            // kirim verification link pakai nodemailer
+           const verificationId = signToken(newUser.id)
+           const link = `http://localhost:3000/users/verify?verification=${verificationId}`
+           sendMail(newUser.email, newUser.username, link)
            
            res.status(201).json(newUser)
         } catch (err) {
@@ -44,6 +48,31 @@ class Controller {
             const access_token = signToken(payload)
 
             res.status(200).json({access_token})
+        } catch(err) {
+            next(err)
+        }
+    }
+
+    static async verify (req, res, next) {
+        try {
+            const { verification } = req.query
+            console.log(req.query)
+
+            const id = verifyToken(verification)
+
+            const theSearchedUser = await User.findByPk(id)
+            if(!theSearchedUser) throw ('Invalid Link')
+
+            if(theSearchedUser.verified) throw ('Invalid Link')
+
+            await User.update({ verified: true }, {
+                where: {
+                  id: theSearchedUser.id
+                }
+              });
+
+            res.status(200).json({message: `${theSearchedUser.email} has been verified`})
+
         } catch(err) {
             next(err)
         }

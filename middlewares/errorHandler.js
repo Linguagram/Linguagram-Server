@@ -19,6 +19,10 @@ const errorHandler = (err, req, res, next) => {
       code = 401
       message = err
     }
+    else if (err === 'Invalid Link') {
+      code = 401
+      message = err
+    }
     else if(err === 'Invalid token' || err.name === "JsonWebTokenError") {
       code = 401
       message = 'Invalid Token'
