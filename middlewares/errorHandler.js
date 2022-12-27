@@ -19,13 +19,17 @@ const errorHandler = (err, req, res, next) => {
       code = 401
       message = err
     }
-    else if (err === 'Invalid Link') {
+    else if (err === 'Invalid Link' || err === 'Your email address has been verified') {
       code = 401
       message = err
     }
     else if(err === 'Invalid token' || err.name === "JsonWebTokenError") {
       code = 401
       message = 'Invalid Token'
+    }
+    else if (err === 'Email address has not been verified!') {
+      code = 401
+      message = err
     }
     else if(err === 'Data not found') {
       code = 404

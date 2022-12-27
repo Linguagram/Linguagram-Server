@@ -17,7 +17,6 @@ class Controller {
 
            delete newUser.dataValues.password
 
-           // kirim verification link pakai nodemailer
            const verificationId = signToken(newUser.id)
            const link = `http://localhost:3000/users/verify?verification=${verificationId}`
            sendMail(newUser.email, newUser.username, link)
@@ -41,6 +40,13 @@ class Controller {
             const isValidPassword = verifyHash(password, loggedInUser.password)
             if(!isValidPassword) throw ('Invalid email/password')
 
+            if(!loggedInUser.verified) {
+                const verificationId = signToken(loggedInUser.id)
+                const link = `http://localhost:3000/users/verify?verification=${verificationId}`
+                sendMail(loggedInUser.email, loggedInUser.username, link)
+                throw ('Email address has not been verified!')
+            }
+
             const payload = {
                 id: loggedInUser.id
             }
@@ -56,14 +62,13 @@ class Controller {
     static async verify (req, res, next) {
         try {
             const { verification } = req.query
-            console.log(req.query)
 
             const id = verifyToken(verification)
 
             const theSearchedUser = await User.findByPk(id)
             if(!theSearchedUser) throw ('Invalid Link')
 
-            if(theSearchedUser.verified) throw ('Invalid Link')
+            if(theSearchedUser.verified) throw ('Your email address has been verified')
 
             await User.update({ verified: true }, {
                 where: {
