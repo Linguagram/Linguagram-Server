@@ -9,8 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      type: {
-        type: Sequelize.STRING
+      type: { // should be 'native' or 'learning'(?)
+        type: Sequelize.STRING,
+	 allowNull: false,
       },
       UserId: {
         type: Sequelize.INTEGER,
