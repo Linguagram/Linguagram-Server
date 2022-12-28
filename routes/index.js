@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const { authentication } = require('../middlewares/authentication')
 
+const userRouter = require('../routes/userRouter');
+
 // ======= Controller imports
 //
 const { upload } = require("./util/multer");
@@ -8,13 +10,11 @@ const {
   Media, User, Message, GroupMember
 } = require("./models")
 const handleUploaded = require('../util/handleUploaded');
-
-// ======= Controller imports
-
-const userRouter = require('../routes/userRouter');
 const { validateGroupId } = require('../util/validators');
 const { sendMessage } = require('../util/ws');
 const { userFetchAttributes } = require('../util/fetchAttributes');
+
+// ======= Controller imports
 
 
 
