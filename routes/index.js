@@ -4,7 +4,7 @@ const { authentication } = require('../middlewares/authentication')
 // ======= Controller imports
 //
 const { upload } = require("./util/multer");
-const { Media, User } = require("./models")
+const { Media, User, Message } = require("./models")
 const handleUploaded = require('../util/handleUploaded');
 
 // ======= Controller imports
@@ -56,6 +56,19 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
 
 router.get("/groups/:groupId/messages", async (req, res, next) => {
   try {
+    // strict check groupId
+    const groupId = Number(req.params.groupId);
+    if (isNaN(groupId)) {
+      throw {
+	status: 400,
+	message: "Invalid groupId",
+      };
+    }
+    const messages = await Message.findAll({
+      where: {
+	GroupId: groupId,
+      },
+    });
 
   } catch (err) {
     next(err);
