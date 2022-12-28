@@ -1,0 +1,32 @@
+[{
+    "UserId": 1,
+    "FriendId" : 2
+},
+{
+    "UserId": 1,
+    "FriendId" : 3
+},
+{
+    "UserId": 2,
+    "FriendId" : 4
+},
+{
+    "UserId": 2,
+    "FriendId" : 3
+},
+{
+    "UserId": 1,
+    "FriendId" : 5
+},
+{
+    "UserId": 4,
+    "FriendId" : 5
+},
+{
+    "UserId": 5,
+    "FriendId" : 6
+},
+{
+    "UserId": 6,
+    "FriendId" : 7
+}]

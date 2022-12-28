@@ -1,24 +1,25 @@
 # Linguagram API Documentation
 
-## Endpoints :
+## Endpoints
 
 List of available endpoints:
 
 - `POST /register`
 - `POST /login`
 - `POST /verify`
-
+- `GET /messages/:groupId`
 
 &nbsp;
 
 ## 1. POST /register
 
 Description :
+
 - Create a new user in database
 
-Request : 
-- body :
+Request :
 
+- body :
 
 ```json
 {
@@ -75,20 +76,15 @@ OR
 
 ```
 
-
-
-
-
 # 2. POST /login
 
 Description :
+
 - Logging in user and returning access token
 
+Request :
 
-Request : 
 - body :
-
-
 
 ```json
 {
@@ -98,7 +94,6 @@ Request :
 
 ```
 
-
 _Response (200 - OK)_
 
 ```json
@@ -106,8 +101,6 @@ _Response (200 - OK)_
   "access_token" : "string"
 }
 ```
-
-
 
 _Response (401 - Unauthorized)_
 
@@ -121,17 +114,15 @@ OR
 }
 ```
 
-
 # 3. POST /verify
 
 Description :
+
 - Verify the link given by user
 
+Request :
 
-Request : 
 - query :
-
-
 
 ```json
 {
@@ -140,7 +131,6 @@ Request :
 
 ```
 
-
 _Response (200 - OK)_
 
 ```json
@@ -148,8 +138,6 @@ _Response (200 - OK)_
   "message" : "<email> has been verified"
 }
 ```
-
-
 
 _Response (401 - Unauthorized)_
 
@@ -169,14 +157,47 @@ OR
 
 
 
+# 4. GET /messages/:groupId
 
+Description :
 
+- Get messages by group id
 
+Request :
 
+- headers :
 
+```json
+{
+    "access_token" : "string"
+}
 
+```
 
+- params :
 
+```json
+{
+    "id" : "integer"
+}
 
+```
 
+_Response (200 - OK)_
 
+```json
+[{
+  "content" : "text",
+    "Media" : {
+        
+  }
+}]
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "message": "Invalid Token"
+}
+```
