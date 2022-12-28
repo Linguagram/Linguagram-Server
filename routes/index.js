@@ -10,6 +10,7 @@ const handleUploaded = require('../util/handleUploaded');
 // ======= Controller imports
 
 const userRouter = require('../routes/userRouter');
+const { validateGroupId } = require('../util/validators');
 
 
 
@@ -57,19 +58,16 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
 router.get("/groups/:groupId/messages", async (req, res, next) => {
   try {
     // strict check groupId
-    const groupId = Number(req.params.groupId);
-    if (isNaN(groupId)) {
-      throw {
-	status: 400,
-	message: "Invalid groupId",
-      };
-    }
+    const groupId = validateGroupId(req.params.groupId);
+
     const messages = await Message.findAll({
       where: {
 	GroupId: groupId,
       },
+      include: [User, Media],
     });
 
+    res.status(200).json(messages);
   } catch (err) {
     next(err);
   }
