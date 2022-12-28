@@ -11,6 +11,11 @@ router.use('/users', userRouter)
 
 router.use(authentication)
 
+router.post("/avatar", async (req, res, next) => {});
+
+router.get("/messages/:groupId", async (req, res, next) => {});
+
+router.post("/messages/:groupId", ,async (req, res, next) => {});
 
 
 
