@@ -1,0 +1,62 @@
+[
+    {
+        "content": "hello there",
+        "MediaId": null,
+        "UserId": 1,
+        "GroupId": 1
+    },
+    {
+        "content": "General Kenobi",
+        "MediaId": null,
+        "UserId": 2,
+        "GroupId": 1
+    },
+    {
+        "content": "I have the high ground",
+        "MediaId": null,
+        "UserId": 1,
+        "GroupId": 1
+    },
+    {
+        "content": "But I have the death star cannon",
+        "MediaId": null,
+        "UserId": 2,
+        "GroupId": 1
+    },
+    {
+        "content": "What are you doing step brother",
+        "MediaId": null,
+        "UserId": 3,
+        "GroupId": 2
+    },
+    {
+        "content": "Nothing, really",
+        "MediaId": null,
+        "UserId": 1,
+        "GroupId": 2
+    },
+    {
+        "content": "That's all?",
+        "MediaId": null,
+        "UserId": 3,
+        "GroupId": 2
+    },
+    {
+        "content": "Yes, what did you expect me to say?",
+        "MediaId": null,
+        "UserId": 1,
+        "GroupId": 2
+    },
+    {
+        "content": "Let's finish this final project",
+        "MediaId": null,
+        "UserId": 2,
+        "GroupId": 3
+    },
+    {
+        "content": "hell yeah brother",
+        "MediaId": null,
+        "UserId": 3,
+        "GroupId": 3
+    }
+]

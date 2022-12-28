@@ -1,0 +1,48 @@
+[{
+    "GroupId" : 1,
+    "UserId" : 1
+},
+{
+    "GroupId" : 2,
+    "UserId" : 1
+},
+{
+    "GroupId" : 2,
+    "UserId" : 3
+},
+{
+    "GroupId" : 2,
+    "UserId" : 1
+},
+{
+    "GroupId" : 3,
+    "UserId" : 2
+},
+{
+    "GroupId" : 3,
+    "UserId" : 2
+},
+{
+    "GroupId" : 4,
+    "UserId" : 4
+},
+{
+    "GroupId" : 4,
+    "UserId" : 5
+},
+{
+    "GroupId" : 5,
+    "UserId" : 1
+},
+{
+    "GroupId" : 5,
+    "UserId" : 2
+},
+{
+    "GroupId" : 5,
+    "UserId" : 3
+},
+{
+    "GroupId" : 5,
+    "UserId" : 4
+}]

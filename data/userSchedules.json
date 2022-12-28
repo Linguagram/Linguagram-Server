@@ -1,0 +1,40 @@
+[{
+    "UserId" : 1,
+    "ScheduleId" : 1
+},
+{
+    "UserId" : 1,
+    "ScheduleId" : 3
+},
+{
+    "UserId" : 2,
+    "ScheduleId" : 3
+},
+{
+    "UserId" : 4,
+    "ScheduleId" : 2
+},
+{
+    "UserId" : 2,
+    "ScheduleId" : 4
+},
+{
+    "UserId" : 3,
+    "ScheduleId" : 4
+},
+{
+    "UserId" : 2,
+    "ScheduleId" : 5
+},
+{
+    "UserId" : 3,
+    "ScheduleId" : 5
+},
+{
+    "UserId" : 1,
+    "ScheduleId" : 6
+},
+{
+    "UserId" : 3,
+    "ScheduleId" : 6
+}]

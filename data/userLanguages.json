@@ -1,0 +1,45 @@
+[{
+    "type" : "native",
+    "UserId" : 1,
+    "LanguageId" : 10
+},
+{
+    "type" : "native",
+    "UserId" : 2,
+    "LanguageId" : 3
+},
+{
+    "type" : "interest",
+    "UserId" : 1,
+    "LanguageId" : 3
+},
+{
+    "type" : "interest",
+    "UserId" : 2,
+    "LanguageId" : 1
+},
+{
+    "type" : "interest",
+    "UserId" : 3,
+    "LanguageId" : 4
+},
+{
+    "type" : "interest",
+    "UserId" : 3,
+    "LanguageId" : 2
+},
+{
+    "type" : "native",
+    "UserId" :3,
+    "LanguageId" : 1
+},
+{
+    "type" : "native",
+    "UserId" : 4,
+    "LanguageId" : 1
+},
+{
+    "type" : "native",
+    "UserId" : 5,
+    "LanguageId" : 1
+}]
