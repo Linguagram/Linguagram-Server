@@ -28,6 +28,9 @@ module.exports = {
       country: {
         type: Sequelize.STRING
       },
+      status: {
+        type: Sequelize.STRING
+      },
       verified: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
