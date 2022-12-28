@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Media.hasOne(models.User, {
-        foreignKey: 'AvatarId'
+        foreignKey: 'AvatarId',
+	 as: "Avatar",
       })
       Media.hasOne(models.Message, {
         foreignKey: 'MediaId'

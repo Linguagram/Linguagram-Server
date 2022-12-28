@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       Message.belongsTo(models.User, {
         foreignKey: 'GroupId'
       })
+      Message.belongsTo(models.Media, {
+        foreignKey: 'MediaId'
+      })
     }
   }
   Message.init({

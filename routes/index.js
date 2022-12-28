@@ -4,13 +4,17 @@ const { authentication } = require('../middlewares/authentication')
 // ======= Controller imports
 //
 const { upload } = require("./util/multer");
-const { Media, User, Message } = require("./models")
+const {
+  Media, User, Message, GroupMember
+} = require("./models")
 const handleUploaded = require('../util/handleUploaded');
 
 // ======= Controller imports
 
 const userRouter = require('../routes/userRouter');
 const { validateGroupId } = require('../util/validators');
+const { sendMessage } = require('../util/ws');
+const { userFetchAttributes } = require('../util/fetchAttributes');
 
 
 
@@ -24,24 +28,7 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
     const newAvatar = await handleUploaded(req.file);
 
-    const user = await User.findByPk(req.userInfo.id, {
-      attributes: [
-	"id",
-	"username",
-	"email",
-	"country",
-	"status",
-	"phoneNumber",
-	"verified",
-	"AvatarId",
-      ],
-      include: [
-	{
-	  model: Media,
-	  as: "Avatar",
-	},
-      ],
-    });
+    const user = await User.findByPk(req.userInfo.id, userFetchAttributes(Media));
 
     user.AvatarId = newAvatar.id;
 
@@ -73,7 +60,59 @@ router.get("/groups/:groupId/messages", async (req, res, next) => {
   }
 });
 
-router.post("/groups/:groupId/messages", upload.single("attachment"), async (req, res, next) => {});
+router.post("/groups/:groupId/messages", upload.single("attachment"), async (req, res, next) => {
+  try {
+    const groupId = validateGroupId(req.params.groupId);
+
+    // check if user is actually in the group
+    const groupMembers = await GroupMember.findAll({
+      where: {
+	GroupId: groupId,
+      },
+    });
+
+    if (!groupMembers.some(member => member.UserId === req.userInfo.id)) {
+      throw {
+	status: 404,
+	message: "Unknown Group",
+      };
+    }
+
+    let newAttachment;
+
+    // handle uploaded attachment if any
+    if (req.file) {
+      newAttachment = await handleUploaded(req.file);
+    }
+
+    const {
+      content,
+    } = req.body;
+
+    const createMessage = {
+      content,
+      GroupId: groupId,
+      UserId: req.userInfo.id,
+    };
+
+    if (newAttachment?.id) {
+      createMessage.MediaId = newAttachment.id;
+    }
+
+    const newMessage = await Message.create(createMessage);
+    newMessage.User = req.userInfo;
+
+    if (newAttachment?.id) {
+      newMessage.Media = newAttachment;
+    }
+
+    sendMessage(groupMembers, newMessage);
+
+    res.status(201).json(newMessage);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {});
 

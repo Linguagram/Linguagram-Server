@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Message, {
 	 foreignKey: 'UserId'
       })
-      User.hasOne(models.Media, {
+      User.belongsTo(models.Media, {
 	 foreignKey: 'AvatarId',
 	 as: "Avatar",
       })

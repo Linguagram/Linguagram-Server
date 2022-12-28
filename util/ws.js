@@ -3,6 +3,7 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
+const { GroupMember } = require("../models");
 const { CLIENT_URI } = process.env;
 
 const SOCKET_EVENTS = {
@@ -12,7 +13,7 @@ const SOCKET_EVENTS = {
   ERROR: "error",
 
   MESSAGE: "message",
-  MESSAGE_EDIT: "message_edit",
+  // MESSAGE_EDIT: "message_edit",
   MESSAGE_DELETE: "message_delete",
   STATUS: "status",
   USER_UPDATE: "user_update",
@@ -160,6 +161,22 @@ const getUserSocket = (userId) => {
  */
 const getUserSockets = () => userSockets;
 
+const sendMessage = (groupMembers, data) => {
+  if (!groupMembers) throw new TypeError("groupMembers can't be falsy");
+  if (!data) throw new TypeError("data can't be falsy");
+  if (isNaN(data.UserId)) throw new TypeError("Expected data.UserId to be number, got " + data.UserId);
+  if (!Array.isArray(groupMembers)) throw new TypeError("Expected groupMembers as array, got " + groupMembers);
+
+  for (const member of groupMembers) {
+    if (!member) throw new TypeError("member can't be falsy");
+    if (isNaN(member.UserId)) throw new TypeError("Expected member.UserId to be number, got " + member.UserId);
+    if (member.UserId === data.UserId) continue;
+
+    const socket = userSockets.get(member.UserId);
+    if (socket) emitSocket(socket, SOCKET_EVENTS.MESSAGE, jString(data));
+  }
+};
+
 module.exports = {
   SOCKET_EVENTS,
   init,
@@ -167,4 +184,5 @@ module.exports = {
   getUserSockets,
   isOnline,
   getUserSocket,
+  sendMessage,
 }
