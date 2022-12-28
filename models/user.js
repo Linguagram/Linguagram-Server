@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'UserId'
       })
       User.hasOne(models.Media, {
-        foreignKey: 'AvatarId'
+	foreignKey: 'AvatarId',
+	as: "Avatar",
       })
       User.hasMany(models.UserLanguage, {
         foreignKey: 'UserId'
