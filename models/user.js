@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
 	 len: {
 	   args: [8],
 	   msg: 'Password must have at least 8 characters'
-	   }
+	 }
       }
     },
     // Fredy: ini dibiarin gini kah? yang penting di create modelnya lah ya

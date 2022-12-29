@@ -3,7 +3,6 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
-const { GroupMember } = require("../models");
 const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
@@ -14,7 +13,7 @@ const SOCKET_EVENTS = {
   ERROR: "error",
 
   MESSAGE: "message",
-  // MESSAGE_EDIT: "message_edit",
+  MESSAGE_EDIT: "message_edit",
   MESSAGE_DELETE: "message_delete",
   STATUS: "status",
   USER_UPDATE: "user_update",
@@ -162,7 +161,7 @@ const getUserSocket = (userId) => {
  */
 const getUserSockets = () => userSockets;
 
-const sendMessage = (groupMembers, data) => {
+const distributeMessage = (groupMembers, data, event) => {
   if (!groupMembers) throw new TypeError("groupMembers can't be falsy");
   if (!data) throw new TypeError("data can't be falsy");
   const fromUserId = validateUserId(data.UserId);
@@ -174,8 +173,20 @@ const sendMessage = (groupMembers, data) => {
     if (memberId === fromUserId) continue;
 
     const socket = userSockets.get(memberId);
-    if (socket) emitSocket(socket, SOCKET_EVENTS.MESSAGE, jString(data));
+    if (socket) emitSocket(socket, event, jString(data));
   }
+}
+
+const sendMessage = (groupMembers, data) => {
+  return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE);
+};
+
+const editMessage = (groupMembers, data) => {
+  return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE_EDIT);
+};
+
+const deleteMessage = (groupMembers, data) => {
+  return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE_DELETE);
 };
 
 module.exports = {
@@ -186,4 +197,6 @@ module.exports = {
   isOnline,
   getUserSocket,
   sendMessage,
+  editMessage,
+  deleteMessage,
 }
