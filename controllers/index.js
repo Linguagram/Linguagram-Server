@@ -172,7 +172,7 @@ class Controller {
       await User.update({ verified: true }, {
 	where: {
 	  id: theSearchedUser.id
-	  }
+	}
       });
 
       res.status(200).json({message: `${theSearchedUser.email} has been verified`})

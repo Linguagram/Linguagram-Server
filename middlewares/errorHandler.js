@@ -58,6 +58,13 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
+  else if (['SequelizeForeignKeyConstraintError'].includes(err.name)) {
+    return res.status(400).json({
+      error: true,
+      message: err.original.detail,
+    });
+  }
+
   else if (["JsonWebTokenError"].includes(err.name)) {
     return res.status(401).json({
       error: true,
