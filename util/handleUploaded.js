@@ -1,7 +1,7 @@
 "use strict";
 
 const { readFileSync, unlinkSync } = require("fs");
-const { imagekit } = require("./util/imagekit");
+const { imagekit } = require("./imagekit");
 const { Media } = require("../models")
 
 const handleUploaded = async (reqFile) => {

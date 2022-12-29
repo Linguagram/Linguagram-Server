@@ -5,10 +5,10 @@ const userRouter = require('../routes/userRouter');
 
 // ======= Controller imports
 //
-const { upload } = require("./util/multer");
+const { upload } = require("../util/multer");
 const {
   Media, User, Message,
-} = require("./models")
+} = require("../models")
 const handleUploaded = require('../util/handleUploaded');
 const { validateGroupId, validateMessageId } = require('../util/validators');
 const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
