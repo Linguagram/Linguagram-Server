@@ -1,7 +1,7 @@
 "use strict";
 
 const {
-  Media, User, Message, GroupMember
+  Media, User, Message, GroupMember, Group
 } = require("../models")
 
 const handleUploaded = require("./handleUploaded");
@@ -11,6 +11,7 @@ const getGroupMembers = async (groupId, req) => {
     where: {
       GroupId: groupId,
     },
+    include: [Group],
   });
 
   // check if user is actually in the group
@@ -30,10 +31,14 @@ const getMessages = async (groupId) => {
       GroupId: groupId,
       deleted: false,
     },
-    include: [User, Media],
+    include: [User, Media, Group],
   });
 
-  return messages;
+  return messages.map(message => {
+    message.edited = message.createdAt !== message.updatedAt;
+
+    return message;
+  });
 }
 
 const getMessage = async (messageId, groupId) => {
@@ -42,7 +47,7 @@ const getMessage = async (messageId, groupId) => {
       GroupId: groupId,
       deleted: false,
     },
-    include: [User, Media],
+    include: [User, Media, Group],
   });
 
   if (!message) {
@@ -51,6 +56,8 @@ const getMessage = async (messageId, groupId) => {
       message: "Unknown message",
     };
   }
+
+  message.edited = message.createdAt !== message.updatedAt;
 
   return message;
 }

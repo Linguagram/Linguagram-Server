@@ -11,7 +11,7 @@ const {
 } = require("./models")
 const handleUploaded = require('../util/handleUploaded');
 const { validateGroupId, validateMessageId } = require('../util/validators');
-const { sendMessage } = require('../util/ws');
+const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
 const { userFetchAttributes } = require('../util/fetchAttributes');
 
 const {
@@ -77,6 +77,13 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
       content,
     } = req.body;
 
+    if (!content && !newAttachment) {
+      throw {
+	status: 400,
+	message: "One upload or text content is required",
+      };
+    }
+
     const createMessage = {
       content,
       GroupId: groupId,
@@ -132,6 +139,13 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       content,
     } = req.body;
 
+    if (!content && !newAttachment) {
+      throw {
+	status: 400,
+	message: "One upload or text content is required",
+      };
+    }
+
     if (newAttachment?.id) {
       message.MediaId = newAttachment.id;
     }
@@ -146,7 +160,9 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       message.Media = newAttachment;
     }
 
-    sendMessage(groupMembers, message);
+    message.edited = true;
+
+    editMessage(groupMembers, message);
 
     res.status(200).json(message);
   } catch (err) {
@@ -162,10 +178,32 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 
     const message = await getMessage(messageId, groupId);
 
+    const groupMembers = await getGroupMembers(groupId, req);
+
     message.deleted = true;
     await message.save();
 
-    res.status(200).json(message);
+    const response = {
+      id: message.id,
+    };
+
+    deleteMessage(groupMembers, response);
+
+    res.status(200).json(response);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/groups/:userId", async (req, res, next) => {
+  try {
+    // strict check groupId
+    const groupId = validateGroupId(req.params.groupId);
+
+    const groupMembers = await getGroupMembers(groupId, req);
+
+    // TODO: here and edit/deleteMessage socket
+
   } catch (err) {
     next(err);
   }
