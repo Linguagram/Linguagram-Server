@@ -7,7 +7,7 @@ List of available endpoints:
 - `POST /register`
 - `POST /login`
 - `POST /verify`
-- `GET /messages/:groupId`
+- `GET /groups/:groupId/messages`
 
 &nbsp;
 
@@ -23,11 +23,13 @@ Request :
 
 ```json
 {
-    "username" : "string",
-    "email" : "string",
-    "password" : "string",
+    "username" : "string | required",
+    "email" : "string | unique | required",
+    "password" : "string | required | min length 8",
     "country" : "string",
-    "phoneNumber" : "string",    
+    "phoneNumber" : "string",
+    "nativeLanguages" : ["number"],
+    "interestLanguages" : ["number"],
 }
 
 ```
@@ -36,9 +38,23 @@ _Response (201 - created)_
 
 ```json
 {
-    "email" : "string",
-    "username" : "string",
-    "link" : "string",    
+    "access_token" : "sadfluigwuoraygfwoluygfaoi47fryt428oi75triwy7rafgkwy",
+    "user" : {
+	"id": 1,
+	"username": "India",
+	"email": "indian@mail.com",
+	"country": "India",
+	"phoneNumber": "+69878656754567",
+	"verified": false,
+	"UserLanguages": [
+	    {
+	    },
+	    {
+	    },
+	    {
+	    }
+	]
+    },
 }
 
 ```

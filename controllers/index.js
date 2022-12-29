@@ -1,7 +1,23 @@
-const { Friendship, Group, Groupmember, Language, Media, Message, Schedule, User, Userlanguage, Userschedule } = require('../models')
+"use strict";
+
+const {
+  Friendship,
+  Group,
+  Groupmember,
+  Language,
+  Media,
+  Message,
+  Schedule,
+  User,
+  UserLanguage,
+  UserSchedule,
+  sequelize,
+} = require('../models')
+
 const { generateHash, verifyHash } = require('../helpers/bcryptjs')
 const { signToken, verifyToken } = require('../helpers/jwt')
-const { sendMail } = require('../helpers/nodemailer')
+const { sendMail } = require('../helpers/nodemailer');
+const { userFetchAttributes } = require('../util/fetchAttributes');
 
 class Controller {
 
@@ -11,17 +27,76 @@ class Controller {
   static async register (req, res, next) {
     try {
       // Avatar ID belum ada
-      const {username, email, password, country, phoneNumber} = req.body
+      const {
+	username,
+	email,
+	password,
+	country,
+	phoneNumber,
+	// Dipisah atau jadi satu array?
+	nativeLanguages = [],
+	interestLanguages = [],
+      } = req.body
 
-      const newUser = await User.create({username, email, password, country, phoneNumber})
+      const newUser = await sequelize.transaction(async (t) => {
+	// begin transaction
+	const createdUser = await User.create({
+	  username,
+	  email,
+	  password,
+	  country,
+	  phoneNumber
+	}, {
+	    transaction: t
+	});
 
-      delete newUser.dataValues.password
+	// create user languages ===
+	const createUserLanguages = [
+	  ...nativeLanguages.map(lang => ({
+	    type: "native",
+	    UserId: newUser.id,
+	    LanguageId: lang,
+	    })
+	  ),
+	  ...interestLanguages.map(lang => ({
+	    type: "interest",
+	    UserId: newUser.id,
+	    LanguageId: lang,
+	    })
+	  ),
+	];
+
+	const newUserLanguages = await UserLanguage.bulkCreate(createUserLanguages, {
+	  transaction: t,
+	});
+
+	const user = await User.findByPk(createdUser.id, {
+	  include: [
+	    {
+	      model: UserLanguage,
+	      include: [Language],
+	    },
+	  ],
+	  attributes: userFetchAttributes(Media),
+	});
+
+	return user;
+      });
 
       const verificationId = signToken(newUser.id)
       const link = `http://localhost:3000/users/verify?verification=${verificationId}`
       sendMail(newUser.email, newUser.username, link)
 
-      res.status(201).json(newUser)
+      const payload = {
+	id: newUser.id,
+      };
+
+      const access_token = signToken(payload)
+
+      res.status(201).json({
+	access_token,
+	user: newUser,
+      });
     } catch (err) {
       next(err)
     }
@@ -65,7 +140,7 @@ class Controller {
 
       const payload = {
 	id: loggedInUser.id
-	}
+      }
 
       const access_token = signToken(payload)
 
