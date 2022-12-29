@@ -3,6 +3,8 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
+const { GroupMember } = require("../models");
+const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
 const SOCKET_EVENTS = {
@@ -12,7 +14,7 @@ const SOCKET_EVENTS = {
   ERROR: "error",
 
   MESSAGE: "message",
-  MESSAGE_EDIT: "message_edit",
+  // MESSAGE_EDIT: "message_edit",
   MESSAGE_DELETE: "message_delete",
   STATUS: "status",
   USER_UPDATE: "user_update",
@@ -48,7 +50,7 @@ const jParse = (str) => {
 }
 
 const validateUserId = (userId) => {
-  if (!userId || typeof userId !== "number") throw new TypeError("Invalid userId: " + userId);
+  return wsValidator("number", userId, "Expected userId to be number, got " + userId);
 }
 
 const createServer = (httpServer) => {
@@ -135,7 +137,7 @@ const loadListeners = () => {
 // =========== PRIVATE FUNCTIONS END ===========
 
 const isOnline = (userId) => {
-  validateUserId(userId);
+  userId = validateUserId(userId);
   return userSockets.get(userId);
 }
 
@@ -151,7 +153,7 @@ const init = (httpServer) => {
 const getSocket = () => io;
 
 const getUserSocket = (userId) => {
-  validateUserId(userId);
+  userId = validateUserId(userId);
   return userSockets.get(userId);
 }
 
@@ -160,6 +162,22 @@ const getUserSocket = (userId) => {
  */
 const getUserSockets = () => userSockets;
 
+const sendMessage = (groupMembers, data) => {
+  if (!groupMembers) throw new TypeError("groupMembers can't be falsy");
+  if (!data) throw new TypeError("data can't be falsy");
+  const fromUserId = validateUserId(data.UserId);
+  if (!Array.isArray(groupMembers)) throw new TypeError("Expected groupMembers as array, got " + groupMembers);
+
+  for (const member of groupMembers) {
+    if (!member) throw new TypeError("member can't be falsy");
+    const memberId = validateUserId(member.UserId);
+    if (memberId === fromUserId) continue;
+
+    const socket = userSockets.get(memberId);
+    if (socket) emitSocket(socket, SOCKET_EVENTS.MESSAGE, jString(data));
+  }
+};
+
 module.exports = {
   SOCKET_EVENTS,
   init,
@@ -167,4 +185,5 @@ module.exports = {
   getUserSockets,
   isOnline,
   getUserSocket,
+  sendMessage,
 }

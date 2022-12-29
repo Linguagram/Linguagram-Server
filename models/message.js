@@ -17,10 +17,17 @@ module.exports = (sequelize, DataTypes) => {
       Message.belongsTo(models.User, {
         foreignKey: 'GroupId'
       })
+      Message.belongsTo(models.Media, {
+        foreignKey: 'MediaId'
+      })
     }
   }
   Message.init({
     content: DataTypes.TEXT,
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     MediaId: DataTypes.INTEGER,
     UserId: {
       type: DataTypes.INTEGER,

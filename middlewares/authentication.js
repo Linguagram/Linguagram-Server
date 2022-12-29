@@ -1,25 +1,31 @@
 const { verifyToken } = require('../helpers/jwt')
-const { User } = require('../models')
+const { User, Media } = require('../models')
+const { userFetchAttributes } = require('../util/fetchAttributes')
 
 
 const authentication = async(req, res, next) => {
-    try {
-        const {access_token} = req.headers
-        if(!access_token) throw('Invalid token')
+  try {
+    const {access_token} = req.headers
+    if(!access_token) throw {
+      status: 401,
+      message: 'Invalid token',
+    };
 
-        const payload = verifyToken(access_token)
+    const payload = verifyToken(access_token)
 
-        const theSearchedUser = await User.findByPk(payload.id)
-        if(!theSearchedUser) throw ('Invalid token')
+    const theSearchedUser = await User.findByPk(payload.id, userFetchAttributes(Media));
 
-        req.userInfo = {
-            id: theSearchedUser.id,
-        }
+    if(!theSearchedUser) throw {
+      status: 401,
+      message: 'Invalid token',
+    };
 
-        next()
-    } catch (err) {
-        next(err)
-    }
+    req.userInfo = theSearchedUser;
+
+    next()
+  } catch (err) {
+    next(err)
+  }
 }
 
 module.exports = {
