@@ -4,6 +4,7 @@
 
 const { Server, Socket } = require("socket.io");
 const { GroupMember } = require("../models");
+const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
 const SOCKET_EVENTS = {
@@ -49,7 +50,7 @@ const jParse = (str) => {
 }
 
 const validateUserId = (userId) => {
-  if (!userId || typeof userId !== "number") throw new TypeError("Invalid userId: " + userId);
+  return wsValidator("number", userId, "Expected userId to be number, got " + userId);
 }
 
 const createServer = (httpServer) => {
@@ -136,7 +137,7 @@ const loadListeners = () => {
 // =========== PRIVATE FUNCTIONS END ===========
 
 const isOnline = (userId) => {
-  validateUserId(userId);
+  userId = validateUserId(userId);
   return userSockets.get(userId);
 }
 
@@ -152,7 +153,7 @@ const init = (httpServer) => {
 const getSocket = () => io;
 
 const getUserSocket = (userId) => {
-  validateUserId(userId);
+  userId = validateUserId(userId);
   return userSockets.get(userId);
 }
 
@@ -164,15 +165,15 @@ const getUserSockets = () => userSockets;
 const sendMessage = (groupMembers, data) => {
   if (!groupMembers) throw new TypeError("groupMembers can't be falsy");
   if (!data) throw new TypeError("data can't be falsy");
-  if (isNaN(data.UserId)) throw new TypeError("Expected data.UserId to be number, got " + data.UserId);
+  const fromUserId = validateUserId(data.UserId);
   if (!Array.isArray(groupMembers)) throw new TypeError("Expected groupMembers as array, got " + groupMembers);
 
   for (const member of groupMembers) {
     if (!member) throw new TypeError("member can't be falsy");
-    if (isNaN(member.UserId)) throw new TypeError("Expected member.UserId to be number, got " + member.UserId);
-    if (member.UserId === data.UserId) continue;
+    const memberId = validateUserId(member.UserId);
+    if (memberId === fromUserId) continue;
 
-    const socket = userSockets.get(member.UserId);
+    const socket = userSockets.get(memberId);
     if (socket) emitSocket(socket, SOCKET_EVENTS.MESSAGE, jString(data));
   }
 };

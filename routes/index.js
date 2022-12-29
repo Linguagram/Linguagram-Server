@@ -7,18 +7,21 @@ const userRouter = require('../routes/userRouter');
 //
 const { upload } = require("./util/multer");
 const {
-  Media, User, Message, GroupMember
+  Media, User, Message,
 } = require("./models")
 const handleUploaded = require('../util/handleUploaded');
-const { validateGroupId } = require('../util/validators');
+const { validateGroupId, validateMessageId } = require('../util/validators');
 const { sendMessage } = require('../util/ws');
 const { userFetchAttributes } = require('../util/fetchAttributes');
 
-// ======= Controller imports
+const {
+  getMessage,
+  getGroupMembers,
+  fileAction,
+  getMessages,
+} = require("../util/restUtil");
 
-
-
-
+// ======= Controller imports end
 
 router.use('/users', userRouter)
 
@@ -26,6 +29,13 @@ router.use(authentication)
 
 router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
+    if (!req.file) {
+      throw {
+	status: 400,
+	message: "avatar is required",
+      };
+    }
+
     const newAvatar = await handleUploaded(req.file);
 
     const user = await User.findByPk(req.userInfo.id, userFetchAttributes(Media));
@@ -47,12 +57,7 @@ router.get("/groups/:groupId/messages", async (req, res, next) => {
     // strict check groupId
     const groupId = validateGroupId(req.params.groupId);
 
-    const messages = await Message.findAll({
-      where: {
-	GroupId: groupId,
-      },
-      include: [User, Media],
-    });
+    const messages = await getMessages(groupId);
 
     res.status(200).json(messages);
   } catch (err) {
@@ -64,26 +69,9 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
   try {
     const groupId = validateGroupId(req.params.groupId);
 
-    // check if user is actually in the group
-    const groupMembers = await GroupMember.findAll({
-      where: {
-	GroupId: groupId,
-      },
-    });
+    const groupMembers = await getGroupMembers(groupId, req);
 
-    if (!groupMembers.some(member => member.UserId === req.userInfo.id)) {
-      throw {
-	status: 404,
-	message: "Unknown Group",
-      };
-    }
-
-    let newAttachment;
-
-    // handle uploaded attachment if any
-    if (req.file) {
-      newAttachment = await handleUploaded(req.file);
-    }
+    const newAttachment = await fileAction(req);
 
     const {
       content,
@@ -114,11 +102,74 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
   }
 });
 
-router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {});
+router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {
+  try {
+    // strict check groupId
+    const groupId = validateGroupId(req.params.groupId);
+    const messageId = validateMessageId(req.params.messageId);
 
-router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), async (req, res, next) => {});
+    const message = await getMessage(messageId, groupId);
 
-router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => {});
+    res.status(200).json(message);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), async (req, res, next) => {
+  try {
+    // strict check groupId
+    const groupId = validateGroupId(req.params.groupId);
+    const messageId = validateMessageId(req.params.messageId);
+
+    const groupMembers = await getGroupMembers(groupId, req);
+
+    const message = await getMessage(messageId, groupId);
+
+    const newAttachment = await fileAction(req);
+
+    const {
+      content,
+    } = req.body;
+
+    if (newAttachment?.id) {
+      message.MediaId = newAttachment.id;
+    }
+
+    message.content = content;
+
+    await message.save();
+
+    message.User = req.userInfo;
+
+    if (newAttachment?.id) {
+      message.Media = newAttachment;
+    }
+
+    sendMessage(groupMembers, message);
+
+    res.status(200).json(message);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => {
+  try {
+    // strict check groupId
+    const groupId = validateGroupId(req.params.groupId);
+    const messageId = validateMessageId(req.params.messageId);
+
+    const message = await getMessage(messageId, groupId);
+
+    message.deleted = true;
+    await message.save();
+
+    res.status(200).json(message);
+  } catch (err) {
+    next(err);
+  }
+});
 
 
 
