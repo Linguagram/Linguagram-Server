@@ -51,17 +51,15 @@ const errorHandler2 = (err, req, res, next) => {
 const errorHandler = (err, req, res, next) => {
   console.error(err);
 
-  if (['SequelizeValidationError', 'SequelizeUniqueConstraintError'].includes(err.name)) {
+  if ([
+    'SequelizeForeignKeyConstraintError',
+    'SequelizeValidationError',
+    'SequelizeDatabaseError',
+    'SequelizeUniqueConstraintError'
+  ].includes(err.name)) {
     return res.status(400).json({
       error: true,
-      message: err.errors[0].message,
-    });
-  }
-
-  else if (['SequelizeForeignKeyConstraintError'].includes(err.name)) {
-    return res.status(400).json({
-      error: true,
-      message: err.original.detail,
+      message: 'Bad Request',
     });
   }
 

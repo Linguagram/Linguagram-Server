@@ -269,15 +269,16 @@ _Response (200 - OK)_
 }]
 ```
 
-_Response (401 - Unauthorized)_
+## Global Error
+
+_Response (400 - Bad Request)_
 
 ```json
 {
-    "message": "Invalid Token"
+    "error": true,
+    "message": "Bad Request"
 }
 ```
-
-## Global Error
 
 _Response (401 - Unauthorized)_
 
