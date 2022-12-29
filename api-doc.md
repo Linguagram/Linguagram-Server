@@ -24,7 +24,7 @@ Request :
 ```json
 {
     "username" : "string | required",
-    "email" : "string | unique | required",
+    "email" : "string | email format | unique | required",
     "password" : "string | required | min length 8",
     "country" : "string",
     "phoneNumber" : "string",
@@ -215,5 +215,34 @@ _Response (401 - Unauthorized)_
 ```json
 {
     "message": "Invalid Token"
+}
+```
+
+## Global Error
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "error": true,
+    "message": "Invalid token"
+}
+```
+
+_Response (403 - Forbidden)_
+
+```json
+{
+    "error": true,
+    "message": "Forbidden"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+    "error": true,
+    "message": "Internal server error"
 }
 ```

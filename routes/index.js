@@ -23,7 +23,7 @@ const {
 
 // ======= Controller imports end
 
-router.use('/users', userRouter)
+router.use(userRouter)
 
 router.use(authentication)
 
