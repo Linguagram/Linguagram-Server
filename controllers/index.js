@@ -38,9 +38,11 @@ class Controller {
 	interestLanguages = [],
       } = req.body
 
-      const newUser = await sequelize.transaction(async (t) => {
+      let createdUser;
+
+      await sequelize.transaction(async (t) => {
 	// begin transaction
-	const createdUser = await User.create({
+	createdUser = await User.create({
 	  username,
 	  email,
 	  password,
@@ -54,13 +56,13 @@ class Controller {
 	const createUserLanguages = [
 	  ...nativeLanguages.map(lang => ({
 	    type: "native",
-	    UserId: newUser.id,
+	    UserId: createdUser.id,
 	    LanguageId: lang,
 	    })
 	  ),
 	  ...interestLanguages.map(lang => ({
 	    type: "interest",
-	    UserId: newUser.id,
+	    UserId: createdUser.id,
 	    LanguageId: lang,
 	    })
 	  ),
@@ -69,19 +71,19 @@ class Controller {
 	const newUserLanguages = await UserLanguage.bulkCreate(createUserLanguages, {
 	  transaction: t,
 	});
-
-	const user = await User.findByPk(createdUser.id, {
-	  include: [
-	    {
-	      model: UserLanguage,
-	      include: [Language],
-	    },
-	  ],
-	  attributes: userFetchAttributes(Media),
-	});
-
-	return user;
       });
+
+      const opts = userFetchAttributes(Media);
+      opts.include.push(
+	{
+	  model: UserLanguage,
+	  include: [Language],
+	}
+      );
+
+      const newUser = await User.findByPk(createdUser.id, opts);
+
+      console.log(newUser);
 
       const verificationId = signToken(newUser.id)
       const link = `http://localhost:3000/users/verify?verification=${verificationId}`

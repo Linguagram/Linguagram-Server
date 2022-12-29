@@ -29,7 +29,7 @@ Request :
     "country" : "string",
     "phoneNumber" : "string",
     "nativeLanguages" : ["number"],
-    "interestLanguages" : ["number"],
+    "interestLanguages" : ["number"]
 }
 
 ```
@@ -38,55 +38,114 @@ _Response (201 - created)_
 
 ```json
 {
-    "access_token" : "sadfluigwuoraygfwoluygfaoi47fryt428oi75triwy7rafgkwy",
-    "user" : {
-	"id": 1,
-	"username": "India",
-	"email": "indian@mail.com",
-	"country": "India",
-	"phoneNumber": "+69878656754567",
-	"verified": false,
-	"UserLanguages": [
-	    {
-	    },
-	    {
-	    },
-	    {
-	    }
-	]
-    },
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImlhdCI6MTY3MjMyMjA5OH0.3q9RNbVYSc5obpNX2rU6uhLw6JDmbneCx38UO6xMMSE",
+    "user": {
+        "id": 21,
+        "username": "e",
+        "email": "hello5@mail.com",
+        "country": null,
+        "status": null,
+        "phoneNumber": null,
+        "verified": false,
+        "AvatarId": null,
+        "Avatar": null,
+        "UserLanguages": [
+            {
+                "id": 10,
+                "type": "native",
+                "UserId": 21,
+                "LanguageId": 1,
+                "createdAt": "2022-12-29T13:54:58.517Z",
+                "updatedAt": "2022-12-29T13:54:58.517Z",
+                "Language": {
+                    "id": 1,
+                    "name": "Papiamento",
+                    "createdAt": "2022-12-29T13:02:08.364Z",
+                    "updatedAt": "2022-12-29T13:02:08.364Z"
+                }
+            },
+            {
+                "id": 11,
+                "type": "native",
+                "UserId": 21,
+                "LanguageId": 2,
+                "createdAt": "2022-12-29T13:54:58.517Z",
+                "updatedAt": "2022-12-29T13:54:58.517Z",
+                "Language": {
+                    "id": 2,
+                    "name": "Northern Sotho",
+                    "createdAt": "2022-12-29T13:02:08.364Z",
+                    "updatedAt": "2022-12-29T13:02:08.364Z"
+                }
+            },
+            {
+                "id": 12,
+                "type": "native",
+                "UserId": 21,
+                "LanguageId": 3,
+                "createdAt": "2022-12-29T13:54:58.517Z",
+                "updatedAt": "2022-12-29T13:54:58.517Z",
+                "Language": {
+                    "id": 3,
+                    "name": "Lao",
+                    "createdAt": "2022-12-29T13:02:08.364Z",
+                    "updatedAt": "2022-12-29T13:02:08.364Z"
+                }
+            },
+            {
+                "id": 13,
+                "type": "interest",
+                "UserId": 21,
+                "LanguageId": 4,
+                "createdAt": "2022-12-29T13:54:58.517Z",
+                "updatedAt": "2022-12-29T13:54:58.517Z",
+                "Language": {
+                    "id": 4,
+                    "name": "Catalan",
+                    "createdAt": "2022-12-29T13:02:08.364Z",
+                    "updatedAt": "2022-12-29T13:02:08.364Z"
+                }
+            }
+        ]
+    }
 }
-
 ```
 
 _Response (400 - Bad Request)_
 
 ```json
 {
+    "error": true,
     "message" : "Email is required"        
 }
 OR
 {
+    "error": true,
     "message" : "Password is required"        
 }
 OR
 {
+    "error": true,
     "message" : "Email has already been registered"        
 }
 OR
 {
+    "error": true,
     "message" : "Username is required"        
 }
 OR
 {
+    "error": true,
     "message" : "Invalid email format"        
 }
 OR
 {
+    "error": true,
     "message" : "Password must have at least 8 characters"        
 }
 OR
 {
+    "error": true,
     "message" : "Password is required"        
 }
 
