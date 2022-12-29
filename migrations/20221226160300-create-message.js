@@ -12,6 +12,10 @@ module.exports = {
       content: {
         type: Sequelize.TEXT
       },
+      deleted: {
+	type: Sequelize.BOOLEAN,
+	defaultValue: false,
+      },
       MediaId: {
         type: Sequelize.INTEGER,
         references: {

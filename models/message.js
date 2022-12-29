@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Message.init({
     content: DataTypes.TEXT,
+    deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     MediaId: DataTypes.INTEGER,
     UserId: {
       type: DataTypes.INTEGER,

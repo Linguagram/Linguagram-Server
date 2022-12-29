@@ -28,6 +28,7 @@
     "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
     "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.5.2",
     "socket.io": "^4.5.4"
   }
 }
