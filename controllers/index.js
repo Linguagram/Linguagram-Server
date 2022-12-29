@@ -111,24 +111,24 @@ class Controller {
       if(!email) throw {
 	status: 400,
 	message: 'Email is required',
-	};
+      };
 
       if(!password) throw {
 	status: 400,
 	message: 'Password is required',
-	};
+      };
 
       const loggedInUser = await User.findOne({where: {email}})
       if(!loggedInUser) throw {
 	status: 401,
 	message: 'Invalid email/password',
-	};
+      };
 
       const isValidPassword = verifyHash(password, loggedInUser.password)
       if(!isValidPassword) throw {
 	status: 401,
 	message: 'Invalid email/password',
-	};
+      };
 
       if(!loggedInUser.verified) {
 	const verificationId = signToken(loggedInUser.id)
@@ -137,8 +137,8 @@ class Controller {
 	throw {
 	  status: 401,
 	  message: 'Email address has not been verified!',
-	  };
-	}
+	};
+      }
 
       const payload = {
 	id: loggedInUser.id
@@ -162,12 +162,12 @@ class Controller {
       if(!theSearchedUser) throw {
 	status: 401,
 	message: 'Invalid Link',
-	};
+      };
 
       if(theSearchedUser.verified) throw {
 	status: 400,
 	message: 'Your email address has been verified',
-	};
+      };
 
       await User.update({ verified: true }, {
 	where: {
