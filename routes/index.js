@@ -52,6 +52,8 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
   }
 });
 
+// router.delete("avatar")
+
 router.get("/groups/:groupId/messages", async (req, res, next) => {
   try {
     // strict check groupId
