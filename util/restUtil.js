@@ -28,6 +28,7 @@ const getMessages = async (groupId) => {
   const messages = await Message.findAll({
     where: {
       GroupId: groupId,
+      deleted: false,
     },
     include: [User, Media],
   });
@@ -39,6 +40,7 @@ const getMessage = async (messageId, groupId) => {
   const message = await Message.findByPk(messageId, {
     where: {
       GroupId: groupId,
+      deleted: false,
     },
     include: [User, Media],
   });
