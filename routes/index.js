@@ -1,3 +1,5 @@
+"use strict";
+
 const router = require('express').Router()
 const { authentication } = require('../middlewares/authentication')
 
@@ -31,8 +33,8 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
     if (!req.file) {
       throw {
-	status: 400,
-	message: "avatar is required",
+        status: 400,
+        message: "avatar is required",
       };
     }
 
@@ -79,8 +81,8 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
 
     if (!content && !newAttachment) {
       throw {
-	status: 400,
-	message: "One upload or text content is required",
+        status: 400,
+        message: "One upload or text content is required",
       };
     }
 
@@ -141,8 +143,8 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
 
     if (!content && !newAttachment) {
       throw {
-	status: 400,
-	message: "One upload or text content is required",
+        status: 400,
+        message: "One upload or text content is required",
       };
     }
 
@@ -202,7 +204,7 @@ router.get("/groups/:userId", async (req, res, next) => {
 
     const groupMembers = await getGroupMembers(groupId, req);
 
-    // TODO: here and edit/deleteMessage socket
+    // TODO: here
 
   } catch (err) {
     next(err);
@@ -214,3 +216,5 @@ router.get("/groups/:userId", async (req, res, next) => {
 
 
 module.exports = router
+
+// vim: sw=2 et
