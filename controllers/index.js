@@ -66,7 +66,14 @@ class Controller {
 	    LanguageId: lang,
 	    })
 	  ),
-	];
+	  // filter duplicates
+	  ].reduce((prev, val) =>
+	    prev.some(pval =>
+	      pval.LanguageId === val.LanguageId
+	      && pval.type === val.type)
+	    ? prev
+	    : prev.concat([val]),
+	    []);
 
 	const newUserLanguages = await UserLanguage.bulkCreate(createUserLanguages, {
 	  transaction: t,
