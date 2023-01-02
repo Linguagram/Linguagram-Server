@@ -457,6 +457,15 @@ _Response (400 - Bad Request)_
 }
 ```
 
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown message"
+}
+```
+
 
 ## Global Error
 
