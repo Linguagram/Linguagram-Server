@@ -7,12 +7,15 @@ const Controller = require("../controllers");
 const userRouter = require('../routes/userRouter');
 
 // ======= Controller imports
-//
+
+const { Op } = require("sequelize");
 const { upload } = require("../util/multer");
 const {
   Message,
   Language,
   UserLanguage,
+  Friendship,
+  User,
 } = require("../models")
 const handleUploaded = require('../util/handleUploaded');
 const { validateGroupId, validateMessageId, validateUserId } = require('../util/validators');
@@ -297,6 +300,38 @@ router.get("/@me/languages", async (req, res, next) => {
     });
 
     res.status(200).json(languages);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get user friends
+router.get("/friends", async (req, res, next) => {
+  try {
+    const friends = await Friendship.findAll({
+      where: {
+        [Op.or]: [
+          {
+            UserId: req.userInfo.id,
+          },
+          {
+            FriendId: req.userInfo.id,
+          },
+        ],
+      },
+      include: [
+        {
+          model: User,
+          as: "User",
+        },
+        {
+          model: User,
+          as: "Friend",
+        },
+      ],
+    });
+
+    res.status(200).json(friends);
   } catch (err) {
     next(err);
   }

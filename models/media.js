@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Media.hasOne(models.User, {
         foreignKey: 'AvatarId',
-	 as: "Avatar",
+        as: "Avatar",
       })
       Media.hasOne(models.Message, {
         foreignKey: 'MediaId'
