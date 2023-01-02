@@ -33,6 +33,10 @@ const validateUserId = (id) => {
   return restValidator("number", id, "Invalid userId");
 }
 
+const validateFriendId = (id) => {
+  return restValidator("number", id, "Invalid friendId");
+}
+
 const validateMessageId = (id) => {
   return restValidator("number", id, "Invalid messageId");
 }
@@ -44,4 +48,5 @@ module.exports = {
   validateGroupId,
   validateUserId,
   validateMessageId,
+  validateFriendId,
 }

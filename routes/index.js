@@ -18,7 +18,12 @@ const {
   User,
 } = require("../models")
 const handleUploaded = require('../util/handleUploaded');
-const { validateGroupId, validateMessageId, validateUserId } = require('../util/validators');
+const {
+  validateGroupId,
+  validateMessageId,
+  validateUserId,
+  validateFriendId,
+} = require('../util/validators');
 const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
 
 const {
@@ -332,6 +337,17 @@ router.get("/friends", async (req, res, next) => {
     });
 
     res.status(200).json(friends);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// send friend request
+router.post("/friends/:friendId", async (req, res, next) => {
+  try {
+    const friend = await getUser(validateFriendId(req.params.friendId));
+    // !TODO
+    res.status(200).json(null);
   } catch (err) {
     next(err);
   }

@@ -23,6 +23,9 @@ List of available endpoints:
 - `PUT /@me`
 - `GET /@me/languages`
 
+- `GET /friends`
+- `POST /friends/:friendId`
+
 &nbsp;
 
 
@@ -297,7 +300,6 @@ Request :
 {
     "groupId" : "integer"
 }
-
 ```
 
 _Response (200 - OK)_
@@ -836,6 +838,60 @@ Request :
 ```json
 {
     "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
+
+## 15. GET /friends
+
+Description :
+
+- Get user friends
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
+
+## 16. POST /friends/:friendId
+
+Description :
+
+- Send friend request
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "friendId" : "integer"
 }
 ```
 
