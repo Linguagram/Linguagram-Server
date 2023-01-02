@@ -117,3 +117,21 @@ PATCH friendships/:friendshipId
 ## Target
 1. API Docs
 2. Layouting (Sebelum minggu ke-4)
+
+
+
+Sewnin 2 January 11.15 PM
+# Meeting Notes
+
+## FEAT: Topic
+1. Menambahkan tabel untuk fitur topik/interest.
+3. Topik disiapkan aplikasi. User memilih topik yang sudah disediakan. Minimal ... maksimal ...
+4. Tambah routing:
+    1. GET interest
+    2. Untuk menambah dan mengupdate interest, bisa dilakukan saat register dan update user.
+    3. Untuk delete permintaan pertemanan -- DELETE friendship
+    4. Mengirimkan email ke penerima permintaan pertemanan
+
+## FEAT: Translation
+1. Menerjemahkan pesan yang dikirimkan/diterima user.
+2. Terjemahan tidak disimpan di database. Ketika page di-refresh, terjemahan akan hilang.
