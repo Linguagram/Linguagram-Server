@@ -8,8 +8,11 @@ List of available endpoints:
 - `POST /login`
 - `POST /verify`
 - `GET /groups/:groupId/messages`
+- `POST /groups/:groupId/messages`
+- `GET /groups/:groupId/messages/:messageId`
 
 &nbsp;
+
 
 ## 1. POST /register
 
@@ -151,7 +154,8 @@ OR
 
 ```
 
-# 2. POST /login
+
+## 2. POST /login
 
 Description :
 
@@ -204,7 +208,8 @@ OR
 }
 ```
 
-# 3. POST /verify
+
+## 3. POST /verify
 
 Description :
 
@@ -216,7 +221,7 @@ Request :
 
 ```json
 {
-    "verification" : "string",
+    "verification" : "string | required",
 }
 
 ```
@@ -253,11 +258,11 @@ _Response (400 - Bad Request)_
 ```
 
 
-# 4. GET /messages/:groupId
+## 4. GET /groups/:groupId/messages
 
 Description :
 
-- Get messages by group id
+- Get group messages
 
 Request :
 
@@ -265,7 +270,7 @@ Request :
 
 ```json
 {
-    "access_token" : "string"
+    "access_token" : "string | required"
 }
 
 ```
@@ -274,7 +279,7 @@ Request :
 
 ```json
 {
-    "id" : "integer"
+    "groupId" : "integer"
 }
 
 ```
@@ -285,10 +290,173 @@ _Response (200 - OK)_
 [{
   "content" : "text",
     "Media" : {
-        
+        // !TODO
   }
 }]
 ```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId"
+}
+```
+
+
+## 5. POST /groups/:groupId/messages
+
+Description :
+
+- Create message
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required",
+    "Content-Type": "multipart/form-data"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer"
+}
+
+```
+
+- body :
+
+```json
+{
+    "content": "string",
+    "attachment": "file upload"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[{
+  "content" : "text",
+    "Media" : {
+        // !TODO
+  }
+}]
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId"
+}
+OR
+{
+    "error": true,
+    "message": "One upload or text content is required"
+}
+```
+
+
+## 6. GET /groups/:groupId/messages/:messageId
+
+Description :
+
+- Get group messages
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer",
+    "messageId" : "integer"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[{
+  "content" : "text",
+    "Media" : {
+        // !TODO
+  }
+}]
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId"
+}
+```
+
+
+## 7.
+
+Description :
+
+- Get group messages
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer",
+    "messageId" : "integer"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[{
+  "content" : "text",
+    "Media" : {
+        // !TODO
+  }
+}]
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId"
+}
+```
+
 
 ## Global Error
 
