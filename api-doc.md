@@ -306,6 +306,20 @@ _Response (400 - Bad Request)_
 }
 ```
 
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+OR
+{
+    "error": true,
+    "message": "Unknown message"
+}
+```
+
 
 ## 5. POST /groups/:groupId/messages
 
@@ -367,12 +381,26 @@ OR
 }
 ```
 
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+OR
+{
+    "error": true,
+    "message": "Unknown message"
+}
+```
+
 
 ## 6. GET /groups/:groupId/messages/:messageId
 
 Description :
 
-- Get group messages
+- Get a message in a group
 
 Request :
 
@@ -416,6 +444,11 @@ _Response (400 - Bad Request)_
 _Response (404 - Not Found)_
 
 ```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+OR
 {
     "error": true,
     "message": "Unknown message"
@@ -489,12 +522,71 @@ _Response (404 - Not Found)_
 ```json
 {
     "error": true,
+    "message": "Unknown Group"
+}
+OR
+{
+    "error": true,
     "message": "Unknown message"
 }
 ```
 
 
 ## 8. DELETE /groups/:groupId/messages/:messageId
+
+Description :
+
+- Delete message
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer",
+    "messageId" : "integer"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+    "id": 1
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+OR
+{
+    "error": true,
+    "message": "Unknown message"
+}
+```
 
 
 ## Global Error

@@ -59,6 +59,9 @@ router.get("/groups/:groupId/messages", async (req, res, next) => {
     // strict check groupId
     const groupId = validateGroupId(req.params.groupId);
 
+    // check if user is in this group
+    const groupMembers = await getGroupMembers(groupId, req);
+
     const messages = await getMessages(groupId);
 
     res.status(200).json(messages);
@@ -115,6 +118,10 @@ router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {
   try {
     // strict check groupId
     const groupId = validateGroupId(req.params.groupId);
+    //
+    // check if user is in this group
+    const groupMembers = await getGroupMembers(groupId, req);
+
     const messageId = validateMessageId(req.params.messageId);
 
     const message = await getMessage(messageId, groupId);
