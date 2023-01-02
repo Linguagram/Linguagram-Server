@@ -1,7 +1,11 @@
 "use strict";
 
 const {
-  Media, User, Message, GroupMember, Group
+  Media,
+  User,
+  Message,
+  GroupMember,
+  Group,
 } = require("../models");
 const { userFetchAttributes } = require("./fetchAttributes");
 

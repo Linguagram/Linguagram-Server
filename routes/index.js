@@ -2,6 +2,7 @@
 
 const router = require('express').Router()
 const { authentication } = require('../middlewares/authentication')
+const Controller = require("../controllers");
 
 const userRouter = require('../routes/userRouter');
 
@@ -9,7 +10,9 @@ const userRouter = require('../routes/userRouter');
 //
 const { upload } = require("../util/multer");
 const {
-  Message
+  Message,
+  Language,
+  UserLanguage,
 } = require("../models")
 const handleUploaded = require('../util/handleUploaded');
 const { validateGroupId, validateMessageId, validateUserId } = require('../util/validators');
@@ -269,8 +272,35 @@ router.get("/groups", async (req, res, next) => {
 // });
 
 
+// get all languages
+router.get("/languages", async (req, res, next) => {
+  try {
+    const languages = await Language.findAll();
 
+    res.status(200).json(languages);
+  } catch (err) {
+    next(err);
+  }
+});
 
+// edit user
+router.put("/@me", Controller.editMe);
+
+// get user languages
+router.get("/@me/languages", async (req, res, next) => {
+  try {
+    const languages = await UserLanguage.findAll({
+      where: {
+        UserId: req.userInfo.id,
+      },
+      include: [Language],
+    });
+
+    res.status(200).json(languages);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router
 

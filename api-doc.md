@@ -19,6 +19,10 @@ List of available endpoints:
 - `POST /avatar`
 - `GET /users/:userId`
 
+- `GET /languages`
+- `PUT /@me`
+- `GET /@me/languages`
+
 &nbsp;
 
 
@@ -159,7 +163,11 @@ OR
     "error": true,
     "message" : "Password is required"        
 }
-
+OR
+{
+    "error": true,
+    "message" : "Password do not match"
+}
 ```
 
 
@@ -703,6 +711,140 @@ _Response (404 - Not Found)_
     "message": "Unknown user"
 }
 ```
+
+
+## 12. GET /languages
+
+Description :
+
+- Get all languages
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
+
+## 13. PUT /@me
+
+Description :
+
+- Create new user
+
+Request :
+
+- body :
+
+```json
+{
+    "username" : "string | required",
+    "email" : "string | email format | unique | required",
+    "password" : "string | required | min length 8",
+    "newPassword" : "string | min length 8",
+    "confirmNewPassword" : "string | required if newPassword exist",
+    "country" : "string",
+    "phoneNumber" : "string",
+    "nativeLanguages" : ["number"],
+    "interestLanguages" : ["number"]
+}
+
+```
+
+_Response (201 - created)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message" : "Email is required"        
+}
+OR
+{
+    "error": true,
+    "message" : "Password is required"        
+}
+OR
+{
+    "error": true,
+    "message" : "Email has already been registered"        
+}
+OR
+{
+    "error": true,
+    "message" : "Username is required"        
+}
+OR
+{
+    "error": true,
+    "message" : "Invalid email format"        
+}
+OR
+{
+    "error": true,
+    "message" : "Password must have at least 8 characters"        
+}
+OR
+{
+    "error": true,
+    "message" : "Password is required"        
+}
+OR
+{
+    "error": true,
+    "message" : "New password do not match"        
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "error": true,
+    "message": "Invalid old password"
+}
+```
+
+
+## 14. GET /@me/languages
+
+Description :
+
+- Get user languages preferences
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
 
 ## Global Error
 

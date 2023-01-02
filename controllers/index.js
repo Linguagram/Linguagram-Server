@@ -31,12 +31,20 @@ class Controller {
         username,
         email,
         password,
+        confirmPassword,
         country,
         phoneNumber,
         // Dipisah atau jadi satu array?
         nativeLanguages = [],
         interestLanguages = [],
-      } = req.body
+      } = req.body;
+
+      if (password !== confirmPassword) {
+        throw {
+          status: 400,
+          message: "Password do not match",
+        };
+      }
 
       let createdUser;
 
@@ -106,6 +114,101 @@ class Controller {
         access_token,
         user: newUser,
       });
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  static async editMe (req, res, next) {
+    try {
+      const {
+        username,
+        email,
+        password,
+        newPassword,
+        confirmNewPassword,
+        country,
+        phoneNumber,
+        nativeLanguages = [],
+        interestLanguages = [],
+      } = req.body;
+
+      if (newPassword && newPassword !== confirmNewPassword) {
+        throw {
+          status: 400,
+          message: "New password do not match",
+        };
+      }
+
+      const user = await User.findByPk(req.userInfo.id);
+
+      if (!verifyHash(password, user.password)) {
+        throw {
+          status: 401,
+          message: "Invalid old password",
+        };
+      }
+
+      await sequelize.transaction(async (t) => {
+        // begin transaction
+
+        const deleted = await UserLanguage.destroy({
+          where: {
+            UserId: user.id,
+          },
+        });
+
+        console.log("User", user.username, user.id, "deleted languages count:", deleted);
+
+        user.username = username;
+        user.email = email;
+        if (newPassword) user.password = generateHash(newPassword);
+        user.country = country;
+        user.phoneNumber = phoneNumber;
+
+        await user.save();
+
+        // create user languages ===
+        const createUserLanguages = [
+          ...nativeLanguages.map(lang => ({
+            type: "native",
+            UserId: user.id,
+            LanguageId: lang,
+          })
+          ),
+          ...interestLanguages.map(lang => ({
+            type: "interest",
+            UserId: user.id,
+            LanguageId: lang,
+          })
+          ),
+          // filter duplicates
+        ].reduce((prev, val) =>
+          prev.some(pval =>
+            pval.LanguageId === val.LanguageId
+              && pval.type === val.type)
+            ? prev
+            : prev.concat([val]),
+          []);
+
+        const newUserLanguages = await UserLanguage.bulkCreate(createUserLanguages, {
+          transaction: t,
+        });
+      });
+
+      const opts = userFetchAttributes(Media);
+      opts.include.push(
+        {
+          model: UserLanguage,
+          include: [Language],
+        }
+      );
+
+      const newUser = await User.findByPk(user.id, opts);
+
+      console.log(newUser);
+
+      res.status(200).json(newUser);
     } catch (err) {
       next(err)
     }
