@@ -15,7 +15,7 @@ List of available endpoints:
 
 Description :
 
-- Create a new user in database
+- Create new user
 
 Request :
 
@@ -163,10 +163,9 @@ Request :
 
 ```json
 {
-    "email" : "string",
-    "password" : "string",   
+    "email" : "string | required",
+    "password" : "string | required"
 }
-
 ```
 
 _Response (200 - OK)_
@@ -177,14 +176,30 @@ _Response (200 - OK)_
 }
 ```
 
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message" : "Email is required"        
+}
+OR
+{
+    "error": true,
+    "message" : "Password is required"        
+}
+```
+
 _Response (401 - Unauthorized)_
 
 ```json
 {
+    "error": true,
     "message": "Invalid email/password"
 }
 OR
 {
+    "error": true,
     "message": "Email address has not been verified!"
 }
 ```
@@ -218,18 +233,24 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
+    "error": true,
     "message": "Invalid Link"
 }
 OR
 {
-    "message": "Your email address has been verified"
-}
-OR
-{
+    "error": true,
     "message": "Invalid Token"
 }
 ```
 
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message": "Your email address has been verified"
+}
+```
 
 
 # 4. GET /messages/:groupId
