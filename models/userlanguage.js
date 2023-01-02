@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class UserLanguage extends Model {
     /**
@@ -19,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   }
+
   UserLanguage.init({
     type: {
       type: DataTypes.STRING,
@@ -28,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
 	 notEmpty: {msg: 'User Language type is required'},
 	 type(value) {
 	   // !TODO: Confirm type names are correct
-	   const allowedTypes = ["native", "learning"];
+	   const allowedTypes = ["native", "interest"];
 	   if (!allowedTypes.includes(value)) {
 	     throw new TypeError("Invalid UserLanguage type");
 	   }
@@ -55,5 +57,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'UserLanguage',
   });
+
   return UserLanguage;
 };

@@ -16,7 +16,7 @@ const userFetchAttributes = (Media) => {
       {
 	model: Media,
 	as: "Avatar",
-	},
+      },
     ],
   }
 }

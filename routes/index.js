@@ -1,29 +1,43 @@
+"use strict";
+
 const router = require('express').Router()
 const { authentication } = require('../middlewares/authentication')
+const Controller = require("../controllers");
 
 const userRouter = require('../routes/userRouter');
 
 // ======= Controller imports
-//
-const { upload } = require("./util/multer");
+
+const { Op } = require("sequelize");
+const { upload } = require("../util/multer");
 const {
-  Media, User, Message,
-} = require("./models")
+  Message,
+  Language,
+  UserLanguage,
+  Friendship,
+  User,
+} = require("../models")
 const handleUploaded = require('../util/handleUploaded');
-const { validateGroupId, validateMessageId } = require('../util/validators');
+const {
+  validateGroupId,
+  validateMessageId,
+  validateUserId,
+  validateFriendId,
+} = require('../util/validators');
 const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
-const { userFetchAttributes } = require('../util/fetchAttributes');
 
 const {
   getMessage,
   getGroupMembers,
+  getGroupMembersFromUserId,
   fileAction,
   getMessages,
+  getUser,
 } = require("../util/restUtil");
 
 // ======= Controller imports end
 
-router.use('/users', userRouter)
+router.use(userRouter)
 
 router.use(authentication)
 
@@ -31,14 +45,14 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
     if (!req.file) {
       throw {
-	status: 400,
-	message: "avatar is required",
+        status: 400,
+        message: "avatar is required",
       };
     }
 
     const newAvatar = await handleUploaded(req.file);
 
-    const user = await User.findByPk(req.userInfo.id, userFetchAttributes(Media));
+    const user = await getUser(req.userInfo.id);
 
     user.AvatarId = newAvatar.id;
 
@@ -52,10 +66,28 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
   }
 });
 
+// delete avatar
+router.delete("/avatar", async (req, res, next) => {
+  try {
+    const user = await getUser(req.userInfo.id);
+
+    user.AvatarId = null;
+
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/groups/:groupId/messages", async (req, res, next) => {
   try {
     // strict check groupId
     const groupId = validateGroupId(req.params.groupId);
+
+    // check if user is in this group
+    const groupMembers = await getGroupMembers(groupId, req);
 
     const messages = await getMessages(groupId);
 
@@ -79,8 +111,8 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
 
     if (!content && !newAttachment) {
       throw {
-	status: 400,
-	message: "One upload or text content is required",
+        status: 400,
+        message: "One upload or text content is required",
       };
     }
 
@@ -113,6 +145,10 @@ router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {
   try {
     // strict check groupId
     const groupId = validateGroupId(req.params.groupId);
+    //
+    // check if user is in this group
+    const groupMembers = await getGroupMembers(groupId, req);
+
     const messageId = validateMessageId(req.params.messageId);
 
     const message = await getMessage(messageId, groupId);
@@ -141,8 +177,8 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
 
     if (!content && !newAttachment) {
       throw {
-	status: 400,
-	message: "One upload or text content is required",
+        status: 400,
+        message: "One upload or text content is required",
       };
     }
 
@@ -195,22 +231,128 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
   }
 });
 
-router.get("/groups/:userId", async (req, res, next) => {
+// get user
+router.get("/users/:userId", async (req, res, next) => {
   try {
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
+    const user = await getUser(validateUserId(req.params.userId));
 
-    const groupMembers = await getGroupMembers(groupId, req);
+    if (!user) {
+      throw {
+        status: 404,
+        message: "Unknown user",
+      };
+    }
 
-    // TODO: here and edit/deleteMessage socket
-
+    res.status(200).json();
   } catch (err) {
     next(err);
   }
 });
 
+// get user groups
+router.get("/groups", async (req, res, next) => {
+  try {
+    const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
+
+    res.status(200).json(groupMembers);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Group chat routes
+// // join user group
+// router.delete("/@me/groups/:groupId", async (req, res, next) => {
+//   try {
+//     res.status(200).json(await User.findByPk(req.params.userId));
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+// 
+// // leave user group
+// router.delete("/@me/groups/:groupId", async (req, res, next) => {
+//   try {
+//     res.status(200).json(await User.findByPk(req.params.userId));
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 
+// get all languages
+router.get("/languages", async (req, res, next) => {
+  try {
+    const languages = await Language.findAll();
 
+    res.status(200).json(languages);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// edit user
+router.put("/@me", Controller.editMe);
+
+// get user languages
+router.get("/@me/languages", async (req, res, next) => {
+  try {
+    const languages = await UserLanguage.findAll({
+      where: {
+        UserId: req.userInfo.id,
+      },
+      include: [Language],
+    });
+
+    res.status(200).json(languages);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get user friends
+router.get("/friends", async (req, res, next) => {
+  try {
+    const friends = await Friendship.findAll({
+      where: {
+        [Op.or]: [
+          {
+            UserId: req.userInfo.id,
+          },
+          {
+            FriendId: req.userInfo.id,
+          },
+        ],
+      },
+      include: [
+        {
+          model: User,
+          as: "User",
+        },
+        {
+          model: User,
+          as: "Friend",
+        },
+      ],
+    });
+
+    res.status(200).json(friends);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// send friend request
+router.post("/friends/:friendId", async (req, res, next) => {
+  try {
+    const friend = await getUser(validateFriendId(req.params.friendId));
+    // !TODO
+    res.status(200).json(null);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router
+
+// vim: sw=2 et

@@ -1,8 +1,13 @@
 "use strict";
 
 const {
-  Media, User, Message, GroupMember, Group
-} = require("../models")
+  Media,
+  User,
+  Message,
+  GroupMember,
+  Group,
+} = require("../models");
+const { userFetchAttributes } = require("./fetchAttributes");
 
 const handleUploaded = require("./handleUploaded");
 
@@ -21,6 +26,17 @@ const getGroupMembers = async (groupId, req) => {
       message: "Unknown Group",
     };
   }
+
+  return groupMembers;
+}
+
+const getGroupMembersFromUserId = async (userId) => {
+  const groupMembers = await GroupMember.findAll({
+    where: {
+      UserId: userId,
+    },
+    include: [Group],
+  });
 
   return groupMembers;
 }
@@ -69,9 +85,15 @@ const fileAction = async (req) => {
   }
 }
 
+const getUser = async (userId) => {
+  return User.findByPk(userId, userFetchAttributes(Media));
+}
+
 module.exports = {
   getGroupMembers,
   getMessage,
   fileAction,
   getMessages,
+  getGroupMembersFromUserId,
+  getUser,
 }
