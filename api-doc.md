@@ -7,11 +7,16 @@ List of available endpoints:
 - `POST /register`
 - `POST /login`
 - `POST /verify`
+
 - `GET /groups/:groupId/messages`
 - `POST /groups/:groupId/messages`
 - `GET /groups/:groupId/messages/:messageId`
+
 - `PUT /groups/:groupId/messages/:messageId`
 - `DELETE /groups/:groupId/messages/:messageId`
+
+- `GET /groups`
+- `POST /avatar`
 
 &nbsp;
 
@@ -585,6 +590,75 @@ OR
 {
     "error": true,
     "message": "Unknown message"
+}
+```
+
+
+## 9. GET /groups
+
+Description :
+
+- Get user groups
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
+
+## 10. POST /avatar
+
+Description :
+
+- Set user avatar
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required",
+    "Content-Type": "multipart/form-data"
+}
+```
+
+- body :
+
+```json
+{
+    "avatar": "file upload"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+[{
+  "content" : "text",
+    "Media" : {
+        // !TODO
+  }
+}]
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message": "avatar is required"
 }
 ```
 

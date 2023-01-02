@@ -9,7 +9,7 @@ const userRouter = require('../routes/userRouter');
 //
 const { upload } = require("../util/multer");
 const {
-  Media, User, Message,
+  Media, User, Message, Group, Sequelize
 } = require("../models")
 const handleUploaded = require('../util/handleUploaded');
 const { validateGroupId, validateMessageId } = require('../util/validators');
@@ -19,6 +19,7 @@ const { userFetchAttributes } = require('../util/fetchAttributes');
 const {
   getMessage,
   getGroupMembers,
+  getGroupMembersFromUserId,
   fileAction,
   getMessages,
 } = require("../util/restUtil");
@@ -207,17 +208,41 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 // get user
 router.get("/users/:userId", async (req, res, next) => {
   try {
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
-
-    const groupMembers = await getGroupMembers(groupId, req);
-
-    // TODO: here
-
+    res.status(200).json(await User.findByPk(req.params.userId));
   } catch (err) {
     next(err);
   }
 });
+
+// get user groups
+router.get("/groups", async (req, res, next) => {
+  try {
+    const groupMembers = await getGroupMembersFromUserId(req.user.id);
+
+    res.status(200).json(groupMembers);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Group chat routes
+// // join user group
+// router.delete("/@me/groups/:groupId", async (req, res, next) => {
+//   try {
+//     res.status(200).json(await User.findByPk(req.params.userId));
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+// 
+// // leave user group
+// router.delete("/@me/groups/:groupId", async (req, res, next) => {
+//   try {
+//     res.status(200).json(await User.findByPk(req.params.userId));
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 
 

@@ -25,6 +25,17 @@ const getGroupMembers = async (groupId, req) => {
   return groupMembers;
 }
 
+const getGroupMembersFromUserId = async (userId) => {
+  const groupMembers = await GroupMember.findAll({
+    where: {
+      UserId: userId,
+    },
+    include: [Group],
+  });
+
+  return groupMembers;
+}
+
 const getMessages = async (groupId) => {
   const messages = await Message.findAll({
     where: {
@@ -74,4 +85,5 @@ module.exports = {
   getMessage,
   fileAction,
   getMessages,
+  getGroupMembersFromUserId,
 }
