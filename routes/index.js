@@ -197,7 +197,8 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
   }
 });
 
-router.get("/groups/:userId", async (req, res, next) => {
+// get user
+router.get("/users/:userId", async (req, res, next) => {
   try {
     // strict check groupId
     const groupId = validateGroupId(req.params.groupId);

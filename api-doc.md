@@ -10,6 +10,8 @@ List of available endpoints:
 - `GET /groups/:groupId/messages`
 - `POST /groups/:groupId/messages`
 - `GET /groups/:groupId/messages/:messageId`
+- `PUT /groups/:groupId/messages/:messageId`
+- `DELETE /groups/:groupId/messages/:messageId`
 
 &nbsp;
 
@@ -411,12 +413,21 @@ _Response (400 - Bad Request)_
 }
 ```
 
+_Response (404 - Not Found)_
 
-## 7.
+```json
+{
+    "error": true,
+    "message": "Unknown message"
+}
+```
+
+
+## 7. PUT /groups/:groupId/messages/:messageId
 
 Description :
 
-- Get group messages
+- Edit message
 
 Request :
 
@@ -424,7 +435,8 @@ Request :
 
 ```json
 {
-    "access_token" : "string | required"
+    "access_token" : "string | required",
+    "Content-Type": "multipart/form-data"
 }
 ```
 
@@ -434,6 +446,16 @@ Request :
 {
     "groupId" : "integer",
     "messageId" : "integer"
+}
+
+```
+
+- body :
+
+```json
+{
+    "content": "string",
+    "attachment": "file upload"
 }
 ```
 
@@ -455,6 +477,11 @@ _Response (400 - Bad Request)_
     "error": true,
     "message":  "Invalid groupId"
 }
+OR
+{
+    "error": true,
+    "message": "One upload or text content is required"
+}
 ```
 
 _Response (404 - Not Found)_
@@ -465,6 +492,9 @@ _Response (404 - Not Found)_
     "message": "Unknown message"
 }
 ```
+
+
+## 8. DELETE /groups/:groupId/messages/:messageId
 
 
 ## Global Error
