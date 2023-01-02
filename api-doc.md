@@ -17,6 +17,7 @@ List of available endpoints:
 
 - `GET /groups`
 - `POST /avatar`
+- `GET /users/:userId`
 
 &nbsp;
 
@@ -662,6 +663,46 @@ _Response (400 - Bad Request)_
 }
 ```
 
+
+## 11. GET /users/:userId
+
+Description :
+
+- Get user
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message": "Invalid userId"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown user"
+}
+```
 
 ## Global Error
 

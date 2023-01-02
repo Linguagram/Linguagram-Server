@@ -2,7 +2,8 @@
 
 const {
   Media, User, Message, GroupMember, Group
-} = require("../models")
+} = require("../models");
+const { userFetchAttributes } = require("./fetchAttributes");
 
 const handleUploaded = require("./handleUploaded");
 
@@ -80,10 +81,15 @@ const fileAction = async (req) => {
   }
 }
 
+const getUser = async (userId) => {
+  return User.findByPk(userId, userFetchAttributes(Media));
+}
+
 module.exports = {
   getGroupMembers,
   getMessage,
   fileAction,
   getMessages,
   getGroupMembersFromUserId,
+  getUser,
 }

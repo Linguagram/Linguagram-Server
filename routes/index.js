@@ -9,12 +9,11 @@ const userRouter = require('../routes/userRouter');
 //
 const { upload } = require("../util/multer");
 const {
-  Media, User, Message, Group, Sequelize
+  Message
 } = require("../models")
 const handleUploaded = require('../util/handleUploaded');
-const { validateGroupId, validateMessageId } = require('../util/validators');
+const { validateGroupId, validateMessageId, validateUserId } = require('../util/validators');
 const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
-const { userFetchAttributes } = require('../util/fetchAttributes');
 
 const {
   getMessage,
@@ -22,6 +21,7 @@ const {
   getGroupMembersFromUserId,
   fileAction,
   getMessages,
+  getUser,
 } = require("../util/restUtil");
 
 // ======= Controller imports end
@@ -41,7 +41,7 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
 
     const newAvatar = await handleUploaded(req.file);
 
-    const user = await User.findByPk(req.userInfo.id, userFetchAttributes(Media));
+    const user = await getUser(req.userInfo.id);
 
     user.AvatarId = newAvatar.id;
 
@@ -50,6 +50,21 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
     user.Avatar = newAvatar;
 
     res.status(201).json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// delete avatar
+router.delete("/avatar", async (req, res, next) => {
+  try {
+    const user = await getUser(req.userInfo.id);
+
+    user.AvatarId = null;
+
+    await user.save();
+
+    res.status(200).json(user);
   } catch (err) {
     next(err);
   }
@@ -208,7 +223,16 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 // get user
 router.get("/users/:userId", async (req, res, next) => {
   try {
-    res.status(200).json(await User.findByPk(req.params.userId));
+    const user = await getUser(validateUserId(req.params.userId));
+
+    if (!user) {
+      throw {
+        status: 404,
+        message: "Unknown user",
+      };
+    }
+
+    res.status(200).json();
   } catch (err) {
     next(err);
   }
@@ -217,7 +241,7 @@ router.get("/users/:userId", async (req, res, next) => {
 // get user groups
 router.get("/groups", async (req, res, next) => {
   try {
-    const groupMembers = await getGroupMembersFromUserId(req.user.id);
+    const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
 
     res.status(200).json(groupMembers);
   } catch (err) {
