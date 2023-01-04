@@ -16,6 +16,8 @@ const {
   UserLanguage,
   Friendship,
   User,
+  Group,
+  GroupMember,
 } = require("../models")
 const handleUploaded = require('../util/handleUploaded');
 const {
@@ -24,7 +26,12 @@ const {
   validateUserId,
   validateFriendId,
 } = require('../util/validators');
-const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
+const {
+  sendMessage,
+  editMessage,
+  deleteMessage,
+  sendGroupJoin,
+} = require('../util/ws');
 
 const {
   getMessage,
@@ -34,6 +41,11 @@ const {
   getMessages,
   getUser,
 } = require("../util/restUtil");
+
+const {
+  friendshipFetchAttributes,
+  oneFriendshipFetchAttributes,
+} = require("../util/fetchAttributes");
 
 // ======= Controller imports end
 
@@ -260,25 +272,53 @@ router.get("/groups", async (req, res, next) => {
   }
 });
 
-// Group chat routes
-// // join user group
-// router.delete("/@me/groups/:groupId", async (req, res, next) => {
-//   try {
-//     res.status(200).json(await User.findByPk(req.params.userId));
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-// 
-// // leave user group
-// router.delete("/@me/groups/:groupId", async (req, res, next) => {
-//   try {
-//     res.status(200).json(await User.findByPk(req.params.userId));
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// Group chat routes START ======================================
+// join user group
+router.post("/groups/:groupName/join", async (req, res, next) => {
+  try {
+    const group = await Group.findOne({
+      where: {
+        name: req.params.name,
+      },
+    });
 
+    if (!group) throw {
+      status: 404,
+      message: "Group not found",
+    };
+
+    const alreadyMember = await GroupMember.findByPk(req.userInfo.id);
+
+    if (alreadyMember) throw {
+      status: 400,
+      message: "Already a member",
+    };
+
+    const newMember = await GroupMember.create({
+      GroupId: group.id,
+      UserId: req.userInfo.id,
+    });
+
+    const members = await getGroupMembers(group.id, req);
+
+    res.status(200).json(newMember);
+
+    sendGroupJoin(members, newMember);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// leave user group
+router.post("/groups/:groupId/leave", async (req, res, next) => {
+  try {
+    res.status(200).json(await User.findByPk(req.params.userId));
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Group chat routes END ======================================
 
 // get all languages
 router.get("/languages", async (req, res, next) => {
@@ -313,28 +353,7 @@ router.get("/@me/languages", async (req, res, next) => {
 // get user friends
 router.get("/friends", async (req, res, next) => {
   try {
-    const friends = await Friendship.findAll({
-      where: {
-        [Op.or]: [
-          {
-            UserId: req.userInfo.id,
-          },
-          {
-            FriendId: req.userInfo.id,
-          },
-        ],
-      },
-      include: [
-        {
-          model: User,
-          as: "User",
-        },
-        {
-          model: User,
-          as: "Friend",
-        },
-      ],
-    });
+    const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id, User));
 
     res.status(200).json(friends);
   } catch (err) {
@@ -346,8 +365,57 @@ router.get("/friends", async (req, res, next) => {
 router.post("/friends/:friendId", async (req, res, next) => {
   try {
     const friend = await getUser(validateFriendId(req.params.friendId));
-    // !TODO
-    res.status(200).json(null);
+
+    if (!friend) throw {
+      status: 404,
+      message: "Friend not found",
+    };
+
+    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
+
+    if (alreadyFriend) {
+      throw {
+        status: 400,
+        message: "Already has friendship in progress",
+      };
+    }
+
+    const newFriend = await Friendship.create({
+      FriendId: friend.id,
+      UserId: req.userInfo.id,
+    });
+
+    res.status(200).json(newFriend);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// accept friend request
+router.patch("/friendships/:userId", async (req, res, next) => {
+  try {
+    const friend = await getUser(validateFriendId(req.params.friendId));
+
+    if (!friend) throw {
+      status: 404,
+      message: "Friend not found",
+    };
+
+    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
+
+    if (alreadyFriend) {
+      throw {
+        status: 400,
+        message: "Already has friendship in progress",
+      };
+    }
+
+    const newFriend = await Friendship.create({
+      FriendId: friend.id,
+      UserId: req.userInfo.id,
+    });
+
+    res.status(200).json(newFriend);
   } catch (err) {
     next(err);
   }

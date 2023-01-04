@@ -189,6 +189,10 @@ const deleteMessage = (groupMembers, data) => {
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE_DELETE);
 };
 
+const sendGroupJoin = (groupMembers, data) => {
+  return distributeMessage(groupMembers, data, SOCKET_EVENTS.GROUP_JOIN);
+};
+
 module.exports = {
   SOCKET_EVENTS,
   init,
@@ -199,4 +203,5 @@ module.exports = {
   sendMessage,
   editMessage,
   deleteMessage,
+  sendGroupJoin,
 }
