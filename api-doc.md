@@ -306,10 +306,36 @@ _Response (200 - OK)_
 
 ```json
 [{
-  "content" : "text",
+    "content" : "text",
+    "id" : "integer",
+    "MediaId" : "integer",
+    "UserId" : "integer",
+    "GroupId" : "integer",
     "Media" : {
-        // !TODO
-  }
+        "id" : "integer",
+        "name" : "string",
+        "url" : "string",
+        "format": "string",
+        "createdAt" : "date",
+        "updatedAt" : "date"
+            },
+    "User" : {
+        "id" : "integer",
+        "username" : "string",
+        "email" : "string",
+        "phoneNumber" : "string",
+        "country" : "string",
+        "status" : "string",
+        "verified" : "boolean",
+        "createdAt" : "date",
+        "updatedAt" : "date"
+    },
+    "Group" : {
+        "id" : "integer",
+        "name" : "string",
+        "createdAt" : "date",
+        "updatedAt" : "date"
+    }
 }]
 ```
 
