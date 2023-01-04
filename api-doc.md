@@ -305,38 +305,39 @@ Request :
 _Response (200 - OK)_
 
 ```json
-[{
-    "content" : "text",
-    "id" : "integer",
-    "MediaId" : "integer",
-    "UserId" : "integer",
-    "GroupId" : "integer",
-    "Media" : {
+    [{
+        "content" : "text",
         "id" : "integer",
-        "name" : "string",
-        "url" : "string",
-        "format": "string",
-        "createdAt" : "date",
-        "updatedAt" : "date"
-            },
-    "User" : {
-        "id" : "integer",
-        "username" : "string",
-        "email" : "string",
-        "phoneNumber" : "string",
-        "country" : "string",
-        "status" : "string",
-        "verified" : "boolean",
-        "createdAt" : "date",
-        "updatedAt" : "date"
-    },
-    "Group" : {
-        "id" : "integer",
-        "name" : "string",
-        "createdAt" : "date",
-        "updatedAt" : "date"
-    }
-}]
+        "MediaId" : "integer",
+        "UserId" : "integer",
+        "GroupId" : "integer",
+        "Media" : {
+            "id" : "integer",
+            "name" : "string",
+            "url" : "string",
+            "format": "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+                },
+        "User" : {
+            "id" : "integer",
+            "username" : "string",
+            "email" : "string",
+            "phoneNumber" : "string",
+            "country" : "string",
+            "status" : "string",
+            "verified" : "boolean",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        },
+        "Group" : {
+            "id" : "integer",
+            "name" : "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        }
+    },...
+]
 ```
 
 _Response (400 - Bad Request)_
