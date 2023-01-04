@@ -306,35 +306,36 @@ _Response (200 - OK)_
 
 ```json
     [{
-        "content" : "text",
-        "id" : "integer",
-        "MediaId" : "integer",
-        "UserId" : "integer",
-        "GroupId" : "integer",
+        "id" : "1",
+        "content" : "hello there",
+        "MediaId" : "1",
+        "UserId" : "1",
+        "GroupId" : "1",
         "Media" : {
-            "id" : "integer",
-            "name" : "string",
-            "url" : "string",
-            "format": "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "name" : "avatar",
+            "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt" : "2022-12-29 06:37:42.002 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.002 +0700"
                 },
         "User" : {
-            "id" : "integer",
-            "username" : "string",
-            "email" : "string",
-            "phoneNumber" : "string",
-            "country" : "string",
-            "status" : "string",
-            "verified" : "boolean",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "username" : "Sissie Forrest",
+            "email" : "sforrest0@chron.com",
+            "phoneNumber" : "+1 339 769 7021",
+            "country" : "Switzerland",
+            "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+            "verified" : "true",
+            "AvatarId" : 1,
+            "createdAt" : "2022-12-29 06:37:42.013 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.013 +0700"
         },
         "Group" : {
-            "id" : "integer",
-            "name" : "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "name" : "private",
+            "createdAt" : "2022-12-29 06:37:42.195 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.195 +0700"
         }
     },...
 ]
@@ -402,12 +403,38 @@ Request :
 _Response (200 - OK)_
 
 ```json
-[{
-  "content" : "text",
-    "Media" : {
-        // !TODO
-  }
-}]
+{
+        "content" : "text",
+        "id" : "integer",
+        "MediaId" : "integer",
+        "UserId" : "integer",
+        "GroupId" : "integer",
+        "Media" : {
+            "id" : "integer",
+            "name" : "string",
+            "url" : "string",
+            "format": "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+                },
+        "User" : {
+            "id" : "integer",
+            "username" : "string",
+            "email" : "string",
+            "phoneNumber" : "string",
+            "country" : "string",
+            "status" : "string",
+            "verified" : "boolean",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        },
+        "Group" : {
+            "id" : "integer",
+            "name" : "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        }
+    }
 ```
 
 _Response (400 - Bad Request)_
@@ -467,12 +494,38 @@ Request :
 _Response (200 - OK)_
 
 ```json
-[{
-  "content" : "text",
-    "Media" : {
-        // !TODO
-  }
-}]
+{
+        "content" : "text",
+        "id" : "integer",
+        "MediaId" : "integer",
+        "UserId" : "integer",
+        "GroupId" : "integer",
+        "Media" : {
+            "id" : "integer",
+            "name" : "string",
+            "url" : "string",
+            "format": "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+                },
+        "User" : {
+            "id" : "integer",
+            "username" : "string",
+            "email" : "string",
+            "phoneNumber" : "string",
+            "country" : "string",
+            "status" : "string",
+            "verified" : "boolean",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        },
+        "Group" : {
+            "id" : "integer",
+            "name" : "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        }
+    }
 ```
 
 _Response (400 - Bad Request)_
@@ -538,12 +591,38 @@ Request :
 _Response (200 - OK)_
 
 ```json
-[{
-  "content" : "text",
-    "Media" : {
-        // !TODO
-  }
-}]
+{
+        "content" : "text",
+        "id" : "integer",
+        "MediaId" : "integer",
+        "UserId" : "integer",
+        "GroupId" : "integer",
+        "Media" : {
+            "id" : "integer",
+            "name" : "string",
+            "url" : "string",
+            "format": "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+                },
+        "User" : {
+            "id" : "integer",
+            "username" : "string",
+            "email" : "string",
+            "phoneNumber" : "string",
+            "country" : "string",
+            "status" : "string",
+            "verified" : "boolean",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        },
+        "Group" : {
+            "id" : "integer",
+            "name" : "string",
+            "createdAt" : "date",
+            "updatedAt" : "date"
+        }
+    }
 ```
 
 _Response (400 - Bad Request)_
@@ -651,7 +730,14 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+{
+    "Group" : {
+        "id" : "integer",
+        "name" : "string",
+        "createdAt" : "date",
+        "updatedAt" : "date"
+    }
+}
 ```
 
 
@@ -684,9 +770,14 @@ _Response (201 - Created)_
 
 ```json
 [{
-  "content" : "text",
+    "content" : "text",
     "Media" : {
-        // !TODO
+        "id" : "integer",
+        "name" : "string",
+        "url" : "string",
+        "format": "string",
+        "createdAt" : "date",
+        "updatedAt" : "date"            
   }
 }]
 ```
@@ -720,7 +811,15 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+{
+    "username" : "string",
+    "email" : "string",
+    "password" : "string",
+    "country" : "string",
+    "phoneNumber" : "string",
+    "nativeLanguages" : ["number"],
+    "interestLanguages" : ["number"]
+}
 ```
 
 _Response (400 - Bad Request)_
@@ -761,7 +860,23 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+[
+    {
+        "name": "Papiamento"
+    },
+    {
+        "name": "Northern Sotho"
+    },
+    {
+        "name": "Lao"
+    },
+    {
+        "name": "Catalan"
+    },
+    {
+        "name": "Kashmiri"
+    },...
+]
 ```
 
 
@@ -769,7 +884,7 @@ _Response (200 - OK)_
 
 Description :
 
-- Create new user
+- Edit user
 
 Request :
 

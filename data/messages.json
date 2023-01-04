@@ -1,7 +1,7 @@
 [
     {
         "content": "hello there",
-        "MediaId": null,
+        "MediaId": 1,
         "UserId": 1,
         "GroupId": 1
     },
