@@ -31,6 +31,7 @@ const {
   editMessage,
   deleteMessage,
   sendGroupJoin,
+  sendGroupLeave,
 } = require('../util/ws');
 
 const {
@@ -312,7 +313,27 @@ router.post("/groups/:groupName/join", async (req, res, next) => {
 // leave user group
 router.post("/groups/:groupId/leave", async (req, res, next) => {
   try {
-    res.status(200).json(await User.findByPk(req.params.userId));
+    const groupId = validateGroupId(req.params.groupId);
+    const groupMember = await GroupMember.findOne({
+      where: {
+        GroupId: validateGroupId(req.params.groupId),
+        UserId: req.userInfo.id,
+      },
+    });
+
+    if (!groupMember) {
+      throw {
+        status: 404,
+        message: "Unknown Group",
+      };
+    }
+
+    await groupMember.destroy();
+    const members = await getGroupMembers(groupId, req);
+
+    res.status(200).json(groupMember);
+
+    sendGroupLeave(members, groupMember);
   } catch (err) {
     next(err);
   }
@@ -401,21 +422,28 @@ router.patch("/friendships/:userId", async (req, res, next) => {
       message: "Friend not found",
     };
 
-    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
 
-    if (alreadyFriend) {
+    if (friendship.isAccepted) {
       throw {
         status: 400,
-        message: "Already has friendship in progress",
+        message: "Friend request already accepted",
       };
     }
 
-    const newFriend = await Friendship.create({
-      FriendId: friend.id,
-      UserId: req.userInfo.id,
-    });
+    friendship.isAccepted = true;
 
-    res.status(200).json(newFriend);
+    await friendship.save();
+
+    res.status(200).json(friendship);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/translate", async (req, res, next) => {
+  try {
+    // TODO
   } catch (err) {
     next(err);
   }
