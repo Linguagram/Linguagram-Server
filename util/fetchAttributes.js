@@ -20,63 +20,63 @@ const userFetchAttributes = () => {
     ],
     include: [
       {
-	model: Media,
-	as: "Avatar",
+        model: Media,
+        as: "Avatar",
       },
     ],
-  }
+  };
 }
 
 const friendshipFetchAttributes = (userId) => {
   return {
-      where: {
-        [Op.or]: [
-          {
-            UserId: userId,
-          },
-          {
-            FriendId: userId,
-          },
-        ],
-      },
-      include: [
+    where: {
+      [Op.or]: [
         {
-          model: User,
-          as: "User",
+          UserId: userId,
         },
         {
-          model: User,
-          as: "Friend",
+          FriendId: userId,
         },
       ],
-    }
+    },
+    include: [
+      {
+        model: User,
+        as: "User",
+      },
+      {
+        model: User,
+        as: "Friend",
+      },
+    ],
+  };
 }
 
 const oneFriendshipFetchAttributes = (userId, friendId) => {
   return {
-      where: {
-        [Op.or]: [
-          {
-            UserId: userId,
-            FriendId: friendId,
-          },
-          {
-            UserId: friendId,
-            FriendId: userId,
-          },
-        ]
+    where: {
+      [Op.or]: [
+        {
+          UserId: userId,
+          FriendId: friendId,
+        },
+        {
+          UserId: friendId,
+          FriendId: userId,
+        },
+      ]
+    },
+    include: [
+      {
+        model: User,
+        as: "User",
       },
-      include: [
-        {
-          model: User,
-          as: "User",
-        },
-        {
-          model: User,
-          as: "Friend",
-        },
-      ],
-    }
+      {
+        model: User,
+        as: "Friend",
+      },
+    ],
+  };
 }
 
 module.exports = {
