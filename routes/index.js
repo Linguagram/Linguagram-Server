@@ -48,7 +48,7 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
 
     await user.save();
 
-    user.Avatar = newAvatar;
+    user.dataValues.Avatar = newAvatar;
 
     res.status(201).json(user);
   } catch (err) {

@@ -81,12 +81,10 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     }
 
     const newMessage = await Message.create(createMessage);
-    newMessage.User = req.userInfo;
-    console.log(newAttachment,"<<<Newattach");
+    newMessage.dataValues.User = req.userInfo;
 
     if (newAttachment?.id) {
       newMessage.dataValues.Media = newAttachment;
-      console.log(newMessage,"<<<newMessage");
     }
 
     sendMessage(groupMembers, newMessage);
@@ -96,8 +94,6 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     next(err);
   }
 });
-
-
 
 router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {
   try {
@@ -148,10 +144,10 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
 
     await message.save();
 
-    message.User = req.userInfo;
+    message.dataValues.User = req.userInfo;
 
     if (newAttachment?.id) {
-      message.Media = newAttachment;
+      message.dataValues.Media = newAttachment;
     }
 
     message.edited = true;
@@ -172,11 +168,10 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 
     const message = await getMessage(messageId, groupId);
     if(message.deleted){
-        throw {
-          status: 400,
-          message: "This message has already been deleted",
-        };
-     
+      throw {
+        status: 400,
+        message: "This message has already been deleted",
+      };
     }
     const groupMembers = await getGroupMembers(groupId, req);
 

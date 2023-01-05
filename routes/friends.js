@@ -65,7 +65,7 @@ router.post("/friends/:friendId", async (req, res, next) => {
       UserId: req.userInfo.id,
     });
 
-    newFriend.User = req.userInfo;
+    newFriend.dataValues.User = req.userInfo;
 
     res.status(200).json(newFriend);
 
