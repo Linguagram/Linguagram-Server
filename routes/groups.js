@@ -82,9 +82,11 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
 
     const newMessage = await Message.create(createMessage);
     newMessage.User = req.userInfo;
+    console.log(newAttachment,"<<<Newattach");
 
     if (newAttachment?.id) {
-      newMessage.Media = newAttachment;
+      newMessage.dataValues.Media = newAttachment;
+      console.log(newMessage,"<<<newMessage");
     }
 
     sendMessage(groupMembers, newMessage);
@@ -167,7 +169,13 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
     const messageId = validateMessageId(req.params.messageId);
 
     const message = await getMessage(messageId, groupId);
-
+    if(message.deleted){
+        throw {
+          status: 400,
+          message: "This message has already been deleted",
+        };
+     
+    }
     const groupMembers = await getGroupMembers(groupId, req);
 
     message.deleted = true;
