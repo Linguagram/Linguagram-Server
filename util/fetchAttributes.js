@@ -48,7 +48,7 @@ const friendshipFetchAttributes = (userId, User) => {
     }
 }
 
-const oneFriendshipFetchAttributes = (userId, friendId) => {
+const oneFriendshipFetchAttributes = (userId, friendId, User) => {
   return {
       where: {
         [Op.or]: [
@@ -62,6 +62,16 @@ const oneFriendshipFetchAttributes = (userId, friendId) => {
           },
         ]
       },
+      include: [
+        {
+          model: User,
+          as: "User",
+        },
+        {
+          model: User,
+          as: "Friend",
+        },
+      ],
     }
 }
 

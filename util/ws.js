@@ -15,14 +15,14 @@ const SOCKET_EVENTS = {
   MESSAGE: "message",
   MESSAGE_EDIT: "message_edit",
   MESSAGE_DELETE: "message_delete",
-  STATUS: "status",
+  // STATUS: "status", // dijadiin satu sama user update
   USER_UPDATE: "user_update",
   GROUP_CREATE: "group_create",
   GROUP_JOIN: "group_join",
   GROUP_LEAVE: "group_leave",
   GROUP_DELETE: "group_delete",
   FRIEND_REQUEST: "friend_request",
-  FRIEND_REQUEST_CANCEL: "friend_request_cancel",
+  FRIEND_REQUEST_DELETE: "friend_request_delete",
   FRIEND_REQUEST_ACCEPT: "friend_request_accept",
   SCHEDULE: "schedule",
   SCHEDULE_CANCEL: "schedule_cancel",
@@ -177,6 +177,16 @@ const distributeMessage = (groupMembers, data, event) => {
   }
 }
 
+const distributeFriendship = (to, data, event) => {
+  if (!to) throw new TypeError("to can't be falsy");
+  if (!data) throw new TypeError("data can't be falsy");
+
+  const toId = validateUserId(to.id);
+
+  const socket = userSockets.get(toId);
+  if (socket) emitSocket(socket, event, jString(data));
+}
+
 const sendMessage = (groupMembers, data) => {
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE);
 };
@@ -197,6 +207,18 @@ const sendGroupLeave = (groupMembers, data) => {
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.GROUP_LEAVE);
 };
 
+const sendFriendRequest = (to, data) => {
+  return distributeFriendship(to, data, SOCKET_EVENTS.FRIEND_REQUEST);
+}
+
+const acceptedFriendRequest = (to, data) => {
+  return distributeFriendship(to, data, SOCKET_EVENTS.FRIEND_REQUEST_ACCEPT);
+}
+
+const deletedFriendRequest = (to, data) => {
+  return distributeFriendship(to, data, SOCKET_EVENTS.FRIEND_REQUEST_DELETE);
+}
+
 module.exports = {
   SOCKET_EVENTS,
   init,
@@ -209,4 +231,7 @@ module.exports = {
   deleteMessage,
   sendGroupJoin,
   sendGroupLeave,
+  sendFriendRequest,
+  acceptedFriendRequest,
+  deletedFriendRequest,
 }

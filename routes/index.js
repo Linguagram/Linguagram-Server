@@ -8,7 +8,6 @@ const userRouter = require('../routes/userRouter');
 
 // ======= Controller imports
 
-const { Op } = require("sequelize");
 const { upload } = require("../util/multer");
 const {
   Message,
@@ -32,6 +31,9 @@ const {
   deleteMessage,
   sendGroupJoin,
   sendGroupLeave,
+  sendFriendRequest,
+  acceptedFriendRequest,
+  deletedFriendRequest,
 } = require('../util/ws');
 
 const {
@@ -392,7 +394,7 @@ router.post("/friends/:friendId", async (req, res, next) => {
       message: "Friend not found",
     };
 
-    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
+    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id, User));
 
     if (alreadyFriend) {
       throw {
@@ -406,7 +408,11 @@ router.post("/friends/:friendId", async (req, res, next) => {
       UserId: req.userInfo.id,
     });
 
+    newFriend.User = req.userInfo;
+
     res.status(200).json(newFriend);
+
+    sendFriendRequest(friend, newFriend);
   } catch (err) {
     next(err);
   }
@@ -415,14 +421,7 @@ router.post("/friends/:friendId", async (req, res, next) => {
 // accept friend request
 router.patch("/friendships/:userId", async (req, res, next) => {
   try {
-    const friend = await getUser(validateFriendId(req.params.friendId));
-
-    if (!friend) throw {
-      status: 404,
-      message: "Friend not found",
-    };
-
-    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId), User));
 
     if (friendship.isAccepted) {
       throw {
@@ -436,6 +435,31 @@ router.patch("/friendships/:userId", async (req, res, next) => {
     await friendship.save();
 
     res.status(200).json(friendship);
+
+    acceptedFriendRequest(friendship.User, friendship);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/friendships/:friendId", async (req, res, next) => {
+  try {
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId), User));
+
+    if (friendship.isAccepted) {
+      throw {
+        status: 400,
+        message: "Friend request already accepted",
+      };
+    }
+
+    friendship.isAccepted = true;
+
+    await friendship.save();
+
+    res.status(200).json(friendship);
+
+    deletedFriendRequest(friendship.User.id === req.userInfo.id ? friendship.Friend.id : friendship.User.id, friendship);
   } catch (err) {
     next(err);
   }
