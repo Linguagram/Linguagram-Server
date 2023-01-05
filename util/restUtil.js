@@ -46,7 +46,14 @@ const getMessages = async (groupId) => {
     where: {
       GroupId: groupId,
     },
-    include: [User, Media, Group],
+    include: [
+      {
+        ...userFetchAttributes(),
+        model: User,
+      },
+      Media,
+      Group,
+    ],
   });
 
   return messages.map(message => {
@@ -61,7 +68,14 @@ const getMessage = async (messageId, groupId) => {
     where: {
       GroupId: groupId,
     },
-    include: [User, Media, Group],
+    include: [
+      {
+        ...userFetchAttributes(),
+        model: User,
+      },
+      Media,
+      Group,
+    ],
   });
 
   if (!message) {
