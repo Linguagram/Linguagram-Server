@@ -175,6 +175,7 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 
     const response = {
       id: message.id,
+      UserId: req.userInfo.id,
     };
 
     deleteMessage(groupMembers, response);
