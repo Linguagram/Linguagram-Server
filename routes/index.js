@@ -376,7 +376,7 @@ router.get("/@me/languages", async (req, res, next) => {
 // get user friends
 router.get("/friends", async (req, res, next) => {
   try {
-    const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id, User));
+    const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
 
     res.status(200).json(friends);
   } catch (err) {
@@ -394,7 +394,7 @@ router.post("/friends/:friendId", async (req, res, next) => {
       message: "Friend not found",
     };
 
-    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id, User));
+    const alreadyFriend = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id));
 
     if (alreadyFriend) {
       throw {
@@ -421,7 +421,7 @@ router.post("/friends/:friendId", async (req, res, next) => {
 // accept friend request
 router.patch("/friendships/:userId", async (req, res, next) => {
   try {
-    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId), User));
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId)));
 
     if (friendship.isAccepted) {
       throw {
@@ -444,7 +444,7 @@ router.patch("/friendships/:userId", async (req, res, next) => {
 
 router.delete("/friendships/:friendId", async (req, res, next) => {
   try {
-    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId), User));
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId)));
 
     if (friendship.isAccepted) {
       throw {

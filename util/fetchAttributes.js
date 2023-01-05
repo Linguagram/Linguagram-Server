@@ -1,8 +1,12 @@
 "use strict";
 
 const { Op } = require("sequelize");
+const {
+  Media,
+  User,
+} = require("../models");
 
-const userFetchAttributes = (Media) => {
+const userFetchAttributes = () => {
   return {
     attributes: [
       "id",
@@ -23,7 +27,7 @@ const userFetchAttributes = (Media) => {
   }
 }
 
-const friendshipFetchAttributes = (userId, User) => {
+const friendshipFetchAttributes = (userId) => {
   return {
       where: {
         [Op.or]: [
@@ -48,7 +52,7 @@ const friendshipFetchAttributes = (userId, User) => {
     }
 }
 
-const oneFriendshipFetchAttributes = (userId, friendId, User) => {
+const oneFriendshipFetchAttributes = (userId, friendId) => {
   return {
       where: {
         [Op.or]: [
