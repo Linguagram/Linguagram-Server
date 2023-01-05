@@ -14,7 +14,6 @@ const {
 const {
   validateGroupId,
   validateMessageId,
-  validateUserId,
 } = require('../util/validators');
 
 const {
@@ -26,7 +25,6 @@ const {
 } = require("../util/ws");
 
 const {
-  getUser,
   getMessage,
   getGroupMembers,
   getGroupMembersFromUserId,
@@ -182,24 +180,6 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
     deleteMessage(groupMembers, response);
 
     res.status(200).json(response);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// get user
-router.get("/users/:userId", async (req, res, next) => {
-  try {
-    const user = await getUser(validateUserId(req.params.userId));
-
-    if (!user) {
-      throw {
-        status: 404,
-        message: "Unknown user",
-      };
-    }
-
-    res.status(200).json();
   } catch (err) {
     next(err);
   }
