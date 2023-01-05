@@ -277,13 +277,9 @@ router.get("/groups", async (req, res, next) => {
 
 // Group chat routes START ======================================
 // join user group
-router.post("/groups/:groupName/join", async (req, res, next) => {
+router.post("/groups/:groupId/join", async (req, res, next) => {
   try {
-    const group = await Group.findOne({
-      where: {
-        name: req.params.name,
-      },
-    });
+    const group = await Group.findByPk(validateGroupId(req.params.groupId));
 
     if (!group) throw {
       status: 404,
