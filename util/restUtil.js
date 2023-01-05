@@ -89,6 +89,17 @@ const getUser = async (userId) => {
   return User.findByPk(userId, userFetchAttributes(Media));
 }
 
+const getGroup = async (groupId) => {
+  const group = await Group.findByPk(groupId);
+
+  if (!group) throw {
+    status: 404,
+    message: "Group not found",
+  };
+
+  return group;
+}
+
 module.exports = {
   getGroupMembers,
   getMessage,
@@ -96,4 +107,5 @@ module.exports = {
   getMessages,
   getGroupMembersFromUserId,
   getUser,
+  getGroup,
 }

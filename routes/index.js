@@ -43,6 +43,7 @@ const {
   fileAction,
   getMessages,
   getUser,
+  getGroup,
 } = require("../util/restUtil");
 
 const {
@@ -279,12 +280,7 @@ router.get("/groups", async (req, res, next) => {
 // join user group
 router.post("/groups/:groupId/join", async (req, res, next) => {
   try {
-    const group = await Group.findByPk(validateGroupId(req.params.groupId));
-
-    if (!group) throw {
-      status: 404,
-      message: "Group not found",
-    };
+    const group = await getGroup(validateGroupId(req.params.groupId));
 
     const alreadyMember = await GroupMember.findByPk(req.userInfo.id);
 
@@ -332,6 +328,28 @@ router.post("/groups/:groupId/leave", async (req, res, next) => {
     res.status(200).json(groupMember);
 
     sendGroupLeave(members, groupMember);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/groups/:groupId", async (req, res, next) => {
+  try {
+    // strict check groupId
+    const groupId = validateGroupId(req.params.groupId);
+
+    // check if user is in this group
+    const groupMembers = await getGroupMembers(groupId, req);
+
+    const group = await getGroup(groupId);
+
+    const { name } = req.body;
+
+    group.name = name;
+
+    await group.save;
+
+    res.status(200).json(group);
   } catch (err) {
     next(err);
   }
