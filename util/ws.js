@@ -136,6 +136,8 @@ const loadListeners = () => {
       if (uId) userSockets.delete(uId);
     });
   });
+
+  console.log("[ws] Loaded listeners");
 }
 
 // =========== PRIVATE FUNCTIONS END ===========
@@ -148,6 +150,7 @@ const isOnline = (userId) => {
 const init = (httpServer) => {
   if (io) throw new Error("Socket already initialized");
   io = createServer(httpServer);
+  console.log("[ws] Init, instance created");
   loadListeners();
 }
 
