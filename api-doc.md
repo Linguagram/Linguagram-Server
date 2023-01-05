@@ -46,6 +46,7 @@ Request :
     "password" : "string | required | min length 8",
     "country" : "string",
     "phoneNumber" : "string",
+    "status" : "string",
     "nativeLanguages" : ["number"],
     "interestLanguages" : ["number"]
 }
@@ -69,7 +70,7 @@ _Response (201 - created)_
         "Avatar": null,
         "UserLanguages": [
             {
-                "id": 10,
+                "id": 11,
                 "type": "native",
                 "UserId": 21,
                 "LanguageId": 1,
@@ -773,7 +774,7 @@ _Response (201 - Created)_
 
 ```json
 [{   
-    
+
     "Media" : {
         "id" : "integer",
         "name" : "string",
@@ -815,13 +816,41 @@ _Response (200 - OK)_
 
 ```json
 {
-    "username" : "string",
-    "email" : "string",
-    "password" : "string",
-    "country" : "string",
-    "phoneNumber" : "string",
-    "nativeLanguages" : ["number"],
-    "interestLanguages" : ["number"]
+    "id" : 1,
+    "username" : "Sissie Forrest",
+    "email" : "sforrest0@chron.com",    
+    "country" : "Switzerland",
+    "phoneNumber" : "+1 339 769 7021",
+    "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "UserLanguages" : [
+        {
+            "id": 1,
+            "type": "native",
+            "UserId": 1,
+            "LanguageId": 10,
+            "createdAt": "2022-12-29T13:54:58.517Z",
+            "updatedAt": "2022-12-29T13:54:58.517Z",
+            "Language": {
+                "id": 1,
+                "name": "Polish",
+                "createdAt": "2022-12-29T13:02:08.364Z",
+                "updatedAt": "2022-12-29T13:02:08.364Z"
+            }
+        },{
+            "id": 1,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2022-12-29T13:54:58.517Z",
+            "updatedAt": "2022-12-29T13:54:58.517Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2022-12-29T13:02:08.364Z",
+                "updatedAt": "2022-12-29T13:02:08.364Z"
+            }
+        }
+    ]
 }
 ```
 
