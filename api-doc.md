@@ -488,40 +488,41 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id": 1,
-    "content": "hello there",
+    "id": 11,
+    "content": null,
     "deleted": false,
-    "MediaId": 1,
+    "MediaId": 11,
     "UserId": 1,
     "GroupId": 1,
-    "createdAt": "2023-01-05T09:57:33.467Z",
-    "updatedAt": "2023-01-05T09:57:33.467Z",
+    "createdAt": "2023-01-05T12:28:01.213Z",
+    "updatedAt": "2023-01-05T12:28:01.213Z",
     "User": {
         "id": 1,
         "username": "Sissie Forrest",
         "email": "sforrest0@chron.com",
-        "password": "$2a$08$gO98orcgtRzGF6xZ.IuLVeZm/hr0kVZtyNSifzpdjeEzPYefNRBFm",
+        "password": "$2a$08$KfkLz6wbZs7yi1l30fdGQOoWpTBssKbvdLwye773h7IWP5u1j1jFy",
         "country": "Switzerland",
         "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
         "phoneNumber": "+1 339 769 7021",
         "verified": true,
         "AvatarId": 1,
-        "createdAt": "2023-01-05T09:57:33.278Z",
-        "updatedAt": "2023-01-05T09:57:33.278Z"
+        "createdAt": "2023-01-05T10:41:33.325Z",
+        "updatedAt": "2023-01-05T10:41:33.325Z"
     },
     "Medium": {
-        "id": 1,
-        "name": "avatar",
-        "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
-        "format": "image/jpg",
-        "createdAt": "2023-01-05T09:57:33.266Z",
-        "updatedAt": "2023-01-05T09:57:33.266Z"
+        "id": 11,
+        "name": "d06951e8c51d6aa65f001bf80291aa61_RnRvpvMA-",
+        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/d06951e8c51d6aa65f001bf80291aa61_RnRvpvMA-",
+        "format": "image/png",
+        "createdAt": "2023-01-05T12:28:01.204Z",
+        "updatedAt": "2023-01-05T12:28:01.204Z"
     },
     "Group": {
         "id": 1,
         "name": "private",
-        "createdAt": "2023-01-05T09:57:33.464Z",
-        "updatedAt": "2023-01-05T09:57:33.464Z"
+        "type": "dm",
+        "createdAt": "2023-01-05T10:41:33.523Z",
+        "updatedAt": "2023-01-05T10:41:33.523Z"
     }
 }
 ```
