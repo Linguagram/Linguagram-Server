@@ -20,10 +20,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Group.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    type: {
+      type: DataTypes.STRING,
+      defaultValue: "dm",
+      validate: {
+        type(value) {
+          const allowedTypes = ["dm", "group"];
+          if (!allowedTypes.includes(value)) {
+            throw new TypeError("Invalid Group type");
+          }
+        },
+      },
+    },
   }, {
-    sequelize,
-    modelName: 'Group',
-  });
+      sequelize,
+      modelName: 'Group',
+    });
   return Group;
 };
