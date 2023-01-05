@@ -1092,7 +1092,43 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+[
+     {
+        "id": 1,
+        "UserId": 1,
+        "FriendId": 2,
+        "isAccepted": false,
+        "createdAt": "2023-01-04T14:46:02.804Z",
+        "updatedAt": "2023-01-04T14:46:02.804Z",
+        "User": {
+            "id": 1,
+            "username": "Sissie Forrest",
+            "email": "sforrest0@chron.com",
+            "password": "$2a$08$bwvSaCVrejfQoPU/vlHye.ogCKIc4Z.33GtTw3wh0CiYNlycnU6HW",
+            "country": "Switzerland",
+            "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+            "phoneNumber": "+1 339 769 7021",
+            "verified": true,
+            "AvatarId": 1,
+            "createdAt": "2023-01-04T14:46:02.417Z",
+            "updatedAt": "2023-01-04T14:46:02.417Z"
+        },
+        "Friend": {
+            "id": 2,
+            "username": "Krispin Admin",
+            "email": "admin@admin.com",
+            "password": "$2a$08$1X.cFlCrqRmeKkFn/5NvguOYc/4QCixGj3P3jAURtKlQmNZJuoWkS",
+            "country": "Cuba",
+            "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
+            "phoneNumber": "+86 589 929 4346",
+            "verified": true,
+            "AvatarId": 2,
+            "createdAt": "2023-01-04T14:46:02.475Z",
+            "updatedAt": "2023-01-04T14:46:02.475Z"
+        }
+    },
+    ...
+]
 ```
 
 
@@ -1123,7 +1159,14 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+{
+    "isAccepted": false,
+    "id": 9,
+    "FriendId": 5,
+    "UserId": 2,
+    "updatedAt": "2023-01-05T01:51:22.011Z",
+    "createdAt": "2023-01-05T01:51:22.011Z"
+}
 ```
 
 
