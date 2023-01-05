@@ -305,7 +305,7 @@ Request :
 _Response (200 - OK)_
 
 ```json
-    [{
+[{
         "id" : "1",
         "content" : "hello there",
         "MediaId" : "1",
@@ -404,35 +404,36 @@ _Response (200 - OK)_
 
 ```json
 {
-        "content" : "text",
-        "id" : "integer",
-        "MediaId" : "integer",
-        "UserId" : "integer",
-        "GroupId" : "integer",
+        "id" : "11",
+        "content" : "what in the flying hell",
+        "MediaId" : "11",
+        "UserId" : "1",
+        "GroupId" : "1",
         "Media" : {
-            "id" : "integer",
-            "name" : "string",
-            "url" : "string",
-            "format": "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "name" : "something",
+            "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt" : "2022-12-29 06:37:42.002 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.002 +0700"
                 },
         "User" : {
-            "id" : "integer",
-            "username" : "string",
-            "email" : "string",
-            "phoneNumber" : "string",
-            "country" : "string",
-            "status" : "string",
-            "verified" : "boolean",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "username" : "Sissie Forrest",
+            "email" : "sforrest0@chron.com",
+            "phoneNumber" : "+1 339 769 7021",
+            "country" : "Switzerland",
+            "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+            "verified" : "true",
+            "AvatarId" : 1,
+            "createdAt" : "2022-12-29 06:37:42.013 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.013 +0700"
         },
         "Group" : {
-            "id" : "integer",
-            "name" : "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "name" : "private",
+            "createdAt" : "2022-12-29 06:37:42.195 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.195 +0700"
         }
     }
 ```
@@ -495,37 +496,38 @@ _Response (200 - OK)_
 
 ```json
 {
-        "content" : "text",
-        "id" : "integer",
-        "MediaId" : "integer",
-        "UserId" : "integer",
-        "GroupId" : "integer",
-        "Media" : {
-            "id" : "integer",
-            "name" : "string",
-            "url" : "string",
-            "format": "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
-                },
-        "User" : {
-            "id" : "integer",
-            "username" : "string",
-            "email" : "string",
-            "phoneNumber" : "string",
-            "country" : "string",
-            "status" : "string",
-            "verified" : "boolean",
-            "createdAt" : "date",
-            "updatedAt" : "date"
-        },
-        "Group" : {
-            "id" : "integer",
-            "name" : "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
-        }
+    "id" : "1",
+    "content" : "hello there",
+    "MediaId" : "1",
+    "UserId" : "1",
+    "GroupId" : "1",
+    "Media" : {
+        "id" : "1",
+        "name" : "avatar",
+        "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+        "format": "image/jpg",
+        "createdAt" : "2022-12-29 06:37:42.002 +0700",
+        "updatedAt" : "2022-12-29 06:37:42.002 +0700"
+            },
+    "User" : {
+        "id" : "1",
+        "username" : "Sissie Forrest",
+        "email" : "sforrest0@chron.com",
+        "phoneNumber" : "+1 339 769 7021",
+        "country" : "Switzerland",
+        "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+        "verified" : "true",
+        "AvatarId" : 1,
+        "createdAt" : "2022-12-29 06:37:42.013 +0700",
+        "updatedAt" : "2022-12-29 06:37:42.013 +0700"
+    },
+    "Group" : {
+        "id" : "1",
+        "name" : "private",
+        "createdAt" : "2022-12-29 06:37:42.195 +0700",
+        "updatedAt" : "2022-12-29 06:37:42.195 +0700"
     }
+}
 ```
 
 _Response (400 - Bad Request)_
@@ -592,35 +594,36 @@ _Response (200 - OK)_
 
 ```json
 {
-        "content" : "text",
-        "id" : "integer",
-        "MediaId" : "integer",
-        "UserId" : "integer",
-        "GroupId" : "integer",
+        "id" : "1",
+        "content" : "hello there",
+        "MediaId" : "1",
+        "UserId" : "1",
+        "GroupId" : "1",
         "Media" : {
-            "id" : "integer",
-            "name" : "string",
-            "url" : "string",
-            "format": "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "name" : "avatar",
+            "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt" : "2023-01-05 06:55:30.182 +0700",
+            "updatedAt" : "2023-01-05 06:55:30.182 +0700"
                 },
         "User" : {
-            "id" : "integer",
-            "username" : "string",
-            "email" : "string",
-            "phoneNumber" : "string",
-            "country" : "string",
-            "status" : "string",
-            "verified" : "boolean",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "username" : "Sissie Forrest",
+            "email" : "sforrest0@chron.com",
+            "phoneNumber" : "+1 339 769 7021",
+            "country" : "Switzerland",
+            "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+            "verified" : "true",
+            "AvatarId" : 1,
+            "createdAt" : "2022-12-29 06:37:42.013 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.013 +0700"
         },
         "Group" : {
-            "id" : "integer",
-            "name" : "string",
-            "createdAt" : "date",
-            "updatedAt" : "date"
+            "id" : "1",
+            "name" : "private",
+            "createdAt" : "2022-12-29 06:37:42.195 +0700",
+            "updatedAt" : "2022-12-29 06:37:42.195 +0700"
         }
     }
 ```
@@ -732,10 +735,10 @@ _Response (200 - OK)_
 ```json
 {
     "Group" : {
-        "id" : "integer",
-        "name" : "string",
-        "createdAt" : "date",
-        "updatedAt" : "date"
+        "id" : "7",
+        "name" : "family",
+        "createdAt" : "2022-12-29 06:37:42.195 +0700",
+        "updatedAt" : "2022-12-29 06:37:42.195 +0700"
     }
 }
 ```
@@ -769,8 +772,8 @@ Request :
 _Response (201 - Created)_
 
 ```json
-[{
-    "content" : "text",
+[{   
+    
     "Media" : {
         "id" : "integer",
         "name" : "string",
