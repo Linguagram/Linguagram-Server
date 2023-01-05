@@ -306,39 +306,44 @@ Request :
 _Response (200 - OK)_
 
 ```json
-[{
-        "id" : "1",
-        "content" : "hello there",
-        "MediaId" : "1",
-        "UserId" : "1",
-        "GroupId" : "1",
-        "Media" : {
-            "id" : "1",
-            "name" : "avatar",
-            "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
-            "format": "image/jpg",
-            "createdAt" : "2022-12-29 06:37:42.002 +0700",
-            "updatedAt" : "2022-12-29 06:37:42.002 +0700"
-                },
-        "User" : {
-            "id" : "1",
-            "username" : "Sissie Forrest",
-            "email" : "sforrest0@chron.com",
-            "phoneNumber" : "+1 339 769 7021",
-            "country" : "Switzerland",
-            "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
-            "verified" : "true",
-            "AvatarId" : 1,
-            "createdAt" : "2022-12-29 06:37:42.013 +0700",
-            "updatedAt" : "2022-12-29 06:37:42.013 +0700"
+[
+    {
+        "id": 1,
+        "content": "hello there",
+        "deleted": false,
+        "MediaId": 1,
+        "UserId": 1,
+        "GroupId": 1,
+        "createdAt": "2023-01-05T09:57:33.467Z",
+        "updatedAt": "2023-01-05T09:57:33.467Z",
+        "User": {
+            "id": 1,
+            "username": "Sissie Forrest",
+            "email": "sforrest0@chron.com",
+            "password": "$2a$08$gO98orcgtRzGF6xZ.IuLVeZm/hr0kVZtyNSifzpdjeEzPYefNRBFm",
+            "country": "Switzerland",
+            "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+            "phoneNumber": "+1 339 769 7021",
+            "verified": true,
+            "AvatarId": 1,
+            "createdAt": "2023-01-05T09:57:33.278Z",
+            "updatedAt": "2023-01-05T09:57:33.278Z"
         },
-        "Group" : {
-            "id" : "1",
-            "name" : "private",
-            "createdAt" : "2022-12-29 06:37:42.195 +0700",
-            "updatedAt" : "2022-12-29 06:37:42.195 +0700"
+        "Medium": {
+            "id": 1,
+            "name": "avatar",
+            "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt": "2023-01-05T09:57:33.266Z",
+            "updatedAt": "2023-01-05T09:57:33.266Z"
+        },
+        "Group": {
+            "id": 1,
+            "name": "private",
+            "createdAt": "2023-01-05T09:57:33.464Z",
+            "updatedAt": "2023-01-05T09:57:33.464Z"
         }
-    },...
+    },,...
 ]
 ```
 
@@ -405,38 +410,15 @@ _Response (200 - OK)_
 
 ```json
 {
-        "id" : "11",
-        "content" : "what in the flying hell",
-        "MediaId" : "11",
-        "UserId" : "1",
-        "GroupId" : "1",
-        "Media" : {
-            "id" : "1",
-            "name" : "something",
-            "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
-            "format": "image/jpg",
-            "createdAt" : "2022-12-29 06:37:42.002 +0700",
-            "updatedAt" : "2022-12-29 06:37:42.002 +0700"
-                },
-        "User" : {
-            "id" : "1",
-            "username" : "Sissie Forrest",
-            "email" : "sforrest0@chron.com",
-            "phoneNumber" : "+1 339 769 7021",
-            "country" : "Switzerland",
-            "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
-            "verified" : "true",
-            "AvatarId" : 1,
-            "createdAt" : "2022-12-29 06:37:42.013 +0700",
-            "updatedAt" : "2022-12-29 06:37:42.013 +0700"
-        },
-        "Group" : {
-            "id" : "1",
-            "name" : "private",
-            "createdAt" : "2022-12-29 06:37:42.195 +0700",
-            "updatedAt" : "2022-12-29 06:37:42.195 +0700"
-        }
-    }
+    "deleted": false,
+    "id": 11,
+    "content": "what in the flying hell",
+    "GroupId": 1,
+    "UserId": 1,
+    "updatedAt": "2023-01-05T10:00:52.439Z",
+    "createdAt": "2023-01-05T10:00:52.439Z",
+    "MediaId": null
+}
 ```
 
 _Response (400 - Bad Request)_
@@ -497,36 +479,40 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id" : "1",
-    "content" : "hello there",
-    "MediaId" : "1",
-    "UserId" : "1",
-    "GroupId" : "1",
-    "Media" : {
-        "id" : "1",
-        "name" : "avatar",
-        "url" : "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
-        "format": "image/jpg",
-        "createdAt" : "2022-12-29 06:37:42.002 +0700",
-        "updatedAt" : "2022-12-29 06:37:42.002 +0700"
-            },
-    "User" : {
-        "id" : "1",
-        "username" : "Sissie Forrest",
-        "email" : "sforrest0@chron.com",
-        "phoneNumber" : "+1 339 769 7021",
-        "country" : "Switzerland",
-        "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
-        "verified" : "true",
-        "AvatarId" : 1,
-        "createdAt" : "2022-12-29 06:37:42.013 +0700",
-        "updatedAt" : "2022-12-29 06:37:42.013 +0700"
+    "id": 1,
+    "content": "hello there",
+    "deleted": false,
+    "MediaId": 1,
+    "UserId": 1,
+    "GroupId": 1,
+    "createdAt": "2023-01-05T09:57:33.467Z",
+    "updatedAt": "2023-01-05T09:57:33.467Z",
+    "User": {
+        "id": 1,
+        "username": "Sissie Forrest",
+        "email": "sforrest0@chron.com",
+        "password": "$2a$08$gO98orcgtRzGF6xZ.IuLVeZm/hr0kVZtyNSifzpdjeEzPYefNRBFm",
+        "country": "Switzerland",
+        "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+        "phoneNumber": "+1 339 769 7021",
+        "verified": true,
+        "AvatarId": 1,
+        "createdAt": "2023-01-05T09:57:33.278Z",
+        "updatedAt": "2023-01-05T09:57:33.278Z"
     },
-    "Group" : {
-        "id" : "1",
-        "name" : "private",
-        "createdAt" : "2022-12-29 06:37:42.195 +0700",
-        "updatedAt" : "2022-12-29 06:37:42.195 +0700"
+    "Medium": {
+        "id": 1,
+        "name": "avatar",
+        "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+        "format": "image/jpg",
+        "createdAt": "2023-01-05T09:57:33.266Z",
+        "updatedAt": "2023-01-05T09:57:33.266Z"
+    },
+    "Group": {
+        "id": 1,
+        "name": "private",
+        "createdAt": "2023-01-05T09:57:33.464Z",
+        "updatedAt": "2023-01-05T09:57:33.464Z"
     }
 }
 ```
@@ -1168,6 +1154,49 @@ _Response (200 - OK)_
     "createdAt": "2023-01-05T01:51:22.011Z"
 }
 ```
+
+## 17. DELETE /avatar
+
+Description :
+
+- Delete user's avatar
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+
+_Response (200 - OK)_
+
+```json
+{
+    "id": 1,
+    "username": "Sissie Forrest",
+    "email": "sforrest0@chron.com",
+    "country": "Switzerland",
+    "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "phoneNumber": "+1 339 769 7021",
+    "verified": true,
+    "AvatarId": null,
+    "Avatar": {
+        "id": 1,
+        "name": "avatar",
+        "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+        "format": "image/jpg",
+        "createdAt": "2023-01-04T23:55:30.182Z",
+        "updatedAt": "2022-12-28T23:37:42.002Z"
+    },
+    "updatedAt": "2023-01-05T09:22:13.746Z"
+}
+```
+
+
 
 
 ## Global Error
