@@ -941,7 +941,41 @@ _Response (201 - created)_
 
 ```json
 {
-// !TODO
+    "id" : 1,
+    "username" : "Sissie Forrest",
+    "email" : "sforrest0@chron.com",    
+    "country" : "Norway",
+    "phoneNumber" : "+1 339 769 7021",
+    "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "UserLanguages" : [
+        {
+            "id": 1,
+            "type": "native",
+            "UserId": 1,
+            "LanguageId": 10,
+            "createdAt": "2022-12-29T13:54:58.517Z",
+            "updatedAt": "2022-12-29T13:54:58.517Z",
+            "Language": {
+                "id": 1,
+                "name": "Polish",
+                "createdAt": "2022-12-29T13:02:08.364Z",
+                "updatedAt": "2022-12-29T13:02:08.364Z"
+            }
+        },{
+            "id": 1,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2022-12-29T13:54:58.517Z",
+            "updatedAt": "2022-12-29T13:54:58.517Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2022-12-29T13:02:08.364Z",
+                "updatedAt": "2022-12-29T13:02:08.364Z"
+            }
+        }
+    ]
 }
 ```
 
@@ -1018,7 +1052,24 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+{
+    "UserLanguages" : [
+        {
+            "id": 1,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2022-12-29T13:54:58.517Z",
+            "updatedAt": "2022-12-29T13:54:58.517Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2022-12-29T13:02:08.364Z",
+                "updatedAt": "2022-12-29T13:02:08.364Z"
+            }
+        }
+    ]
+}
 ```
 
 
