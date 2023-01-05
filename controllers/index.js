@@ -11,6 +11,8 @@ const {
   User,
   UserLanguage,
   UserSchedule,
+  Interest,
+  UserInterest,
   sequelize,
 } = require('../models')
 
@@ -37,6 +39,7 @@ class Controller {
         // Dipisah atau jadi satu array?
         nativeLanguages = [],
         interestLanguages = [],
+        interests = [],
       } = req.body;
 
       if (password !== confirmPassword) {
@@ -86,6 +89,19 @@ class Controller {
         const newUserLanguages = await UserLanguage.bulkCreate(createUserLanguages, {
           transaction: t,
         });
+
+        const createInterests = [
+          ...interests.map(inter => {
+            return {
+              InterestId: inter,
+              UserId: req.userInfo.id,
+            };
+          }),
+        ];
+
+        const newUserInterests = await UserInterest.bulkCreate(createInterests, {
+          transaction: t,
+        });
       });
 
       const opts = userFetchAttributes(Media);
@@ -93,7 +109,11 @@ class Controller {
         {
           model: UserLanguage,
           include: [Language],
-        }
+        },
+        {
+          model: UserInterest,
+          include: [Interest],
+        },
       );
 
       const newUser = await User.findByPk(createdUser.id, opts);
@@ -131,6 +151,7 @@ class Controller {
         phoneNumber,
         nativeLanguages = [],
         interestLanguages = [],
+        interests = [],
       } = req.body;
 
       if (newPassword && newPassword !== confirmNewPassword) {
@@ -152,13 +173,20 @@ class Controller {
       await sequelize.transaction(async (t) => {
         // begin transaction
 
-        const deleted = await UserLanguage.destroy({
+        const deletedLanguages = await UserLanguage.destroy({
           where: {
             UserId: user.id,
           },
         });
 
-        console.log("User", user.username, user.id, "deleted languages count:", deleted);
+        const deletedInterests = await UserInterest.destroy({
+          where: {
+            UserId: user.id,
+          },
+        });
+
+        console.log("User", user.username, user.id, "deleted languages count:", deletedLanguages);
+        console.log("User", user.username, user.id, "deleted interests count:", deletedInterests);
 
         user.username = username;
         user.email = email;
@@ -194,6 +222,19 @@ class Controller {
         const newUserLanguages = await UserLanguage.bulkCreate(createUserLanguages, {
           transaction: t,
         });
+
+        const createInterests = [
+          ...interests.map(inter => {
+            return {
+              InterestId: inter,
+              UserId: req.userInfo.id,
+            };
+          }),
+        ];
+
+        const newUserInterests = await UserInterest.bulkCreate(createInterests, {
+          transaction: t,
+        });
       });
 
       const opts = userFetchAttributes(Media);
@@ -201,7 +242,11 @@ class Controller {
         {
           model: UserLanguage,
           include: [Language],
-        }
+        },
+        {
+          model: UserInterest,
+          include: [Interest],
+        },
       );
 
       const newUser = await User.findByPk(user.id, opts);
