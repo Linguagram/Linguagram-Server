@@ -487,7 +487,7 @@ describe("test user", () => {
                 })
         })
 
-        test.skip("success verify and response 200", () => {
+        test.only("success verify and response 200", () => {
             return request(app)
                 .get('/groups/10/messages')
                 .set("access_token",access_token)

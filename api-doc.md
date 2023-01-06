@@ -391,7 +391,7 @@ _Response (400 - Bad Request)_
 ```json
 {
     "error": true,
-    "message":  "Invalid groupId"
+    "message":  "Invalid groupId" // error darimana ya
 }
 ```
 
@@ -405,7 +405,7 @@ _Response (404 - Not Found)_
 OR
 {
     "error": true,
-    "message": "Unknown message"
+    "message": "Unknown message" // error darimana ya
 }
 ```
 
