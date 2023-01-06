@@ -160,7 +160,9 @@ afterAll(async () => {
 
 })
 
-describe("test user", () => {
+
+describe("test api user", () => {
+
     describe("post /register", () => {
         test("success create user and response 201", () => {
             return request(app)
@@ -455,9 +457,6 @@ describe("test user", () => {
             return request(app)
                 .get('/groups/1/messages')
                 .set("access_token",access_token)
-                .send({
-
-                })
                 .then(res => {                    
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Array))
@@ -476,9 +475,6 @@ describe("test user", () => {
             return request(app)
                 .post('/groups/21/messages')
                 .set("access_token",access_token)
-                .send({
-
-                })
                 .then(res => {                    
                     expect(res.status).toBe(404)
                     expect(res.body.error).toEqual(true)
@@ -487,83 +483,7 @@ describe("test user", () => {
                 })
         })
        
-    })
-
-    describe("GET /groups/:groupId/messages", () => {
-        test("success getting all message of one group and response 200", () => {
-            return request(app)
-                .get('/groups/1/messages')
-                .set("access_token",access_token)
-                .send({
-
-                })
-                .then(res => {                    
-                    expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Array))
-                    expect(res.body[0]).toHaveProperty("content", expect.any(String))
-                    expect(res.body[0]).toHaveProperty("UserId", expect.any(Number))
-                    expect(res.body[0]).toHaveProperty("GroupId", expect.any(Number))
-                    expect(res.body[0]).toHaveProperty("User", expect.any(Object))
-                    expect(res.body[0]).toHaveProperty("Group", expect.any(Object))
-                    expect(res.body[0].User).toHaveProperty("id", expect.any(Number))
-                    expect(res.body[0].User).toHaveProperty("UserLanguages", expect.any(Array))
-                    expect(res.body[0].User).toHaveProperty("Avatar", expect.any(Object))
-                })
-        })
-
-        test("success verify and response 200", () => {
-            return request(app)
-                .post('/groups/21/messages')
-                .set("access_token",access_token)
-                .send({
-
-                })
-                .then(res => {                    
-                    expect(res.status).toBe(404)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Unknown Group')
-                })
-        })
-
-        test("success verify and response 200", () => {
-            return request(app)
-                .post('/groups/test/messages')
-                .set("access_token",access_token)
-                .send({
-
-                })
-                .then(res => {                    
-                    expect(res.status).toBe(400)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Invalid groupId')
-                })
-        })
-       
-    })
-
-    describe.skip("POST /groups/:groupId/messages", () => {
-        test("success sending message to one group and response 200", () => {
-            return request(app)
-                .post('/groups/essag1es')
-                .set("access_token",access_token)
-                .set("Content-Type","multipart/form-data")
-                .send({
-                    
-                })
-                .then(res => {                    
-                    expect(res.status).toBe(200)
-                    expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
-                    expect(res.body).toHaveProperty("content", expect.any(String))
-                    expect(res.body).toHaveProperty("GroupId", expect.any(Number))
-                    expect(res.body).toHaveProperty("User", expect.any(Object))
-                    expect(res.body).toHaveProperty("Group", expect.any(Object))
-                    expect(res.body.User).toHaveProperty("id", expect.any(Number))
-                    expect(res.body.User).toHaveProperty("UserLanguages", expect.any(Array))
-                    expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
-                    expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
-                })
-        })
     })
 })
+
+   

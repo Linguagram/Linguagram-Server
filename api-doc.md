@@ -453,7 +453,14 @@ _Response (200 - OK)_
     "UserId": 1,
     "updatedAt": "2023-01-06T13:17:17.138Z",
     "createdAt": "2023-01-06T13:17:17.138Z",
-    "MediaId": null,
+    "Medium": {
+        "id": 12,
+        "name": "bf0946c9da723ffc8a2a99f4e3d86c88_lQGIkp6-3",
+        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/bf0946c9da723ffc8a2a99f4e3d86c88_lQGIkp6-3",
+        "format": "text/markdown",
+        "updatedAt": "2023-01-06T21:20:41.780Z",
+        "createdAt": "2023-01-06T21:20:41.780Z"
+    },
     "User": {
         "id": 1,
         "username": "Sissie Forrest",
