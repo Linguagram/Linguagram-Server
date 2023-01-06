@@ -419,11 +419,18 @@ describe("test user", () => {
     describe.only("post /verify", () => {
         test("success verify and response 200", () => {
             return request(app)
-                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')
-                .send({
-                    email: "sforrest0@chron.com",
-                    password: "WDbnhZZ63W1",
+                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')               
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(200)
+                    expect(res.body).toHaveProperty("message", expect.any(String))                    
+                    expect(res.body.error).toEqual(undefined)
                 })
+        })
+
+        test("success verify and response 200", () => {
+            return request(app)
+                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')               
                 .then(res => {
                     console.log('res>>', res.body);
                     expect(res.status).toBe(200)
