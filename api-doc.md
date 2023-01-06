@@ -197,7 +197,19 @@ _Response (200 - OK)_
 
 ```json
 {
-  "access_token" : "string"
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTczOTQxfQ.RhpHylcU-Ee2suJ0l0wcpRr8LA45bq4KmwmCPBPukuo",
+    "user": {
+        "id": 2,
+        "username": "Krispin Admin",
+        "email": "admin@admin.com",
+        "country": "Cuba",
+        "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
+        "phoneNumber": "+86 589 929 4346",
+        "verified": true,
+        "AvatarId": 2,
+        "createdAt": "2023-01-06T02:41:04.980Z",
+        "updatedAt": "2023-01-06T02:41:04.980Z"
+    }
 }
 ```
 
@@ -851,41 +863,22 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id" : 1,
-    "username" : "Sissie Forrest",
-    "email" : "sforrest0@chron.com",    
-    "country" : "Switzerland",
-    "phoneNumber" : "+1 339 769 7021",
-    "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
-    "UserLanguages" : [
-        {
-            "id": 1,
-            "type": "native",
-            "UserId": 1,
-            "LanguageId": 10,
-            "createdAt": "2022-12-29T13:54:58.517Z",
-            "updatedAt": "2022-12-29T13:54:58.517Z",
-            "Language": {
-                "id": 1,
-                "name": "Polish",
-                "createdAt": "2022-12-29T13:02:08.364Z",
-                "updatedAt": "2022-12-29T13:02:08.364Z"
-            }
-        },{
-            "id": 1,
-            "type": "interest",
-            "UserId": 1,
-            "LanguageId": 3,
-            "createdAt": "2022-12-29T13:54:58.517Z",
-            "updatedAt": "2022-12-29T13:54:58.517Z",
-            "Language": {
-                "id": 3,
-                "name": "Lao",
-                "createdAt": "2022-12-29T13:02:08.364Z",
-                "updatedAt": "2022-12-29T13:02:08.364Z"
-            }
-        }
-    ]
+    "id": 1,
+    "username": "Sissie Forrest",
+    "email": "sforrest0@chron.com",
+    "country": "Switzerland",
+    "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "phoneNumber": "+1 339 769 7021",
+    "verified": true,
+    "AvatarId": 11,
+    "Avatar": {
+        "id": 11,
+        "name": "1f7851ce062d27144afe91ee52593578_hiAK42ceu",
+        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/1f7851ce062d27144afe91ee52593578_hiAK42ceu",
+        "format": "image/jpeg",
+        "createdAt": "2023-01-06T02:13:38.021Z",
+        "updatedAt": "2023-01-06T02:13:38.021Z"
+    }
 }
 ```
 
@@ -929,19 +922,22 @@ _Response (200 - OK)_
 ```json
 [
     {
-        "name": "Papiamento"
+        "id": 1,
+        "name": "Papiamento",
+        "createdAt": "2023-01-06T02:10:31.193Z",
+        "updatedAt": "2023-01-06T02:10:31.193Z"
     },
     {
-        "name": "Northern Sotho"
+        "id": 2,
+        "name": "Northern Sotho",
+        "createdAt": "2023-01-06T02:10:31.193Z",
+        "updatedAt": "2023-01-06T02:10:31.193Z"
     },
     {
-        "name": "Lao"
-    },
-    {
-        "name": "Catalan"
-    },
-    {
-        "name": "Kashmiri"
+        "id": 3,
+        "name": "Lao",
+        "createdAt": "2023-01-06T02:10:31.193Z",
+        "updatedAt": "2023-01-06T02:10:31.193Z"
     },...
 ]
 ```

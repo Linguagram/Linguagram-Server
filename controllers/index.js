@@ -300,8 +300,10 @@ class Controller {
       }
 
       const access_token = signToken(payload)
-
-      res.status(200).json({access_token})
+      delete loggedInUser.dataValues.password
+      delete loggedInUser._previousDataValues.password
+      console.log(loggedInUser);
+      res.status(200).json({access_token, user :loggedInUser})
     } catch(err) {
       next(err)
     }
