@@ -13,7 +13,7 @@ const userLanguages = require('../data/userLanguages.json')
 const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
-const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk2OTA2fQ.AZLIb9Nj8ZHFegzRgUuFa84duZxHe18yzl5pt5XV9ys"
+const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk0ODIwfQ.MyUJur3txHTOqpD_AZswp2mn5anrffTAzNBQGoDjDDU"
 
 
 const { generateHash } = require('../helpers/bcryptjs')
@@ -486,10 +486,34 @@ describe("test user", () => {
                     expect(res.body.message).toEqual('Unknown Group')
                 })
         })
+       
+    })
 
-        test.only("success verify and response 200", () => {
+    describe("GET /groups/:groupId/messages", () => {
+        test("success getting all message of one group and response 200", () => {
             return request(app)
-                .get('/groups/10/messages')
+                .get('/groups/1/messages')
+                .set("access_token",access_token)
+                .send({
+
+                })
+                .then(res => {                    
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    expect(res.body[0]).toHaveProperty("content", expect.any(String))
+                    expect(res.body[0]).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("GroupId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("User", expect.any(Object))
+                    expect(res.body[0]).toHaveProperty("Group", expect.any(Object))
+                    expect(res.body[0].User).toHaveProperty("id", expect.any(Number))
+                    expect(res.body[0].User).toHaveProperty("UserLanguages", expect.any(Array))
+                    expect(res.body[0].User).toHaveProperty("Avatar", expect.any(Object))
+                })
+        })
+
+        test("success verify and response 200", () => {
+            return request(app)
+                .post('/groups/21/messages')
                 .set("access_token",access_token)
                 .send({
 
@@ -498,7 +522,47 @@ describe("test user", () => {
                     expect(res.status).toBe(404)
                     expect(res.body.error).toEqual(true)
                     expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Unknown message')
+                    expect(res.body.message).toEqual('Unknown Group')
+                })
+        })
+
+        test("success verify and response 200", () => {
+            return request(app)
+                .post('/groups/test/messages')
+                .set("access_token",access_token)
+                .send({
+
+                })
+                .then(res => {                    
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid groupId')
+                })
+        })
+       
+    })
+
+    describe.skip("POST /groups/:groupId/messages", () => {
+        test("success sending message to one group and response 200", () => {
+            return request(app)
+                .post('/groups/essag1es')
+                .set("access_token",access_token)
+                .set("Content-Type","multipart/form-data")
+                .send({
+
+                })
+                .then(res => {                    
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    expect(res.body[0]).toHaveProperty("content", expect.any(String))
+                    expect(res.body[0]).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("GroupId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("User", expect.any(Object))
+                    expect(res.body[0]).toHaveProperty("Group", expect.any(Object))
+                    expect(res.body[0].User).toHaveProperty("id", expect.any(Number))
+                    expect(res.body[0].User).toHaveProperty("UserLanguages", expect.any(Array))
+                    expect(res.body[0].User).toHaveProperty("Avatar", expect.any(Object))
                 })
         })
     })
