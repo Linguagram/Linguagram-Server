@@ -42,7 +42,7 @@ class Controller {
         interests = [],
       } = req.body;
 
-      if (password !== confirmPassword) {
+      if (password & password !== confirmPassword) {
         throw {
           status: 400,
           message: "Password do not match",
@@ -180,7 +180,7 @@ class Controller {
 
         user.username = username;
         user.email = email;
-        if (newPassword) user.password = generateHash(newPassword);
+        if (newPassword) user.password = newPassword;
         
         user.country = country;
         user.phoneNumber = phoneNumber;

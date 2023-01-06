@@ -80,17 +80,17 @@ beforeAll(async () => {
         return el
     }))
 
-    await sequelize.queryInterface.bulkInsert('Interests', interests.map(el=>{
+    await sequelize.queryInterface.bulkInsert('Interests', interests.map(el => {
         el.createdAt = new Date();
         el.updatedAt = new Date();
         return el
-       }))
+    }))
 
-       await sequelize.queryInterface.bulkInsert('UserInterests', userInterests.map(el=>{
+    await sequelize.queryInterface.bulkInsert('UserInterests', userInterests.map(el => {
         el.createdAt = new Date();
         el.updatedAt = new Date();
         return el
-       }))
+    }))
 
 
 
@@ -138,8 +138,8 @@ afterAll(async () => {
 
     await sequelize.queryInterface.bulkDelete('Schedules', {}, {
         truncate: true, restartIdentity: true, cascade: true
-    })   
-    
+    })
+
     await sequelize.queryInterface.bulkDelete('UserLanguages', {}, {
         truncate: true, restartIdentity: true, cascade: true
     })
@@ -155,7 +155,7 @@ afterAll(async () => {
     await sequelize.queryInterface.bulkDelete('UserInterests', {}, {
         truncate: true, restartIdentity: true, cascade: true
     })
-    
+
 
 })
 
@@ -165,13 +165,13 @@ describe("test user", () => {
             return request(app)
                 .post('/register')
                 .send({
-                    username : 'sipri',
+                    username: 'sipri',
                     email: "sipri34@gmail.com",
                     password: "12345678",
                     confirmPassword: "12345678"
                 })
                 .then(res => {
-                    console.log('res>>',res.body);
+                    console.log('res>>', res.body);
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body).toHaveProperty("user", expect.any(Object))
@@ -181,5 +181,158 @@ describe("test user", () => {
                 })
         })
     })
+
+        test("failed create user and response 400 because no email was provided", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    password: "12345678",
+                    confirmPassword: "12345678"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Email is required')
+                })
+        })
+
+
+        test("failed create user and response 400 because no password was provided", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    email: "sipri34@gmail.com",
+                    confirmPassword: "12345678"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Password is required')
+                })
+        })
+
+        test("failed create user and response 400 because email has already been registered", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    password: "12345678",
+                    email: "sforrest0@chron.com",
+                    confirmPassword: "12345678"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Email has already been registered')
+                })
+        })
+
+        test("failed create user and response 400 because username was not provided", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    password: "12345678",
+                    email: "sipri34@gmail.com",
+                    confirmPassword: "12345678"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Username is required')
+                })
+        })
+
+        test("failed create user and response 400 because email format is invalid", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    password: "12345678",
+                    email: "sipri34tesd",
+                    confirmPassword: "12345678"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Invalid email format')
+                })
+        })
+
+        test("failed create user and response 400 because password is too short", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    password: "12345",
+                    email: "sipri34@gmail.com",
+                    confirmPassword: "12345"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Password must have at least 8 characters')
+                })
+        })
+
+        test("failed create user and response 400 because password was not provided", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    email: "sipri34@gmail.com",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Password is required')
+                })
+        })
+
+
+        test("failed create user and response 400 because password and confirm password do not match", () => {
+            return request(app)
+                .post('/register')
+                .send({
+                    username: 'sipri',
+                    email: "sipri34@gmail.com",
+                    password: "12345",
+                    confirmPassword: "12345678"
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Password do not match')
+                })
+        })
+
+
+
+
 
 })
