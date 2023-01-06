@@ -180,7 +180,6 @@ describe("test user", () => {
                     expect(res.body.user.password).toEqual(undefined)
                 })
         })
-    })
 
         test("failed create user and response 400 because no email was provided", () => {
             return request(app)
@@ -330,9 +329,107 @@ describe("test user", () => {
                     expect(res.body.message).toEqual('Password do not match')
                 })
         })
+    })
 
+    describe("post /login", () => {
+        test("success login and response 200", () => {
+            return request(app)
+                .post('/login')
+                .send({
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(200)
+                    expect(res.body).toHaveProperty("access_token", expect.any(String))
+                    expect(res.body.user).toHaveProperty("email", expect.any(String))
+                    expect(res.body.user).toHaveProperty("id", expect.any(Number))
+                    expect(res.body.user.password).toEqual(undefined)
+                })
+        })
 
+        test("failed login and response 400 because email was not provided", () => {
+            return request(app)
+                .post('/login')
+                .send({
+                    password: "WDbnhZZ63W1",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Email is required')
+                })
+        })
 
+        test("failed login and response 400 because password was not provided", () => {
+            return request(app)
+                .post('/login')
+                .send({
+                    email: "sforrest0@chron.com",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Password is required')
+                })
+        })
 
+        test("failed login and response 400 because password is invalid", () => {
+            return request(app)
+                .post('/login')
+                .send({
+                    password: "WDbnhZZ6fa3W1",
+                    email: "sforrest0@chron.com",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(401)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Invalid email/password')
+                })
+        })
 
+        test("failed login and response 400 because email is invalid", () => {
+            return request(app)
+                .post('/login')
+                .send({
+                    email: "sforrestf0@chron.com",
+                    password: "WDbnhZZ63W1",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(401)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Invalid email/password')
+                })
+        })
+    })
+
+    describe.only("post /verify", () => {
+        test("success verify and response 200", () => {
+            return request(app)
+                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')
+                .send({
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                })
+                .then(res => {
+                    console.log('res>>', res.body);
+                    expect(res.status).toBe(200)
+                    expect(res.body).toHaveProperty("message", expect.any(String))                    
+                    expect(res.body.error).toEqual(undefined)
+                })
+        })
+    })
 })
