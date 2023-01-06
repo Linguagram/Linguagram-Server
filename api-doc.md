@@ -739,14 +739,36 @@ Request :
 _Response (200 - OK)_
 
 ```json
-{
-    "Group" : {
-        "id" : "7",
-        "name" : "family",
-        "createdAt" : "2022-12-29 06:37:42.195 +0700",
-        "updatedAt" : "2022-12-29 06:37:42.195 +0700"
-    }
-}
+[
+    {
+        "id": 1,
+        "GroupId": 1,
+        "UserId": 1,
+        "createdAt": "2023-01-06T02:10:31.190Z",
+        "updatedAt": "2023-01-06T02:10:31.190Z",
+        "Group": {
+            "id": 1,
+            "name": "private",
+            "type": "dm",
+            "createdAt": "2023-01-06T02:10:31.184Z",
+            "updatedAt": "2023-01-06T02:10:31.184Z"
+        }
+    },
+    {
+        "id": 4,
+        "GroupId": 2,
+        "UserId": 1,
+        "createdAt": "2023-01-06T02:10:31.190Z",
+        "updatedAt": "2023-01-06T02:10:31.190Z",
+        "Group": {
+            "id": 2,
+            "name": "private",
+            "type": "dm",
+            "createdAt": "2023-01-06T02:10:31.184Z",
+            "updatedAt": "2023-01-06T02:10:31.184Z"
+        }
+    },...
+]
 ```
 
 
@@ -778,17 +800,25 @@ Request :
 _Response (201 - Created)_
 
 ```json
-[{   
-
-    "Media" : {
-        "id" : "integer",
-        "name" : "string",
-        "url" : "string",
-        "format": "string",
-        "createdAt" : "date",
-        "updatedAt" : "date"            
-  }
-}]
+{
+    "id": 1,
+    "username": "Sissie Forrest",
+    "email": "sforrest0@chron.com",
+    "country": "Switzerland",
+    "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "phoneNumber": "+1 339 769 7021",
+    "verified": true,
+    "AvatarId": 11,
+    "Avatar": {
+        "id": 11,
+        "name": "1f7851ce062d27144afe91ee52593578_hiAK42ceu",
+        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/1f7851ce062d27144afe91ee52593578_hiAK42ceu",
+        "format": "image/jpeg",
+        "updatedAt": "2023-01-06T02:13:38.021Z",
+        "createdAt": "2023-01-06T02:13:38.021Z"
+    },
+    "updatedAt": "2023-01-06T02:13:38.032Z"
+}
 ```
 
 _Response (400 - Bad Request)_
