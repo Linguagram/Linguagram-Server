@@ -35,6 +35,7 @@ List of available endpoints:
 - `PUT /groups/:groupId`
 
 - `POST /translate`
+- `POST /groups`
 
 &nbsp;
 
@@ -1212,6 +1213,9 @@ _Response (200 - OK)_
 
 
 ## 23. POST /translate
+
+
+## 24. POST /groups
 
 
 ## Global Error

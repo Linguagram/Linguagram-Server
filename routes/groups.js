@@ -202,6 +202,17 @@ router.get("/groups", async (req, res, next) => {
   }
 });
 
+// create groups
+router.post("/groups", async (req, res, next) => {
+  try {
+    const { name, type } = req.body;
+
+    // res.status(200).json(groupMembers.map(gm => gm.Group));
+  } catch (err) {
+    next(err);
+  }
+});
+
 // Group chat routes START ======================================
 // join user group
 router.post("/groups/:groupId/join", async (req, res, next) => {
