@@ -84,7 +84,7 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     newMessage.dataValues.User = req.userInfo;
 
     if (newAttachment?.id) {
-      newMessage.dataValues.Media = newAttachment;
+      newMessage.dataValues.Medium = newAttachment;
     }
 
     sendMessage(groupMembers, newMessage);
@@ -147,7 +147,7 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
     message.dataValues.User = req.userInfo;
 
     if (newAttachment?.id) {
-      message.dataValues.Media = newAttachment;
+      message.dataValues.Medium = newAttachment;
     }
 
     message.edited = true;
