@@ -78,6 +78,7 @@ router.use(groupsRouter);
 router.get("/users/:userId", async (req, res, next) => {
   try {
     const user = await getUser(validateUserId(req.params.userId));
+    console.log(user,'<<<<');
 
     if (!user) {
       throw {
@@ -86,7 +87,7 @@ router.get("/users/:userId", async (req, res, next) => {
       };
     }
 
-    res.status(200).json();
+    res.status(200).json(user);
   } catch (err) {
     next(err);
   }
