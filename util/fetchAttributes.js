@@ -4,6 +4,10 @@ const { Op } = require("sequelize");
 const {
   Media,
   User,
+  UserLanguage,
+  Language,
+  UserInterest,
+  Interest,
 } = require("../models");
 
 const userFetchAttributes = () => {
@@ -22,6 +26,14 @@ const userFetchAttributes = () => {
       {
         model: Media,
         as: "Avatar",
+      },
+      {
+        model: UserLanguage,
+        include: [Language],
+      },
+      {
+        model: UserInterest,
+        include: [Interest],
       },
     ],
   };

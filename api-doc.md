@@ -17,6 +17,7 @@ List of available endpoints:
 
 - `GET /groups`
 - `POST /avatar`
+- `DELETE /avatar`
 - `GET /users/:userId`
 
 - `GET /languages`

@@ -26,6 +26,8 @@ const {
   validateUserId,
 } = require('../util/validators');
 
+const translate = require('translate-google');
+
 // ======= Controller imports end
 
 router.use(userRouter)
@@ -126,7 +128,14 @@ router.use(friendsRouter);
 
 router.post("/translate", async (req, res, next) => {
   try {
-    // TODO
+    const { text, from, to } = req.body;
+    const nativeLanguages = req.userInfo.UserLanguages.filter(lang => lang.type === "native").map(lang => lang.Language.name);
+    const result = await translate(text, {
+      from: from || "auto",
+      to: to || nativeLanguages[0],
+    });
+
+    res.status(200).json(result);
   } catch (err) {
     next(err);
   }

@@ -104,17 +104,7 @@ class Controller {
         });
       });
 
-      const opts = userFetchAttributes(Media);
-      opts.include.push(
-        {
-          model: UserLanguage,
-          include: [Language],
-        },
-        {
-          model: UserInterest,
-          include: [Interest],
-        },
-      );
+      const opts = userFetchAttributes();
 
       const newUser = await User.findByPk(createdUser.id, opts);
 
@@ -239,17 +229,7 @@ class Controller {
         });
       });
 
-      const opts = userFetchAttributes(Media);
-      opts.include.push(
-        {
-          model: UserLanguage,
-          include: [Language],
-        },
-        {
-          model: UserInterest,
-          include: [Interest],
-        },
-      );
+      const opts = userFetchAttributes();
 
       const newUser = await User.findByPk(user.id, opts);
 
