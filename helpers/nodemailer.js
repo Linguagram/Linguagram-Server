@@ -27,8 +27,26 @@ const sendMail = async (recipientEmail, username, link) => {
             <a href=${link} style='color: blue; text-decoration-line:underline;'><b>Verify your email address</b></a>
             ` // html body
   });
-}
+};
+
+const sendNewFriendReqMail = async (recipientEmail, username, link) => {
+  // send mail with defined transport object
+  return transporter.sendMail({
+    from: `"Linguagram 🛰" <do-not-reply@linguagram.com>`, // sender address
+    to: `${recipientEmail}`, // list of receivers
+    subject: "New Friend Request", // Subject line
+    html: `<b>${username}, You've got a Friend Request!
+            <br>
+            <br>
+            Welcome to Linguagram! Please click the link below to verify your email address in order to complete the registration.</b>
+            <br>
+            <br>
+            <a href=${link} style='color: blue; text-decoration-line:underline;'><b>Verify your email address</b></a>
+            ` // html body
+  });
+};
 
 module.exports = {
-  sendMail
+  sendMail,
+  sendNewFriendReqMail,
 }

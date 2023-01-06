@@ -59,6 +59,7 @@ const getMessages = async (groupId) => {
       Media,
       Group,
     ],
+    order: [["createdAt", "DESC"]],
   });
 
   return messages.map(message => {
