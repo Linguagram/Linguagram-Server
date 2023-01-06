@@ -35,7 +35,12 @@ const getGroupMembersFromUserId = async (userId) => {
     where: {
       UserId: userId,
     },
-    include: [Group],
+    include: [
+      {
+        model: Group,
+        include: [GroupMember]
+      },
+    ],
   });
 
   return groupMembers;
@@ -102,7 +107,9 @@ const getUser = async (userId) => {
 }
 
 const getGroup = async (groupId) => {
-  const group = await Group.findByPk(groupId);
+  const group = await Group.findByPk(groupId, {
+    include: [GroupMember]
+  });
 
   if (!group) throw {
     status: 404,

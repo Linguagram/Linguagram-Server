@@ -196,7 +196,7 @@ router.get("/groups", async (req, res, next) => {
   try {
     const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
 
-    res.status(200).json(groupMembers);
+    res.status(200).json(groupMembers.map(gm => gm.Group));
   } catch (err) {
     next(err);
   }
