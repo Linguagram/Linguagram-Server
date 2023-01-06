@@ -13,6 +13,7 @@ const userLanguages = require('../data/userLanguages.json')
 const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
+const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk2OTA2fQ.AZLIb9Nj8ZHFegzRgUuFa84duZxHe18yzl5pt5XV9ys"
 
 
 const { generateHash } = require('../helpers/bcryptjs')
@@ -170,8 +171,7 @@ describe("test user", () => {
                     password: "12345678",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body).toHaveProperty("user", expect.any(Object))
@@ -189,8 +189,7 @@ describe("test user", () => {
                     password: "12345678",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -208,8 +207,7 @@ describe("test user", () => {
                     email: "sipri34@gmail.com",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -227,8 +225,7 @@ describe("test user", () => {
                     email: "sforrest0@chron.com",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -245,8 +242,7 @@ describe("test user", () => {
                     email: "sipri34@gmail.com",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -264,8 +260,7 @@ describe("test user", () => {
                     email: "sipri34tesd",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -283,8 +278,7 @@ describe("test user", () => {
                     email: "sipri34@gmail.com",
                     confirmPassword: "12345"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -300,8 +294,7 @@ describe("test user", () => {
                     username: 'sipri',
                     email: "sipri34@gmail.com",
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -320,8 +313,7 @@ describe("test user", () => {
                     password: "12345",
                     confirmPassword: "12345678"
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -336,11 +328,10 @@ describe("test user", () => {
             return request(app)
                 .post('/login')
                 .send({
-                    email: "sforrest0@chron.com",
-                    password: "WDbnhZZ63W1",
+                    email: "admin@admin.com",
+                    password: "1234567890",
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(200)
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body.user).toHaveProperty("email", expect.any(String))
@@ -355,8 +346,7 @@ describe("test user", () => {
                 .send({
                     password: "WDbnhZZ63W1",
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -371,8 +361,7 @@ describe("test user", () => {
                 .send({
                     email: "sforrest0@chron.com",
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -388,8 +377,7 @@ describe("test user", () => {
                     password: "WDbnhZZ6fa3W1",
                     email: "sforrest0@chron.com",
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(401)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -405,8 +393,7 @@ describe("test user", () => {
                     email: "sforrestf0@chron.com",
                     password: "WDbnhZZ63W1",
                 })
-                .then(res => {
-                    console.log('res>>', res.body);
+                .then(res => {                    
                     expect(res.status).toBe(401)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -416,26 +403,102 @@ describe("test user", () => {
         })
     })
 
-    describe.only("post /verify", () => {
+    describe("post /verify", () => {
         test("success verify and response 200", () => {
             return request(app)
-                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')               
-                .then(res => {
-                    console.log('res>>', res.body);
+                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')
+                .then(res => {                    
                     expect(res.status).toBe(200)
-                    expect(res.body).toHaveProperty("message", expect.any(String))                    
+                    expect(res.body).toHaveProperty("message", expect.any(String))
                     expect(res.body.error).toEqual(undefined)
+                })
+        })
+
+        test("failed and response 401 because link is invalid", () => {
+            return request(app)
+                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk5NDExNn0.PXk4cOsvuHY3wjXJRoQst8ApwbpRC7lCBQR4nFt-nME')
+                .then(res => {                    
+                    expect(res.status).toBe(401)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid Link')
+
+                })
+        })
+
+        test("failed and response 401 because token within the verification query is invalid", () => {
+            return request(app)
+                .post('/verify?verification=test')
+                .then(res => {                    
+                    expect(res.status).toBe(401)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid Token')
+
+                })
+        })
+
+        test("failed and response 400 because the email has been verified", () => {
+            return request(app)
+                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk0ODIwfQ.MyUJur3txHTOqpD_AZswp2mn5anrffTAzNBQGoDjDDU')
+                .then(res => {                    
+                    expect(res.status).toBe(400)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual('Your email address has been verified')
+                })
+        })
+    })
+
+    describe("GET /groups/:groupId/messages", () => {
+        test("success getting all message of one group and response 200", () => {
+            return request(app)
+                .get('/groups/1/messages')
+                .set("access_token",access_token)
+                .send({
+
+                })
+                .then(res => {                    
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    expect(res.body[0]).toHaveProperty("content", expect.any(String))
+                    expect(res.body[0]).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("GroupId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("User", expect.any(Object))
+                    expect(res.body[0]).toHaveProperty("Group", expect.any(Object))
+                    expect(res.body[0].User).toHaveProperty("id", expect.any(Number))
+                    expect(res.body[0].User).toHaveProperty("UserLanguages", expect.any(Array))
+                    expect(res.body[0].User).toHaveProperty("Avatar", expect.any(Object))
                 })
         })
 
         test("success verify and response 200", () => {
             return request(app)
-                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')               
-                .then(res => {
-                    console.log('res>>', res.body);
-                    expect(res.status).toBe(200)
-                    expect(res.body).toHaveProperty("message", expect.any(String))                    
-                    expect(res.body.error).toEqual(undefined)
+                .post('/groups/21/messages')
+                .set("access_token",access_token)
+                .send({
+
+                })
+                .then(res => {                    
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown Group')
+                })
+        })
+
+        test.skip("success verify and response 200", () => {
+            return request(app)
+                .get('/groups/10/messages')
+                .set("access_token",access_token)
+                .send({
+
+                })
+                .then(res => {                    
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown message')
                 })
         })
     })

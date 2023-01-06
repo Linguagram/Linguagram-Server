@@ -222,6 +222,15 @@ _Response (200 - OK)_
 }
 ```
 
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message": "Your email address has been verified"
+}
+```
+
 _Response (401 - Unauthorized)_
 
 ```json
@@ -236,14 +245,6 @@ OR
 }
 ```
 
-_Response (400 - Bad Request)_
-
-```json
-{
-    "error": true,
-    "message": "Your email address has been verified"
-}
-```
 
 
 ## 4. GET /groups/:groupId/messages
@@ -276,42 +277,112 @@ _Response (200 - OK)_
 ```json
 [
     {
-        "id": 1,
-        "content": "hello there",
+        "id": 4,
+        "content": "But I have the death star cannon",
         "deleted": false,
-        "MediaId": 1,
-        "UserId": 1,
+        "MediaId": null,
+        "UserId": 2,
         "GroupId": 1,
-        "createdAt": "2023-01-05T09:57:33.467Z",
-        "updatedAt": "2023-01-05T09:57:33.467Z",
+        "createdAt": "2023-01-06T08:46:50.275Z",
+        "updatedAt": "2023-01-06T08:46:50.275Z",
         "User": {
             "id": 1,
             "username": "Sissie Forrest",
             "email": "sforrest0@chron.com",
-            "password": "$2a$08$gO98orcgtRzGF6xZ.IuLVeZm/hr0kVZtyNSifzpdjeEzPYefNRBFm",
             "country": "Switzerland",
             "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
             "phoneNumber": "+1 339 769 7021",
-            "verified": true,
+            "verified": false,
             "AvatarId": 1,
-            "createdAt": "2023-01-05T09:57:33.278Z",
-            "updatedAt": "2023-01-05T09:57:33.278Z"
+            "Avatar": {
+                "id": 1,
+                "name": "avatar",
+                "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+                "format": "image/jpg",
+                "createdAt": "2023-01-06T08:46:50.080Z",
+                "updatedAt": "2023-01-06T08:46:50.080Z"
+            },
+            "UserLanguages": [
+                {
+                    "id": 3,
+                    "type": "interest",
+                    "UserId": 1,
+                    "LanguageId": 3,
+                    "createdAt": "2023-01-06T08:46:50.289Z",
+                    "updatedAt": "2023-01-06T08:46:50.289Z",
+                    "Language": {
+                        "id": 3,
+                        "name": "Lao",
+                        "createdAt": "2023-01-06T08:46:50.281Z",
+                        "updatedAt": "2023-01-06T08:46:50.281Z"
+                    }
+                },
+                {
+                    "id": 1,
+                    "type": "native",
+                    "UserId": 1,
+                    "LanguageId": 10,
+                    "createdAt": "2023-01-06T08:46:50.289Z",
+                    "updatedAt": "2023-01-06T08:46:50.289Z",
+                    "Language": {
+                        "id": 10,
+                        "name": "Moldovan",
+                        "createdAt": "2023-01-06T08:46:50.281Z",
+                        "updatedAt": "2023-01-06T08:46:50.281Z"
+                    }
+                }
+            ],
+            "UserInterests": [
+                {
+                    "id": 1,
+                    "UserId": 1,
+                    "InterestId": 3,
+                    "createdAt": "2023-01-06T08:46:50.298Z",
+                    "updatedAt": "2023-01-06T08:46:50.298Z",
+                    "Interest": {
+                        "id": 3,
+                        "name": "Anime",
+                        "createdAt": "2023-01-06T08:46:50.295Z",
+                        "updatedAt": "2023-01-06T08:46:50.295Z"
+                    }
+                },
+                {
+                    "id": 2,
+                    "UserId": 1,
+                    "InterestId": 2,
+                    "createdAt": "2023-01-06T08:46:50.298Z",
+                    "updatedAt": "2023-01-06T08:46:50.298Z",
+                    "Interest": {
+                        "id": 2,
+                        "name": "PC Master Race",
+                        "createdAt": "2023-01-06T08:46:50.295Z",
+                        "updatedAt": "2023-01-06T08:46:50.295Z"
+                    }
+                },
+                {
+                    "id": 3,
+                    "UserId": 1,
+                    "InterestId": 1,
+                    "createdAt": "2023-01-06T08:46:50.298Z",
+                    "updatedAt": "2023-01-06T08:46:50.298Z",
+                    "Interest": {
+                        "id": 1,
+                        "name": "Military History and Wars",
+                        "createdAt": "2023-01-06T08:46:50.295Z",
+                        "updatedAt": "2023-01-06T08:46:50.295Z"
+                    }
+                }
+            ]
         },
-        "Medium": {
-            "id": 1,
-            "name": "avatar",
-            "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
-            "format": "image/jpg",
-            "createdAt": "2023-01-05T09:57:33.266Z",
-            "updatedAt": "2023-01-05T09:57:33.266Z"
-        },
+        "Medium": null,
         "Group": {
             "id": 1,
             "name": "private",
-            "createdAt": "2023-01-05T09:57:33.464Z",
-            "updatedAt": "2023-01-05T09:57:33.464Z"
+            "type": "dm",
+            "createdAt": "2023-01-06T08:46:50.272Z",
+            "updatedAt": "2023-01-06T08:46:50.272Z"
         }
-    },,...
+    },...
 ]
 ```
 
