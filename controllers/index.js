@@ -190,7 +190,9 @@ class Controller {
 
         user.username = username;
         user.email = email;
+        console.log('>>>>', newPassword);
         if (newPassword) user.password = generateHash(newPassword);
+        
         user.country = country;
         user.phoneNumber = phoneNumber;
 

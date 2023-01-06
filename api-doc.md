@@ -58,75 +58,19 @@ _Response (201 - created)_
 
 ```json
 {
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImlhdCI6MTY3MjMyMjA5OH0.3q9RNbVYSc5obpNX2rU6uhLw6JDmbneCx38UO6xMMSE",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk4NzExNH0.-QIqOmTKHe_UZp_--AO1xlQqvSjJxi9xsz_p3DKOOO0",
     "user": {
-        "id": 21,
-        "username": "e",
-        "email": "hello5@mail.com",
+        "id": 13,
+        "username": "sipri",
+        "email": "admin@test.com",
         "country": null,
         "status": null,
         "phoneNumber": null,
         "verified": false,
         "AvatarId": null,
         "Avatar": null,
-        "UserLanguages": [
-            {
-                "id": 11,
-                "type": "native",
-                "UserId": 21,
-                "LanguageId": 1,
-                "createdAt": "2022-12-29T13:54:58.517Z",
-                "updatedAt": "2022-12-29T13:54:58.517Z",
-                "Language": {
-                    "id": 1,
-                    "name": "Papiamento",
-                    "createdAt": "2022-12-29T13:02:08.364Z",
-                    "updatedAt": "2022-12-29T13:02:08.364Z"
-                }
-            },
-            {
-                "id": 11,
-                "type": "native",
-                "UserId": 21,
-                "LanguageId": 2,
-                "createdAt": "2022-12-29T13:54:58.517Z",
-                "updatedAt": "2022-12-29T13:54:58.517Z",
-                "Language": {
-                    "id": 2,
-                    "name": "Northern Sotho",
-                    "createdAt": "2022-12-29T13:02:08.364Z",
-                    "updatedAt": "2022-12-29T13:02:08.364Z"
-                }
-            },
-            {
-                "id": 12,
-                "type": "native",
-                "UserId": 21,
-                "LanguageId": 3,
-                "createdAt": "2022-12-29T13:54:58.517Z",
-                "updatedAt": "2022-12-29T13:54:58.517Z",
-                "Language": {
-                    "id": 3,
-                    "name": "Lao",
-                    "createdAt": "2022-12-29T13:02:08.364Z",
-                    "updatedAt": "2022-12-29T13:02:08.364Z"
-                }
-            },
-            {
-                "id": 13,
-                "type": "interest",
-                "UserId": 21,
-                "LanguageId": 4,
-                "createdAt": "2022-12-29T13:54:58.517Z",
-                "updatedAt": "2022-12-29T13:54:58.517Z",
-                "Language": {
-                    "id": 4,
-                    "name": "Catalan",
-                    "createdAt": "2022-12-29T13:02:08.364Z",
-                    "updatedAt": "2022-12-29T13:02:08.364Z"
-                }
-            }
-        ]
+        "UserLanguages": [],
+        "UserInterests": []
     }
 }
 ```
@@ -1240,6 +1184,8 @@ _Response (200 - OK)_
     "updatedAt": "2023-01-05T09:22:13.746Z"
 }
 ```
+
+
 
 
 
