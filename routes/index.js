@@ -105,7 +105,9 @@ router.get("/languages", async (req, res, next) => {
 });
 
 // edit user
-router.put("/@me", Controller.editMe);
+router.put("/users/@me", Controller.editMe);
+router.get("/users/@me", Controller.getUser);
+router.get("/users/:id", Controller.getUser);
 
 // get user languages
 router.get("/@me/languages", async (req, res, next) => {

@@ -192,7 +192,7 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 });
 
 // get user groups
-router.get("/groups", async (req, res, next) => {
+router.get("/groups/@me", async (req, res, next) => {
   try {
     const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
 
@@ -242,7 +242,7 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
 });
 
 // leave user group
-router.post("/groups/:groupId/leave", async (req, res, next) => {
+router.delete("/groups/:groupId/@me", async (req, res, next) => {
   try {
     const groupId = validateGroupId(req.params.groupId);
     const groupMember = await GroupMember.findOne({

@@ -26,7 +26,7 @@ class Controller {
   // USERS
   // register
 
-  static async register (req, res, next) {
+  static async register(req, res, next) {
     try {
       // Avatar ID belum ada
       const {
@@ -60,8 +60,8 @@ class Controller {
           country,
           phoneNumber
         }, {
-            transaction: t
-          });
+          transaction: t
+        });
 
         // create user languages ===
         const createUserLanguages = [
@@ -81,7 +81,7 @@ class Controller {
         ].reduce((prev, val) =>
           prev.some(pval =>
             pval.LanguageId === val.LanguageId
-              && pval.type === val.type)
+            && pval.type === val.type)
             ? prev
             : prev.concat([val]),
           []);
@@ -129,7 +129,7 @@ class Controller {
     }
   }
 
-  static async editMe (req, res, next) {
+  static async editMe(req, res, next) {
     try {
       const {
         username,
@@ -181,7 +181,7 @@ class Controller {
         user.username = username;
         user.email = email;
         if (newPassword) user.password = newPassword;
-        
+
         user.country = country;
         user.phoneNumber = phoneNumber;
 
@@ -205,7 +205,7 @@ class Controller {
         ].reduce((prev, val) =>
           prev.some(pval =>
             pval.LanguageId === val.LanguageId
-              && pval.type === val.type)
+            && pval.type === val.type)
             ? prev
             : prev.concat([val]),
           []);
@@ -240,33 +240,33 @@ class Controller {
     }
   }
 
-  static async login (req, res, next) {
+  static async login(req, res, next) {
     try {
-      const {email, password} = req.body
+      const { email, password } = req.body
 
-      if(!email) throw {
+      if (!email) throw {
         status: 400,
         message: 'Email is required',
       };
 
-      if(!password) throw {
+      if (!password) throw {
         status: 400,
         message: 'Password is required',
       };
 
-      const loggedInUser = await User.findOne({where: {email}})
-      if(!loggedInUser) throw {
+      const loggedInUser = await User.findOne({ where: { email } })
+      if (!loggedInUser) throw {
         status: 401,
         message: 'Invalid email/password',
       };
 
       const isValidPassword = verifyHash(password, loggedInUser.password)
-      if(!isValidPassword) throw {
+      if (!isValidPassword) throw {
         status: 401,
         message: 'Invalid email/password',
       };
 
-      if(!loggedInUser.verified) {
+      if (!loggedInUser.verified) {
         const verificationId = signToken(loggedInUser.id)
         const link = `http://localhost:3000/users/verify?verification=${verificationId}`
         sendMail(loggedInUser.email, loggedInUser.username, link)
@@ -284,25 +284,25 @@ class Controller {
       delete loggedInUser.dataValues.password
       delete loggedInUser._previousDataValues.password;
       console.log(loggedInUser);
-      res.status(200).json({access_token, user :loggedInUser})
-    } catch(err) {
+      res.status(200).json({ access_token, user: loggedInUser })
+    } catch (err) {
       next(err)
     }
   }
 
-  static async verify (req, res, next) {
+  static async verify(req, res, next) {
     try {
       const { verification } = req.query
 
       const payload = verifyToken(verification)
 
       const theSearchedUser = await User.findByPk(payload.id)
-      if(!theSearchedUser) throw {
+      if (!theSearchedUser) throw {
         status: 401,
         message: 'Invalid Link',
       };
 
-      if(theSearchedUser.verified) throw {
+      if (theSearchedUser.verified) throw {
         status: 400,
         message: 'Your email address has been verified',
       };
@@ -313,12 +313,42 @@ class Controller {
         }
       });
 
-      res.status(200).json({message: `${theSearchedUser.email} has been verified`})
+      res.status(200).json({ message: `${theSearchedUser.email} has been verified` })
 
-    } catch(err) {
+    } catch (err) {
       next(err)
     }
   }
+
+  static async getUser(req, res, next) {
+    try {
+
+      res.status(200).json({ user: req.userInfo })
+    } catch (error) {
+      next(err)
+
+    }
+  }
+
+  static async getUserId(req, res, next) {
+    try {
+      const { id } = req.params
+      const user = await User.findByPk(id)
+      if (!user) {
+        throw {
+          status: 404,
+          message: 'User is not found',
+        };
+      }
+
+      res.status(200).json({ user })
+    } catch (error) {
+      next(err)
+
+    }
+  }
+
+
 }
 
 module.exports = Controller

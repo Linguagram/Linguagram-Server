@@ -402,12 +402,9 @@ _Response (404 - Not Found)_
     "error": true,
     "message": "Unknown Group"
 }
-OR
-{
-    "error": true,
-    "message": "Unknown message" // error darimana ya
-}
+
 ```
+
 
 
 ## 5. POST /groups/:groupId/messages
@@ -450,20 +447,101 @@ _Response (200 - OK)_
 ```json
 {
     "deleted": false,
-    "id": 14,
-    "content": null,
+    "id": 11,
+    "content": "testing",
     "GroupId": 1,
     "UserId": 1,
-    "MediaId": 14,
-    "updatedAt": "2023-01-05T12:31:56.567Z",
-    "createdAt": "2023-01-05T12:31:56.567Z",
-    "Media": {
-        "id": 14,
-        "name": "770baddffd0d7845c103ed0cf941958c_6PdGOz8FP",
-        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/770baddffd0d7845c103ed0cf941958c_6PdGOz8FP",
-        "format": "image/png",
-        "updatedAt": "2023-01-05T12:31:56.556Z",
-        "createdAt": "2023-01-05T12:31:56.556Z"
+    "updatedAt": "2023-01-06T13:17:17.138Z",
+    "createdAt": "2023-01-06T13:17:17.138Z",
+    "MediaId": null,
+    "User": {
+        "id": 1,
+        "username": "Sissie Forrest",
+        "email": "sforrest0@chron.com",
+        "country": "Switzerland",
+        "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+        "phoneNumber": "+1 339 769 7021",
+        "verified": false,
+        "AvatarId": 1,
+        "Avatar": {
+            "id": 1,
+            "name": "avatar",
+            "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt": "2023-01-06T08:46:50.080Z",
+            "updatedAt": "2023-01-06T08:46:50.080Z"
+        },
+        "UserLanguages": [
+            {
+                "id": 3,
+                "type": "interest",
+                "UserId": 1,
+                "LanguageId": 3,
+                "createdAt": "2023-01-06T08:46:50.289Z",
+                "updatedAt": "2023-01-06T08:46:50.289Z",
+                "Language": {
+                    "id": 3,
+                    "name": "Lao",
+                    "createdAt": "2023-01-06T08:46:50.281Z",
+                    "updatedAt": "2023-01-06T08:46:50.281Z"
+                }
+            },
+            {
+                "id": 1,
+                "type": "native",
+                "UserId": 1,
+                "LanguageId": 10,
+                "createdAt": "2023-01-06T08:46:50.289Z",
+                "updatedAt": "2023-01-06T08:46:50.289Z",
+                "Language": {
+                    "id": 10,
+                    "name": "Moldovan",
+                    "createdAt": "2023-01-06T08:46:50.281Z",
+                    "updatedAt": "2023-01-06T08:46:50.281Z"
+                }
+            }
+        ],
+        "UserInterests": [
+            {
+                "id": 1,
+                "UserId": 1,
+                "InterestId": 3,
+                "createdAt": "2023-01-06T08:46:50.298Z",
+                "updatedAt": "2023-01-06T08:46:50.298Z",
+                "Interest": {
+                    "id": 3,
+                    "name": "Anime",
+                    "createdAt": "2023-01-06T08:46:50.295Z",
+                    "updatedAt": "2023-01-06T08:46:50.295Z"
+                }
+            },
+            {
+                "id": 2,
+                "UserId": 1,
+                "InterestId": 2,
+                "createdAt": "2023-01-06T08:46:50.298Z",
+                "updatedAt": "2023-01-06T08:46:50.298Z",
+                "Interest": {
+                    "id": 2,
+                    "name": "PC Master Race",
+                    "createdAt": "2023-01-06T08:46:50.295Z",
+                    "updatedAt": "2023-01-06T08:46:50.295Z"
+                }
+            },
+            {
+                "id": 3,
+                "UserId": 1,
+                "InterestId": 1,
+                "createdAt": "2023-01-06T08:46:50.298Z",
+                "updatedAt": "2023-01-06T08:46:50.298Z",
+                "Interest": {
+                    "id": 1,
+                    "name": "Military History and Wars",
+                    "createdAt": "2023-01-06T08:46:50.295Z",
+                    "updatedAt": "2023-01-06T08:46:50.295Z"
+                }
+            }
+        ]
     }
 }
 ```
