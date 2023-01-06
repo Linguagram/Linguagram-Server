@@ -27,6 +27,15 @@ List of available endpoints:
 - `GET /friends`
 - `POST /friends/:friendId`
 
+- `PATCH /friendships/:userId`
+- `DELETE /friendships/:friendId`
+
+- `POST /groups/:groupId/join`
+- `POST /groups/:groupId/leave`
+- `PUT /groups/:groupId`
+
+- `POST /translate`
+
 &nbsp;
 
 
@@ -1187,8 +1196,22 @@ _Response (200 - OK)_
 ```
 
 
+## 18. PATCH /friendships/:userId
 
 
+## 19. DELETE /friendships/:friendId
+
+
+## 20. POST /groups/:groupId/join
+
+
+## 21. POST /groups/:groupId/leave
+
+
+## 22. PUT /groups/:groupId
+
+
+## 23. POST /translate
 
 
 ## Global Error

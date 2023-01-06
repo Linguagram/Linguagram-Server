@@ -56,6 +56,7 @@ const errorHandler = (err, req, res, next) => {
     "SequelizeUniqueConstraintError"
   ].includes(err.name)) {
     return res.status(400).json({
+      error: true,
       message: err.errors[0]?.message || "Bad Request",
     });
   }

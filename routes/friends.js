@@ -122,4 +122,6 @@ router.delete("/friendships/:friendId", async (req, res, next) => {
   }
 });
 
+// ===================================
+
 module.exports = router;
