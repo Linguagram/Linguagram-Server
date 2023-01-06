@@ -324,7 +324,7 @@ class Controller {
     try {
 
       res.status(200).json({ user: req.userInfo })
-    } catch (error) {
+    } catch (err) {
       next(err)
 
     }
@@ -342,7 +342,7 @@ class Controller {
       }
 
       res.status(200).json({ user })
-    } catch (error) {
+    } catch (err) {
       next(err)
 
     }

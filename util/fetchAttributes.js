@@ -29,11 +29,19 @@ const userFetchAttributes = () => {
       },
       {
         model: UserLanguage,
-        include: [Language],
+        include: [
+          {
+            model: Language,
+          },
+        ],
       },
       {
         model: UserInterest,
-        include: [Interest],
+        include: [
+          {
+            model: Interest,
+          },
+        ],
       },
     ],
   };

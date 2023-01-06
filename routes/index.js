@@ -1,5 +1,6 @@
 "use strict";
 
+const { inspect } = require("util");
 const router = require('express').Router()
 const { authentication } = require('../middlewares/authentication')
 const Controller = require("../controllers");
@@ -10,10 +11,14 @@ const friendsRouter = require("./friends");
 
 // ======= Controller imports
 
+const { Op } = require("sequelize");
+
 const { upload } = require("../util/multer");
 const {
   Language,
   UserLanguage,
+  Interest,
+  User,
 } = require("../models")
 
 const handleUploaded = require('../util/handleUploaded');
@@ -27,6 +32,7 @@ const {
 } = require('../util/validators');
 
 const translate = require('translate-google');
+const { userFetchAttributes } = require('../util/fetchAttributes');
 
 // ======= Controller imports end
 
@@ -128,6 +134,7 @@ router.get("/@me/languages", async (req, res, next) => {
 // /friends routes
 router.use(friendsRouter);
 
+// translate user message
 router.post("/translate", async (req, res, next) => {
   try {
     const { text, from, to } = req.body;
@@ -138,6 +145,76 @@ router.post("/translate", async (req, res, next) => {
     });
 
     res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get all interests
+router.get("/interests", async (req, res, next) => {
+  try {
+    const interests = await Interest.findAll();
+
+    res.status(200).json(interests);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// explore users
+router.get("/explore/users", async (req, res, next) => {
+  try {
+    const opts = userFetchAttributes();
+
+    const includeUserLang = opts.include[1];
+    const includeLang = includeUserLang.include[0];
+
+    includeUserLang.where = {
+      type: "native",
+    };
+
+    const orNatives = [];
+
+    for (const lang of req.userInfo.UserLanguages.filter(uLang => uLang.type === "interest")) {
+      orNatives.push({
+        name: lang.Language.name,
+      });
+    }
+
+    includeLang.where = {
+      [Op.or]: orNatives,
+    };
+
+    const includeInter = opts.include[1].include[0];
+
+    const orInterests = [];
+
+    for (const interest of req.userInfo.UserInterests) {
+      orInterests.push({
+        name: interest.Interest.name,
+      });
+    }
+
+    includeInter.where = {
+      [Op.or]: orInterests,
+    };
+
+    // console.log(opts);
+    console.log(inspect(opts, false, 10, true));
+    const users = await User.findAll(opts);
+
+    res.status(200).json(users);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// explore groups
+router.get("/explore/groups", async (req, res, next) => {
+  try {
+    // const users = await User.findAll(userFetchAttributes());
+    // !TODO
+    // res.status(200).json(users);
   } catch (err) {
     next(err);
   }
