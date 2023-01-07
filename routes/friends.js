@@ -88,6 +88,11 @@ router.patch("/friendships/:userId", async (req, res, next) => {
   try {
     const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId)));
 
+    if (!friendship) throw {
+      status: 404,
+      message: "Friendship not found",
+    };
+
     if (friendship.isAccepted) {
       throw {
         status: 400,
@@ -113,16 +118,13 @@ router.delete("/friendships/:friendId", async (req, res, next) => {
   try {
     const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId)));
 
-    if (friendship.isAccepted) {
-      throw {
-        status: 400,
-        message: "Friend request already accepted",
-      };
-    }
+    if (!friendship) throw {
+      status: 404,
+      message: "Friendship not found",
+    };
 
-    friendship.isAccepted = true;
+    await friendship.destroy();
 
-    await friendship.save();
     friendship.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
     friendship.dataValues.Friend.dataValues.isOnline = isOnline(friendship.Friend.id);
 

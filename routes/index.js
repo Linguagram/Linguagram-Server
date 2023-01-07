@@ -168,10 +168,22 @@ router.use(friendsRouter);
 router.post("/translate", async (req, res, next) => {
   try {
     const { text, from, to } = req.body;
+    if (!text?.length) throw {
+      status: 400,
+      message: "Text is required",
+    };
+
     const nativeLanguages = req.userInfo.UserLanguages.filter(lang => lang.type === "native").map(lang => lang.Language.name);
+    const toLang = to || nativeLanguages[0];
+
+    if (!toLang) throw {
+      status: 400,
+      message: "No target language specified",
+    };
+
     const result = await translate(text, {
       from: from || "auto",
-      to: to || nativeLanguages[0],
+      to: toLang,
     });
 
     res.status(200).json(result);

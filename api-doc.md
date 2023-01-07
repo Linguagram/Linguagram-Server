@@ -245,7 +245,6 @@ OR
 ```
 
 
-
 ## 4. GET /groups/:groupId/messages
 
 Description :
@@ -1474,6 +1473,14 @@ Description :
 
 - Accept friend request
 
+- params :
+
+```json
+{
+    "userId" : "integer"
+}
+```
+
 _Response (200 - OK)_
 
 ```json
@@ -1487,17 +1494,18 @@ _Response (400 - Bad Request)_
 ```json
 {
     "error": true,
-// !TODO
+    "message":  "Invalid userId" 
 }
 ```
 
-_Response (401 - Unauthorized)_
+_Response (404 - Not Found)_
 
 ```json
 {
     "error": true,
-// !TODO
+    "message": "Friendship not found"
 }
+
 ```
 
 
@@ -1505,7 +1513,7 @@ _Response (401 - Unauthorized)_
 
 Description :
 
-- Delete user's avatar
+- Unfriend a friend
 
 Request :
 
@@ -1517,49 +1525,525 @@ Request :
 }
 ```
 
+- params :
+
+```json
+{
+    "friendId" : "integer"
+}
+```
 
 _Response (200 - OK)_
 
 ```json
 {
+// !TODO
 }
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid friendId" 
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Friendship not found"
+}
+
 ```
 
 
 ## 20. POST /groups/:groupId/join
 
+Description :
+
+- Join a group
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId" 
+}
+OR
+{
+    "error": true,
+    "message":  "Already a member" 
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+
+```
+
 
 ## 21. DELETE /groupmembers/:groupId
+
+Description :
+
+- Leave group
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId" 
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+
+```
 
 
 ## 22. PUT /groups/:groupId
 
+Description :
+
+- Edit group
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- params :
+
+```json
+{
+    "groupId" : "integer"
+}
+```
+
+- body:
+
+```json
+{
+    "name": "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId" 
+}
+OR
+{
+    "error": true,
+    "message": "Group name is required"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+
+```
+
 
 ## 23. POST /translate
+
+Description :
+
+- Translate text
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- body:
+
+```json
+{
+    "text": "string | required",
+    "to": "string",
+    "from": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Text is required" 
+}
+OR
+{
+    "error": true,
+    "message": "No target language specified"
+}
+```
 
 
 ## 24. POST /groups
 
+Description :
+
+- Edit group
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- body:
+
+```json
+{
+    "name": "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId" 
+}
+OR
+{
+    "error": true,
+    "message": "Group name is required"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
+}
+
+```
+
 
 ## 25. PATCH /users/status
+
+Description :
+
+- Edit user status
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+- body:
+
+```json
+{
+    "status": "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Status is required" 
+}
+```
 
 
 ## 26. PATCH /groups/:groupId/messages
 
+Description :
+
+- Mark messages as read
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+    "isRead": true
+}
+```
+
 
 ## 27. GET /explore/users
+
+Description :
+
+- Get users to explore
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
 
 
 ## 28. GET /explore/groups
 
+Description :
+
+- Get groups to explore
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
 
 ## 29. GET /interests
+
+Description :
+
+- Get all available interest
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
 
 
 ## 30. GET /users/@me
 
+Description :
+
+- Get current user
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
 
 ## 31. GET /groups/:userId
+
+Description :
+
+- Get DM group with userId
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+
+```
+
+_Response (200 - OK)_
+
+```json
+// !TODO
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message": "Invalid userId"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Group not found"
+}
+```
 
 
 ## Global Error
