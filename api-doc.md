@@ -38,6 +38,11 @@ List of available endpoints:
 - `POST /groups`
 
 - `PATCH /users/status`
+- `PATCH /groups/:groupId/messages`
+
+- `GET /explore/users`
+- `GET /explore/groups`
+- `GET /interests`
 
 &nbsp;
 

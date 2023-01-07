@@ -72,7 +72,7 @@ router.patch("/groups/:groupId/messages", async (req, res, next) => {
         GroupId: groupId,
         isRead: false,
       },
-    })
+    });
 
     res.status(200).json({ isRead: true });
   } catch (err) {

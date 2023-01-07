@@ -34,13 +34,13 @@ const SOCKET_EVENTS = {
 }
 
 /**
- * @type {import("socket.io").Socket}
- */
+* @type {import("socket.io").Socket}
+*/
 let io;
 
 /**
- * @type {Map<number, import("socket.io").Socket>}
- */
+* @type {Map<number, import("socket.io").Socket>}
+*/
 const userSockets = new Map();
 
 // ============= PRIVATE FUNCTIONS =============
@@ -69,10 +69,10 @@ const createServer = (httpServer) => {
 }
 
 /**
- * @param {import("socket.io").Socket} socket
- * @param {SOCKET_EVENTS[keyof SOCKET_EVENTS]} event
- * @param {string} msg
- */
+* @param {import("socket.io").Socket} socket
+* @param {SOCKET_EVENTS[keyof SOCKET_EVENTS]} event
+* @param {string} msg
+*/
 const emitSocket = (socket, event, msg) => {
   if (!(socket instanceof Socket)) throw new TypeError("Expected socket instance of Socket, got " + (typeof socket));
   if (typeof event !== "string") throw new TypeError("Expected event as string, got " + (typeof event));
@@ -84,9 +84,9 @@ const emitSocket = (socket, event, msg) => {
 }
 
 /**
- * @param {SOCKET_EVENTS[keyof SOCKET_EVENTS]} event
- * @param {string} msg
- */
+* @param {SOCKET_EVENTS[keyof SOCKET_EVENTS]} event
+* @param {string} msg
+*/
 const emitGlobal = (event, msg) => {
   for (const [id, socket] of userSockets) {
     emitSocket(socket, event, msg);
@@ -94,8 +94,8 @@ const emitGlobal = (event, msg) => {
 }
 
 /**
- * @param {import("socket.io").Socket} io
- */
+* @param {import("socket.io").Socket} io
+*/
 const loadListeners = () => {
   io.on(SOCKET_EVENTS.CONNECTION, (socket) => {
     socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
@@ -103,36 +103,36 @@ const loadListeners = () => {
       console.log(msg);
 
       try {
-	const json = jParse(msg);
-	const { userId } = json;
-	const mapId = Number(userId);
+        const json = jParse(msg);
+        const { userId } = json;
+        const mapId = Number(userId);
 
-	if (isNaN(mapId)) {
-	  emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
-	    error: true,
-	    message: "Invalid userId",
-	  }));
-	}
+        if (isNaN(mapId)) {
+          emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+            error: true,
+            message: "Invalid userId",
+          }));
+        }
 
-	// save user socket for use
-	userSockets.set(mapId, socket);
+        // save user socket for use
+        userSockets.set(mapId, socket);
       } catch (err) {
-	console.error("[IDENTIFY ERROR]", err);
+        console.error("[IDENTIFY ERROR]", err);
 
-	emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
-	  error: true,
-	  message: "Internal Server Error",
-	}));
+        emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+          error: true,
+          message: "Internal Server Error",
+        }));
       }
     });
 
     socket.on(SOCKET_EVENTS.DISCONNECT, () => {
       let uId;
       for (const [id, usocket] of userSockets) {
-	if (socket.id === usocket.id) {
-	  uId = id;
-	  break;
-	}
+        if (socket.id === usocket.id) {
+          uId = id;
+          break;
+        }
       }
 
       if (uId) userSockets.delete(uId);
@@ -141,8 +141,8 @@ const loadListeners = () => {
     socket.on("callUser", (data) => {
       const userSocket = getUserSocket(data.userToCall);
       io.to(userSocket.id).emit('hey', {
-	signal: data.signalData,
-	from: data.from,
+        signal: data.signalData,
+        from: data.from,
       });
     });
 
@@ -170,8 +170,8 @@ const init = (httpServer) => {
 }
 
 /**
- * @returns {import("socket.io").Socket}
- */
+* @returns {import("socket.io").Socket}
+*/
 const getSocket = () => io;
 
 const getUserSocket = (userId) => {
@@ -180,8 +180,8 @@ const getUserSocket = (userId) => {
 }
 
 /**
- * @returns {Map<number, import("socket.io").Socket>}
- */
+* @returns {Map<number, import("socket.io").Socket>}
+*/
 const getUserSockets = () => userSockets;
 
 const distributeMessage = (groupMembers, data, event) => {
@@ -267,3 +267,5 @@ module.exports = {
   deletedFriendRequest,
   sendGroupUpdate,
 }
+
+// vim: et sw=2 ts=8
