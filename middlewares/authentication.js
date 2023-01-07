@@ -8,7 +8,7 @@ const authentication = async(req, res, next) => {
     const {access_token} = req.headers
     if(!access_token) throw {
       status: 401,
-      message: 'Invalid token',
+      message: 'Invalid Token',
     };
 
     const payload = verifyToken(access_token)
@@ -17,7 +17,7 @@ const authentication = async(req, res, next) => {
 
     if(!theSearchedUser) throw {
       status: 401,
-      message: 'Invalid token',
+      message: 'Invalid Token',
     };
 
     req.userInfo = theSearchedUser;
