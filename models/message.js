@@ -43,7 +43,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: 'Group ID is required'},
         notEmpty: {msg: 'Group ID is required'}
-      }
+      },
+    },
+    isRead: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   }, {
     sequelize,
