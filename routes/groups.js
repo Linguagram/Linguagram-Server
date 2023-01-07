@@ -16,6 +16,7 @@ const {
 const {
   validateGroupId,
   validateMessageId,
+  validateUserId,
 } = require('../util/validators');
 
 const {
@@ -132,7 +133,7 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
     } = req.body;
 
     if(!newAttachment){
-     message.MediaId = null 
+      message.MediaId = null 
     }
 
     if (!content && !newAttachment) {
@@ -272,27 +273,30 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
 });
 
 // leave user group
-router.delete("/groupmembers/:groupMemberId", async (req, res, next) => {
+router.delete("/groups/:groupId/:userId", async (req, res, next) => {
   try {
-    const groupMemberId = validateGroupId(req.params.groupMemberId);
-    const groupMember = await GroupMember.findByPk(groupMemberId, {
-      include: [
-        {
-          model: Group,
-          include: [GroupMember],
+    if (req.userInfo.id !== validateUserId(req.params.userId)) throw {
+      status: 403,
+      message: "Forbidden",
+    };
+
+    const groupId = validateGroupId(req.params.groupId);
+    const groupMember = await GroupMember.findOne({
+      where: {
+        GroupId: groupId,
+        UserId: req.userInfo.id,
         },
-      ],
     });
 
     if (!groupMember) {
       throw {
         status: 404,
-        message: "Unknown Group Member",
+        message: "Unknown Group",
       };
     }
 
     await groupMember.destroy();
-    const members = groupMember.Group.GroupMembers;
+    const members = await getGroupMembers(groupId, req);
 
     res.status(200).json(groupMember);
 
@@ -303,12 +307,43 @@ router.delete("/groupmembers/:groupMemberId", async (req, res, next) => {
 });
 
 // leave user group
+// router.delete("/groupmembers/:groupMemberId", async (req, res, next) => {
+//   try {
+//     const groupMemberId = validateGroupId(req.params.groupMemberId);
+//     const groupMember = await GroupMember.findByPk(groupMemberId, {
+//       include: [
+//         {
+//           model: Group,
+//           include: [GroupMember],
+//         },
+//       ],
+//     });
+
+//     if (!groupMember) {
+//       throw {
+//         status: 404,
+//         message: "Unknown Group Member",
+//       };
+//     }
+
+//     await groupMember.destroy();
+//     const members = groupMember.Group.GroupMembers;
+
+//     res.status(200).json(groupMember);
+
+//     sendGroupLeave(members, groupMember);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// leave user group
 // router.delete("/groups/:groupId/@me", async (req, res, next) => {
 //   try {
 //     const groupId = validateGroupId(req.params.groupId);
 //     const groupMember = await GroupMember.findOne({
 //       where: {
-//         GroupId: validateGroupId(req.params.groupId),
+//         GroupId: groupId,
 //         UserId: req.userInfo.id,
 //       },
 //     });

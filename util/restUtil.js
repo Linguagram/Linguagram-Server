@@ -6,6 +6,7 @@ const {
   Message,
   GroupMember,
   Group,
+  sequelize,
 } = require("../models");
 const { userFetchAttributes } = require("./fetchAttributes");
 
@@ -48,6 +49,14 @@ const getGroupMembersFromUserId = async (userId) => {
             model: GroupMember,
             include: [User],
           },
+          [
+            sequelize.literal(`(
+              SELECT COUNT(*)
+              FROM "Messages"
+              WHERE "Messages"."isRead" = FALSE
+            )`),
+            'unreadMessageCount'
+          ],
         ],
       },
       {
