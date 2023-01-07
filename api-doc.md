@@ -1448,8 +1448,60 @@ _Response (200 - OK)_
 
 ## 18. PATCH /friendships/:userId
 
+Description :
+
+- Accept friend request
+
+_Response (200 - OK)_
+
+```json
+{
+// !TODO
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+// !TODO
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "error": true,
+// !TODO
+}
+```
+
 
 ## 19. DELETE /friendships/:friendId
+
+Description :
+
+- Delete user's avatar
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required"
+}
+```
+
+
+_Response (200 - OK)_
+
+```json
+{
+}
+```
 
 
 ## 20. POST /groups/:groupId/join

@@ -52,7 +52,9 @@ const getGroupMembersFromUserId = async (userId) => {
               sequelize.literal(`(
                 SELECT COUNT(*)
                 FROM "Messages"
-                WHERE "Messages"."isRead" = FALSE AND "Messages"."UserId" != ${userId}
+                WHERE "Messages"."isRead" = FALSE
+                AND "Messages"."UserId" != ${userId}
+                AND "Messages"."GroupId" != "Groups"."id"
               )`),
               'unreadMessageCount'
             ],
