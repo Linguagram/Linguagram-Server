@@ -43,6 +43,8 @@ router.use(authentication);
 
 router.post("/users/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
+    const userId = req.userInfo.id;
+
     if (!req.file) {
       throw {
         status: 400,
@@ -52,7 +54,7 @@ router.post("/users/avatar", upload.single("avatar"), async (req, res, next) => 
 
     const newAvatar = await handleUploaded(req.file);
 
-    const user = await getUser(req.userInfo.id);
+    const user = await getUser(userId);
 
     user.AvatarId = newAvatar.id;
 
@@ -66,10 +68,38 @@ router.post("/users/avatar", upload.single("avatar"), async (req, res, next) => 
   }
 });
 
+// pathc user status
+router.patch("/users/status", async (req, res, next) => {
+  try {
+    const { status } = req.body;
+
+    if (!status?.length) {
+      throw {
+        status: 400,
+        message: "Status is required",
+      };
+    }
+
+    const userId = req.userInfo.id;
+
+    const user = await getUser(userId);
+
+    user.status = status;
+
+    await user.save();
+
+    res.status(201).json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // delete avatar
 router.delete("/users/avatar", async (req, res, next) => {
   try {
-    const user = await getUser(req.userInfo.id);
+    const userId = req.userInfo.id;
+
+    const user = await getUser(userId);
 
     user.AvatarId = null;
 

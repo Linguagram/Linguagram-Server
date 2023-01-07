@@ -37,6 +37,8 @@ List of available endpoints:
 - `POST /translate`
 - `POST /groups`
 
+- `PATCH /users/status`
+
 &nbsp;
 
 
