@@ -8,7 +8,6 @@ const http = require('http');
 const { init } = require('./util/ws');
 const express = require('express')
 const app = express()
-const port = 3000
 
 const routes = require('./routes')
 const {errorHandler} = require('./middlewares/errorHandler')
