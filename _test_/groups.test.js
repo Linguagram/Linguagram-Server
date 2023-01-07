@@ -244,7 +244,7 @@ describe("test API groups", () => {
     })
 
     describe("POST /groups/:groupId/messages", () => {
-        test.skip("success sending message with content and a file to one group and response 200", () => {
+        test("success sending message with content and a file to one group and response 200", () => {
             return request(app)
                 .post('/groups/1/messages')
                 .set({ "access_token": access_token })
@@ -541,7 +541,7 @@ describe("test API groups", () => {
     })
 
     describe("POST /users/avatar", () => {
-        test.skip("succeed on posting avatar and response 201", () => {
+        test("succeed on posting avatar and response 201", () => {
             return request(app)
                 .post('/users/avatar')
                 .set("access_token", access_token)

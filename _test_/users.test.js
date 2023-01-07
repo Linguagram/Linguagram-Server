@@ -481,7 +481,7 @@ describe("test api user", () => {
         })
     })
 
-    describe.only("PUT /users/@me", () => {
+    describe("PUT /users/@me", () => {
         test("succeed on updating user's profile and response 200", () => {
             return request(app)
                 .put('/users/@me')

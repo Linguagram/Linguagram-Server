@@ -268,7 +268,17 @@ router.get("/explore/users", async (req, res, next) => {
 router.get("/explore/groups", async (req, res, next) => {
   try {
     const groups = await Group.findAll({
-      include: [GroupMember],
+      include: [
+        {
+          model: GroupMember,
+          include: [
+            {
+              ...userFetchAttributes(),
+              model: User,
+            },
+          ],
+        },
+      ],
     });
 
     res.status(200).json(groups);
