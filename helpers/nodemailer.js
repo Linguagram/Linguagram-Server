@@ -1,6 +1,7 @@
 "use strict";
 
 const nodemailer = require("nodemailer");
+const { CLIENT_URL } = process.env;
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -35,13 +36,13 @@ const sendNewFriendReqMail = async (recipientEmail, username, link) => {
     from: `"Linguagram 🛰" <do-not-reply@linguagram.com>`, // sender address
     to: `${recipientEmail}`, // list of receivers
     subject: "New Friend Request", // Subject line
-    html: `<b>${username}, You've got a Friend Request!
+    html: `<b>${username}, You've got a friend request!
             <br>
             <br>
-            Welcome to Linguagram! Please click the link below to verify your email address in order to complete the registration.</b>
+            Your new friend are waiting for you to accept their friend request! Click the link below to go to Linguagram.</b>
             <br>
             <br>
-            <a href=${link} style='color: blue; text-decoration-line:underline;'><b>Verify your email address</b></a>
+            <a href=${CLIENT_URL} style='color: blue; text-decoration-line:underline;'><b>Linguagram</b></a>
             ` // html body
   });
 };

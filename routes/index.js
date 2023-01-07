@@ -19,6 +19,8 @@ const {
   UserLanguage,
   Interest,
   User,
+  Group,
+  GroupMember,
 } = require("../models")
 
 const handleUploaded = require('../util/handleUploaded');
@@ -212,9 +214,11 @@ router.get("/explore/users", async (req, res, next) => {
 // explore groups
 router.get("/explore/groups", async (req, res, next) => {
   try {
-    // const users = await User.findAll(userFetchAttributes());
-    // !TODO
-    // res.status(200).json(users);
+    const groups = await Group.findAll({
+      include: [GroupMember],
+    });
+
+    res.status(200).json(groups);
   } catch (err) {
     next(err);
   }
