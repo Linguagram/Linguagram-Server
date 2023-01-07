@@ -94,8 +94,10 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     if (newAttachment?.id) {
       newMessage.dataValues.Medium = newAttachment;
     }
+    console.log(req.userInfo,'<<<<userInfo');
+    console.log(newMessage.Users,'<<<<new');
 
-    // newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.User.id); // masih error tidak ada id di newMessage.User
+    newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
 
     sendMessage(groupMembers, newMessage);
 
@@ -184,6 +186,7 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
     const groupId = validateGroupId(req.params.groupId);
     const messageId = validateMessageId(req.params.messageId);
 
+    const groupMembers = await getGroupMembers(groupId, req);
     const message = await getMessage(messageId, groupId);
     if (message.deleted) {
       throw {
@@ -191,7 +194,6 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
         message: "This message has already been deleted",
       };
     }
-    const groupMembers = await getGroupMembers(groupId, req);
 
     message.deleted = true;
     await message.save();

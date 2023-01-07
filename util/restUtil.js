@@ -9,6 +9,7 @@ const {
   Group,
   sequelize,
 } = require("../models");
+
 const { userFetchAttributes } = require("./fetchAttributes");
 
 const handleUploaded = require("./handleUploaded");

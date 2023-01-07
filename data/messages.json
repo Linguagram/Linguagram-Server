@@ -15,7 +15,8 @@
         "content": "I have the high ground",
         "MediaId": null,
         "UserId": 1,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted" : true
     },
     {
         "content": "But I have the death star cannon",

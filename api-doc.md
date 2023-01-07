@@ -805,7 +805,106 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id": 1
+    "id": 1,
+    "deleted": true,
+    "Group": {
+        "id": 1,
+        "name": "private",
+        "type": "dm",
+        "createdAt": "2023-01-07T04:59:24.335Z",
+        "updatedAt": "2023-01-07T04:59:24.335Z"
+    },
+    "UserId": 1,
+    "User": {
+        "id": 1,
+        "username": "Sissie Forrest",
+        "email": "sforrest0@chron.com",
+        "country": "Switzerland",
+        "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+        "phoneNumber": "+1 339 769 7021",
+        "verified": true,
+        "AvatarId": 1,
+        "Avatar": {
+            "id": 1,
+            "name": "avatar",
+            "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt": "2023-01-07T04:59:24.138Z",
+            "updatedAt": "2023-01-07T04:59:24.138Z"
+        },
+        "UserLanguages": [
+            {
+                "id": 3,
+                "type": "interest",
+                "UserId": 1,
+                "LanguageId": 3,
+                "createdAt": "2023-01-07T04:59:24.358Z",
+                "updatedAt": "2023-01-07T04:59:24.358Z",
+                "Language": {
+                    "id": 3,
+                    "name": "Lao",
+                    "createdAt": "2023-01-07T04:59:24.346Z",
+                    "updatedAt": "2023-01-07T04:59:24.346Z"
+                }
+            },
+            {
+                "id": 1,
+                "type": "native",
+                "UserId": 1,
+                "LanguageId": 10,
+                "createdAt": "2023-01-07T04:59:24.358Z",
+                "updatedAt": "2023-01-07T04:59:24.358Z",
+                "Language": {
+                    "id": 10,
+                    "name": "Moldovan",
+                    "createdAt": "2023-01-07T04:59:24.346Z",
+                    "updatedAt": "2023-01-07T04:59:24.346Z"
+                }
+            }
+        ],
+        "UserInterests": [
+            {
+                "id": 1,
+                "UserId": 1,
+                "InterestId": 3,
+                "createdAt": "2023-01-07T04:59:24.369Z",
+                "updatedAt": "2023-01-07T04:59:24.369Z",
+                "Interest": {
+                    "id": 3,
+                    "name": "Anime",
+                    "createdAt": "2023-01-07T04:59:24.366Z",
+                    "updatedAt": "2023-01-07T04:59:24.366Z"
+                }
+            },
+            {
+                "id": 2,
+                "UserId": 1,
+                "InterestId": 2,
+                "createdAt": "2023-01-07T04:59:24.369Z",
+                "updatedAt": "2023-01-07T04:59:24.369Z",
+                "Interest": {
+                    "id": 2,
+                    "name": "PC Master Race",
+                    "createdAt": "2023-01-07T04:59:24.366Z",
+                    "updatedAt": "2023-01-07T04:59:24.366Z"
+                }
+            },
+            {
+                "id": 3,
+                "UserId": 1,
+                "InterestId": 1,
+                "createdAt": "2023-01-07T04:59:24.369Z",
+                "updatedAt": "2023-01-07T04:59:24.369Z",
+                "Interest": {
+                    "id": 1,
+                    "name": "Military History and Wars",
+                    "createdAt": "2023-01-07T04:59:24.366Z",
+                    "updatedAt": "2023-01-07T04:59:24.366Z"
+                }
+            }
+        ],
+        "isOnline": false
+    }
 }
 ```
 
@@ -1354,10 +1453,11 @@ _Response (200 - OK)_
 ## 19. DELETE /friendships/:friendId
 
 
+
 ## 20. POST /groups/:groupId/join
 
 
-## 21. POST /groups/:groupId/leave
+## 21. DELETE /groupmembers/:groupId
 
 
 ## 22. PUT /groups/:groupId
@@ -1367,6 +1467,8 @@ _Response (200 - OK)_
 
 
 ## 24. POST /groups
+
+## 25. GET /explore/groups
 
 
 ## Global Error

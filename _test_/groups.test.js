@@ -39,7 +39,7 @@ beforeAll(async () => {
     }))
 
 
-    access_token = signToken({id:1})
+    access_token = signToken({ id: 1 })
 
 
 
@@ -243,8 +243,6 @@ describe("test API groups", () => {
 
     })
 
-
-
     describe("POST /groups/:groupId/messages", () => {
         test("success sending message with content and a file to one group and response 200", () => {
             return request(app)
@@ -253,7 +251,7 @@ describe("test API groups", () => {
                 .field('content', 'test content')
                 .attach('attachment', '_test_/testFile.png')
                 .then(res => {
-                    console.log(res.body,"<<<res");
+                    console.log(res.body, "<<<res");
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
                     expect(res.body).toHaveProperty("Medium", expect.any(Object))
@@ -351,7 +349,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting a message and response 400 because the user is not a member of the gropu", () => {
+        test("failed getting a message and response 404 because the message doesn't exist", () => {
             return request(app)
                 .get('/groups/1/messages/12')
                 .set("access_token", access_token)
@@ -366,10 +364,13 @@ describe("test API groups", () => {
 
 
     describe("PUT /groups/:groupId/messages/:messageId", () => {
-        test.only("edit a message of one group and response 200", () => {
+        test("succeed on updating a message of one group and response 200", () => {
             return request(app)
                 .put('/groups/1/messages/1')
                 .set("access_token", access_token)
+                .send({
+                    content: 'testing'
+                })
                 .then(res => {
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Object))
@@ -379,15 +380,78 @@ describe("test API groups", () => {
                     expect(res.body).toHaveProperty("User", expect.any(Object))
                     expect(res.body).toHaveProperty("Group", expect.any(Object))
                     expect(res.body.User).toHaveProperty("id", expect.any(Number))
-                    expect(res.body.Group).toHaveProperty("id", expect.any(Number))
                     expect(res.body.User).toHaveProperty("UserLanguages", expect.any(Array))
-                    expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
+                    expect(res.body.Group).toHaveProperty("id", expect.any(Number))
+                    expect(res.body.Medium).toEqual(undefined)
                 })
         })
 
-        test("failed getting messsages and response 404 because the user is not a member of the group", () => {
+        test("failed on updating a messsage and response 404 because the user is not a member of the group", () => {
             return request(app)
                 .put('/groups/21/messages/12')
+                .set("access_token", access_token)
+                .send({
+                    content: 'testing'
+                })
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown Group')
+                })
+        })
+
+        test("failed on updating a messsage and response 400 because there is no file or text content was sent", () => {
+            return request(app)
+                .put('/groups/1/messages/1')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual("One upload or text content is required")
+                })
+        })
+
+        test("failed on updating messsages and response 400 because the parameter group id is not a number", () => {
+            return request(app)
+                .put('/groups/test/messages/1')
+                .set("access_token", access_token)
+                .send({
+                    content: 'testing'
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid groupId')
+                })
+        })
+
+        test("failed on deleting a message and response 404 because the message doesn't exist in the first place", () => {
+            return request(app)
+                .put('/groups/1/messages/12')
+                .set("access_token", access_token)
+                .send({
+                    content: 'testing'
+                })
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown message')
+                })
+        })
+  
+
+
+    })
+
+    describe("DELETE /groups/:groupId/messages/:messageId", () => {
+
+        test("failed on deleting a messsage and response 404 because the user is not a member of the group", () => {
+            return request(app)
+                .delete('/groups/4/messages/9')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(404)
@@ -397,9 +461,9 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
+        test("failed on deleting a messsage and response 400 because the parameter group id is not a number", () => {
             return request(app)
-                .put('/groups/test/messages/12')
+                .delete('/groups/test/messages/12')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -409,9 +473,21 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
+        test("failed on deleting a messsage and response 400 because the message has already been deleted", () => {
             return request(app)
-                .put('/groups/1/messages/12')
+                .delete('/groups/1/messages/3')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('This message has already been deleted')
+                })
+        })
+
+        test("failed on deleting a message and response 404 because the message doesn't exist", () => {
+            return request(app)
+                .delete('/groups/1/messages/12')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(404)
@@ -421,8 +497,40 @@ describe("test API groups", () => {
                 })
         })
 
-
+        test("succeed on deleting a message of one group and response 200", () => {
+            return request(app)
+                .delete('/groups/1/messages/1')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body).toHaveProperty("User", expect.any(Object))
+                    expect(res.body).toHaveProperty("Group", expect.any(Object))
+                    expect(res.body.User).toHaveProperty("id", expect.any(Number))
+                    expect(res.body.User).toHaveProperty("UserLanguages", expect.any(Array))
+                    expect(res.body.Group).toHaveProperty("id", expect.any(Number))
+                    expect(res.body.Medium).toEqual(undefined)
+                    expect(res.body.MediaId).toEqual(undefined)
+                    expect(res.body.content).toEqual(undefined)
+                })
+        })
     })
 
-    
+    describe.skip("GET /groups", () => {
+
+        test("succeed on getting group list the user is a member of and response 200", () => {
+            return request(app)
+                .get('/groups')
+                .set("access_token-", access_token)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown Group')
+                })
+        })     
+    })
+
+
 })
