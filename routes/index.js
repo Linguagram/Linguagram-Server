@@ -38,10 +38,10 @@ const { userFetchAttributes } = require('../util/fetchAttributes');
 
 // ======= Controller imports end
 
-router.use(userRouter)
-router.use(authentication)
+router.use(userRouter);
+router.use(authentication);
 
-router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
+router.post("/users/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
     if (!req.file) {
       throw {
@@ -67,7 +67,7 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
 });
 
 // delete avatar
-router.delete("/avatar", async (req, res, next) => {
+router.delete("/users/avatar", async (req, res, next) => {
   try {
     const user = await getUser(req.userInfo.id);
 
@@ -80,6 +80,9 @@ router.delete("/avatar", async (req, res, next) => {
     next(err);
   }
 });
+
+router.put("/users/@me", Controller.editMe);
+router.get("/users/@me", Controller.getUser);
 
 // /groups path
 router.use(groupsRouter);
@@ -112,13 +115,8 @@ router.get("/languages", async (req, res, next) => {
   }
 });
 
-// edit user
-router.put("/users/@me", Controller.editMe);
-router.get("/users/@me", Controller.getUser);
-router.get("/users/:id", Controller.getUser);
-
 // get user languages
-router.get("/@me/languages", async (req, res, next) => {
+router.get("/languages/@me", async (req, res, next) => {
   try {
     const languages = await UserLanguage.findAll({
       where: {

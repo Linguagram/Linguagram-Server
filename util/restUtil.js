@@ -10,13 +10,14 @@ const {
 const { userFetchAttributes } = require("./fetchAttributes");
 
 const handleUploaded = require("./handleUploaded");
+const { isOnline } = require("./ws");
 
 const getGroupMembers = async (groupId, req) => {
   const groupMembers = await GroupMember.findAll({
     where: {
       GroupId: groupId,
     },
-    include: [Group],
+    include: [Group, User],
   });
 
   // check if user is actually in the group
@@ -25,6 +26,10 @@ const getGroupMembers = async (groupId, req) => {
       status: 404,
       message: "Unknown Group",
     };
+  }
+
+  for (const gm of groupMembers) {
+    gm.User.dataValues.isOnline = isOnline(gm.UserId);
   }
 
   return groupMembers;
@@ -38,10 +43,26 @@ const getGroupMembersFromUserId = async (userId) => {
     include: [
       {
         model: Group,
-        include: [GroupMember]
+        include: [
+          {
+            model: GroupMember,
+            include: [User],
+          },
+        ],
+      },
+      {
+        model: User,
       },
     ],
   });
+
+  for (const gm of groupMembers) {
+    gm.User.dataValues.isOnline = isOnline(gm.UserId);
+
+    for (const gm2 of gm.Group.GroupMembers) {
+      gm2.User.dataValues.isOnline = isOnline(gm2.UserId);
+    }
+  }
 
   return groupMembers;
 }
@@ -63,7 +84,8 @@ const getMessages = async (groupId) => {
   });
 
   return messages.map(message => {
-    message.edited = message.createdAt !== message.updatedAt;
+    message.dataValues.edited = message.createdAt !== message.updatedAt;
+    message.User.dataValues.isOnline = isOnline(message.UserId);
 
     return message;
   });
@@ -93,6 +115,8 @@ const getMessage = async (messageId, groupId) => {
 
   message.dataValues.edited = message.createdAt !== message.updatedAt;
 
+  message.User.dataValues.isOnline = isOnline(message.UserId);
+
   return message;
 }
 
@@ -104,7 +128,11 @@ const fileAction = async (req) => {
 }
 
 const getUser = async (userId) => {
-  return User.findByPk(userId, userFetchAttributes(Media));
+  const user = await User.findByPk(userId, userFetchAttributes(Media));
+
+  user.dataValues.isOnline = isOnline(user.id);
+
+  return user;
 }
 
 const getGroup = async (groupId) => {

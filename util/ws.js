@@ -144,7 +144,7 @@ const loadListeners = () => {
 
 const isOnline = (userId) => {
   userId = validateUserId(userId);
-  return userSockets.get(userId);
+  return !!userSockets.get(userId);
 }
 
 const init = (httpServer) => {
@@ -226,6 +226,10 @@ const acceptedFriendRequest = (to, data) => {
 const deletedFriendRequest = (to, data) => {
   return distributeFriendship(to, data, SOCKET_EVENTS.FRIEND_REQUEST_DELETE);
 }
+
+const userOnline = () => {};
+
+const userOffline = () => {};
 
 module.exports = {
   SOCKET_EVENTS,

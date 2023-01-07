@@ -21,6 +21,8 @@ const { signToken, verifyToken } = require('../helpers/jwt')
 const { sendMail } = require('../helpers/nodemailer');
 const { userFetchAttributes } = require('../util/fetchAttributes');
 
+const { CLIENT_URL } = process.env;
+
 class Controller {
 
   // USERS
@@ -111,7 +113,7 @@ class Controller {
       console.log(newUser);
 
       const verificationId = signToken(newUser.id)
-      const link = `http://localhost:3000/users/verify?verification=${verificationId}`
+      const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
       sendMail(newUser.email, newUser.username, link)
 
       const payload = {
@@ -268,7 +270,7 @@ class Controller {
 
       if (!loggedInUser.verified) {
         const verificationId = signToken(loggedInUser.id)
-        const link = `http://localhost:3000/users/verify?verification=${verificationId}`
+        const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
         sendMail(loggedInUser.email, loggedInUser.username, link)
         throw {
           status: 401,
@@ -322,33 +324,11 @@ class Controller {
 
   static async getUser(req, res, next) {
     try {
-
-      res.status(200).json({ user: req.userInfo })
+      res.status(200).json(req.userInfo)
     } catch (err) {
       next(err)
-
     }
   }
-
-  static async getUserId(req, res, next) {
-    try {
-      const { id } = req.params
-      const user = await User.findByPk(id)
-      if (!user) {
-        throw {
-          status: 404,
-          message: 'User is not found',
-        };
-      }
-
-      res.status(200).json({ user })
-    } catch (err) {
-      next(err)
-
-    }
-  }
-
-
 }
 
 module.exports = Controller

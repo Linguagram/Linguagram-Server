@@ -9,6 +9,8 @@ const { upload } = require("../util/multer");
 const {
   Message,
   GroupMember,
+  Group,
+  sequelize,
 } = require("../models");
 
 const {
@@ -144,8 +146,6 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       message.MediaId = newAttachment.id;
     }
 
-    
-
     message.content = content;
 
     await message.save();
@@ -173,7 +173,7 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
     const messageId = validateMessageId(req.params.messageId);
 
     const message = await getMessage(messageId, groupId);
-    if(message.deleted){
+    if (message.deleted) {
       throw {
         status: 400,
         message: "This message has already been deleted",
@@ -186,7 +186,10 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 
     const response = {
       id: message.id,
+      deleted: true,
+      Group: message.Group,
       UserId: req.userInfo.id,
+      User: message.User,
     };
 
     deleteMessage(groupMembers, response);
@@ -213,7 +216,28 @@ router.post("/groups", async (req, res, next) => {
   try {
     const { name, type } = req.body;
 
-    // res.status(200).json(groupMembers.map(gm => gm.Group));
+    let group, groupMembers;
+
+    await sequelize.transaction(async (t) => {
+      // begin transaction
+      group = await Group.create({
+        name,
+        type,
+      }, {
+          transaction: t
+        });
+
+      groupMembers = await GroupMember.create({
+        UserId: req.userInfo.id,
+        GroupId: group.id,
+      }, {
+          transaction: t
+        });
+    });
+
+    group.dataValues.GroupMembers = groupMembers;
+
+    res.status(201).json(group);
   } catch (err) {
     next(err);
   }
@@ -248,25 +272,27 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
 });
 
 // leave user group
-router.delete("/groups/:groupId/@me", async (req, res, next) => {
+router.delete("/groupmembers/:groupMemberId", async (req, res, next) => {
   try {
-    const groupId = validateGroupId(req.params.groupId);
-    const groupMember = await GroupMember.findOne({
-      where: {
-        GroupId: validateGroupId(req.params.groupId),
-        UserId: req.userInfo.id,
-      },
+    const groupMemberId = validateGroupId(req.params.groupMemberId);
+    const groupMember = await GroupMember.findByPk(groupMemberId, {
+      include: [
+        {
+          model: Group,
+          include: [GroupMember],
+        },
+      ],
     });
 
     if (!groupMember) {
       throw {
         status: 404,
-        message: "Unknown Group",
+        message: "Unknown Group Member",
       };
     }
 
     await groupMember.destroy();
-    const members = await getGroupMembers(groupId, req);
+    const members = groupMember.Group.GroupMembers;
 
     res.status(200).json(groupMember);
 
@@ -275,6 +301,35 @@ router.delete("/groups/:groupId/@me", async (req, res, next) => {
     next(err);
   }
 });
+
+// leave user group
+// router.delete("/groups/:groupId/@me", async (req, res, next) => {
+//   try {
+//     const groupId = validateGroupId(req.params.groupId);
+//     const groupMember = await GroupMember.findOne({
+//       where: {
+//         GroupId: validateGroupId(req.params.groupId),
+//         UserId: req.userInfo.id,
+//       },
+//     });
+
+//     if (!groupMember) {
+//       throw {
+//         status: 404,
+//         message: "Unknown Group",
+//       };
+//     }
+
+//     await groupMember.destroy();
+//     const members = await getGroupMembers(groupId, req);
+
+//     res.status(200).json(groupMember);
+
+//     sendGroupLeave(members, groupMember);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 router.put("/groups/:groupId", async (req, res, next) => {
   try {
