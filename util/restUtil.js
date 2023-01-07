@@ -1,5 +1,6 @@
 "use strict";
 
+const { Op } = require("sequelize");
 const {
   Media,
   User,
@@ -157,6 +158,33 @@ const getGroup = async (groupId) => {
   return group;
 }
 
+const getDmGroup = async (userId, friendId) => {
+  const group = await Group.findAll({
+    include: [
+      {
+        model: GroupMember,
+        where: {
+          [Op.or]: [
+            {
+              UserId: userId,
+            },
+            {
+              UserId: friendId,
+            },
+          ],
+        },
+      },
+    ],
+  }).filter(g => g.GroupMembers.length === 2)[0];
+
+  if (!group) throw {
+    status: 404,
+    message: "Group not found",
+  };
+
+  return group;
+}
+
 module.exports = {
   getGroupMembers,
   getMessage,
@@ -165,4 +193,5 @@ module.exports = {
   getGroupMembersFromUserId,
   getUser,
   getGroup,
+  getDmGroup,
 }

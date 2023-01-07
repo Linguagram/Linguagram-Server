@@ -31,7 +31,7 @@ List of available endpoints:
 - `DELETE /friendships/:friendId`
 
 - `POST /groups/:groupId/join`
-- `POST /groups/:groupId/leave`
+- `DELETE /groupmembers/:groupId`
 - `PUT /groups/:groupId`
 
 - `POST /translate`

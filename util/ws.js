@@ -46,11 +46,13 @@ const userSockets = new Map();
 // ============= PRIVATE FUNCTIONS =============
 
 const jString = (object) => {
-  return JSON.stringify(object);
+  return object;
+  // return JSON.stringify(object);
 }
 
 const jParse = (str) => {
-  return JSON.parse(str);
+  return str;
+  // return JSON.parse(str);
 }
 
 const validateUserId = (userId) => {
@@ -134,6 +136,19 @@ const loadListeners = () => {
       }
 
       if (uId) userSockets.delete(uId);
+    });
+
+    socket.on("callUser", (data) => {
+      const userSocket = getUserSocket(data.userToCall);
+      io.to(userSocket.id).emit('hey', {
+	signal: data.signalData,
+	from: data.from,
+      });
+    });
+
+    socket.on("acceptCall", (data) => {
+      const userSocket = getUserSocket(data.to.id);
+      io.to(userSocket.id).emit('callAccepted', data.signal);
     });
   });
 

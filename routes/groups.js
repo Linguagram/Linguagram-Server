@@ -37,6 +37,7 @@ const {
   fileAction,
   getMessages,
   getGroup,
+  getDmGroup,
 } = require("../util/restUtil");
 const { userFetchAttributes } = require("../util/fetchAttributes");
 
@@ -226,7 +227,14 @@ router.get("/groups/@me", async (req, res, next) => {
 // create groups
 router.post("/groups", async (req, res, next) => {
   try {
-    const { name, type } = req.body;
+    const { name } = req.body;
+
+    if (!name?.length) {
+      throw {
+        status: 400,
+        message: "Group name is required",
+      };
+    }
 
     let group, groupMember;
 
@@ -234,7 +242,7 @@ router.post("/groups", async (req, res, next) => {
       // begin transaction
       group = await Group.create({
         name,
-        type,
+        type: "group",
       }, {
           transaction: t
         });
@@ -294,13 +302,8 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
 });
 
 // leave user group
-router.delete("/groups/:groupId/:userId", async (req, res, next) => {
+router.delete("/groupmembers/:groupId", async (req, res, next) => {
   try {
-    if (req.userInfo.id !== validateUserId(req.params.userId)) throw {
-      status: 403,
-      message: "Forbidden",
-    };
-
     const groupId = validateGroupId(req.params.groupId);
     const groupMember = await GroupMember.findOne({
       where: {
@@ -386,6 +389,19 @@ router.delete("/groups/:groupId/:userId", async (req, res, next) => {
 //     next(err);
 //   }
 // });
+
+router.get("/groups/:userId", async (req, res, next) => {
+  try {
+    // strict check groupId
+    const userId = validateUserId(req.params.userId);
+
+    const group = await getDmGroup(req.userInfo.id, userId);
+
+    res.status(200).json(group);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.put("/groups/:groupId", async (req, res, next) => {
   try {
