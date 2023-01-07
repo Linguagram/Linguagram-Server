@@ -91,7 +91,7 @@ const getMessage = async (messageId, groupId) => {
     };
   }
 
-  message.edited = message.createdAt !== message.updatedAt;
+  message.dataValues.edited = message.createdAt !== message.updatedAt;
 
   return message;
 }

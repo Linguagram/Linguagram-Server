@@ -129,6 +129,10 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       content,
     } = req.body;
 
+    if(!newAttachment){
+     message.MediaId = null 
+    }
+
     if (!content && !newAttachment) {
       throw {
         status: 400,
@@ -140,6 +144,8 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       message.MediaId = newAttachment.id;
     }
 
+    
+
     message.content = content;
 
     await message.save();
@@ -150,7 +156,7 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       message.dataValues.Medium = newAttachment;
     }
 
-    message.edited = true;
+    message.dataValues.edited = true;
 
     editMessage(groupMembers, message);
 

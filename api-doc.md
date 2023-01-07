@@ -574,11 +574,6 @@ _Response (404 - Not Found)_
     "error": true,
     "message": "Unknown Group"
 }
-OR
-{
-    "error": true,
-    "message": "Unknown message"
-}
 ```
 
 
@@ -715,7 +710,7 @@ _Response (200 - OK)_
 ```json
 {
     "id": 1,
-    "content": "222what in the flying hell",
+    "content": "testing later",
     "deleted": false,
     "MediaId": 1,
     "UserId": 1,
