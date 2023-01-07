@@ -7,39 +7,29 @@ List of available endpoints:
 - `POST /users/register`
 - `POST /users/login`
 - `POST /users/verify`
-
 - `GET /groups/:groupId/messages`
 - `POST /groups/:groupId/messages`
 - `GET /groups/:groupId/messages/:messageId`
-
 - `PUT /groups/:groupId/messages/:messageId`
 - `DELETE /groups/:groupId/messages/:messageId`
-
 - `GET /groups/@me`
 - `POST /users/avatar`
-- `DELETE /users/avatar`
 - `GET /users/:userId`
-
 - `GET /languages`
 - `PUT /users/@me`
 - `GET /languages/@me`
-
 - `GET /friends`
 - `POST /friends/:friendId`
-
+- `DELETE /users/avatar`
 - `PATCH /friendships/:userId`
 - `DELETE /friendships/:friendId`
-
 - `POST /groups/:groupId/join`
 - `DELETE /groupmembers/:groupId`
 - `PUT /groups/:groupId`
-
 - `POST /translate`
 - `POST /groups`
-
 - `PATCH /users/status`
 - `PATCH /groups/:groupId/messages`
-
 - `GET /explore/users`
 - `GET /explore/groups`
 - `GET /interests`
@@ -49,7 +39,7 @@ List of available endpoints:
 &nbsp;
 
 
-## 1. POST /register
+## 1. POST /users/register
 
 Description :
 
@@ -140,7 +130,7 @@ OR
 ```
 
 
-## 2. POST /login
+## 2. POST /users/login
 
 Description :
 
@@ -206,7 +196,7 @@ OR
 ```
 
 
-## 3. POST /verify
+## 3. POST /users/verify
 
 Description :
 
@@ -946,7 +936,7 @@ OR
 ```
 
 
-## 9. GET /groups
+## 9. GET /groups/@me
 
 Description :
 
@@ -998,7 +988,7 @@ _Response (200 - OK)_
 ```
 
 
-## 10. POST /avatar
+## 10. POST /users/avatar
 
 Description :
 
@@ -1157,7 +1147,7 @@ _Response (200 - OK)_
 ```
 
 
-## 13. PUT /@me
+## 13. PUT /users/@me
 
 Description :
 
@@ -1278,7 +1268,7 @@ _Response (401 - Unauthorized)_
 ```
 
 
-## 14. GET /@me/languages
+## 14. GET /languages/@me
 
 Description :
 
@@ -1414,7 +1404,7 @@ _Response (200 - OK)_
 }
 ```
 
-## 17. DELETE /avatar
+## 17. DELETE /users/avatar
 
 Description :
 
@@ -1462,7 +1452,6 @@ _Response (200 - OK)_
 ## 19. DELETE /friendships/:friendId
 
 
-
 ## 20. POST /groups/:groupId/join
 
 
@@ -1477,7 +1466,26 @@ _Response (200 - OK)_
 
 ## 24. POST /groups
 
-## 25. GET /explore/groups
+
+## 25. PATCH /users/status
+
+
+## 26. PATCH /groups/:groupId/messages
+
+
+## 27. GET /explore/users
+
+
+## 28. GET /explore/groups
+
+
+## 29. GET /interests
+
+
+## 30. GET /users/@me
+
+
+## 31. GET /groups/:userId
 
 
 ## Global Error
