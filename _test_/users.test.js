@@ -13,13 +13,15 @@ const userLanguages = require('../data/userLanguages.json')
 const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
-const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk0ODIwfQ.MyUJur3txHTOqpD_AZswp2mn5anrffTAzNBQGoDjDDU"
+let access_token;
+let access_token2;
 
 
 const { generateHash } = require('../helpers/bcryptjs')
 
-beforeAll(async () => {
+beforeAll(async () => {    
 
+    
     await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
         el.createdAt = new Date();
         el.updatedAt = new Date();
@@ -32,6 +34,15 @@ beforeAll(async () => {
         el.password = generateHash(el.password)
         return el
     }))
+
+    const res = await request(app)
+        .post('/login')
+        .send({
+            email: "admin@admin.com",
+            password: "1234567890",
+        })
+
+    access_token = res.body.access_token
 
     await sequelize.queryInterface.bulkInsert('Friendships', friendships.map(el => {
         el.createdAt = new Date();
@@ -161,7 +172,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test api user", () => {
+describe("test api user", () => {
 
     describe("post /register", () => {
         test("success create user and response 201", () => {
@@ -173,7 +184,7 @@ describe.skip("test api user", () => {
                     password: "12345678",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body).toHaveProperty("user", expect.any(Object))
@@ -191,7 +202,7 @@ describe.skip("test api user", () => {
                     password: "12345678",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -209,7 +220,7 @@ describe.skip("test api user", () => {
                     email: "sipri34@gmail.com",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -227,7 +238,7 @@ describe.skip("test api user", () => {
                     email: "sforrest0@chron.com",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -244,7 +255,7 @@ describe.skip("test api user", () => {
                     email: "sipri34@gmail.com",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -262,7 +273,7 @@ describe.skip("test api user", () => {
                     email: "sipri34tesd",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -280,7 +291,7 @@ describe.skip("test api user", () => {
                     email: "sipri34@gmail.com",
                     confirmPassword: "12345"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -296,7 +307,7 @@ describe.skip("test api user", () => {
                     username: 'sipri',
                     email: "sipri34@gmail.com",
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -315,7 +326,7 @@ describe.skip("test api user", () => {
                     password: "12345",
                     confirmPassword: "12345678"
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -333,7 +344,7 @@ describe.skip("test api user", () => {
                     email: "admin@admin.com",
                     password: "1234567890",
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(200)
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body.user).toHaveProperty("email", expect.any(String))
@@ -348,7 +359,7 @@ describe.skip("test api user", () => {
                 .send({
                     password: "WDbnhZZ63W1",
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -363,7 +374,7 @@ describe.skip("test api user", () => {
                 .send({
                     email: "sforrest0@chron.com",
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -379,7 +390,7 @@ describe.skip("test api user", () => {
                     password: "WDbnhZZ6fa3W1",
                     email: "sforrest0@chron.com",
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -395,7 +406,7 @@ describe.skip("test api user", () => {
                     email: "sforrestf0@chron.com",
                     password: "WDbnhZZ63W1",
                 })
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body).toHaveProperty("error", expect.any(Boolean))
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -409,7 +420,7 @@ describe.skip("test api user", () => {
         test("success verify and response 200", () => {
             return request(app)
                 .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(200)
                     expect(res.body).toHaveProperty("message", expect.any(String))
                     expect(res.body.error).toEqual(undefined)
@@ -419,7 +430,7 @@ describe.skip("test api user", () => {
         test("failed and response 401 because link is invalid", () => {
             return request(app)
                 .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk5NDExNn0.PXk4cOsvuHY3wjXJRoQst8ApwbpRC7lCBQR4nFt-nME')
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body.error).toEqual(true)
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -431,7 +442,7 @@ describe.skip("test api user", () => {
         test("failed and response 401 because token within the verification query is invalid", () => {
             return request(app)
                 .post('/verify?verification=test')
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body.error).toEqual(true)
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -443,7 +454,7 @@ describe.skip("test api user", () => {
         test("failed and response 400 because the email has been verified", () => {
             return request(app)
                 .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk0ODIwfQ.MyUJur3txHTOqpD_AZswp2mn5anrffTAzNBQGoDjDDU')
-                .then(res => {                    
+                .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("message", expect.any(String))
                     expect(res.body.error).toEqual(true)
@@ -456,8 +467,8 @@ describe.skip("test api user", () => {
         test("success getting all message of one group and response 200", () => {
             return request(app)
                 .get('/groups/1/messages')
-                .set("access_token",access_token)
-                .then(res => {                    
+                .set("access_token", access_token)
+                .then(res => {
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Array))
                     expect(res.body[0]).toHaveProperty("content", expect.any(String))
@@ -474,16 +485,15 @@ describe.skip("test api user", () => {
         test("success verify and response 200", () => {
             return request(app)
                 .post('/groups/21/messages')
-                .set("access_token",access_token)
-                .then(res => {                    
+                .set("access_token", access_token)
+                .then(res => {
                     expect(res.status).toBe(404)
                     expect(res.body.error).toEqual(true)
                     expect(res.body).toHaveProperty("message", expect.any(String))
                     expect(res.body.message).toEqual('Unknown Group')
                 })
         })
-       
+
     })
 })
 
-   
