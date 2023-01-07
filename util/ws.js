@@ -3,6 +3,7 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
+const { getUserWs } = require("./wsUtil");
 const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
@@ -11,6 +12,9 @@ const SOCKET_EVENTS = {
   DISCONNECT: "disconnect",
   IDENTIFY: "identify",
   ERROR: "error",
+
+  ONLINE: "user_online",
+  OFFLINE: "user_offline",
 
   MESSAGE: "message",
   MESSAGE_EDIT: "message_edit",
@@ -93,6 +97,16 @@ const emitGlobal = (event, msg) => {
   }
 }
 
+const userOnline = (user) => {
+  user.dataValues.isOnline = true;
+  emitGlobal(SOCKET_EVENTS.ONLINE, user);
+};
+
+const userOffline = (user) => {
+  user.dataValues.isOnline = false;
+  emitGlobal(SOCKET_EVENTS.OFFLINE, user);
+};
+
 /**
 * @param {import("socket.io").Socket} io
 */
@@ -116,6 +130,8 @@ const loadListeners = () => {
 
         // save user socket for use
         userSockets.set(mapId, socket);
+
+        getUserWs(mapId).then(user => userOnline(user));
       } catch (err) {
         console.error("[IDENTIFY ERROR]", err);
 
@@ -135,7 +151,10 @@ const loadListeners = () => {
         }
       }
 
-      if (uId) userSockets.delete(uId);
+      if (uId) {
+        userSockets.delete(uId);
+        getUserWs(uId).then(user => userOffline(user));
+      }
     });
 
     socket.on("callUser", (data) => {
@@ -246,9 +265,9 @@ const deletedFriendRequest = (to, data) => {
   return distributeFriendship(to, data, SOCKET_EVENTS.FRIEND_REQUEST_DELETE);
 }
 
-const userOnline = () => {};
-
-const userOffline = () => {};
+const sendUserUpdate = (user) => {
+  emitGlobal(SOCKET_EVENTS.USER_UPDATE, user);
+}
 
 module.exports = {
   SOCKET_EVENTS,
@@ -266,6 +285,7 @@ module.exports = {
   acceptedFriendRequest,
   deletedFriendRequest,
   sendGroupUpdate,
+  sendUserUpdate,
 }
 
 // vim: et sw=2 ts=8

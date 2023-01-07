@@ -35,6 +35,7 @@ const {
 
 const translate = require('translate-google');
 const { userFetchAttributes } = require('../util/fetchAttributes');
+const { sendUserUpdate, isOnline } = require("../util/ws");
 
 // ======= Controller imports end
 
@@ -63,6 +64,8 @@ router.post("/users/avatar", upload.single("avatar"), async (req, res, next) => 
     user.dataValues.Avatar = newAvatar;
 
     res.status(201).json(user);
+
+    sendUserUpdate(user);
   } catch (err) {
     next(err);
   }
@@ -89,6 +92,8 @@ router.patch("/users/status", async (req, res, next) => {
     await user.save();
 
     res.status(201).json(user);
+
+    sendUserUpdate(user);
   } catch (err) {
     next(err);
   }
@@ -105,7 +110,11 @@ router.delete("/users/avatar", async (req, res, next) => {
 
     await user.save();
 
+    delete user.dataValues.Avatar;
+
     res.status(200).json(user);
+
+    sendUserUpdate(user);
   } catch (err) {
     next(err);
   }
@@ -244,6 +253,10 @@ router.get("/explore/users", async (req, res, next) => {
     // console.log(opts);
     console.log(inspect(opts, false, 10, true));
     const users = await User.findAll(opts);
+
+    for (const user of users) {
+      user.dataValues.isOnline = isOnline(user.id);
+    }
 
     res.status(200).json(users);
   } catch (err) {

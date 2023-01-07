@@ -20,6 +20,7 @@ const { generateHash, verifyHash } = require('../helpers/bcryptjs')
 const { signToken, verifyToken } = require('../helpers/jwt')
 const { sendMail } = require('../helpers/nodemailer');
 const { userFetchAttributes } = require('../util/fetchAttributes');
+const { sendUserUpdate } = require('../util/ws');
 
 const { CLIENT_URL } = process.env;
 
@@ -243,6 +244,8 @@ class Controller {
       console.log(newUser);
 
       res.status(200).json(newUser);
+
+      sendUserUpdate(newUser);
     } catch (err) {
       next(err)
     }
