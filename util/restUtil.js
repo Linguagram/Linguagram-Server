@@ -46,19 +46,23 @@ const getGroupMembersFromUserId = async (userId) => {
     include: [
       {
         model: Group,
+        attributes: {
+          include: [
+            [
+              sequelize.literal(`(
+                SELECT COUNT(*)
+                FROM "Messages"
+                WHERE "Messages"."isRead" = FALSE AND "Messages"."UserId" != ${userId}
+              )`),
+              'unreadMessageCount'
+            ],
+          ],
+        },
         include: [
           {
             model: GroupMember,
             include: [User],
           },
-          [
-            sequelize.literal(`(
-              SELECT COUNT(*)
-              FROM "Messages"
-              WHERE "Messages"."isRead" = FALSE
-            )`),
-            'unreadMessageCount'
-          ],
         ],
       },
       {

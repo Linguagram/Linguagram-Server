@@ -59,6 +59,27 @@ router.get("/groups/:groupId/messages", async (req, res, next) => {
   }
 });
 
+router.patch("/groups/:groupId/messages", async (req, res, next) => {
+  try {
+    // strict check groupId
+    const groupId = validateGroupId(req.params.groupId);
+
+    // check if user is in this group
+    const groupMembers = await getGroupMembers(groupId, req);
+
+    await Message.update({ isRead: true }, {
+      where: {
+        GroupId: groupId,
+        isRead: false,
+      },
+    })
+
+    res.status(200).json({ isRead: true });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/groups/:groupId/messages", upload.single("attachment"), async (req, res, next) => {
   try {
     const groupId = validateGroupId(req.params.groupId);
