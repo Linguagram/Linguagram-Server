@@ -1265,16 +1265,26 @@ Request :
 
 ```
 
-_Response (201 - created)_
+_Response (200 - OK)_
 
 ```json
 {
-    "id" : 1,
-    "username" : "Sissie Forrest",
-    "email" : "sforrest0@chron.com",    
-    "country" : "Norway",
-    "phoneNumber" : "+1 339 769 7021",
-    "status" : "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "id": 1,
+    "username": "Sissie Forrest",
+    "email": "sforrest0@chron.com",
+    "country": "Switzerland",
+    "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "phoneNumber": "+1 339 769 7021",
+    "verified": true,
+    "AvatarId": 21,
+    "Avatar": {
+        "id": 21,
+        "name": "4db30eaf4b70dfee0e7e5cd8ded5531f_xl0EL2jdR",
+        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/4db30eaf4b70dfee0e7e5cd8ded5531f_xl0EL2jdR",
+        "format": "image/png",
+        "createdAt": "2023-01-07T15:50:02.973Z",
+        "updatedAt": "2023-01-07T15:50:02.973Z"
+    },
     "UserLanguages" : [
         {
             "id": 1,
@@ -1338,11 +1348,6 @@ OR
 {
     "error": true,
     "message" : "Password must have at least 8 characters"        
-}
-OR
-{
-    "error": true,
-    "message" : "Password is required"        
 }
 OR
 {

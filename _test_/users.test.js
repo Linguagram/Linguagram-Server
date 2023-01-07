@@ -52,6 +52,7 @@ beforeAll(async () => {
 
     linkUnverified = signToken({id:8})
     linkFakeId = signToken({id:80})
+    access_token = signToken({id:1})
     const payload = verifyToken(linkUnverified)
 
 
@@ -176,7 +177,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test api user", () => {
+describe("test api user", () => {
 
     describe("post /users/register", () => {
         test("success create user and response 201", () => {
@@ -479,6 +480,144 @@ describe.skip("test api user", () => {
                 })
         })
     })
+
+    describe.only("PUT /users/@me", () => {
+        test("succeed on updating user's profile and response 200", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email : "sforrest0@chron.com",
+                    password : "WDbnhZZ63W1",
+                    newPassword : "WDbnhZZ63W1",
+                    confirmNewPassword : "WDbnhZZ63W1",
+                    username : "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))                    
+                    expect(res.body).toHaveProperty('id', expect.any(Number))
+                    expect(res.body).toHaveProperty('username', expect.any(String))
+                    expect(res.body).toHaveProperty('email', expect.any(String))
+                    expect(res.body).toHaveProperty('country', expect.any(String))
+                    expect(res.body).toHaveProperty('verified', expect.any(Boolean))
+                    expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
+                    expect(res.body).toHaveProperty('UserInterests', expect.any(Array))
+                })
+        })
+
+        test("failed on updating user's profile because no email sent and response 400", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    password : "WDbnhZZ63W1",
+                    newPassword : "WDbnhZZ63W1",
+                    confirmNewPassword : "WDbnhZZ63W1",
+                    username : "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Email is required')
+                })
+        })
+
+
+        test("failed on updating user's profile because no password sent and response 400", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email : "sforrest0@chron.com",                    
+                    username : "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Password is required')
+                })
+        })
+
+        test("failed on updating user's profile because no new password and confirm new password do not match and response 400", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email : "sforrest0@chron.com",
+                    password : "WDbnhZZ63W1",
+                    newPassword : "WDbnhZZ63W1",
+                    confirmNewPassword : "WDbnhZZ63W1f",
+                    username : "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('New password do not match')
+                })
+        })
+
+        test("failed on updating user's profile because no username sent and response 400", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email : "sforrest0@chron.com",
+                    password : "WDbnhZZ63W1",
+                    newPassword : "WDbnhZZ63W1",
+                    confirmNewPassword : "WDbnhZZ63W1",
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Username is required')
+                })
+        })
+
+        test("failed on updating user's profile because email sent has an invalid format and response 400", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email : "sforrest0fsd",
+                    password : "WDbnhZZ63W1",
+                    newPassword : "WDbnhZZ63W1",
+                    confirmNewPassword : "WDbnhZZ63W1",
+                    username : "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid email format')
+                })
+        })
+
+        test("failed on updating user's profile because new password is less than 8 character and response 400", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email : "sforrest0@chron.com",
+                    password : "WDbnhZZ63W1",
+                    newPassword : "fsdf",
+                    confirmNewPassword : "fsdf",
+                    username : "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Password must have at least 8 characters')
+                })
+        })
+    })
+
+
 
 })
 

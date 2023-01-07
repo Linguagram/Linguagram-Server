@@ -620,21 +620,23 @@ describe("test API groups", () => {
         })
     })
 
-    describe.only("GET /languages", () => {
+    describe("GET /languages", () => {
         test("succeed on getting languages list and response 200", () => {
             return request(app)
                 .get('/languages')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Array))                    
-                    res.body.forEach(el=>{
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    res.body.forEach(el => {
                         expect(el).toHaveProperty('id', expect.any(Number))
                         expect(el).toHaveProperty('name', expect.any(String))
                     })
                 })
-            })
         })
+    })
+
+   
 
 
 

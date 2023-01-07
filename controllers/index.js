@@ -146,12 +146,18 @@ class Controller {
         interests = [],
       } = req.body;
 
-      if (newPassword && newPassword !== confirmNewPassword) {
+      if (!password ) {
+        throw {
+          status: 400,
+          message: "Password is required",
+        };
+      }else if ( newPassword !== confirmNewPassword) {
         throw {
           status: 400,
           message: "New password do not match",
         };
       }
+
 
       const user = await User.findByPk(req.userInfo.id);
 
