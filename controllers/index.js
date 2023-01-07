@@ -296,6 +296,11 @@ class Controller {
     try {
       const { verification } = req.query
 
+      if (!verification) throw {
+        status: 401,
+        message: 'Invalid Link',
+      };
+
       const payload = verifyToken(verification)
 
       const theSearchedUser = await User.findByPk(payload.id)

@@ -16,6 +16,7 @@ const userInterests = require('../data/userInterests.json')
 let access_token;
 let linkUnverified;
 let linkVerified;
+let linkFakeId;
 
 
 
@@ -50,6 +51,7 @@ beforeAll(async () => {
 
 
     linkUnverified = signToken({id:8})
+    linkFakeId = signToken({id:80})
     const payload = verifyToken(linkUnverified)
 
 
@@ -174,7 +176,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test api user", () => {
+describe("test api user", () => {
 
     describe("post /users/register", () => {
         test("success create user and response 201", () => {
@@ -431,7 +433,19 @@ describe.skip("test api user", () => {
 
         test("failed and response 401 because link is invalid", () => {
             return request(app)
-                .post('/users/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk5NDExNn0.PXk4cOsvuHY3wjXJRoQst8ApwbpRC7lCBQR4nFt-nME')
+                .post(`/users/verify?verification=`)
+                .then(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid Link')
+
+                })
+        })
+
+        test("failed and response 401 because link is invalid", () => {
+            return request(app)
+                .post(`/users/verify?verification=${linkFakeId}`)
                 .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body.error).toEqual(true)
