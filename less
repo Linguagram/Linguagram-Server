@@ -1,5 +1,5 @@
-[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2m_test_/[22m[1mgroups.test.js[22m
-[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2m_test_/[22m[1mgroups.test.js[22m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2m_test_/[22m[1musers.test.js[22m
+[0m[7m[1m[31m FAIL [39m[22m[27m[0m [2m_test_/[22m[1musers.test.js[22m
   [1m● [22mConsole
 
     [2mconsole.log[22m
@@ -13,22 +13,12 @@
 [2m      [2mat log ([22m[2mutil/ws.js[2m:140:11)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."email" = 'admin@admin.com';
+      Executing (default): INSERT INTO "Media" ("name","url","format","createdAt","updatedAt") VALUES ('avatar','https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://i.pinimg.com/736x/b5/67/87/b567873fff4317f1a02300a1da73565d.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','http://anime.falseblue.com/wp-content/uploads/2012/06/Thor%2BChris%2BHemsworth.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://oyster.ignimgs.com/mediawiki/apis.ign.com/iron-man-2-movie/e/e7/Rhodey-im2.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://i.pinimg.com/736x/ac/00/8d/ac008df345b74ad9a249d1ee92e23018.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://i.pinimg.com/originals/f4/24/2d/f4242d79df3086a274e0e598226524a5.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://cdn.mos.cms.futurecdn.net/Nnbc8Xe43SZTvkV8GpduwK.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://cdn.vox-cdn.com/thumbor/24I1h6pROyMIB1-bRTHG4MSlkko=/0x0:1200x600/1200x800/filters:focal(552x137:744x329)/cdn.vox-cdn.com/uploads/chorus_image/image/58955377/Winter_Soldier.0.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1521652772409-JYNRRO8K4UMSUBUGL0WP/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1USOFn4xF8vTWDNAUBm5ducQhX-V3oVjSmr829Rco4W2Uo49ZdOtO_QXox0_W7i2zEA/image-asset.jpeg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      { error: true, message: 'Invalid email/password' } <<<<RES
-[2m[22m
-[2m      [2mat Object.log ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:31:13)[22m[2m[22m
-
-    [2mconsole.log[22m
-      Executing (default): INSERT INTO "Media" ("name","url","format","createdAt","updatedAt") VALUES ('avatar','https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://i.pinimg.com/736x/b5/67/87/b567873fff4317f1a02300a1da73565d.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','http://anime.falseblue.com/wp-content/uploads/2012/06/Thor%2BChris%2BHemsworth.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://oyster.ignimgs.com/mediawiki/apis.ign.com/iron-man-2-movie/e/e7/Rhodey-im2.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://i.pinimg.com/736x/ac/00/8d/ac008df345b74ad9a249d1ee92e23018.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://i.pinimg.com/originals/f4/24/2d/f4242d79df3086a274e0e598226524a5.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://cdn.mos.cms.futurecdn.net/Nnbc8Xe43SZTvkV8GpduwK.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://cdn.vox-cdn.com/thumbor/24I1h6pROyMIB1-bRTHG4MSlkko=/0x0:1200x600/1200x800/filters:focal(552x137:744x329)/cdn.vox-cdn.com/uploads/chorus_image/image/58955377/Winter_Soldier.0.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1521652772409-JYNRRO8K4UMSUBUGL0WP/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1USOFn4xF8vTWDNAUBm5ducQhX-V3oVjSmr829Rco4W2Uo49ZdOtO_QXox0_W7i2zEA/image-asset.jpeg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00');
-[2m[22m
-[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
-
-    [2mconsole.log[22m
-      Executing (default): INSERT INTO "Users" ("username","password","status","email","phoneNumber","country","verified","AvatarId","createdAt","updatedAt") VALUES ('Sissie Forrest','$2a$08$PMzpQir3Lqd8semKG6QiOOCPZEubAoKw9L2maqkkSkVXyYQpXZN5W','venenatis non sodales sed tincidunt eu felis fusce posuere felis','sforrest0@chron.com','+1 339 769 7021','Switzerland','false',1,'2023-01-07 02:04:59.214 +00:00','2023-01-07 02:04:59.214 +00:00'),('Krispin Admin','$2a$08$VUrvVWan7fOFA5nqPKqNtuftjmRSt/DK3WS3p/bpemtdorGM5bm.q','ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique','admin@admin.com','+86 589 929 4346','Cuba','true',2,'2023-01-07 02:04:59.239 +00:00','2023-01-07 02:04:59.239 +00:00'),('Nev Matusovsky','$2a$08$VPc0GncJUEx0RHHHCzcTF.jmMDQdGEaBPWRW  [1m● [22mConsole
+      Executing (default): INSERT INTO "Users" ("username","password","status","email","phoneNumber","country","verified","AvatarId","createdAt","updatedAt") VALUES ('Sissie Forrest','$2a$08$cXCEBRO97Q2O1MD6ewVphuSOVUBVt75Re1TZ.fDCvjpoXTjyO.DCq','venenatis non sodales sed tincidunt eu felis fusce posuere felis','sforrest0@chron.com','+1 339 769 7021','Switzerland','true',1,'2023-01-07 05:28:23.604 +00:00','2023-01-07 05:28:23.604 +00:00'),('Krispin Admin','$2a$08$J.x93tdoiIGENvF.pS9vOumdCrKJghuVXwiAFLRJjSVVEjJ3HNnum','ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique','admin@admin.com','+86 589 929 4346','Cuba','false',2,'2023-01-07 05:28:23.627 +00:00','2023-01-07 05:28:23.627 +00:00'),('Nev Matusovsky','$2a$08$Hcp/q2gqN8oTrC/6oYyaueRw7SmGCbZwcw.3zeJWRdP7nUy1OycPu','justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in','nmatusovsky2@mlb.com','+966 878 394 6703','Sweden','true',3,'2023-01-07 05:28:23.645 +00:00','2023-01-07 05:28:23.645 +00:00'),('Ashleigh Brabban','$2a$08$ovlQQoCMyCkZ5qyL03TGoeAZYAsNGNGieoMhZjaTn9VIfgO8lphQS','gravida nisi at nibh in hac habitasse platea dictumst aliquam','abrabban3@angelfire.com','+33 648 933 7445','Sweden','true',4,'2023-01-07 05:28:23.662 +00:00','2023-01-07 05:28:23.662 +00:00'),('Beryle Glaisner','$2a$  [1m● [22mConsole
 
     [2mconsole.log[22m
       [ws] Init, instance created
@@ -41,109 +31,524 @@
 [2m      [2mat log ([22m[2mutil/ws.js[2m:140:11)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."email" = 'admin@admin.com';
+      Executing (default): INSERT INTO "Media" ("name","url","format","createdAt","updatedAt") VALUES ('avatar','https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://i.pinimg.com/736x/b5/67/87/b567873fff4317f1a02300a1da73565d.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','http://anime.falseblue.com/wp-content/uploads/2012/06/Thor%2BChris%2BHemsworth.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://oyster.ignimgs.com/mediawiki/apis.ign.com/iron-man-2-movie/e/e7/Rhodey-im2.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://i.pinimg.com/736x/ac/00/8d/ac008df345b74ad9a249d1ee92e23018.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://i.pinimg.com/originals/f4/24/2d/f4242d79df3086a274e0e598226524a5.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://cdn.mos.cms.futurecdn.net/Nnbc8Xe43SZTvkV8GpduwK.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://cdn.vox-cdn.com/thumbor/24I1h6pROyMIB1-bRTHG4MSlkko=/0x0:1200x600/1200x800/filters:focal(552x137:744x329)/cdn.vox-cdn.com/uploads/chorus_image/image/58955377/Winter_Soldier.0.jpg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00'),('avatar','https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1521652772409-JYNRRO8K4UMSUBUGL0WP/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1USOFn4xF8vTWDNAUBm5ducQhX-V3oVjSmr829Rco4W2Uo49ZdOtO_QXox0_W7i2zEA/image-asset.jpeg','image/jpg','2023-01-07 05:28:23.496 +00:00','2023-01-07 05:28:23.496 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      { error: true, message: 'Invalid email/password' } <<<<RES
-[2m[22m
-[2m      [2mat Object.log ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:31:13)[22m[2m[22m
-
-    [2mconsole.log[22m
-      Executing (default): INSERT INTO "Media" ("name","url","format","createdAt","updatedAt") VALUES ('avatar','https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://i.pinimg.com/736x/b5/67/87/b567873fff4317f1a02300a1da73565d.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','http://anime.falseblue.com/wp-content/uploads/2012/06/Thor%2BChris%2BHemsworth.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://oyster.ignimgs.com/mediawiki/apis.ign.com/iron-man-2-movie/e/e7/Rhodey-im2.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://i.pinimg.com/736x/ac/00/8d/ac008df345b74ad9a249d1ee92e23018.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://i.pinimg.com/originals/f4/24/2d/f4242d79df3086a274e0e598226524a5.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://cdn.mos.cms.futurecdn.net/Nnbc8Xe43SZTvkV8GpduwK.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://cdn.vox-cdn.com/thumbor/24I1h6pROyMIB1-bRTHG4MSlkko=/0x0:1200x600/1200x800/filters:focal(552x137:744x329)/cdn.vox-cdn.com/uploads/chorus_image/image/58955377/Winter_Soldier.0.jpg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00'),('avatar','https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1521652772409-JYNRRO8K4UMSUBUGL0WP/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1USOFn4xF8vTWDNAUBm5ducQhX-V3oVjSmr829Rco4W2Uo49ZdOtO_QXox0_W7i2zEA/image-asset.jpeg','image/jpg','2023-01-07 02:04:59.208 +00:00','2023-01-07 02:04:59.208 +00:00');
+      Executing (default): INSERT INTO "Users" ("username","password","status","email","phoneNumber","country","verified","AvatarId","createdAt","updatedAt") VALUES ('Sissie Forrest','$2a$08$cXCEBRO97Q2O1MD6ewVphuSOVUBVt75Re1TZ.fDCvjpoXTjyO.DCq','venenatis non sodales sed tincidunt eu felis fusce posuere felis','sforrest0@chron.com','+1 339 769 7021','Switzerland','true',1,'2023-01-07 05:28:23.604 +00:00','2023-01-07 05:28:23.604 +00:00'),('Krispin Admin','$2a$08$J.x93tdoiIGENvF.pS9vOumdCrKJghuVXwiAFLRJjSVVEjJ3HNnum','ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique','admin@admin.com','+86 589 929 4346','Cuba','false',2,'2023-01-07 05:28:23.627 +00:00','2023-01-07 05:28:23.627 +00:00'),('Nev Matusovsky','$2a$08$Hcp/q2gqN8oTrC/6oYyaueRw7SmGCbZwcw.3zeJWRdP7nUy1OycPu','justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in','nmatusovsky2@mlb.com','+966 878 394 6703','Sweden','true',3,'2023-01-07 05:28:23.645 +00:00','2023-01-07 05:28:23.645 +00:00'),('Ashleigh Brabban','$2a$08$ovlQQoCMyCkZ5qyL03TGoeAZYAsNGNGieoMhZjaTn9VIfgO8lphQS','gravida nisi at nibh in hac habitasse platea dictumst aliquam','abrabban3@angelfire.com','+33 648 933 7445','Sweden','true',4,'2023-01-07 05:28:23.662 +00:00','2023-01-07 05:28:23.662 +00:00'),('Beryle Glaisner','$2a$08$1r.HyaXhDpf6IrPK.D5CjeKBy70gtKHczseFzqpJLfyXVwdcIrCim','curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien','bglaisner4@arizona.edu','+370 246 259 3472','Czech Republic','true',5,'2023-01-07 05:28:23.679 +00:00','2023-01-07 05:28:23.679 +00:00'),('Aguistin Pipping','$2a$08$HF83kWQNnA2Po6Q7KCeR0OmwEz2eb2Toc.J7Nm/hvnRH90.GcYOFi','in felis donec semper sapien a libero nam dui proin','apipping5@discuz.net','+7 264 139 2313','Thailand','true',9,'2023-01-07 05:28:23.696 +00:00','2023-01-07 05:28:23.696 +00:00'),('Isa Yesson','$2a$08$UxafoVpYT/PG3nCYRHB.oeaQ0YqqPWLFsysx/3pkOebsYrBK54WR.','quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis','iyesson6@51.la','+86 760 945 2008','Slovenia','true',6,'2023-01-07 05:28:23.713 +00:00','2023-01-07 05:28:23.713 +00:00'),('Oliy Portwain','$2a$08$M7uG.g5Hi1k9yQKqANTpF.evI1qwGQMOGRVXSYfGWFzQwoj7b9rVO','sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum','oportwain7@prlog.org','+7 667 868 7462','Guatemala','false',7,'2023-01-07 05:28:23.730 +00:00','2023-01-07 05:28:23.730 +00:00'),('Adey Carbonell','$2a$08$JbWO4eLECphV9l7DoU15fejbigz1Mn90jU.gtopH89ENw8PG7sj5a','mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas','acarbonell8@scribd.com','+351 527 147 2165','China','true',8,'2023-01-07 05:28:23.749 +00:00','2023-01-07 05:28:23.749 +00:00'),('Dori Rogers','$2a$08$aimLTi.aaEZucO4v9q.yMOUfS4.DTa3y.LNex0zTzqpJ7RO5.toIi','nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper','drogers9@si.edu','+49 366 109 1205','Indonesia','true',10,'2023-01-07 05:28:23.765 +00:00','2023-01-07 05:28:23.765 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Users" ("username","password","status","email","phoneNumber","country","verified","AvatarId","createdAt","updatedAt") VALUES ('Sissie Forrest','$2a$08$PMzpQir3Lqd8semKG6QiOOCPZEubAoKw9L2maqkkSkVXyYQpXZN5W','venenatis non sodales sed tincidunt eu felis fusce posuere felis','sforrest0@chron.com','+1 339 769 7021','Switzerland','false',1,'2023-01-07 02:04:59.214 +00:00','2023-01-07 02:04:59.214 +00:00'),('Krispin Admin','$2a$08$VUrvVWan7fOFA5nqPKqNtuftjmRSt/DK3WS3p/bpemtdorGM5bm.q','ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique','admin@admin.com','+86 589 929 4346','Cuba','true',2,'2023-01-07 02:04:59.239 +00:00','2023-01-07 02:04:59.239 +00:00'),('Nev Matusovsky','$2a$08$VPc0GncJUEx0RHHHCzcTF.jmMDQdGEaBPWRWzkao171qAX8pEztKS','justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in','nmatusovsky2@mlb.com','+966 878 394 6703','Sweden','true',3,'2023-01-07 02:04:59.256 +00:00','2023-01-07 02:04:59.256 +00:00'),('Ashleigh Brabban','$2a$08$ppfRqBbmYmaK8pF13.QY3en.PHjdgp76eIM71SLAb61.xtHjSe5aG','gravida nisi at nibh in hac habitasse platea dictumst aliquam','abrabban3@angelfire.com','+33 648 933 7445','Sweden','true',4,'2023-01-07 02:04:59.274 +00:00','2023-01-07 02:04:59.274 +00:00'),('Beryle Glaisner','$2a$08$YvEoZTOy4iUs1vJJBh0n6.sTzpBXfkriizQn2xN87ZpeRboAWJY7O','curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien','bglaisner4@arizona.edu','+370 246 259 3472','Czech Republic','true',5,'2023-01-07 02:04:59.291 +00:00','2023-01-07 02:04:59.291 +00:00'),('Aguistin Pipping','$2a$08$jqFHqbRacDaZRZTrWJP3TeyLSL9gTwtf9xZ.J9NiPsqYXDqfJmsqK','in felis donec semper sapien a libero nam dui proin','apipping5@discuz.net','+7 264 139 2313','Thailand','true',9,'2023-01-07 02:04:59.309 +00:00','2023-01-07 02:04:59.309 +00:00'),('Isa Yesson','$2a$08$GLZrzFrnv81afGt3p/AD4emlQ7a2rKb4YSSCv3QiFrxCC/M8dAWVq','quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis','iyesson6@51.la','+86 760 945 2008','Slovenia','true',6,'2023-01-07 02:04:59.326 +00:00','2023-01-07 02:04:59.326 +00:00'),('Oliy Portwain','$2a$08$sWMAtjDWZa8mdMrHUHwiV.UerFiALBjJqfM9A8Kq4qZnfMQa/kaTy','sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum','oportwain7@prlog.org','+7 667 868 7462','Guatemala','true',7,'2023-01-07 02:04:59.343 +00:00','2023-01-07 02:04:59.343 +00:00'),('Adey Carbonell','$2a$08$aXMgsN6V8e2wuyLWrxoYper03zEoi7iiOpI9aMQFOLNVjsHM6xtLq','mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas','acarbonell8@scribd.com','+351 527 147 2165','China','true',8,'2023-01-07 02:04:59.360 +00:00','2023-01-07 02:04:59.360 +00:00'),('Dori Rogers','$2a$08$MBJsdlPUTtlZfjnzT2q80ePRiKy3msgj5kYguhy3B4bPLmS9O1Xcm','nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper','drogers9@si.edu','+49 366 109 1205','Indonesia','true',10,'2023-01-07 02:04:59.377 +00:00','2023-01-07 02:04:59.377 +00:00');
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."email" = 'nmatusovsky2@mlb.com';
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Friendships" ("UserId","FriendId","createdAt","updatedAt") VALUES (1,2,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(1,3,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(2,4,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(2,3,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(1,5,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(4,5,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(5,6,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(6,7,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00');
+      User {
+        dataValues: {
+          id: 3,
+          username: 'Nev Matusovsky',
+          email: 'nmatusovsky2@mlb.com',
+          country: 'Sweden',
+          status: 'justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in',
+          phoneNumber: '+966 878 394 6703',
+          verified: true,
+          AvatarId: 3,
+          createdAt: 2023-01-07T05:28:23.645Z,
+          updatedAt: 2023-01-07T05:28:23.645Z
+        },
+        _previousDataValues: {
+          id: 3,
+          username: 'Nev Matusovsky',
+          email: 'nmatusovsky2@mlb.com',
+          country: 'Sweden',
+          status: 'justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in',
+          phoneNumber: '+966 878 394 6703',
+          verified: true,
+          AvatarId: 3,
+          createdAt: 2023-01-07T05:28:23.645Z,
+          updatedAt: 2023-01-07T05:28:23.645Z
+        },
+        uniqno: 1,
+        _changed: Set(0) {},
+        _options: {
+          isNewRecord: false,
+          _schema: null,
+          _schemaDelimiter: '',
+          raw: true,
+          attributes: [
+            'id',          'username',
+            'email',       'password',
+            'country',     'status',
+            'phoneNumber', 'verified',
+            'AvatarId',    'createdAt',
+            'updatedAt'
+          ]
+        },
+        isNewRecord: false
+      }
+[2m[22m
+[2m      [2mat log ([22m[2mcontrollers/index.js[2m:288:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      { id: 7, iat: 1673069303 }  <<<res
+[2m[22m
+[2m      [2mat Object.log ([22m[2m[0m[36m_test_/user08$1r.HyaXhDpf6IrPK.D5CjeKBy70gtKHczseFzqpJLfyXVwdcIrCim','curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien','bglaisner4@arizona.edu','+370 246 259 3472','Czech Republic','true',5,'2023-01-07 05:28:23.679 +00:00','2023-01-07 05:28:23.679 +00:00'),('Aguistin Pipping','$2a$08$HF83kWQNnA2Po6Q7KCeR0OmwEz2eb2Toc.J7Nm/hvnRH90.GcYOFi','in felis donec semper sapien a libero nam dui proin','apipping5@discuz.net','+7 264 139 2313','Thailand','true',9,'2023-01-07 05:28:23.696 +00:00','2023-01-07 05:28:23.696 +00:00'),('Isa Yesson','$2a$08$UxafoVpYT/PG3nCYRHB.oeaQ0YqqPWLFsysx/3pkOebsYrBK54WR.','quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis','iyesson6@51.la','+86 760 945 2008','Slovenia','true',6,'2023-01-07 05:28:23.713 +00:00','2023-01-07 05:28:23.713 +00:00'),('Oliy Portwain','$2a$08$M7uG.g5Hi1k9yQKqANTpF.evI1qwGQMOGRVXSYfGWFzQwoj7b9rVO','sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum','oportwain7@prlog.org','+7 667 868 7462','Guatemala','false',7,'2023-01-07 05:28:23.730 +00:00','2023-01-07 05:28:23.730 +00:00'),('Adey Carbonell','$2a$08$JbWO4eLECphV9l7DoU15fejbigz1Mn90jU.gtopH89ENw8PG7sj5a','mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas','acarbonell8@scribd.com','+351 527 147 2165','China','true',8,'2023-01-07 05:28:23.749 +00:00','2023-01-07 05:28:23.749 +00:00'),('Dori Rogers','$2a$08$aimLTi.aaEZucO4v9q.yMOUfS4.DTa3y.LNex0zTzqpJ7RO5.toIi','nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper','drogers9@si.edu','+49 366 109 1205','Indonesia','true',10,'2023-01-07 05:28:23.765 +00:00','2023-01-07 05:28:23.765 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Groups" ("name","createdAt","updatedAt") VALUES ('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('high school','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('family','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('family','2023-01-07 02:04:59.zkao171qAX8pEztKS','justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in','nmatusovsky2@mlb.com','+966 878 394 6703','Sweden','true',3,'2023-01-07 02:04:59.256 +00:00','2023-01-07 02:04:59.256 +00:00'),('Ashleigh Brabban','$2a$08$ppfRqBbmYmaK8pF13.QY3en.PHjdgp76eIM71SLAb61.xtHjSe5aG','gravida nisi at nibh in hac habitasse platea dictumst aliquam','abrabban3@angelfire.com','+33 648 933 7445','Sweden','true',4,'2023-01-07 02:04:59.274 +00:00','2023-01-07 02:04:59.274 +00:00'),('Beryle Glaisner','$2a$08$YvEoZTOy4iUs1vJJBh0n6.sTzpBXfkriizQn2xN87ZpeRboAWJY7O','curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien','bglaisner4@arizona.edu','+370 246 259 3472','Czech Republic','true',5,'2023-01-07 02:04:59.291 +00:00','2023-01-07 02:04:59.291 +00:00'),('Aguistin Pipping','$2a$08$jqFHqbRacDaZRZTrWJP3TeyLSL9gTwtf9xZ.J9NiPsqYXDqfJmsqK','in felis donec semper sapien a libero nam dui proin','apipping5@discuz.net','+7 264 139 2313','Thailand','true',9,'2023-01-07 02:04:59.309 +00:00','2023-01-07 02:04:59.309 +00:00'),('Isa Yesson','$2a$08$GLZrzFrnv81afGt3p/AD4emlQ7a2rKb4YSSCv3QiFrxCC/M8dAWVq','quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis','iyesson6@51.la','+86 760 945 2008','Slovenia','true',6,'2023-01-07 02:04:59.326 +00:00','2023-01-07 02:04:59.326 +00:00'),('Oliy Portwain','$2a$08$sWMAtjDWZa8mdMrHUHwiV.UerFiALBjJqfM9A8Kq4qZnfMQa/kaTy','sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum','oportwain7@prlog.org','+7 667 868 7462','Guatemala','true',7,'2023-01-07 02:04:59.343 +00:00','2023-01-07 02:04:59.343 +00:00'),('Adey Carbonell','$2a$08$aXMgsN6V8e2wuyLWrxoYper03zEoi7iiOpI9aMQFOLNVjsHM6xtLq','mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas','acarbonell8@scribd.com','+351 527 147 2165','China','true',8,'2023-01-07 02:04:59.360 +00:00','2023-01-07 02:04:59.360 +00:00'),('Dori Rogers','$2a$08$MBJsdlPUTtlZfjnzT2q80ePRiKy3msgj5kYguhy3B4bPLmS9O1Xcm','nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper','drogers9@si.edu','+49 366 109 1205','Indonesia','true',10,'2023-01-07 02:04:59.377 +00:00','2023-01-07 02:04:59.377 +00:00');
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."email" = 'nmatusovsky2@mlb.com';
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Friendships" ("UserId","FriendId","createdAt","updatedAt") VALUES (1,2,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(1,3,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(2,4,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(2,3,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(1,5,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(4,5,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(5,6,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00'),(6,7,'2023-01-07 02:04:59.400 +00:00','2023-01-07 02:04:59.400 +00:00');
+      User {
+        dataValues: {
+          id: 3,
+          username: 'Nev Matusovsky',
+          email: 'nmatusovsky2@mlb.com',
+          country: 'Sweden',
+          status: 'justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in',
+          phoneNumber: '+966 878 394 6703',
+          verified: true,
+          AvatarId: 3,
+          createdAt: 2023-01-07T05:28:23.645Z,
+          updatedAt: 2023-01-07T05:28:23.645Z
+        },
+        _previousDataValues: {
+          id: 3,
+          username: 'Nev Matusovsky',
+          email: 'nmatusovsky2@mlb.com',
+          country: 'Sweden',
+          status: 'justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in',
+          phoneNumber: '+966 878 394 6703',
+          verified: true,
+          AvatarId: 3,
+          createdAt: 2023-01-07T05:28:23.645Z,
+          updatedAt: 2023-01-07T05:28:23.645Z
+        },
+        uniqno: 1,
+        _changed: Set(0) {},
+        _options: {
+          isNewRecord: false,
+          _schema: null,
+          _schemaDelimiter: '',
+          raw: true,
+          attributes: [
+            'id',          'username',
+            'email',       'password',
+            'country',     'status',
+            'phoneNumber', 'verified',
+            'AvatarId',    'createdAt',
+            'updatedAt'
+          ]
+        },
+        isNewRecord: false
+      }
+[2m[22m
+[2m      [2mat log ([22m[2mcontrollers/index.js[2m:288:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      { id: 7, iat: 1673069303 }  <<<res
+[2m[22m
+[2m      [2mat Object.log ([22m[2m[0m[36m_test_/users.test.js[39m[0m[2m:54:13)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): INSERT INTO "Friendships" ("UserId","FriendId","createdAt","updatedAt") VALUES (1,2,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(1,3,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(2,4,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(2,3,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(1,5,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(4,5,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(5,6,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(6,7,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Groups" ("name","createdAt","updatedAt") VALUES ('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('private','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('high school','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('family','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('family','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('high school','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('work','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('home','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('family','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00');
+      Executing (default): INSERT INTO "Groups" ("name","createdAt","updatedAt") VALUES ('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('high school','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('family','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('family','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('high school','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('work','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('home','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('family','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Messages" ("content","MediaId","UserId","GroupId","createdAt","updatedAt") VALUES ('hello there',1,1,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('General Kenobi',NULL,2,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('I have the high ground',NULL,1,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('But I have the death star cannon',NULL,2,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('What are you doing step brother',NULL,3,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('Nothing, really',NULL,1,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('That''s all?',NULL,3,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('Yes, what did you expect me to say?',NULL,1,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('Let''s finish this final project',NULL,2,3,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('hell yeah brother',NULL,3,3,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00');
+      Executing (default): INSERT INTO "Messages" ("content","MediaId","UserId","GroupId","createdAt","updatedAt") VALUES ('hello there',1,1,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('General Kenobi',NULL,2,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('I have the high ground',NULL,1,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('But I have the death star cannon',NULL,2,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('What are you doing step brother',NULL,3,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('Nothing, really',NULL,1,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('That''s all?',NULL,3,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('Yes, what did you expect me to say?',NULL,1,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('Let''s finish this final project',NULL,2,3,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('hell yeah brother',NULL,3,3,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "GroupMembers" ("GroupId","UserId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(1,2,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(2,3,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(2,1,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(3,2,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(3,4,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(4,4,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(4,5,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,1,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,2,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,3,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,4,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00');
+      Executing (default): INSERT INTO "GroupMembers" ("GroupId","UserId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(1,2,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(2,3,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(2,1,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(3,2,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(3,4,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(4,4,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(4,5,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,1,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.8s.test.js[39m[0m[2m:54:13)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): INSERT INTO "Friendships" ("UserId","FriendId","createdAt","updatedAt") VALUES (1,2,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(1,3,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(2,4,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(2,3,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(1,5,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(4,5,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(5,6,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00'),(6,7,'2023-01-07 05:28:23.846 +00:00','2023-01-07 05:28:23.846 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Languages" ("name","createdAt","updatedAt") VALUES ('Papiamento','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Northern Sotho','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Lao','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Catalan','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kashmiri','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Danish','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Aymara','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Zulu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Nepali','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Moldovan','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Punjabi','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Ndebele','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Croatian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Zulu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Portugu403 +00:00','2023-01-07 02:04:59.403 +00:00'),('high school','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('work','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('home','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00'),('family','2023-01-07 02:04:59.403 +00:00','2023-01-07 02:04:59.403 +00:00');
+      Executing (default): INSERT INTO "Groups" ("name","createdAt","updatedAt") VALUES ('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('private','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('high school','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('family','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('family','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('high school','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('work','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('home','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00'),('family','2023-01-07 05:28:23.849 +00:00','2023-01-07 05:28:23.849 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Messages" ("content","MediaId","UserId","GroupId","createdAt","updatedAt") VALUES ('hello there',1,1,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('General Kenobi',NULL,2,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('I have the high ground',NULL,1,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('But I have the death star cannon',NULL,2,1,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('What are you doing step brother',NULL,3,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('Nothing, really',NULL,1,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('That''s all?',NULL,3,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('Yes, what did you expect me to say?',NULL,1,2,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('Let''s finish this final project',NULL,2,3,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00'),('hell yeah brother',NULL,3,3,'2023-01-07 02:04:59.405 +00:00','2023-01-07 02:04:59.405 +00:00');
+      Executing (default): INSERT INTO "Messages" ("content","MediaId","UserId","GroupId","createdAt","updatedAt") VALUES ('hello there',1,1,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('General Kenobi',NULL,2,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('I have the high ground',NULL,1,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('But I have the death star cannon',NULL,2,1,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('What are you doing step brother',NULL,3,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('Nothing, really',NULL,1,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('That''s all?',NULL,3,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('Yes, what did you expect me to say?',NULL,1,2,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('Let''s finish this final project',NULL,2,3,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00'),('hell yeah brother',NULL,3,3,'2023-01-07 05:28:23.851 +00:00','2023-01-07 05:28:23.851 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "GroupMembers" ("GroupId","UserId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(1,2,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(2,3,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(2,1,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(3,2,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(3,4,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(4,4,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(4,5,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,1,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,2,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,3,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00'),(5,4,'2023-01-07 02:04:59.409 +00:00','2023-01-07 02:04:59.409 +00:00');
+      Executing (default): INSERT INTO "GroupMembers" ("GroupId","UserId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(1,2,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(2,3,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(2,1,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(3,2,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(3,4,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(4,4,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(4,5,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,1,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,2,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,3,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,4,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Languages" ("name","createdAt","updatedAt") VALUES ('Papiamento','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Northern Sotho','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Lao','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Catalan','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kashmiri','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Danish','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Aymara','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Zulu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Nepali','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Moldovan','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Punjabi','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Ndebele','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Croatian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Zulu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Portuguese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Mongolian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Romanian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Thai','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('English','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Assamese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('German','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Gagauz','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kannada','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Irish Gaelic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Croatian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Thai','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Maltese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('New Zealand Sign Language','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hiri Motu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tetum','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Quechua','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kazakh','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dutch','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Latvian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tswana','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Italian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tetum','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Māori','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dhivehi','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('French','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Bengali','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Aymara','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Filipino','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Persian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Japanese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Nepali','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hebrew','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Filipino','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Croatian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hebrew','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Czech','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dutch','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Danish','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Swahili','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tok Pisin','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Khmer','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Yiddish','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Korean','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Italian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Afrikaans','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Maltese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Bulgarian','2023-01-07 02:04:59.412 +ese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Mongolian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Romanian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Thai','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('English','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Assamese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('German','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Gagauz','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kannada','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Irish Gaelic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Croatian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Thai','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Maltese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('New Zealand Sign Language','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hiri Motu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tetum','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Quechua','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kazakh','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dutch','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Latvian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tswana','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Italian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tetum','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Māori','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dhivehi','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('French','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Bengali','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Aymara','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Filipino','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Persian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Japanese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Nepali','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hebrew','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Filipino','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Arabic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Croatian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hebrew','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Czech','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dutch','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Danish','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Swahili','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tok Pisin','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Khmer','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Yiddish','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Korean','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Italian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Afrikaans','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Maltese','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Bulgarian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Afrikaans','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Icelandic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Indonesian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Malay','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Irish Gaelic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('German','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Northern Sotho','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tswana','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Telugu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Gagauz','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Bosnian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Filipino','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kazakh','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Azeri','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Persian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Georgian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dutch','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Pashto','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Malagasy','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hungarian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Zulu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00');
+      Executing (default): INSERT INTO "Languages" ("name","createdAt","updatedAt") VALUES ('Papiamento','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Northern Sotho','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Lao','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Catalan','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kashmiri','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Danish','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Aymara','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Zulu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Nepali','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Moldovan','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Punjabi','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Ndebele','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Croatian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Zulu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Portuguese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Mongolian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Romanian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Thai','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('English','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Assamese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('German','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Gagauz','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kannada','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Irish Gaelic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Croatian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Thai','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Maltese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('New Zealand Sign Language','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hiri Motu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tetum','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Quechua','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kazakh','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dutch','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Latvian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tswana','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Italian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tetum','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Māori','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dhivehi','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('French','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Bengali','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Aymara','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Filipino','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Persian','2023-01-07 05:2854 +00:00'),(5,2,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,3,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00'),(5,4,'2023-01-07 05:28:23.854 +00:00','2023-01-07 05:28:23.854 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Schedules" ("name","description","scheduleDate","createdAt","updatedAt") VALUES ('work meeting ','talking about final project','2023-12-28 14:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('just wants to talk ','so many things to talk about','2023-01-12 14:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Interview','phase three of recruitment screening','2023-02-07 09:00:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Another Interview','Final phase of recruitment screening','2023-02-12 09:00:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Something unimportant','just light talks','2023-01-15 01:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Anime talks','Talking about popular anime and specific animes','2023-05-01 14:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Ethical Hacking ','Discussion on how to find security risk in a system','2023-01-22 15:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('How to move mountains ','Discussion on fantasy novel creation','2023-03-27 10:59:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00');
+      Executing (default): INSERT INTO "Languages" ("name","createdAt","updatedAt") VALUES ('Papiamento','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Northern Sotho','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Lao','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Catalan','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kashmiri','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Danish','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Aymara','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Zulu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Nepali','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Moldovan','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Punjabi','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Ndebele','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Croatian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Zulu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Portuguese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Mongolian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Romanian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Thai','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('English','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Assamese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('German','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Gagauz','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kannada','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Irish Gaelic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Croatian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Thai','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Maltese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('New Zealand Sign Language','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hiri Motu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tetum','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Quechua','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kazakh','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dutch','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Latvian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tswana','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Italian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tetum','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Māori','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dhivehi','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('French','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Bengali','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Aymara','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Filipino','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Persian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Japanese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Nepali','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hebrew','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Filipino','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Croatian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hebrew','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Czech','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dutch','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Danish','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Swahili','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tok Pisin','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Khmer','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Yiddish','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Korean','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Italian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Afrikaans','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Maltese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Bulgarian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Afrikaans','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Icelandic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Indonesian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Malay','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Irish Gaelic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('German','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Northern Sotho','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tswana','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Telugu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Gagauz','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Bosnian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Filipino','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kazakh','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Azeri','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Persian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Georgian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dutch','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Pashto','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Malagasy','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hungarian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Zulu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "UserLanguages" ("type","UserId","LanguageId","createdAt","updatedAt") VALUES ('native',1,10,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',2,3,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',1,3,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',2,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',3,4,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',3,2,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',3,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',4,1,'2023-01-07 02:04:59.422 +00:00','00:00','2023-01-07 02:04:59.412 +00:00'),('Afrikaans','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Icelandic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Indonesian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Malay','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Irish Gaelic','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('German','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Northern Sotho','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Tswana','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Telugu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Gagauz','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Bosnian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Filipino','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Kazakh','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Azeri','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Persian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Georgian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Dutch','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Pashto','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Malagasy','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Hungarian','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00'),('Zulu','2023-01-07 02:04:59.412 +00:00','2023-01-07 02:04:59.412 +00:00');
+      Executing (default): INSERT INTO "Schedules" ("name","description","scheduleDate","createdAt","updatedAt") VALUES ('work meeting ','talking about final project','2023-12-28 14:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('just wants to talk ','so many things to talk about','2023-01-12 14:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Interview','phase three of recruitment screening','2023-02-07 09:00:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Another Interview','Final phase of recruitment screening','2023-02-12 09:00:37.481 +0700','2023-01-07 05:28:23.865 +00:00':23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Japanese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Nepali','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hebrew','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Filipino','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Arabic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Croatian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hebrew','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Czech','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dutch','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Danish','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Swahili','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tok Pisin','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Khmer','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Yiddish','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Korean','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Italian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Afrikaans','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Maltese','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Bulgarian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Afrikaans','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Icelandic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Indonesian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Malay','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Irish Gaelic','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('German','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Northern Sotho','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Tswana','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Telugu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Gagauz','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Bosnian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Filipino','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Kazakh','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Azeri','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Persian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Georgian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Dutch','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Pashto','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Malagasy','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Hungarian','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00'),('Zulu','2023-01-07 05:28:23.857 +00:00','2023-01-07 05:28:23.857 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Schedules" ("name","description","scheduleDate","createdAt","updatedAt") VALUES ('work meeting ','talking about final project','2023-12-28 14:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('just wants to talk ','so many things to talk about','2023-01-12 14:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Interview','phase three of recruitment screening','2023-02-07 09:00:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Another Interview','Final phase of recruitment screening','2023-02-12 09:00:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Something unimportant','just light talks','2023-01-15 01:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Anime talks','Talking about popular anime and specific animes','2023-05-01 14:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('Ethical Hacking ','Discussion on how to find security risk in a system','2023-01-22 15:22:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00'),('How to move mountains ','Discussion on fantasy novel creation','2023-03-27 10:59:37.481 +0700','2023-01-07 02:04:59.420 +00:00','2023-01-07 02:04:59.420 +00:00');
+      Executing (default): INSERT INTO "Schedules" ("name","description","scheduleDate","createdAt","updatedAt") VALUES ('work meeting ','talking about final project','2023-12-28 14:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('just wants to talk ','so many things to talk about','2023-01-12 14:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Interview','phase three of recruitment screening','2023-02-07 09:00:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Another Interview','Final phase of recruitment screening','2023-02-12 09:00:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Something unimportant','just light talks','2023-01-15 01:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Anime talks','Talking about popular anime and specific animes','2023-05-01 14:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Ethical Hacking ','Discussion on how to find security risk in a system','2023-01-22 15:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('How to move mountains ','Discussion on fantasy novel creation','2023-03-27 10:59:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "UserLanguages" ("type","UserId","LanguageId","createdAt","updatedAt") VALUES ('native',1,10,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',2,3,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',1,3,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',2,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',3,4,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('interest',3,2,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',3,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',4,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00'),('native',5,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00');
+      Executing (default): INSERT INTO "UserLanguages" ("type","UserId","LanguageId","createdAt","updatedAt") VALUES ('native',1,10,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',2,3,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',1,3,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',2,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',3,4,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',3,2,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',3,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',4,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',5,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "UserSchedules" ("UserId","ScheduleId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(1,3,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(2,3,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(4,2,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(2,4,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(3,4,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(2,5,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(3,5,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(1,6,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(3,6,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00');
+      Executing (default): INSERT INTO "UserSchedules" ("UserId","ScheduleId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(1,3,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(2,3,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(4,2,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(2,4,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(3,4,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(2,5,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(3,5,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(1,6,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(3,6,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Interests" ("name","createdAt","updatedAt") VALUES ('Military History and Wars','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('PC Master Race','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Anime','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Politic','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Manga','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Economy','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Programming','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Philosophy','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Movies','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Smart Phone','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('AI and Machine Learning','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Music','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Investing and Personal Finance','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Planes','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Engineering','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Archeology','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Tech trends','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Drone Zone','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00');
+      Executing (default): INSERT INTO "Interests" ("name","createdAt","updatedAt") VALUES ('Military History and Wars','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('PC Master Race','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Anime','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Politic','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Manga','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Economy','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Programming','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Philosophy','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Movies','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Smart Phone','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('AI and Machine Learning','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Music','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Investing and Personal Finance','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Planes','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Engineering','2023-01-07 05:28:23.874 +00,'2023-01-07 05:28:23.865 +00:00'),('Something unimportant','just light talks','2023-01-15 01:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Anime talks','Talking about popular anime and specific animes','2023-05-01 14:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('Ethical Hacking ','Discussion on how to find security risk in a system','2023-01-22 15:22:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00'),('How to move mountains ','Discussion on fantasy novel creation','2023-03-27 10:59:37.481 +0700','2023-01-07 05:28:23.865 +00:00','2023-01-07 05:28:23.865 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "UserInterests" ("UserId","InterestId","createdAt","updatedAt") VALUES (1,3,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(1,2,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(1,1,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(2,4,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(2,5,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(3,6,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(3,7,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(4,7,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(4,8,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00');
+      Executing (default): INSERT INTO "UserLanguages" ("type","UserId","LanguageId","createdAt","updatedAt") VALUES ('native',1,10,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',2,3,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',1,3,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',2,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',3,4,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('interest',3,2,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',3,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',4,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00'),('native',5,1,'2023-01-07 05:28:23.868 +00:00','2023-01-07 05:28:23.868 +00:00');
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): INSERT INTO "UserSchedules" ("UserId","ScheduleId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(1,3,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(2,3,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(4,2,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(2,4,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(3,4,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(2,5,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(3,5,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(1,6,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00'),(3,6,'2023-01-07 05:28:23.871 +00:00','2023-01-07 05:28:23.871 +00:00');
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): INSERT INTO "Interests" ("name","createdAt","updatedAt") VALUES ('Military History and Wars','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('PC Master Race','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Anime','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Politic','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Manga','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Economy','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Programming','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Philosophy','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Movies','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Smart Phone','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('AI and Machine Learning','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Music','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Investing and Personal Finance','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Planes','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Engineering','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Archeology','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Tech trends','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Drone Zone','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00');
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): INSERT INTO "UserInterests" ("UserId","InterestId","createdAt","updatedAt") VALUES (1,3,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(1,2,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(1,1,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(2,4,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(2,5,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(3,6,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(3,7,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(4,7,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(4,8,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00');
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."id" = 7;
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      { status: 400, message: 'Your email address has been verified' } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/route:00','2023-01-07 05:28:23.874 +00:00'),('Archeology','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Tech trends','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00'),('Drone Zone','2023-01-07 05:28:23.874 +00:00','2023-01-07 05:28:23.874 +00:00');
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): INSERT INTO "UserInterests" ("UserId","InterestId","createdAt","updatedAt") VALUES (1,3,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(1,2,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(1,1,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(2,4,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(2,5,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(3,6,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(3,7,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(4,7,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00'),(4,8,'2023-01-07 05:28:23.876 +00:00','2023-01-07 05:28:23.876 +00:00');
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."id" = 7;
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      { status: 400, message: 'Your email address has been verified' } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."id" = 13;
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      { status: 401, message: 'Invalid Link' } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2r/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."id" = 13;
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      { status: 401, message: 'Invalid Link' } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      JsonWebTokenError {[39m
+[31m        name: 'JsonWebTokenError',[39m
+[31m        message: 'jwt malformed'[39m
+[31m      } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."id" = 3;
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      { status: 400, message: 'Your email address has been verified' } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      JsonWebTokenError {[39m
+[31m        name: 'JsonWebTokenError',[39m
+[31m        message: 'jwt malformed'[39m
+[31m      } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
+
+    [2mconsole.log[22m
+      Executing (default): SELECT "id", "username", "email", "password", "country", "status", "phoneNumber", "verified", "AvatarId", "createdAt", "updatedAt" FROM "Users" AS "User" WHERE "User"."id" = 3;
+[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+
+    [2m[31mconsole.error[39m[22m
+[31m      { status: 400, message: 'Your email address has been verified' } <<error[39m
+[2m[22m
+[2m    [0m [90m 50 |[39m[0m[22m
+[2m    [0m [90m 51 |[39m [36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
 
     [2mconsole.log[22m
       Executing (default): TRUNCATE "Media" RESTART IDENTITY CASCADE
@@ -151,24 +556,54 @@
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (defa2023-01-07 02:04:59.422 +00:00'),('native',5,1,'2023-01-07 02:04:59.422 +00:00','2023-01-07 02:04:59.422 +00:00');
+      Executing (default): TRUNCATE "Users" RESTART IDENTITY CASCADE
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "UserSchedules" ("UserId","ScheduleId","createdAt","updatedAt") VALUES (1,1,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(1,3,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(2,3,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(4,2,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(2,4,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(3,4,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(2,5,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(3,5,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(1,6,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00'),(3,6,'2023-01-07 02:04:59.425 +00:00','2023-01-07 02:04:59.425 +00:00');
+      Executing (default): TRUNCATE "Friendships" RESTART IDENTITY CASCADE
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "Interests" ("name","createdAt","updatedAt") VALUES ('Military History and Wars','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('PC Master Race','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Anime','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Politic','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Manga','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Economy','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Programming','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Philosophy','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Movies','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Smart Phone','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('AI and Machine Learning','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Music','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Investing and Personal Finance','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Planes','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Engineering','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Archeology','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Tech trends','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00'),('Drone Zone','2023-01-07 02:04:59.428 +00:00','2023-01-07 02:04:59.428 +00:00');
+      Executing (default): TRUNCATE "Groups" RESTART IDENTITY CASCADE
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
     [2mconsole.log[22m
-      Executing (default): INSERT INTO "UserInterests" ("UserId","InterestId","createdAt","updatedAt") VALUES (1,3,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(1,2,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(1,1,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(2,4,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(2,5,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(3,6,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(3,7,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(4,7,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00'),(4,8,'2023-01-07 02:04:59.431 +00:00','2023-01-07 02:04:59.431 +00:00');
+      Executing (default): TRUNCATE "Messages" RESTART IDENTITY CASCADE
 [2m[22m
-[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[36mconst[39m errorHandler [33m=[39m (err[33m,[39m req[33m,[39m res[33m,[39m next) [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 52 |[39m   console[33m.[39merror(err[33m,[39m[32m"<<error"[39m)[33m;[39m[0m[22m
+[2m    [0m [90m    |[39m           [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 53 |[39m[0m[22m
+[2m    [0m [90m 54 |[39m   [36mif[39m ([[0m[22m
+[2m    [0m [90m 55 |[39m     [32m"SequelizeValidationError"[39m[33m,[39m[0m[22m
+[2m[22m
+[2m      [2mat error ([22m[2mmiddlewares/errorHandler.js[2m:52:11)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:71:5)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:646:15[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:265:14)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Layer.handle_error ([22m[2mnode_modules/express/lib/router/layer.js[2m:67:12)[22m[2m[22m
+[2m      [2mat trim_prefix ([22m[2mnode_modules/express/lib/router/index.js[2m:326:13)[22m[2m[22m
+[2m      [2mat [22m[2mnode_modules/express/lib/router/index.js[2m:286:9[22m[2m[22m
+[2m      [2mat Function.process_params ([22m[2mnode_modules/express/lib/router/index.js[2m:346:12)[22m[2m[22m
+[2m      [2mat Immediate.next ([22m[2mnode_modules/express/lib/router/index.js[2m:280:10)[22m[2m[22m
+[2m      [2mat Immediate._onImmediate ([22m[2mnode_modules/express/lib/router/index.js[2m:646:15)[22m[2m[22m
 
     [2mconsole.log[22m
       Executing (default): TRUNCATE "Media" RESTART IDENTITY CASCADE
@@ -230,24 +665,24 @@
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
-ult): TRUNCATE "Users" RESTART IDENTITY CASCADE
-[2m[22m
-[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+[1m[31m  [1m● [22m[1mtest api user › post /users/verify › success verify and response 200[39m[22m
 
-    [2mconsole.log[22m
-      Executing (default): TRUNCATE "Friendships" RESTART IDENTITY CASCADE
-[2m[22m
-[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
 
-    [2mconsole.log[22m
-      Executing (default): TRUNCATE "Groups" RESTART IDENTITY CASCADE
+    Expected: [32m200[39m
+    Received: [31m400[39m
 [2m[22m
-[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+[2m    [0m [90m 425 |[39m                 [33m.[39mpost([32m`/users/verify?verification=${linkUnverified}`[39m)[0m[22m
+[2m    [0m [90m 426 |[39m                 [33m.[39mthen(res [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 427 |[39m                     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
+[2m    [0m [90m     |[39m                                        [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 428 |[39m                     expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
+[2m    [0m [90m 429 |[39m                     expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual(undefined)[0m[22m
+[2m    [0m [90m 430 |[39m                 })[0m[22m
+[2m[22m
+[2m      [2mat toBe ([22m[2m[0m[36m_test_/users.test.js[39m[0m[2m:427:40)[22m[2m[22m
 
-    [2mconsole.log[22m
-      Executing (default): TRUNCATE "Messages" RESTART IDENTITY CASCADE
-[2m[22m
-[2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
+[22m
 
     [2mconsole.log[22m
       Executing (default): TRUNCATE "GroupMembers" RESTART IDENTITY CASCADE
@@ -284,547 +719,34 @@ ult): TRUNCATE "Users" RESTART IDENTITY CASCADE
 [2m[22m
 [2m      [2mat Sequelize.log ([22m[2mnode_modules/sequelize/src/sequelize.js[2m:1279:15)[22m[2m[22m
 
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages › success getting all message of one group and response 200[39m[22m
+[1m[31m  [1m● [22m[1mtest api user › post /users/verify › success verify and response 200[39m[22m
 
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 169 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages'[39m)[0m[22m
-[2m    [0m [90m 170 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 171 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 172 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
-[2m    [0m [90m 173 |[39m                 expect(res)[33m.[39mtoHaveProperty([32m"body"[39m[33m,[39m expect[33m.[39many([33mArray[39m))[0m[22m
-[2m    [0m [90m 174 |[39m                 expect(res[33m.[39mbody[[35m0[39m])[33m.[39mtoHaveProperty([32m"content"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:171:14)[22m[2m[22m
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
 
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages › failed getting messsages and response 404 because the user is not a member of the group[39m[22m
+    Expected: [32m200[39m
+    Received: [31m400[39m
+[2m[22m
+[2m    [0m [90m 425 |[39m                 [33m.[39mpost([32m`/users/verify?verification=${linkUnverified}`[39m)[0m[22m
+[2m    [0m [90m 426 |[39m                 [33m.[39mthen(res [33m=>[39m {[0m[22m
+[2m    [0m[31m[1m>[22m[2m[39m[90m 427 |[39m                     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
+[2m    [0m [90m     |[39m                                        [31m[1m^[22m[2m[39m[0m[22m
+[2m    [0m [90m 428 |[39m                     expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
+[2m    [0m [90m 429 |[39m                     expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual(undefined)[0m[22m
+[2m    [0m [90m 430 |[39m                 })[0m[22m
+[2m[22m
+[2m      [2mat toBe ([22m[2m[0m[36m_test_/users.test.js[39m[0m[2m:427:40)[22m[2m[22m
 
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 187 |[39m             [33m.[39m[36mget[39m([32m'/groups/21/messages'[39m)[0m[22m
-[2m    [0m [90m 188 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 189 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 190 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 191 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 192 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:189:14)[22m[2m[22m
 
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 199 |[39m             [33m.[39m[36mget[39m([32m'/groups/test/messages'[39m)[0m[22m
-[2m    [0m [90m 200 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages › success getting all message of one group and response 200[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 169 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages'[39m)[0m[22m
-[2m    [0m [90m 170 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 171 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 172 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
-[2m    [0m [90m 173 |[39m                 expect(res)[33m.[39mtoHaveProperty([32m"body"[39m[33m,[39m expect[33m.[39many([33mArray[39m))[0m[22m
-[2m    [0m [90m 174 |[39m                 expect(res[33m.[39mbody[[35m0[39m])[33m.[39mtoHaveProperty([32m"content"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:171:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages › failed getting messsages and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 187 |[39m             [33m.[39m[36mget[39m([32m'/groups/21/messages'[39m)[0m[22m
-[2m    [0m [90m 188 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 189 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 190 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 191 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 192 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:189:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 199 |[39m             [33m.[39m[36mget[39m([32m'/groups/test/messages'[39m)[0m[22m
-[2m    [0m [90m 200 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 201 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 202 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 203 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 204 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:201:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPOST /groups/:groupId/messages › failed posting a messsage and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 238 |[39m             [33m.[39mpost([32m'/groups/21/messages'[39m)[0m[22m
-[2m    [0m [90m 239 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 240 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 241 |[39m                 console[33m.[39mlog(access_token[33m,[39m [32m"<<<<bawah"[39m)[33m;[39m[0m[22m
-[2m    [0m [90m 242 |[39m[0m[22m
-[2m    [0m [90m 243 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:240:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPOST /groups/:groupId/messages › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 252 |[39m             [33m.[39mpost([32m'/groups/test/messages'[39m)[0m[22m
-[2m    [0m [90m 253 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 254 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 255 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 256 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 257 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode[22m[2m[39m[90m 201 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 202 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 203 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 204 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:201:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPOST /groups/:groupId/messages › failed posting a messsage and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 238 |[39m             [33m.[39mpost([32m'/groups/21/messages'[39m)[0m[22m
-[2m    [0m [90m 239 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 240 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 241 |[39m                 console[33m.[39mlog(access_token[33m,[39m [32m"<<<<bawah"[39m)[33m;[39m[0m[22m
-[2m    [0m [90m 242 |[39m[0m[22m
-[2m    [0m [90m 243 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:240:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPOST /groups/:groupId/messages › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 252 |[39m             [33m.[39mpost([32m'/groups/test/messages'[39m)[0m[22m
-[2m    [0m [90m 253 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 254 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 255 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 256 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 257 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:254:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPOST /groups/:groupId/messages › failed getting messsages and response 400 because there is no file or text content was sent[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 264 |[39m             [33m.[39mpost([32m'/groups/1/messages'[39m)[0m[22m
-[2m    [0m [90m 265 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 266 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 267 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 268 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 269 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:266:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › success getting all message of one group and response 200[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 279 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/1'[39m)[0m[22m
-[2m    [0m [90m 280 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 281 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 282 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
-[2m    [0m [90m 283 |[39m                 expect(res)[33m.[39mtoHaveProperty([32m"body"[39m[33m,[39m expect[33m.[39many([33mObject[39m))[0m[22m
-[2m    [0m [90m 284 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"content"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-bas_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:254:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPOST /groups/:groupId/messages › failed getting messsages and response 400 because there is no file or text content was sent[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 264 |[39m             [33m.[39mpost([32m'/groups/1/messages'[39m)[0m[22m
-[2m    [0m [90m 265 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 266 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 267 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 268 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 269 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:266:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › success getting all message of one group and response 200[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 279 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/1'[39m)[0m[22m
-[2m    [0m [90m 280 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 281 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 282 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
-[2m    [0m [90m 283 |[39m                 expect(res)[33m.[39mtoHaveProperty([32m"body"[39m[33m,[39m expect[33m.[39many([33mObject[39m))[0m[22m
-[2m    [0m [90m 284 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"content"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:281:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › failed getting messsages and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 298 |[39m             [33m.[39m[36mget[39m([32m'/groups/21/messages/12'[39m)[0m[22m
-[2m    [0m [90m 299 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 300 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 301 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 302 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 303 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:300:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 310 |[39m             [33m.[39m[36mget[39m([32m'/groups/test/messages/12'[39m)[0m[22m
-[2m    [0m [90m 311 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 312 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 313 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 314 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 315 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:312:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 322 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messagee.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:281:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › failed getting messsages and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 298 |[39m             [33m.[39m[36mget[39m([32m'/groups/21/messages/12'[39m)[0m[22m
-[2m    [0m [90m 299 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 300 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 301 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 302 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 303 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:300:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 310 |[39m             [33m.[39m[36mget[39m([32m'/groups/test/messages/12'[39m)[0m[22m
-[2m    [0m [90m 311 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 312 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 313 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 314 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 315 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:312:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mGET /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 322 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/12'[39m)[0m[22m
-[2m    [0m [90m 323 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 324 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 325 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 326 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 327 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:324:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › success getting all message of one group and response 200[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 337 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/1'[39m)[0m[22m
-[2m    [0m [90m 338 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 339 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 340 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
-[2m    [0m [90m 341 |[39m                 expect(res)[33m.[39mtoHaveProperty([32m"body"[39m[33m,[39m expect[33m.[39many([33mObject[39m))[0m[22m
-[2m    [0m [90m 342 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"content"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:339:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › failed getting messsages and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 356 |[39m             [33m.[39m[36mget[39m([32m'/groups/21/messages/12'[39m)[0m[22m
-[2m    [0m [90m 357 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 358 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 359 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 360 |[39m        s/12'[39m)[0m[22m
-[2m    [0m [90m 323 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 324 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 325 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 326 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 327 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:324:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › success getting all message of one group and response 200[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 337 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/1'[39m)[0m[22m
-[2m    [0m [90m 338 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 339 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 340 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[0m[22m
-[2m    [0m [90m 341 |[39m                 expect(res)[33m.[39mtoHaveProperty([32m"body"[39m[33m,[39m expect[33m.[39many([33mObject[39m))[0m[22m
-[2m    [0m [90m 342 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"content"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:339:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › failed getting messsages and response 404 because the user is not a member of the group[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 356 |[39m             [33m.[39m[36mget[39m([32m'/groups/21/messages/12'[39m)[0m[22m
-[2m    [0m [90m 357 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 358 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 359 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 360 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 361 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:358:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 368 |[39m             [33m.[39m[36mget[39m([32m'/groups/test/messages/12'[39m)[0m[22m
-[2m    [0m [90m 369 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 370 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 371 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 372 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 373 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:370:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 380 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/12'[39m)[0m[22m
-[2m    [0m [90m 381 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 382 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 383 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 384 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 385 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagen         expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 361 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:358:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 368 |[39m             [33m.[39m[36mget[39m([32m'/groups/test/messages/12'[39m)[0m[22m
-[2m    [0m [90m 369 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 370 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 371 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[0m[22m
-[2m    [0m [90m 372 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 373 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:370:14)[22m[2m[22m
-
-[1m[31m  [1m● [22m[1mPUT /groups/:groupId/messages/:messageId › failed getting messsages and response 400 because the parameter group id is not a number[39m[22m
-
-    TypeError: Invalid value "undefined" for header "access_token"
-[2m[22m
-[2m    [0m [90m 380 |[39m             [33m.[39m[36mget[39m([32m'/groups/1/messages/12'[39m)[0m[22m
-[2m    [0m [90m 381 |[39m             [33m.[39m[36mset[39m([32m"access_token"[39m[33m,[39m access_token)[0m[22m
-[2m    [0m[31m[1m>[22m[2m[39m[90m 382 |[39m             [33m.[39mthen(res [33m=>[39m {[0m[22m
-[2m    [0m [90m     |[39m              [31m[1m^[22m[2m[39m[0m[22m
-[2m    [0m [90m 383 |[39m                 expect(res[33m.[39mstatus)[33m.[39mtoBe([35m404[39m)[0m[22m
-[2m    [0m [90m 384 |[39m                 expect(res[33m.[39mbody[33m.[39merror)[33m.[39mtoEqual([36mtrue[39m)[0m[22m
-[2m    [0m [90m 385 |[39m                 expect(res[33m.[39mbody)[33m.[39mtoHaveProperty([32m"message"[39m[33m,[39m expect[33m.[39many([33mString[39m))[0m[22m
-[2m[22m
-[2m      [2mat Test.setHeader [as request] ([22m[2mnode_modules/superagent/src/node/index.js[2m:850:39)[22m[2m[22m
-[2m      [2mat Test.request [as end] ([22m[2mnode_modules/superagent/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:382:14)[22m[2m[22m
-
-t/src/node/index.js[2m:973:8)[22m[2m[22m
-[2m      [2mat Test.end ([22m[2m[0m[36mnode_modules/supertest/lib/test.js[39m[0m[2m:118:11)[22m[2m[22m
-[2m      [2mat end ([22m[2mnode_modules/superagent/src/request-base.js[2m:285:12)[22m[2m[22m
-[2m      [2mat Test.Object.<anonymous>.RequestBase.then ([22m[2mnode_modules/superagent/src/request-base.js[2m:267:31)[22m[2m[22m
-[2m      [2mat Object.then ([22m[2m[0m[36m_test_/groups.test.js[39m[0m[2m:382:14)[22m[2m[22m
 
 [1mTest Suites: [22m[1m[31m1 failed[39m[22m, [1m[33m1 skipped[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[31m14 failed[39m[22m, [1m[33m21 skipped[39m[22m, 35 total
+[1mTests:       [22m[1m[31m1 failed[39m[22m, [1m[33m31 skipped[39m[22m, [1m[32m3 passed[39m[22m, 35 total
 [1mSnapshots:   [22m0 total
-[1mTime:[22m        1.987 s, estimated 3 s
+[1mTime:[22m        1.822 s, estimated 3 s
 [2mRan all test suites[22m[2m.[22m
 [1mTest Suites: [22m[1m[31m1 failed[39m[22m, [1m[33m1 skipped[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[31m14 failed[39m[22m, [1m[33m21 skipped[39m[22m, 35 total
+[1mTests:       [22m[1m[31m1 failed[39m[22m, [1m[33m31 skipped[39m[22m, [1m[32m3 passed[39m[22m, 35 total
 [1mSnapshots:   [22m0 total
-[1mTime:[22m        1.987 s, estimated 3 s
+[1mTime:[22m        1.822 s, estimated 3 s
 [2mRan all test suites[22m[2m.[22m
 [1mForce exiting Jest: [22mHave you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
 [1mForce exiting Jest: [22mHave you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?

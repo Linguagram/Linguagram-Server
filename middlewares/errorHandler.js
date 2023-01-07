@@ -49,7 +49,7 @@ const errorHandler2 = (err, req, res, next) => {
 }
 
 const errorHandler = (err, req, res, next) => {
-  // console.error(err);
+  console.error(err,"<<error");
 
   if ([
     "SequelizeValidationError",

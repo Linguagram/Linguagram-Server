@@ -13,11 +13,13 @@ const userLanguages = require('../data/userLanguages.json')
 const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
-let access_token;
-const fs = require('fs')
-
-
 const { generateHash } = require('../helpers/bcryptjs')
+const { signToken } = require('../helpers/jwt')
+let access_token;
+
+
+
+
 
 beforeAll(async () => {
 
@@ -36,15 +38,11 @@ beforeAll(async () => {
         return el
     }))
 
-    const res = await request(app)
-        .post('/login')
-        .send({
-            email: "admin@admin.com",
-            password: "1234567890",
-        })
 
-    console.log(res.body, "<<<<RES");
-    access_token = res.body.access_token
+    access_token = signToken({id:1})
+
+
+
     await sequelize.queryInterface.bulkInsert('Friendships', friendships.map(el => {
         el.createdAt = new Date();
         el.updatedAt = new Date();
@@ -68,6 +66,7 @@ beforeAll(async () => {
         el.updatedAt = new Date();
         return el
     }))
+
 
     await sequelize.queryInterface.bulkInsert('Languages', languages.map(el => {
         el.createdAt = new Date();
@@ -104,6 +103,7 @@ beforeAll(async () => {
         el.updatedAt = new Date();
         return el
     }))
+
 
 
 
@@ -164,7 +164,40 @@ afterAll(async () => {
 })
 
 
-describe.skip("test API groups", () => {
+describe("test API groups", () => {
+    describe("GET /groups/:groupId/messages", () => {
+        test("success getting all message of one group and response 200", () => {
+            return request(app)
+                .get('/groups/1/messages')
+                .set("access_token", access_token)
+                .then(res => {
+                    console.log(access_token,"<<<res");
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    expect(res.body[0]).toHaveProperty("content", expect.any(String))
+                    expect(res.body[0]).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("GroupId", expect.any(Number))
+                    expect(res.body[0]).toHaveProperty("User", expect.any(Object))
+                    expect(res.body[0]).toHaveProperty("Group", expect.any(Object))
+                    expect(res.body[0].User).toHaveProperty("id", expect.any(Number))
+                    expect(res.body[0].User).toHaveProperty("UserLanguages", expect.any(Array))
+                    expect(res.body[0].User).toHaveProperty("Avatar", expect.any(Object))
+                })
+        })
+
+        test("failed getting all message because user is not member of the group", () => {
+            return request(app)
+                .post('/groups/21/messages')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown Group')
+                })
+        })
+
+    })
 
     describe("GET /groups/:groupId/messages", () => {
         test("success getting all message of one group and response 200", () => {
@@ -214,7 +247,7 @@ describe.skip("test API groups", () => {
 
 
     describe("POST /groups/:groupId/messages", () => {
-        test.skip("success sending message with content and a file to one group and response 200", () => {
+        test("success sending message with content and a file to one group and response 200", () => {
             return request(app)
                 .post('/groups/1/messages')
                 .set({ "access_token": access_token })
@@ -241,7 +274,6 @@ describe.skip("test API groups", () => {
                 .post('/groups/21/messages')
                 .set("access_token", access_token)
                 .then(res => {
-                    console.log(access_token, "<<<<bawah");
 
                     expect(res.status).toBe(404)
                     expect(res.body.error).toEqual(true)

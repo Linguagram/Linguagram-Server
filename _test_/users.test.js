@@ -14,14 +14,17 @@ const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
 let access_token;
-let access_token2;
+let linkUnverified;
+let linkVerified;
+
 
 
 const { generateHash } = require('../helpers/bcryptjs')
+const { signToken, verifyToken } = require('../helpers/jwt')
 
-beforeAll(async () => {    
+beforeAll(async () => {
 
-    
+
     await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
         el.createdAt = new Date();
         el.updatedAt = new Date();
@@ -36,13 +39,20 @@ beforeAll(async () => {
     }))
 
     const res = await request(app)
-        .post('/login')
+        .post('/users/login')
         .send({
-            email: "admin@admin.com",
-            password: "1234567890",
+            email: "nmatusovsky2@mlb.com",
+            password: "gHWHJB",
         })
 
     access_token = res.body.access_token
+    linkVerified = res.body.access_token
+
+
+    linkUnverified = signToken({id:8})
+    const payload = verifyToken(linkUnverified)
+
+
 
     await sequelize.queryInterface.bulkInsert('Friendships', friendships.map(el => {
         el.createdAt = new Date();
@@ -106,15 +116,7 @@ beforeAll(async () => {
 
 
 
-    request(app)
-        .post('/users/register')
-        .send({
-            email: "wvignel@twitter.com",
-            password: "p6UWNt"
-        })
-        .then(res => {
 
-        })
 
 
 })
@@ -174,10 +176,10 @@ afterAll(async () => {
 
 describe("test api user", () => {
 
-    describe("post /register", () => {
+    describe("post /users/register", () => {
         test("success create user and response 201", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     email: "sipri34@gmail.com",
@@ -196,7 +198,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because no email was provided", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     password: "12345678",
@@ -214,7 +216,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because no password was provided", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     email: "sipri34@gmail.com",
@@ -231,7 +233,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because email has already been registered", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     password: "12345678",
@@ -249,7 +251,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because username was not provided", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     password: "12345678",
                     email: "sipri34@gmail.com",
@@ -266,7 +268,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because email format is invalid", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     password: "12345678",
@@ -284,7 +286,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because password is too short", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     password: "12345",
@@ -302,7 +304,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because password was not provided", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     email: "sipri34@gmail.com",
@@ -319,7 +321,7 @@ describe("test api user", () => {
 
         test("failed create user and response 400 because password and confirm password do not match", () => {
             return request(app)
-                .post('/register')
+                .post('/users/register')
                 .send({
                     username: 'sipri',
                     email: "sipri34@gmail.com",
@@ -336,13 +338,13 @@ describe("test api user", () => {
         })
     })
 
-    describe("post /login", () => {
+    describe("post /users/login", () => {
         test("success login and response 200", () => {
             return request(app)
-                .post('/login')
+                .post('/users/login')
                 .send({
-                    email: "admin@admin.com",
-                    password: "1234567890",
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
                 })
                 .then(res => {
                     expect(res.status).toBe(200)
@@ -355,7 +357,7 @@ describe("test api user", () => {
 
         test("failed login and response 400 because email was not provided", () => {
             return request(app)
-                .post('/login')
+                .post('/users/login')
                 .send({
                     password: "WDbnhZZ63W1",
                 })
@@ -370,7 +372,7 @@ describe("test api user", () => {
 
         test("failed login and response 400 because password was not provided", () => {
             return request(app)
-                .post('/login')
+                .post('/users/login')
                 .send({
                     email: "sforrest0@chron.com",
                 })
@@ -385,7 +387,7 @@ describe("test api user", () => {
 
         test("failed login and response 400 because password is invalid", () => {
             return request(app)
-                .post('/login')
+                .post('/users/login')
                 .send({
                     password: "WDbnhZZ6fa3W1",
                     email: "sforrest0@chron.com",
@@ -401,7 +403,7 @@ describe("test api user", () => {
 
         test("failed login and response 400 because email is invalid", () => {
             return request(app)
-                .post('/login')
+                .post('/users/login')
                 .send({
                     email: "sforrestf0@chron.com",
                     password: "WDbnhZZ63W1",
@@ -416,10 +418,10 @@ describe("test api user", () => {
         })
     })
 
-    describe("post /verify", () => {
+    describe("post /users/verify", () => {
         test("success verify and response 200", () => {
             return request(app)
-                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyOTkwODg4fQ.yJF3FGuRB3oBjRU9XURLjou7VTwFKRJ4JKuwQlJbw28')
+                .post(`/users/verify?verification=${linkUnverified}`)
                 .then(res => {
                     expect(res.status).toBe(200)
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -429,7 +431,7 @@ describe("test api user", () => {
 
         test("failed and response 401 because link is invalid", () => {
             return request(app)
-                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk5NDExNn0.PXk4cOsvuHY3wjXJRoQst8ApwbpRC7lCBQR4nFt-nME')
+                .post('/users/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk5NDExNn0.PXk4cOsvuHY3wjXJRoQst8ApwbpRC7lCBQR4nFt-nME')
                 .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body.error).toEqual(true)
@@ -441,7 +443,7 @@ describe("test api user", () => {
 
         test("failed and response 401 because token within the verification query is invalid", () => {
             return request(app)
-                .post('/verify?verification=test')
+                .post('/users/verify?verification=test')
                 .then(res => {
                     expect(res.status).toBe(401)
                     expect(res.body.error).toEqual(true)
@@ -453,7 +455,7 @@ describe("test api user", () => {
 
         test("failed and response 400 because the email has been verified", () => {
             return request(app)
-                .post('/verify?verification=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjcyOTk0ODIwfQ.MyUJur3txHTOqpD_AZswp2mn5anrffTAzNBQGoDjDDU')
+                .post(`/users/verify?verification=${linkVerified}`)
                 .then(res => {
                     expect(res.status).toBe(400)
                     expect(res.body).toHaveProperty("message", expect.any(String))
@@ -463,37 +465,5 @@ describe("test api user", () => {
         })
     })
 
-    describe("GET /groups/:groupId/messages", () => {
-        test("success getting all message of one group and response 200", () => {
-            return request(app)
-                .get('/groups/1/messages')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Array))
-                    expect(res.body[0]).toHaveProperty("content", expect.any(String))
-                    expect(res.body[0]).toHaveProperty("UserId", expect.any(Number))
-                    expect(res.body[0]).toHaveProperty("GroupId", expect.any(Number))
-                    expect(res.body[0]).toHaveProperty("User", expect.any(Object))
-                    expect(res.body[0]).toHaveProperty("Group", expect.any(Object))
-                    expect(res.body[0].User).toHaveProperty("id", expect.any(Number))
-                    expect(res.body[0].User).toHaveProperty("UserLanguages", expect.any(Array))
-                    expect(res.body[0].User).toHaveProperty("Avatar", expect.any(Object))
-                })
-        })
-
-        test("success verify and response 200", () => {
-            return request(app)
-                .post('/groups/21/messages')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(404)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Unknown Group')
-                })
-        })
-
-    })
 })
 

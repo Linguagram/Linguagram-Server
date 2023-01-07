@@ -112,7 +112,7 @@ class Controller {
 
       console.log(newUser);
 
-      const verificationId = signToken(newUser.id)
+      const verificationId = signToken({id:newUser.id})
       const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
       sendMail(newUser.email, newUser.username, link)
 
