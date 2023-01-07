@@ -140,8 +140,9 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       content,
     } = req.body;
 
-    if(!newAttachment){
-      message.MediaId = null 
+    if (!newAttachment) {
+      await message.update({ MediaId: null })
+      delete message.dataValues.Medium
     }
 
     if (!content && !newAttachment) {
@@ -244,15 +245,15 @@ router.post("/groups", async (req, res, next) => {
         name,
         type: "group",
       }, {
-          transaction: t
-        });
+        transaction: t
+      });
 
       groupMember = await GroupMember.create({
         UserId: req.userInfo.id,
         GroupId: group.id,
       }, {
-          transaction: t
-        });
+        transaction: t
+      });
 
       const user = await User.findByPk(userFetchAttributes(), {
         transaction: t,
@@ -309,7 +310,7 @@ router.delete("/groupmembers/:groupId", async (req, res, next) => {
       where: {
         GroupId: groupId,
         UserId: req.userInfo.id,
-        },
+      },
     });
 
     if (!groupMember) {
