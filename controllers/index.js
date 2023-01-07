@@ -269,7 +269,7 @@ class Controller {
       };
 
       if (!loggedInUser.verified) {
-        const verificationId = signToken(loggedInUser.id)
+        const verificationId = signToken({id:loggedInUser.id})
         const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
         sendMail(loggedInUser.email, loggedInUser.username, link)
         throw {

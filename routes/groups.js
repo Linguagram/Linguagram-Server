@@ -95,7 +95,7 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
       newMessage.dataValues.Medium = newAttachment;
     }
 
-    newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.User.id);
+    // newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.User.id); // masih error tidak ada id di newMessage.User
 
     sendMessage(groupMembers, newMessage);
 

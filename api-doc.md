@@ -391,7 +391,7 @@ _Response (400 - Bad Request)_
 ```json
 {
     "error": true,
-    "message":  "Invalid groupId" // error darimana ya
+    "message":  "Invalid groupId" 
 }
 ```
 

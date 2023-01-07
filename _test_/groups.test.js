@@ -171,7 +171,6 @@ describe("test API groups", () => {
                 .get('/groups/1/messages')
                 .set("access_token", access_token)
                 .then(res => {
-                    console.log(access_token,"<<<res");
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Array))
                     expect(res.body[0]).toHaveProperty("content", expect.any(String))
@@ -254,6 +253,7 @@ describe("test API groups", () => {
                 .field('content', 'test content')
                 .attach('attachment', '_test_/testFile.png')
                 .then(res => {
+                    console.log(res.body,"<<<res");
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
                     expect(res.body).toHaveProperty("Medium", expect.any(Object))
@@ -265,7 +265,6 @@ describe("test API groups", () => {
                     expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
                     expect(res.body.User.Avatar).toHaveProperty("url", expect.any(String))
                     expect(res.body.Medium).toHaveProperty("url", expect.any(String))
-
                 })
         })
 
@@ -282,7 +281,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
+        test("failed posting messsages and response 400 because the parameter group id is not a number", () => {
             return request(app)
                 .post('/groups/test/messages')
                 .set("access_token", access_token)
@@ -294,7 +293,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 400 because there is no file or text content was sent", () => {
+        test("failed posting messsages and response 400 because there is no file or text content was sent", () => {
             return request(app)
                 .post('/groups/1/messages')
                 .set("access_token", access_token)
@@ -328,7 +327,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 404 because the user is not a member of the group", () => {
+        test("failed getting a messsage and response 404 because the user is not a member of the group", () => {
             return request(app)
                 .get('/groups/21/messages/12')
                 .set("access_token", access_token)
@@ -340,7 +339,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
+        test("failed getting a messsage and response 400 because the parameter group id is not a number", () => {
             return request(app)
                 .get('/groups/test/messages/12')
                 .set("access_token", access_token)
@@ -352,7 +351,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
+        test("failed getting a message and response 400 because the user is not a member of the gropu", () => {
             return request(app)
                 .get('/groups/1/messages/12')
                 .set("access_token", access_token)
@@ -367,9 +366,9 @@ describe("test API groups", () => {
 
 
     describe("PUT /groups/:groupId/messages/:messageId", () => {
-        test("success getting all message of one group and response 200", () => {
+        test.only("edit a message of one group and response 200", () => {
             return request(app)
-                .get('/groups/1/messages/1')
+                .put('/groups/1/messages/1')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(200)
@@ -388,7 +387,7 @@ describe("test API groups", () => {
 
         test("failed getting messsages and response 404 because the user is not a member of the group", () => {
             return request(app)
-                .get('/groups/21/messages/12')
+                .put('/groups/21/messages/12')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(404)
@@ -400,7 +399,7 @@ describe("test API groups", () => {
 
         test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
             return request(app)
-                .get('/groups/test/messages/12')
+                .put('/groups/test/messages/12')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -412,7 +411,7 @@ describe("test API groups", () => {
 
         test("failed getting messsages and response 400 because the parameter group id is not a number", () => {
             return request(app)
-                .get('/groups/1/messages/12')
+                .put('/groups/1/messages/12')
                 .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(404)
@@ -421,5 +420,9 @@ describe("test API groups", () => {
                     expect(res.body.message).toEqual('Unknown message')
                 })
         })
+
+
     })
+
+    
 })
