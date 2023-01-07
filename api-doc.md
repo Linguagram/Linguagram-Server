@@ -43,6 +43,8 @@ List of available endpoints:
 - `GET /explore/users`
 - `GET /explore/groups`
 - `GET /interests`
+- `GET /users/@me`
+- `GET /groups/:userId`
 
 &nbsp;
 
