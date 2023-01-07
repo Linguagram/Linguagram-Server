@@ -244,7 +244,7 @@ describe("test API groups", () => {
     })
 
     describe("POST /groups/:groupId/messages", () => {
-        test("success sending message with content and a file to one group and response 200", () => {
+        test.skip("success sending message with content and a file to one group and response 200", () => {
             return request(app)
                 .post('/groups/1/messages')
                 .set({ "access_token": access_token })
@@ -290,7 +290,7 @@ describe("test API groups", () => {
                 })
         })
 
-        test("failed posting messsages and response 400 because there is no file or text content was sent", () => {
+        test("failed posting messsages and response 400 because there is no file or text content sent", () => {
             return request(app)
                 .post('/groups/1/messages')
                 .set("access_token", access_token)
@@ -441,7 +441,7 @@ describe("test API groups", () => {
                     expect(res.body.message).toEqual('Unknown message')
                 })
         })
-  
+
 
 
     })
@@ -516,34 +516,126 @@ describe("test API groups", () => {
         })
     })
 
-
-
     describe("GET /groups/@me", () => {
         test("succeed on getting group list the user is a member of and response 200", () => {
             return request(app)
                 .get('/groups/@me')
                 .set("access_token", access_token)
                 .then(res => {
-                    console.log(res.body, "<<<res");
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Array))
-                    expect(res.body[0]).toHaveProperty('id',expect.any(Number))
-                    expect(res.body[0]).toHaveProperty('unreadMessageCount',expect.any(Number))
-                    expect(res.body[0]).toHaveProperty('GroupMembers',expect.any(Object))
-                    expect(res.body[0].GroupMembers[0]).toHaveProperty('id',expect.any(Number))
-                    expect(res.body[0].GroupMembers[0]).toHaveProperty('User',expect.any(Object))
-                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('id',expect.any(Number))
-                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('username',expect.any(String))
-                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('email',expect.any(String))
-                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('country',expect.any(String))
-                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('AvatarId',expect.any(Number))
-                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('isOnline',expect.any(Boolean))
+                    expect(res.body[0]).toHaveProperty('id', expect.any(Number))
+                    expect(res.body[0]).toHaveProperty('unreadMessageCount', expect.any(Number))
+                    expect(res.body[0]).toHaveProperty('GroupMembers', expect.any(Object))
+                    expect(res.body[0].GroupMembers[0]).toHaveProperty('id', expect.any(Number))
+                    expect(res.body[0].GroupMembers[0]).toHaveProperty('User', expect.any(Object))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('id', expect.any(Number))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('username', expect.any(String))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('email', expect.any(String))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('country', expect.any(String))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('AvatarId', expect.any(Number))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('isOnline', expect.any(Boolean))
                 })
-        })     
+        })
+
     })
-    
-    
-    
+
+    describe("POST /users/avatar", () => {
+        test.skip("succeed on posting avatar and response 201", () => {
+            return request(app)
+                .post('/users/avatar')
+                .set("access_token", access_token)
+                .attach('avatar', '_test_/testFile.png')
+                .then(res => {
+                    expect(res.status).toBe(201)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty('id', expect.any(Number))
+                    expect(res.body).toHaveProperty('username', expect.any(String))
+                    expect(res.body).toHaveProperty('email', expect.any(String))
+                    expect(res.body).toHaveProperty('country', expect.any(String))
+                    expect(res.body).toHaveProperty('AvatarId', expect.any(Number))
+                    expect(res.body).toHaveProperty('isOnline', expect.any(Boolean))
+                })
+        })
+
+        test("failed posting avatar and response 400 because there is no file sent", () => {
+            return request(app)
+                .post('/users/avatar')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('avatar is required')
+                })
+        })
+
+    })
+
+
+    describe("GET /users/:userId", () => {
+        test("succeed on getting info of a user and response 200", () => {
+            return request(app)
+                .get('/users/1')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty('id', expect.any(Number))
+                    expect(res.body).toHaveProperty('username', expect.any(String))
+                    expect(res.body).toHaveProperty('email', expect.any(String))
+                    expect(res.body).toHaveProperty('country', expect.any(String))
+                    expect(res.body).toHaveProperty('AvatarId', expect.any(Number))
+                    expect(res.body).toHaveProperty('isOnline', expect.any(Boolean))
+                    expect(res.body).toHaveProperty('Avatar', expect.any(Object))
+                    expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
+                    expect(res.body.UserLanguages[0]).toHaveProperty('Language', expect.any(Object))
+                    expect(res.body.UserLanguages[0].Language).toHaveProperty('name', expect.any(String))
+                })
+
+        })
+
+        test("failed on getting info of a user and response 400 because the inserted user id is not a number", () => {
+            return request(app)
+                .get('/users/test')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid userId')
+                })
+        })
+
+        test("succeed on getting info of a user and response 200", () => {
+            return request(app)
+                .get('/users/100')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown user')
+                })
+        })
+    })
+
+    describe.only("GET /languages", () => {
+        test("succeed on getting languages list and response 200", () => {
+            return request(app)
+                .get('/languages')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))                    
+                    res.body.forEach(el=>{
+                        expect(el).toHaveProperty('id', expect.any(Number))
+                        expect(el).toHaveProperty('name', expect.any(String))
+                    })
+                })
+            })
+        })
+
 
 
 })

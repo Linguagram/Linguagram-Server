@@ -353,6 +353,7 @@ describe.skip("test api user", () => {
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body.user).toHaveProperty("email", expect.any(String))
                     expect(res.body.user).toHaveProperty("id", expect.any(Number))
+                    expect(res.body.user).toHaveProperty("id", expect.any(Number))
                     expect(res.body.user.password).toEqual(undefined)
                 })
         })

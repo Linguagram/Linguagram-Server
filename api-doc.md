@@ -1095,15 +1095,87 @@ _Response (200 - OK)_
     "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
     "phoneNumber": "+1 339 769 7021",
     "verified": true,
-    "AvatarId": 11,
+    "AvatarId": 21,
     "Avatar": {
-        "id": 11,
-        "name": "1f7851ce062d27144afe91ee52593578_hiAK42ceu",
-        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/1f7851ce062d27144afe91ee52593578_hiAK42ceu",
-        "format": "image/jpeg",
-        "createdAt": "2023-01-06T02:13:38.021Z",
-        "updatedAt": "2023-01-06T02:13:38.021Z"
-    }
+        "id": 21,
+        "name": "4db30eaf4b70dfee0e7e5cd8ded5531f_xl0EL2jdR",
+        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/4db30eaf4b70dfee0e7e5cd8ded5531f_xl0EL2jdR",
+        "format": "image/png",
+        "createdAt": "2023-01-07T15:50:02.973Z",
+        "updatedAt": "2023-01-07T15:50:02.973Z"
+    },
+    "UserLanguages": [
+        {
+            "id": 3,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2023-01-07T04:59:24.358Z",
+            "updatedAt": "2023-01-07T04:59:24.358Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2023-01-07T04:59:24.346Z",
+                "updatedAt": "2023-01-07T04:59:24.346Z"
+            }
+        },
+        {
+            "id": 1,
+            "type": "native",
+            "UserId": 1,
+            "LanguageId": 10,
+            "createdAt": "2023-01-07T04:59:24.358Z",
+            "updatedAt": "2023-01-07T04:59:24.358Z",
+            "Language": {
+                "id": 10,
+                "name": "Moldovan",
+                "createdAt": "2023-01-07T04:59:24.346Z",
+                "updatedAt": "2023-01-07T04:59:24.346Z"
+            }
+        }
+    ],
+    "UserInterests": [
+        {
+            "id": 1,
+            "UserId": 1,
+            "InterestId": 3,
+            "createdAt": "2023-01-07T04:59:24.369Z",
+            "updatedAt": "2023-01-07T04:59:24.369Z",
+            "Interest": {
+                "id": 3,
+                "name": "Anime",
+                "createdAt": "2023-01-07T04:59:24.366Z",
+                "updatedAt": "2023-01-07T04:59:24.366Z"
+            }
+        },
+        {
+            "id": 2,
+            "UserId": 1,
+            "InterestId": 2,
+            "createdAt": "2023-01-07T04:59:24.369Z",
+            "updatedAt": "2023-01-07T04:59:24.369Z",
+            "Interest": {
+                "id": 2,
+                "name": "PC Master Race",
+                "createdAt": "2023-01-07T04:59:24.366Z",
+                "updatedAt": "2023-01-07T04:59:24.366Z"
+            }
+        },
+        {
+            "id": 3,
+            "UserId": 1,
+            "InterestId": 1,
+            "createdAt": "2023-01-07T04:59:24.369Z",
+            "updatedAt": "2023-01-07T04:59:24.369Z",
+            "Interest": {
+                "id": 1,
+                "name": "Military History and Wars",
+                "createdAt": "2023-01-07T04:59:24.366Z",
+                "updatedAt": "2023-01-07T04:59:24.366Z"
+            }
+        }
+    ],
+    "isOnline": false
 }
 ```
 

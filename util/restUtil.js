@@ -146,7 +146,12 @@ const fileAction = async (req) => {
 
 const getUser = async (userId) => {
   const user = await User.findByPk(userId, userFetchAttributes(Media));
-
+  if(!user){
+    throw {
+      status : 404,
+      message : "Unknown user"
+    }
+  }
   user.dataValues.isOnline = isOnline(user.id);
 
   return user;
