@@ -207,6 +207,10 @@ const deleteMessage = (groupMembers, data) => {
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE_DELETE);
 };
 
+const sendGroupUpdate = (groupMembers, data) => {
+  return distributeMessage(groupMembers, data, SOCKET_EVENTS.GROUP_UPDATE);
+};
+
 const sendGroupJoin = (groupMembers, data) => {
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.GROUP_JOIN);
 };
@@ -246,4 +250,5 @@ module.exports = {
   sendFriendRequest,
   acceptedFriendRequest,
   deletedFriendRequest,
+  sendGroupUpdate,
 }

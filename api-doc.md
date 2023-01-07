@@ -4,9 +4,9 @@
 
 List of available endpoints:
 
-- `POST /register`
-- `POST /login`
-- `POST /verify`
+- `POST /users/register`
+- `POST /users/login`
+- `POST /users/verify`
 
 - `GET /groups/:groupId/messages`
 - `POST /groups/:groupId/messages`
@@ -15,14 +15,14 @@ List of available endpoints:
 - `PUT /groups/:groupId/messages/:messageId`
 - `DELETE /groups/:groupId/messages/:messageId`
 
-- `GET /groups`
-- `POST /avatar`
-- `DELETE /avatar`
+- `GET /groups/@me`
+- `POST /users/avatar`
+- `DELETE /users/avatar`
 - `GET /users/:userId`
 
 - `GET /languages`
-- `PUT /@me`
-- `GET /@me/languages`
+- `PUT /users/@me`
+- `GET /languages/@me`
 
 - `GET /friends`
 - `POST /friends/:friendId`

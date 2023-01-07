@@ -10,6 +10,7 @@ const {
   Message,
   GroupMember,
   Group,
+  User,
   sequelize,
 } = require("../models");
 
@@ -25,6 +26,8 @@ const {
   deleteMessage,
   sendGroupJoin,
   sendGroupLeave,
+  isOnline,
+  sendGroupUpdate,
 } = require("../util/ws");
 
 const {
@@ -35,6 +38,7 @@ const {
   getMessages,
   getGroup,
 } = require("../util/restUtil");
+const { userFetchAttributes } = require("../util/fetchAttributes");
 
 // ========= Controller imports END
 
@@ -90,6 +94,8 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
       newMessage.dataValues.Medium = newAttachment;
     }
 
+    newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.User.id);
+
     sendMessage(groupMembers, newMessage);
 
     res.status(201).json(newMessage);
@@ -109,6 +115,7 @@ router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {
     const messageId = validateMessageId(req.params.messageId);
 
     const message = await getMessage(messageId, groupId);
+    message.dataValues.User.dataValues.isOnline = isOnline(message.User.id);
 
     res.status(200).json(message);
   } catch (err) {
@@ -157,6 +164,8 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       message.dataValues.Medium = newAttachment;
     }
 
+    message.dataValues.User.dataValues.isOnline = isOnline(message.User.id);
+
     message.dataValues.edited = true;
 
     editMessage(groupMembers, message);
@@ -193,6 +202,8 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
       User: message.User,
     };
 
+    response.User.dataValues.isOnline = isOnline(response.User.id);
+
     deleteMessage(groupMembers, response);
 
     res.status(200).json(response);
@@ -217,7 +228,7 @@ router.post("/groups", async (req, res, next) => {
   try {
     const { name, type } = req.body;
 
-    let group, groupMembers;
+    let group, groupMember;
 
     await sequelize.transaction(async (t) => {
       // begin transaction
@@ -228,15 +239,23 @@ router.post("/groups", async (req, res, next) => {
           transaction: t
         });
 
-      groupMembers = await GroupMember.create({
+      groupMember = await GroupMember.create({
         UserId: req.userInfo.id,
         GroupId: group.id,
       }, {
           transaction: t
         });
+
+      const user = await User.findByPk(userFetchAttributes(), {
+        transaction: t,
+      });
+
+      user.dataValues.isOnline = isOnline(user.id);
+
+      groupMember.dataValues.User = user;
     });
 
-    group.dataValues.GroupMembers = groupMembers;
+    group.dataValues.GroupMembers = [groupMember];
 
     res.status(201).json(group);
   } catch (err) {
@@ -261,6 +280,8 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
       GroupId: group.id,
       UserId: req.userInfo.id,
     });
+
+    newMember.dataValues.isOnline = isOnline(newMember.id);
 
     const members = await getGroupMembers(group.id, req);
 
@@ -383,6 +404,8 @@ router.put("/groups/:groupId", async (req, res, next) => {
     await group.save;
 
     res.status(200).json(group);
+
+    sendGroupUpdate(groupMembers, group);
   } catch (err) {
     next(err);
   }

@@ -17,6 +17,7 @@ const {
   sendFriendRequest,
   acceptedFriendRequest,
   deletedFriendRequest,
+  isOnline,
 } = require('../util/ws');
 
 const {
@@ -34,6 +35,11 @@ const {
 router.get("/friends", async (req, res, next) => {
   try {
     const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
+
+    for (const friend of friends) {
+      friend.dataValues.User.dataValues.isOnline = isOnline(friend.User.id);
+      friend.dataValues.Friend.dataValues.isOnline = isOnline(friend.Friend.id);
+    }
 
     res.status(200).json(friends);
   } catch (err) {
@@ -66,6 +72,8 @@ router.post("/friends/:friendId", async (req, res, next) => {
     });
 
     newFriend.dataValues.User = req.userInfo;
+    newFriend.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
+    newFriend.dataValues.Friend.dataValues.isOnline = isOnline(newFriend.Friend.id);
 
     res.status(200).json(newFriend);
 
@@ -90,6 +98,8 @@ router.patch("/friendships/:userId", async (req, res, next) => {
     friendship.isAccepted = true;
 
     await friendship.save();
+    friendship.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
+    friendship.dataValues.Friend.dataValues.isOnline = isOnline(friendship.Friend.id);
 
     res.status(200).json(friendship);
 
@@ -113,6 +123,8 @@ router.delete("/friendships/:friendId", async (req, res, next) => {
     friendship.isAccepted = true;
 
     await friendship.save();
+    friendship.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
+    friendship.dataValues.Friend.dataValues.isOnline = isOnline(friendship.Friend.id);
 
     res.status(200).json(friendship);
 
