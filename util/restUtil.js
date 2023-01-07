@@ -54,7 +54,7 @@ const getGroupMembersFromUserId = async (userId) => {
                 FROM "Messages"
                 WHERE "Messages"."isRead" = FALSE
                 AND "Messages"."UserId" != ${userId}
-                AND "Messages"."GroupId" != "Groups"."id"
+                AND "Messages"."GroupId" = "Group"."id"
               )`),
               'unreadMessageCount'
             ],

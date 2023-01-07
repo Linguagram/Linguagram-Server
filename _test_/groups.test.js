@@ -517,7 +517,7 @@ describe("test API groups", () => {
         })
     })
 
-    describe.skip("GET /groups", () => {
+    describe.only("GET /groups", () => {
 
         test("succeed on getting group list the user is a member of and response 200", () => {
             return request(app)
@@ -531,6 +531,8 @@ describe("test API groups", () => {
                 })
         })     
     })
+    
+    
 
 
 })
