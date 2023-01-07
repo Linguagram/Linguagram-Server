@@ -958,31 +958,53 @@ _Response (200 - OK)_
 [
     {
         "id": 1,
-        "GroupId": 1,
-        "UserId": 1,
-        "createdAt": "2023-01-06T02:10:31.190Z",
-        "updatedAt": "2023-01-06T02:10:31.190Z",
-        "Group": {
-            "id": 1,
-            "name": "private",
-            "type": "dm",
-            "createdAt": "2023-01-06T02:10:31.184Z",
-            "updatedAt": "2023-01-06T02:10:31.184Z"
-        }
-    },
-    {
-        "id": 4,
-        "GroupId": 2,
-        "UserId": 1,
-        "createdAt": "2023-01-06T02:10:31.190Z",
-        "updatedAt": "2023-01-06T02:10:31.190Z",
-        "Group": {
-            "id": 2,
-            "name": "private",
-            "type": "dm",
-            "createdAt": "2023-01-06T02:10:31.184Z",
-            "updatedAt": "2023-01-06T02:10:31.184Z"
-        }
+        "name": "private",
+        "type": "dm",
+        "createdAt": "2023-01-07T04:59:24.335Z",
+        "updatedAt": "2023-01-07T04:59:24.335Z",
+        "unreadMessageCount": 2,
+        "GroupMembers": [
+            {
+                "id": 1,
+                "GroupId": 1,
+                "UserId": 1,
+                "createdAt": "2023-01-07T04:59:24.342Z",
+                "updatedAt": "2023-01-07T04:59:24.342Z",
+                "User": {
+                    "id": 1,
+                    "username": "Sissie Forrest",
+                    "email": "sforrest0@chron.com",
+                    "country": "Switzerland",
+                    "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+                    "phoneNumber": "+1 339 769 7021",
+                    "verified": true,
+                    "AvatarId": 1,
+                    "createdAt": "2023-01-07T04:59:24.147Z",
+                    "updatedAt": "2023-01-07T04:59:24.147Z",
+                    "isOnline": false
+                }
+            },
+            {
+                "id": 2,
+                "GroupId": 1,
+                "UserId": 2,
+                "createdAt": "2023-01-07T04:59:24.342Z",
+                "updatedAt": "2023-01-07T04:59:24.342Z",
+                "User": {
+                    "id": 2,
+                    "username": "Krispin Admin",
+                    "email": "admin@admin.com",
+                    "country": "Cuba",
+                    "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
+                    "phoneNumber": "+86 589 929 4346",
+                    "verified": false,
+                    "AvatarId": 2,
+                    "createdAt": "2023-01-07T04:59:24.171Z",
+                    "updatedAt": "2023-01-07T04:59:24.171Z",
+                    "isOnline": false
+                }
+            }
+        ]
     },...
 ]
 ```

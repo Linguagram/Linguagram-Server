@@ -251,7 +251,6 @@ describe("test API groups", () => {
                 .field('content', 'test content')
                 .attach('attachment', '_test_/testFile.png')
                 .then(res => {
-                    console.log(res.body, "<<<res");
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
                     expect(res.body).toHaveProperty("Medium", expect.any(Object))
@@ -517,20 +516,32 @@ describe("test API groups", () => {
         })
     })
 
-    describe.only("GET /groups", () => {
 
+
+    describe("GET /groups/@me", () => {
         test("succeed on getting group list the user is a member of and response 200", () => {
             return request(app)
-                .get('/groups')
-                .set("access_token-", access_token)
+                .get('/groups/@me')
+                .set("access_token", access_token)
                 .then(res => {
-                    expect(res.status).toBe(404)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Unknown Group')
+                    console.log(res.body, "<<<res");
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    expect(res.body[0]).toHaveProperty('id',expect.any(Number))
+                    expect(res.body[0]).toHaveProperty('unreadMessageCount',expect.any(Number))
+                    expect(res.body[0]).toHaveProperty('GroupMembers',expect.any(Object))
+                    expect(res.body[0].GroupMembers[0]).toHaveProperty('id',expect.any(Number))
+                    expect(res.body[0].GroupMembers[0]).toHaveProperty('User',expect.any(Object))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('id',expect.any(Number))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('username',expect.any(String))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('email',expect.any(String))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('country',expect.any(String))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('AvatarId',expect.any(Number))
+                    expect(res.body[0].GroupMembers[0].User).toHaveProperty('isOnline',expect.any(Boolean))
                 })
         })     
     })
+    
     
     
 

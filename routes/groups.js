@@ -115,8 +115,7 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     if (newAttachment?.id) {
       newMessage.dataValues.Medium = newAttachment;
     }
-    console.log(req.userInfo,'<<<<userInfo');
-    console.log(newMessage.Users,'<<<<new');
+
 
     newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
 
@@ -241,8 +240,18 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 router.get("/groups/@me", async (req, res, next) => {
   try {
     const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
-
-    res.status(200).json(groupMembers.map(gm => gm.Group));
+    res.status(200).json((groupMembers.map(gm => gm.Group)).map(gr => {
+      const temp = gr.dataValues.GroupMembers.map(mem => {
+        const memtemp = mem.dataValues.User.dataValues
+        delete memtemp.password
+        mem.dataValues.User.dataValues = memtemp
+        return mem
+      })
+      const converted = Number(gr.dataValues.unreadMessageCount)
+      gr.dataValues.unreadMessageCount = converted
+      gr.dataValues.GroupMembers = temp
+      return gr
+    }));
   } catch (err) {
     next(err);
   }
