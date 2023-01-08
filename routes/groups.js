@@ -315,7 +315,12 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
       message: "Unknown Group",
     };
 
-    const alreadyMember = await GroupMember.findByPk(req.userInfo.id);
+    const alreadyMember = await GroupMember.findOne({
+      where : {
+        GroupId: group.id,
+        UserId: req.userInfo.id,
+      },
+    });
 
     if (alreadyMember) throw {
       status: 400,
