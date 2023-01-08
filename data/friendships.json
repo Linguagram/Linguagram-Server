@@ -12,7 +12,8 @@
 },
 {
     "UserId": 2,
-    "FriendId" : 3
+    "FriendId" : 3,
+    "isAccepted" : true
 },
 {
     "UserId": 1,

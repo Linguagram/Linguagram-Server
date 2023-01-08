@@ -1519,152 +1519,53 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id": 3,
-    "UserId": 2,
-    "FriendId": 4,
-    "isAccepted": false,
-    "createdAt": "2023-01-07T01:00:38.557Z",
-    "updatedAt": "2023-01-07T01:00:38.557Z",
-    "User": {
-        "id": 2,
-        "username": "Krispin Admin",
-        "email": "admin@admin.com",
-        "country": "Cuba",
-        "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
-        "phoneNumber": "+86 589 929 4346",
-        "verified": true,
-        "AvatarId": 2,
-        "Avatar": {
-            "id": 2,
-            "name": "avatar",
-            "url": "https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg",
-            "format": "image/jpg",
-            "createdAt": "2023-01-07T01:00:37.972Z",
-            "updatedAt": "2023-01-07T01:00:37.972Z"
-        },
-        "UserLanguages": [
-            {
-                "id": 2,
-                "type": "native",
-                "UserId": 2,
-                "LanguageId": 3,
-                "createdAt": "2023-01-07T01:00:38.702Z",
-                "updatedAt": "2023-01-07T01:00:38.702Z",
-                "Language": {
-                    "id": 3,
-                    "name": "Lao",
-                    "createdAt": "2023-01-07T01:00:38.647Z",
-                    "updatedAt": "2023-01-07T01:00:38.647Z"
-                }
-            },
-            {
-                "id": 4,
-                "type": "interest",
-                "UserId": 2,
-                "LanguageId": 1,
-                "createdAt": "2023-01-07T01:00:38.702Z",
-                "updatedAt": "2023-01-07T01:00:38.702Z",
-                "Language": {
-                    "id": 1,
-                    "name": "Papiamento",
-                    "createdAt": "2023-01-07T01:00:38.647Z",
-                    "updatedAt": "2023-01-07T01:00:38.647Z"
-                }
-            }
-        ],
-        "UserInterests": [
-            {
-                "id": 5,
-                "UserId": 2,
-                "InterestId": 5,
-                "createdAt": "2023-01-07T01:00:38.800Z",
-                "updatedAt": "2023-01-07T01:00:38.800Z",
-                "Interest": {
-                    "id": 5,
-                    "name": "Manga",
-                    "createdAt": "2023-01-07T01:00:38.767Z",
-                    "updatedAt": "2023-01-07T01:00:38.767Z"
-                }
-            },
-            {
-                "id": 4,
-                "UserId": 2,
-                "InterestId": 4,
-                "createdAt": "2023-01-07T01:00:38.800Z",
-                "updatedAt": "2023-01-07T01:00:38.800Z",
-                "Interest": {
-                    "id": 4,
-                    "name": "Politic",
-                    "createdAt": "2023-01-07T01:00:38.767Z",
-                    "updatedAt": "2023-01-07T01:00:38.767Z"
-                }
-            }
-        ],
-        "isOnline": false
+    "id": 1,
+    "username": "Sissie Forrest",
+    "email": "sforrest0@chron.com",
+    "country": "Switzerland",
+    "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+    "phoneNumber": "+1 339 769 7021",
+    "verified": true,
+    "AvatarId": 1,
+    "Avatar": {
+        "id": 1,
+        "name": "avatar",
+        "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+        "format": "image/jpg",
+        "createdAt": "2023-01-08T04:09:06.355Z",
+        "updatedAt": "2023-01-08T04:09:06.355Z"
     },
-    "Friend": {
-        "id": 4,
-        "username": "Ashleigh Brabban",
-        "email": "abrabban3@angelfire.com",
-        "country": "Sweden",
-        "status": "gravida nisi at nibh in hac habitasse platea dictumst aliquam",
-        "phoneNumber": "+33 648 933 7445",
-        "verified": true,
-        "AvatarId": 4,
-        "Avatar": {
-            "id": 4,
-            "name": "avatar",
-            "url": "http://anime.falseblue.com/wp-content/uploads/2012/06/Thor%2BChris%2BHemsworth.jpg",
-            "format": "image/jpg",
-            "createdAt": "2023-01-07T01:00:37.972Z",
-            "updatedAt": "2023-01-07T01:00:37.972Z"
-        },
-        "UserLanguages": [
-            {
-                "id": 8,
-                "type": "native",
-                "UserId": 4,
-                "LanguageId": 1,
-                "createdAt": "2023-01-07T01:00:38.702Z",
-                "updatedAt": "2023-01-07T01:00:38.702Z",
-                "Language": {
-                    "id": 1,
-                    "name": "Papiamento",
-                    "createdAt": "2023-01-07T01:00:38.647Z",
-                    "updatedAt": "2023-01-07T01:00:38.647Z"
-                }
+    "UserLanguages": [
+        {
+            "id": 3,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2023-01-08T04:09:06.612Z",
+            "updatedAt": "2023-01-08T04:09:06.612Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2023-01-08T04:09:06.603Z",
+                "updatedAt": "2023-01-08T04:09:06.603Z"
             }
-        ],
-        "UserInterests": [
-            {
-                "id": 8,
-                "UserId": 4,
-                "InterestId": 7,
-                "createdAt": "2023-01-07T01:00:38.800Z",
-                "updatedAt": "2023-01-07T01:00:38.800Z",
-                "Interest": {
-                    "id": 7,
-                    "name": "Programming",
-                    "createdAt": "2023-01-07T01:00:38.767Z",
-                    "updatedAt": "2023-01-07T01:00:38.767Z"
-                }
-            },
-            {
-                "id": 9,
-                "UserId": 4,
-                "InterestId": 8,
-                "createdAt": "2023-01-07T01:00:38.800Z",
-                "updatedAt": "2023-01-07T01:00:38.800Z",
-                "Interest": {
-                    "id": 8,
-                    "name": "Philosophy",
-                    "createdAt": "2023-01-07T01:00:38.767Z",
-                    "updatedAt": "2023-01-07T01:00:38.767Z"
-                }
+        },...
+    ],
+    "UserInterests": [
+        {
+            "id": 1,
+            "UserId": 1,
+            "InterestId": 3,
+            "createdAt": "2023-01-08T04:09:06.622Z",
+            "updatedAt": "2023-01-08T04:09:06.622Z",
+            "Interest": {
+                "id": 3,
+                "name": "Anime",
+                "createdAt": "2023-01-08T04:09:06.620Z",
+                "updatedAt": "2023-01-08T04:09:06.620Z"
             }
-        ],
-        "isOnline": false
-    }
+        },...
+    ]
 }
 ```
 

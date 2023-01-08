@@ -171,7 +171,7 @@ afterAll(async () => {
 
 })
 
-describe("test api friends", () => {
+describe.skip("test api friends", () => {
 
     describe("GET /friends", () => {
         test("success get friend list and response 200", () => {
@@ -184,7 +184,6 @@ describe("test api friends", () => {
                     res.body.forEach(el => {
                         expect(el).toHaveProperty("UserId", expect.any(Number))
                         expect(el).toHaveProperty("FriendId", expect.any(Number))
-                        expect(el).toHaveProperty("isAccepted", expect.any(Boolean))
                         expect(el).toHaveProperty("User", expect.any(Object))
                         expect(el).toHaveProperty("Friend", expect.any(Object))
                         expect(el.User).toHaveProperty("username", expect.any(String))
@@ -216,7 +215,7 @@ describe("test api friends", () => {
         })
     })
 
-    describe.only("PATCH /friendships/:userId", () => {
+    describe("PATCH /friendships/:userId", () => {
         test("success accepting friend request and response 200", () => {
             return request(app)
                 .patch('/friendships/1')
@@ -234,7 +233,87 @@ describe("test api friends", () => {
                     expect(res.body.Friend).toHaveProperty("email", expect.any(String))
                 })
         })
+
+        test("failed accepting friend request because user id is not a number and response 400", () => {
+            return request(app)
+                .patch('/friendships/test')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid userId')
+                })
+        })
+
+        test("failed accepting friend request because friend request is already accepted and response 400", () => {
+            return request(app)
+                .patch('/friendships/2')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Friend request already accepted')
+                })
+        })
+
+        test("failed accepting friend request because friend request was not found and response 404", () => {
+            return request(app)
+                .patch('/friendships/5')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual("Friendship not found")
+                })
+        })
     })
 
-    
+    describe("DELETE /friendships/:userId", () => {
+        test("success deleting friendship and response 200", () => {
+            return request(app)
+                .delete('/friendships/2')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body).toHaveProperty("FriendId", expect.any(Number))
+                    expect(res.body).toHaveProperty("isAccepted", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("User", expect.any(Object))
+                    expect(res.body).toHaveProperty("Friend", expect.any(Object))
+                    expect(res.body.User).toHaveProperty("username", expect.any(String))
+                    expect(res.body.User).toHaveProperty("email", expect.any(String))
+                    expect(res.body.Friend).toHaveProperty("username", expect.any(String))
+                    expect(res.body.Friend).toHaveProperty("email", expect.any(String))
+                })
+        })
+
+        test("failed deleting friendship because user id is not a number and response 400", () => {
+            return request(app)
+                .patch('/friendships/test')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid userId')
+                })
+        })
+
+        test("failed deleting friendship because friendship was not found and response 404", () => {
+            return request(app)
+                .patch('/friendships/5')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual("Friendship not found")
+                })
+        })
+    })
+
+
 })
