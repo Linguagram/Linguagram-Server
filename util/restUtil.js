@@ -21,7 +21,13 @@ const getGroupMembers = async (groupId, req) => {
     where: {
       GroupId: groupId,
     },
-    include: [Group, User],
+    include: [
+      Group,
+      {
+        ...userFetchAttributes(),
+        model: User,
+      },
+    ],
   });
 
   // check if user is actually in the group
@@ -39,6 +45,41 @@ const getGroupMembers = async (groupId, req) => {
   return groupMembers;
 }
 
+const groupFetchAttributes = (userId) => {
+  const ret = {
+    attributes: {
+    },
+    include: [
+      {
+        model: GroupMember,
+        include: [
+          {
+            ...userFetchAttributes(),
+            model: User,
+          },
+        ],
+      },
+    ],
+  };
+
+  if (userId) {
+    ret.attributes.include = [
+      [
+        sequelize.literal(`(
+SELECT COUNT(*)
+FROM "Messages"
+WHERE "Messages"."isRead" = FALSE
+AND "Messages"."UserId" != ${userId}
+AND "Messages"."GroupId" = "Group"."id"
+)`),
+        'unreadMessageCount'
+      ],
+    ];
+  }
+
+  return ret;
+}
+
 const getGroupMembersFromUserId = async (userId) => {
   const groupMembers = await GroupMember.findAll({
     where: {
@@ -46,29 +87,11 @@ const getGroupMembersFromUserId = async (userId) => {
     },
     include: [
       {
+        ...groupFetchAttributes(userId),
         model: Group,
-        attributes: {
-          include: [
-            [
-              sequelize.literal(`(
-                SELECT COUNT(*)
-                FROM "Messages"
-                WHERE "Messages"."isRead" = FALSE
-                AND "Messages"."UserId" != ${userId}
-                AND "Messages"."GroupId" = "Group"."id"
-              )`),
-              'unreadMessageCount'
-            ],
-          ],
-        },
-        include: [
-          {
-            model: GroupMember,
-            include: [User],
-          },
-        ],
       },
       {
+        ...userFetchAttributes(),
         model: User,
       },
     ],
@@ -160,7 +183,17 @@ const getUser = async (userId) => {
 
 const getGroup = async (groupId) => {
   const group = await Group.findByPk(groupId, {
-    include: [GroupMember]
+    include: [
+      {
+        model: GroupMember,
+        include: [
+          {
+            ...userFetchAttributes(),
+            model: User,
+          },
+        ],
+      },
+    ]
   });
 
   if (!group) throw {
