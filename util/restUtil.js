@@ -198,6 +198,21 @@ const getDmGroup = async (user, friend) => {
       const createdGroup = await Group.create({}, {
         transaction: t,
       });
+
+      const toCreateGroupMembers = [
+        {
+          GroupId: createdGroup.id,
+          UserId: userId,
+        },
+        {
+          GroupId: createdGroup.id,
+          UserId: friendId,
+        },
+      ]; 
+
+      const createdGroupMembers = await GroupMember.bulkCreate(toCreateGroupMembers, {
+        transaction: t,
+      });
     });
   }
 

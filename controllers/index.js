@@ -14,6 +14,7 @@ const { signToken, verifyToken } = require('../helpers/jwt')
 const { sendMail } = require('../helpers/nodemailer');
 const { userFetchAttributes } = require('../util/fetchAttributes');
 const { sendUserUpdate } = require('../util/ws');
+const { getUser } = require('../util/restUtil');
 
 const { CLIENT_URL } = process.env;
 
@@ -288,10 +289,7 @@ class Controller {
       }
 
       const access_token = signToken(payload)
-      delete loggedInUser.dataValues.password
-      delete loggedInUser._previousDataValues.password;
-      console.log(loggedInUser);
-      res.status(200).json({ access_token, user: loggedInUser })
+      res.status(200).json({ access_token, user: await getUser(loggedInUser.id) })
     } catch (err) {
       next(err)
     }
