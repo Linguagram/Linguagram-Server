@@ -126,12 +126,20 @@ router.patch("/friendships/:userId", async (req, res, next) => {
 
 router.delete("/friendships/:friendId", async (req, res, next) => {
   try {
-    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId)));
+    const friendId = validateUserId(req.params.friendId);
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friendId));
 
     if (!friendship) throw {
       status: 404,
       message: "Friendship not found",
     };
+
+    if (![req.userInfo.id, friendId].every(id => [friendship.UserId, friendship.FriendId].includes(id))) {
+      throw {
+        status: 403,
+        message: "Forbidden",
+      };
+    }
 
     await friendship.destroy();
 
