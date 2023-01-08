@@ -16,6 +16,7 @@ const userInterests = require('../data/userInterests.json')
 const { generateHash } = require('../helpers/bcryptjs')
 const { signToken } = require('../helpers/jwt')
 let access_token;
+let access_token5;
 
 
 
@@ -40,6 +41,7 @@ beforeAll(async () => {
 
 
     access_token = signToken({ id: 1 })
+    access_token5 = signToken({ id: 5 })
 
 
 
@@ -450,8 +452,8 @@ describe("test API groups", () => {
 
         test("failed on deleting a messsage and response 404 because the user is not a member of the group", () => {
             return request(app)
-                .delete('/groups/4/messages/9')
-                .set("access_token", access_token)
+                .delete('/groups/3/messages/9')
+                .set("access_token", access_token5)
                 .then(res => {
                     expect(res.status).toBe(404)
                     expect(res.body.error).toEqual(true)
