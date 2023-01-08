@@ -64,6 +64,7 @@ const validateUserId = (userId) => {
 }
 
 const createServer = (httpServer) => {
+  console.log("[ws createServer] Client URI:", CLIENT_URI);
   return new Server(httpServer, {
     cors: {
       origin: CLIENT_URI || "http://localhost:5173",
@@ -122,7 +123,7 @@ const loadListeners = () => {
         const mapId = Number(userId);
 
         if (isNaN(mapId)) {
-          emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+          return emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
             error: true,
             message: "Invalid userId",
           }));
