@@ -59,7 +59,7 @@ Request :
     "status" : "string",
     "nativeLanguages" : ["number"],
     "interestLanguages" : ["number"],
-    "interests" : ["number"] // !TODO update response (include interests in the response)
+    "interests" : ["number"]
 }
 
 ```

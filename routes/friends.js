@@ -89,11 +89,18 @@ router.post("/friends/:friendId", async (req, res, next) => {
 // accept friend request
 router.patch("/friendships/:userId", async (req, res, next) => {
   try {
-    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, validateUserId(req.params.userId)));
+    const userId = validateUserId(req.params.userId);
+
+    const friendship = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, userId));
 
     if (!friendship) throw {
       status: 404,
       message: "Friendship not found",
+    };
+
+    if (friendship.FriendId !== req.userInfo.id) throw {
+      status: 403,
+      message: "Forbidden",
     };
 
     if (friendship.isAccepted) {
