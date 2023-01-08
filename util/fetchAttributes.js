@@ -8,6 +8,9 @@ const {
   Language,
   UserInterest,
   Interest,
+  Group,
+  GroupMember,
+  sequelize,
 } = require("../models");
 
 const userFetchAttributes = () => {
@@ -103,8 +106,64 @@ const oneFriendshipFetchAttributes = (userId, friendId) => {
   };
 }
 
+const groupFetchAttributes = (userId) => {
+  const ret = {
+    attributes: {
+    },
+    include: [
+      {
+        model: GroupMember,
+        include: [
+          {
+            ...userFetchAttributes(),
+            model: User,
+          },
+        ],
+      },
+    ],
+  };
+
+  if (userId) {
+    ret.attributes.include = [
+      [
+        sequelize.literal(`(
+SELECT COUNT(*)
+FROM "Messages"
+WHERE "Messages"."isRead" = FALSE
+AND "Messages"."UserId" != ${userId}
+AND "Messages"."GroupId" = "Group"."id"
+)`),
+        'unreadMessageCount'
+      ],
+    ];
+  }
+
+  return ret;
+}
+
+const messagesFetchAttributes = (groupId) => {
+  const where = {
+    GroupId: groupId,
+  };
+
+  return {
+    where: groupId ? where : {},
+    include: [
+      {
+        ...userFetchAttributes(),
+        model: User,
+      },
+      Media,
+      Group,
+    ],
+    order: [["createdAt", "DESC"]],
+  }
+}
+
 module.exports = {
   userFetchAttributes,
   friendshipFetchAttributes,
   oneFriendshipFetchAttributes,
+  groupFetchAttributes,
+  messagesFetchAttributes,
 }

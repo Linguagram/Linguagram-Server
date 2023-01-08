@@ -10,10 +10,13 @@ const {
   sequelize,
 } = require("../models");
 
-const { userFetchAttributes } = require("./fetchAttributes");
+const {
+  userFetchAttributes,
+  messagesFetchAttributes,
+  groupFetchAttributes,
+} = require("./fetchAttributes");
 
 const handleUploaded = require("./handleUploaded");
-const { validateUserId } = require("./validators");
 const { isOnline } = require("./ws");
 
 const getGroupMembers = async (groupId, req) => {
@@ -45,49 +48,22 @@ const getGroupMembers = async (groupId, req) => {
   return groupMembers;
 }
 
-const groupFetchAttributes = (userId) => {
-  const ret = {
-    attributes: {
-    },
-    include: [
-      {
-        model: GroupMember,
-        include: [
-          {
-            ...userFetchAttributes(),
-            model: User,
-          },
-        ],
-      },
-    ],
-  };
-
-  if (userId) {
-    ret.attributes.include = [
-      [
-        sequelize.literal(`(
-SELECT COUNT(*)
-FROM "Messages"
-WHERE "Messages"."isRead" = FALSE
-AND "Messages"."UserId" != ${userId}
-AND "Messages"."GroupId" = "Group"."id"
-)`),
-        'unreadMessageCount'
-      ],
-    ];
-  }
-
-  return ret;
-}
-
 const getGroupMembersFromUserId = async (userId) => {
+  const groupFetchOpts = groupFetchAttributes(userId);
+
+  groupFetchOpts.include.push({
+    ...messagesFetchAttributes(),
+    limit: 1,
+    model: Message,
+  });
+
   const groupMembers = await GroupMember.findAll({
     where: {
       UserId: userId,
     },
     include: [
       {
-        ...groupFetchAttributes(userId),
+        ...groupFetchOpts,
         model: Group,
       },
       {
@@ -109,20 +85,7 @@ const getGroupMembersFromUserId = async (userId) => {
 }
 
 const getMessages = async (groupId) => {
-  const messages = await Message.findAll({
-    where: {
-      GroupId: groupId,
-    },
-    include: [
-      {
-        ...userFetchAttributes(),
-        model: User,
-      },
-      Media,
-      Group,
-    ],
-    order: [["createdAt", "DESC"]],
-  });
+  const messages = await Message.findAll(messagesFetchAttributes(groupId));
 
   return messages.map(message => {
     message.dataValues.edited = message.createdAt !== message.updatedAt;
