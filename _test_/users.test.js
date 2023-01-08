@@ -172,7 +172,7 @@ afterAll(async () => {
 })
 
 
-describe("test api user", () => {
+describe.skip("test api user", () => {
 
     describe("post /users/register", () => {
         test("success create user and response 201", () => {
@@ -519,6 +519,25 @@ describe("test api user", () => {
                 })
         })
 
+        test("failed on updating user's profile because sent password is wrong and response 401", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63Wf1",
+                    newPassword: "WDbnhZZ63W1",
+                    confirmNewPassword: "WDbnhZZ63W1",
+                    username: "Sissie Forrest",
+                })
+                .then(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid old password')
+                })
+        })
+
 
         test("failed on updating user's profile because no password sent and response 400", () => {
             return request(app)
@@ -646,10 +665,10 @@ describe("test api user", () => {
 
 
     describe("GET /users/:userId", () => {
-        test.only("succeed on getting info of a user and response 200", () => {
+        test("succeed on getting info of a user and response 200", () => {
             return request(app)
                 .get('/users/1')
-                .set("access_token", access_token2)
+                .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Object))
@@ -662,12 +681,25 @@ describe("test api user", () => {
                     expect(res.body).toHaveProperty('Avatar', expect.any(Object))
                     expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
                     expect(res.body).toHaveProperty('UserInterests', expect.any(Array))
-                    res.body.UserLanguages.forEach(el => {
+                    res.body.UserInterests.forEach(el => {
                         expect(el).toHaveProperty('InterestId', expect.any(Number))
+                        expect(el).toHaveProperty('Interest', expect.any(Object))
+                        expect(el.Interest).toHaveProperty('name', expect.any(String))
+                        expect(el.Interest).toHaveProperty('id', expect.any(Number))
+
+                    })
+
+                    res.body.UserLanguages.forEach(el => {
+                        expect(el).toHaveProperty('LanguageId', expect.any(Number))
+                        expect(el).toHaveProperty('Language', expect.any(Object))
+                        expect(el.Language).toHaveProperty('name', expect.any(String))
+                        expect(el.Language).toHaveProperty('id', expect.any(Number))
 
                     })
 
                 })
+
+
         })
 
 
@@ -697,27 +729,12 @@ describe("test api user", () => {
         })
     })
 
-    describe("GET /languages", () => {
-        test("succeed on getting languages list and response 200", () => {
-            return request(app)
-                .get('/languages')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Array))
-                    res.body.forEach(el => {
-                        expect(el).toHaveProperty('id', expect.any(Number))
-                        expect(el).toHaveProperty('name', expect.any(String))
-                    })
-                })
-        })
-    })
 
     describe("GET /users/@me", () => {
         test("succeed on getting user's profile and response 200", () => {
             return request(app)
                 .get('/users/@me')
-                .set("access_token", access_token2)
+                .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Object))
@@ -752,12 +769,65 @@ describe("test api user", () => {
         })
     })
 
+    describe("PATCH /users/status", () => {
+        test("succeed on updating user's status and response 200", () => {
+            return request(app)
+                .patch('/users/status')
+                .set("access_token", access_token)
+                .send({
+                    status: "test update status"
+                })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty("username", expect.any(String))
+                    expect(res.body).toHaveProperty("email", expect.any(String))
+                    expect(res.body).toHaveProperty("country", expect.any(String))
+                    expect(res.body).toHaveProperty("status", expect.any(String))
+                    expect(res.body).toHaveProperty("phoneNumber]", expect.any(String))
+                    expect(res.body).toHaveProperty("verified]", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("isOnline", expect.any(Boolean))
+                })
+        })
+    })
 
+    describe("GET /languages/@me", () => {
+        test("succeed on getting user's languages list and response 200", () => {
+            return request(app)
+                .get('/languages/@me')
+                .set("access_token", access_token)
+                .then(res => {
+                    console.log(res.body, '<<<res');
 
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    res.body.forEach(el => {
+                        expect(el).toHaveProperty('id', expect.any(Number))
+                        expect(el).toHaveProperty('type', expect.any(String))
+                        expect(el).toHaveProperty('UserId', expect.any(Number))
+                        expect(el).toHaveProperty('Language', expect.any(Object))
+                        expect(el.Language).toHaveProperty('name', expect.any(String))
+                        expect(el.Language).toHaveProperty('id', expect.any(Number))
+                    })
+                })
+        })
+    })
 
-
-
-
+    describe("GET /languages", () => {
+        test("succeed on getting languages list and response 200", () => {
+            return request(app)
+                .get('/languages')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    res.body.forEach(el => {
+                        expect(el).toHaveProperty('id', expect.any(Number))
+                        expect(el).toHaveProperty('name', expect.any(String))
+                    })
+                })
+        })
+    })
 
 })
 

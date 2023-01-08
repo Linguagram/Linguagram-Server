@@ -72,13 +72,14 @@ router.post("/friends/:friendId", async (req, res, next) => {
       UserId: req.userInfo.id,
     });
 
-    newFriend.dataValues.User = req.userInfo;
-    newFriend.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
-    newFriend.dataValues.Friend.dataValues.isOnline = isOnline(newFriend.dataValues.Friend.id);
+    const friends = await Friendship.findOne(oneFriendshipFetchAttributes(req.userInfo.id, friend.id)); 
+    friends.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
+    
+    friends.dataValues.Friend.dataValues.isOnline = isOnline(newFriend.FriendId);
 
-    res.status(200).json(newFriend);
+    res.status(200).json(friends);
 
-    sendFriendRequest(friend, newFriend);
+    sendFriendRequest(friend, friends);
 
     sendNewFriendReqMail(friend.email, friend.username);
   } catch (err) {

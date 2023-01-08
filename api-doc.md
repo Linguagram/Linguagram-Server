@@ -981,21 +981,7 @@ _Response (200 - OK)_
                 "createdAt": "2023-01-07T04:59:24.346Z",
                 "updatedAt": "2023-01-07T04:59:24.346Z"
             }
-        },
-        {
-            "id": 1,
-            "type": "native",
-            "UserId": 1,
-            "LanguageId": 10,
-            "createdAt": "2023-01-07T04:59:24.358Z",
-            "updatedAt": "2023-01-07T04:59:24.358Z",
-            "Language": {
-                "id": 10,
-                "name": "Moldovan",
-                "createdAt": "2023-01-07T04:59:24.346Z",
-                "updatedAt": "2023-01-07T04:59:24.346Z"
-            }
-        }
+        },...
     ],
     "UserInterests": [
         {
@@ -1263,41 +1249,42 @@ _Response (200 - OK)_
 
 ```json
 [
-     {
+    {
         "id": 1,
         "UserId": 1,
         "FriendId": 2,
         "isAccepted": false,
-        "createdAt": "2023-01-04T14:46:02.804Z",
-        "updatedAt": "2023-01-04T14:46:02.804Z",
+        "createdAt": "2023-01-08T04:09:06.588Z",
+        "updatedAt": "2023-01-08T04:09:06.588Z",
         "User": {
             "id": 1,
             "username": "Sissie Forrest",
             "email": "sforrest0@chron.com",
-            "password": "$2a$08$bwvSaCVrejfQoPU/vlHye.ogCKIc4Z.33GtTw3wh0CiYNlycnU6HW",
             "country": "Switzerland",
-            "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+            "status": "test update status",
             "phoneNumber": "+1 339 769 7021",
             "verified": true,
-            "AvatarId": 1,
-            "createdAt": "2023-01-04T14:46:02.417Z",
-            "updatedAt": "2023-01-04T14:46:02.417Z"
+            "AvatarId": 10,
+            "Avatar": "object",
+            "UserLanguages": "array",
+            "UserInterests" : "array",
+            "isOnline": false
         },
         "Friend": {
-            "id": 2,
+             "id": 2,
             "username": "Krispin Admin",
             "email": "admin@admin.com",
-            "password": "$2a$08$1X.cFlCrqRmeKkFn/5NvguOYc/4QCixGj3P3jAURtKlQmNZJuoWkS",
             "country": "Cuba",
             "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
             "phoneNumber": "+86 589 929 4346",
-            "verified": true,
-            "AvatarId": 2,
-            "createdAt": "2023-01-04T14:46:02.475Z",
-            "updatedAt": "2023-01-04T14:46:02.475Z"
+            "verified": false,
+              "AvatarId": 2,
+            "Avatar": "object",
+            "UserLanguages": "array",
+            "UserInterests" : "array",
+            "isOnline": false
         }
-    },
-    ...
+    },...
 ]
 ```
 
@@ -2150,10 +2137,39 @@ _Response (200 - OK)_
     "verified": true,
     "AvatarId": null,
     "Avatar": null,
-    "UserLanguages": [],
-    "UserInterests": [],
+    "UserLanguages": [
+        {
+            "id": 3,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2023-01-08T04:09:06.612Z",
+            "updatedAt": "2023-01-08T04:09:06.612Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2023-01-08T04:09:06.603Z",
+                "updatedAt": "2023-01-08T04:09:06.603Z"
+            }
+        },...
+    ],
+    "UserInterests": [
+        {
+            "id": 1,
+            "UserId": 1,
+            "InterestId": 3,
+            "createdAt": "2023-01-08T04:09:06.622Z",
+            "updatedAt": "2023-01-08T04:09:06.622Z",
+            "Interest": {
+                "id": 3,
+                "name": "Anime",
+                "createdAt": "2023-01-08T04:09:06.620Z",
+                "updatedAt": "2023-01-08T04:09:06.620Z"
+            }
+        },...
+    ],
     "isOnline": false,
-    "updatedAt": "2023-01-08T03:49:07.066Z"
+    "updatedAt": "2023-01-08T04:44:44.610Z"
 }
 ```
 
