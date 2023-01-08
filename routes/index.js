@@ -242,7 +242,7 @@ router.get("/explore/users", async (req, res, next) => {
       [Op.or]: orNatives,
     };
 
-    const includeInter = opts.include[1].include[0];
+    const includeInter = opts.include[2].include[0];
 
     const orInterests = [];
 

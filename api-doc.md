@@ -2129,7 +2129,6 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
 ```
 
 
@@ -2153,7 +2152,140 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+[
+    {
+        "id": 14,
+        "name": "saya punya anak kambing 3",
+        "type": "group",
+        "createdAt": "2023-01-08T07:40:56.207Z",
+        "updatedAt": "2023-01-08T07:40:56.207Z",
+        "GroupMembers": [
+            {
+                "id": 14,
+                "GroupId": 14,
+                "UserId": 2,
+                "createdAt": "2023-01-08T07:40:56.416Z",
+                "updatedAt": "2023-01-08T07:40:56.416Z",
+                "User": {
+                    "id": 2,
+                    "username": "Krispin Admin",
+                    "email": "admin@admin.com",
+                    "country": "Cuba",
+                    "status": "saya punya anak kambing 3",
+                    "phoneNumber": "+86 589 929 4346",
+                    "verified": false,
+                    "AvatarId": 2,
+                    "Avatar": {
+                        "id": 2,
+                        "name": "avatar",
+                        "url": "https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg",
+                        "format": "image/jpg",
+                        "createdAt": "2023-01-08T07:05:17.609Z",
+                        "updatedAt": "2023-01-08T07:05:17.609Z"
+                    },
+                    "UserLanguages": [
+                        {
+                            "id": 4,
+                            "type": "interest",
+                            "UserId": 2,
+                            "LanguageId": 1,
+                            "createdAt": "2023-01-08T07:05:18.644Z",
+                            "updatedAt": "2023-01-08T07:05:18.644Z",
+                            "Language": {
+                                "id": 1,
+                                "name": "Afrikaans",
+                                "createdAt": "2023-01-08T07:05:18.565Z",
+                                "updatedAt": "2023-01-08T07:05:18.565Z"
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "type": "native",
+                            "UserId": 2,
+                            "LanguageId": 3,
+                            "createdAt": "2023-01-08T07:05:18.644Z",
+                            "updatedAt": "2023-01-08T07:05:18.644Z",
+                            "Language": {
+                                "id": 3,
+                                "name": "Arabic",
+                                "createdAt": "2023-01-08T07:05:18.565Z",
+                                "updatedAt": "2023-01-08T07:05:18.565Z"
+                            }
+                        }
+                    ],
+                    "UserInterests": [
+                        {
+                            "id": 4,
+                            "UserId": 2,
+                            "InterestId": 4,
+                            "createdAt": "2023-01-08T07:05:18.832Z",
+                            "updatedAt": "2023-01-08T07:05:18.832Z",
+                            "Interest": {
+                                "id": 4,
+                                "name": "Politic",
+                                "createdAt": "2023-01-08T07:05:18.709Z",
+                                "updatedAt": "2023-01-08T07:05:18.709Z"
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "UserId": 2,
+                            "InterestId": 5,
+                            "createdAt": "2023-01-08T07:05:18.832Z",
+                            "updatedAt": "2023-01-08T07:05:18.832Z",
+                            "Interest": {
+                                "id": 5,
+                                "name": "Manga",
+                                "createdAt": "2023-01-08T07:05:18.709Z",
+                                "updatedAt": "2023-01-08T07:05:18.709Z"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "family",
+        "type": "group",
+        "createdAt": "2023-01-08T07:05:18.467Z",
+        "updatedAt": "2023-01-08T07:05:18.467Z",
+        "GroupMembers": []
+    },
+    {
+        "id": 9,
+        "name": "high school",
+        "type": "group",
+        "createdAt": "2023-01-08T07:05:18.467Z",
+        "updatedAt": "2023-01-08T07:05:18.467Z",
+        "GroupMembers": []
+    },
+    {
+        "id": 6,
+        "name": "high school",
+        "type": "group",
+        "createdAt": "2023-01-08T07:05:18.467Z",
+        "updatedAt": "2023-01-08T07:05:18.467Z",
+        "GroupMembers": []
+    },
+    {
+        "id": 8,
+        "name": "family",
+        "type": "group",
+        "createdAt": "2023-01-08T07:05:18.467Z",
+        "updatedAt": "2023-01-08T07:05:18.467Z",
+        "GroupMembers": []
+    },
+    {
+        "id": 10,
+        "name": "work",
+        "type": "group",
+        "createdAt": "2023-01-08T07:05:18.467Z",
+        "updatedAt": "2023-01-08T07:05:18.467Z",
+        "GroupMembers": []
+    }
+]
 ```
 
 
