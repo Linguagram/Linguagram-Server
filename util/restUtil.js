@@ -13,6 +13,7 @@ const {
 const { userFetchAttributes } = require("./fetchAttributes");
 
 const handleUploaded = require("./handleUploaded");
+const { validateUserId } = require("./validators");
 const { isOnline } = require("./ws");
 
 const getGroupMembers = async (groupId, req) => {
@@ -170,8 +171,11 @@ const getGroup = async (groupId) => {
   return group;
 }
 
-const getDmGroup = async (userId, friendId) => {
-  const group = await Group.findAll({
+const getDmGroup = async (user, friend) => {
+  const userId = validateUserId(user?.id);
+  const friendId = validateUserId(friend?.id);
+
+  let group = await Group.findAll({
     include: [
       {
         model: GroupMember,
@@ -189,10 +193,13 @@ const getDmGroup = async (userId, friendId) => {
     ],
   }).filter(g => g.GroupMembers.length === 2)[0];
 
-  if (!group) throw {
-    status: 404,
-    message: "Group not found",
-  };
+  if (!group) {
+    await sequelize.transaction(async (t) => {
+      const createdGroup = await Group.create({}, {
+        transaction: t,
+      });
+    });
+  }
 
   return group;
 }

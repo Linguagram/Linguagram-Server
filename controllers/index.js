@@ -145,13 +145,12 @@ class Controller {
           status: 400,
           message: "Password is required",
         };
-      }else if ( newPassword !== confirmNewPassword) {
+      } else if ( newPassword !== confirmNewPassword) {
         throw {
           status: 400,
           message: "New password do not match",
         };
       }
-
 
       const user = await User.findByPk(req.userInfo.id);
 
@@ -169,12 +168,16 @@ class Controller {
           where: {
             UserId: user.id,
           },
+        }, {
+          transaction: t,
         });
 
         const deletedInterests = await UserInterest.destroy({
           where: {
             UserId: user.id,
           },
+        }, {
+          transaction: t,
         });
 
         console.log("User", user.username, user.id, "deleted languages count:", deletedLanguages);

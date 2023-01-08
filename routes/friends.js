@@ -156,7 +156,7 @@ router.delete("/friendships/:friendId", async (req, res, next) => {
 
     res.status(200).json(friendship);
 
-    deletedFriendRequest(friendship.User.id === req.userInfo.id ? friendship.Friend.id : friendship.User.id, friendship);
+    deletedFriendRequest(friendship.User.id === req.userInfo.id ? friendship.Friend : friendship.User, friendship);
   } catch (err) {
     next(err);
   }
