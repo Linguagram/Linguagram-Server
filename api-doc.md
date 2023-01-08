@@ -1976,7 +1976,20 @@ _Response (200 - OK)_
 
 ```json
 {
-// !TODO
+    "id": 7,
+    "name": "WDbnhZZ63W1",
+    "type": "group",
+    "createdAt": "2023-01-08T05:02:55.113Z",
+    "updatedAt": "2023-01-08T05:02:55.113Z",
+    "GroupMembers": [
+        {
+            "id": 17,
+            "GroupId": 7,
+            "UserId": 2,
+            "createdAt": "2023-01-08T06:18:27.629Z",
+            "updatedAt": "2023-01-08T06:18:27.629Z"
+        }
+    ]
 }
 ```
 
