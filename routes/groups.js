@@ -116,7 +116,6 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
       newMessage.dataValues.Medium = newAttachment;
     }
 
-
     newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
 
     sendMessage(groupMembers, newMessage);
@@ -155,6 +154,11 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
     const groupMembers = await getGroupMembers(groupId, req);
 
     const message = await getMessage(messageId, groupId);
+
+    if (message.UserId !== req.userInfo.id) throw {
+      status: 403,
+      message: "Forbidden",
+    };
 
     const newAttachment = await fileAction(req);
 
@@ -208,6 +212,12 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 
     const groupMembers = await getGroupMembers(groupId, req);
     const message = await getMessage(messageId, groupId);
+
+    if (message.UserId !== req.userInfo.id) throw {
+      status: 403,
+      message: "Forbidden",
+    };
+
     if (message.deleted) {
       throw {
         status: 400,
