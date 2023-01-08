@@ -25,7 +25,7 @@ const sendMail = async (recipientEmail, username, link) => {
             Welcome to Linguagram! Please click the link below to verify your email address in order to complete the registration.</b>
             <br>
             <br>
-            <a href=${link} style='color: blue; text-decoration-line:underline;'><b>Verify your email address</b></a>
+            <a href='${link}' style='color: blue; text-decoration-line:underline;'><b>Verify your email address</b></a>
             ` // html body
   });
 };

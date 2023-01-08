@@ -39,7 +39,7 @@ class Controller {
         interests = [],
       } = req.body;
 
-      if (password & password !== confirmPassword) {
+      if (password && password !== confirmPassword) {
         throw {
           status: 400,
           message: "Password do not match",
@@ -105,7 +105,7 @@ class Controller {
 
       const newUser = await User.findByPk(createdUser.id, opts);
 
-      console.log(newUser);
+      // console.log(newUser);
 
       const verificationId = signToken({id:newUser.id})
       const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
@@ -305,8 +305,8 @@ class Controller {
       };
 
       const payload = verifyToken(verification)
-
       const theSearchedUser = await User.findByPk(payload.id)
+
       if (!theSearchedUser) throw {
         status: 401,
         message: 'Invalid Link',
