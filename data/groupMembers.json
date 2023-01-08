@@ -20,11 +20,19 @@
 },
 {
     "GroupId" : 3,
-    "UserId" : 4
+    "UserId" : 3
 },
 {
     "GroupId" : 4,
-    "UserId" : 4
+    "UserId" : 1
+},
+{
+    "GroupId" : 4,
+    "UserId" : 2
+},
+{
+    "GroupId" : 4,
+    "UserId" : 3
 },
 {
     "GroupId" : 4,

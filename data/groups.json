@@ -1,50 +1,49 @@
-[
-    {
-        "name" : "private",
-        "type": "dm"
-    },
-    {
-        "name" : "private",
-        "type": "dm"
-    },
-    {
-        "name" : "private",
-        "type": "dm"
-    },
-    {
-        "name" : "private",
-        "type": "dm"
-    },
-    {
-        "name" : "private",
-        "type": "dm"
-    },
-    {
-        "name" : "high school",
-        "type" : "group"
-    },
-    {
-        "name" : "family",
-        "type" : "group"
-    },
-    {
-        "name" : "family",
-        "type" : "group"
-    },
-    {
-        "name" : "high school",
-        "type" : "group"
-    },
-    {
-        "name" : "work",
-        "type" : "group"
-    },
-    {
-        "name" : "home",
-        "type": "dm"
-    },
-    {
-        "name" : "family",
-        "type": "dm"
-    }
+[{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "headquarter",
+    "type" : "group"
+},
+{
+    "name" : "discord",
+    "type" : "group"
+},
+{
+    "name" : "high school",
+    "type" : "group"
+},
+{
+    "name" : "family",
+    "type" : "group"
+},
+{
+    "name" : "family",
+    "type" : "group"
+},
+{
+    "name" : "high school",
+    "type" : "group"
+},
+{
+    "name" : "work",
+    "type" : "group"
+},
+{
+    "name" : "home",
+    "type" : "group"
+},
+{
+    "name" : "family",
+    "type" : "group"
+}
 ]
