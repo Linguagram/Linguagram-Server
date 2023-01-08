@@ -8,7 +8,7 @@ List of available endpoints:
   - [Endpoints](#endpoints)
   - [1. POST /users/register](#1-post-usersregister)
   - [2. POST /users/login](#2-post-userslogin)
-  - [3. POST /users/verify](#3-post-usersverify) // !TODO update doc, test
+  - [3. POST /users/verify](#3-post-usersverify)
   - [4. GET /groups/:groupId/messages](#4-get-groupsgroupidmessages)
   - [5. POST /groups/:groupId/messages](#5-post-groupsgroupidmessages)
   - [6. GET /groups/:groupId/messages/:messageId](#6-get-groupsgroupidmessagesmessageid)

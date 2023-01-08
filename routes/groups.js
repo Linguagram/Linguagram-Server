@@ -287,9 +287,10 @@ router.post("/groups", async (req, res, next) => {
         transaction: t
       });
 
-      const user = await User.findByPk(userFetchAttributes(), {
-        transaction: t,
-      });
+      const opts = userFetchAttributes();
+      opts.transaction = t;
+
+      const user = await User.findByPk(groupMember.UserId, opts);
 
       user.dataValues.isOnline = isOnline(user.id);
 
