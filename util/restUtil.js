@@ -204,11 +204,8 @@ const getGroup = async (groupId) => {
   return group;
 }
 
-const getDmGroup = async (user, friend) => {
-  const userId = validateUserId(user?.id);
-  const friendId = validateUserId(friend?.id);
-
-  let group = await Group.findAll({
+const getDmGroup = async (userId, friendId) => {
+  let group = (await Group.findAll({
     include: [
       {
         model: GroupMember,
@@ -224,11 +221,13 @@ const getDmGroup = async (user, friend) => {
         },
       },
     ],
-  }).filter(g => g.GroupMembers.length === 2)[0];
+  })).filter(g => g.GroupMembers.length === 2 && [userId, friendId].every(id => g.GroupMembers.some(gm => gm.UserId === id)))[0];
 
   if (!group) {
     await sequelize.transaction(async (t) => {
-      const createdGroup = await Group.create({}, {
+      const createdGroup = await Group.create({
+        type: "dm",
+      }, {
         transaction: t,
       });
 
@@ -246,6 +245,8 @@ const getDmGroup = async (user, friend) => {
       const createdGroupMembers = await GroupMember.bulkCreate(toCreateGroupMembers, {
         transaction: t,
       });
+
+      group = await getGroup(createdGroup.id);
     });
   }
 

@@ -2129,6 +2129,116 @@ Request :
 _Response (200 - OK)_
 
 ```json
+[
+    {
+        "id": 3,
+        "username": "Nev Matusovsky",
+        "email": "nmatusovsky2@mlb.com",
+        "country": "Sweden",
+        "status": "justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in",
+        "phoneNumber": "+966 878 394 6703",
+        "verified": true,
+        "AvatarId": 3,
+        "Avatar": {
+            "id": 3,
+            "name": "avatar",
+            "url": "https://i.pinimg.com/736x/b5/67/87/b567873fff4317f1a02300a1da73565d.jpg",
+            "format": "image/jpg",
+            "createdAt": "2023-01-08T07:05:17.609Z",
+            "updatedAt": "2023-01-08T07:05:17.609Z"
+        },
+        "UserLanguages": [
+            {
+                "id": 7,
+                "type": "native",
+                "UserId": 3,
+                "LanguageId": 1,
+                "createdAt": "2023-01-08T07:05:18.644Z",
+                "updatedAt": "2023-01-08T07:05:18.644Z",
+                "Language": {
+                    "id": 1,
+                    "name": "Afrikaans",
+                    "createdAt": "2023-01-08T07:05:18.565Z",
+                    "updatedAt": "2023-01-08T07:05:18.565Z"
+                }
+            }
+        ],
+        "UserInterests": [],
+        "isOnline": false
+    },
+    {
+        "id": 4,
+        "username": "Ashleigh Brabban",
+        "email": "abrabban3@angelfire.com",
+        "country": "Sweden",
+        "status": "gravida nisi at nibh in hac habitasse platea dictumst aliquam",
+        "phoneNumber": "+33 648 933 7445",
+        "verified": true,
+        "AvatarId": 4,
+        "Avatar": {
+            "id": 4,
+            "name": "avatar",
+            "url": "http://anime.falseblue.com/wp-content/uploads/2012/06/Thor%2BChris%2BHemsworth.jpg",
+            "format": "image/jpg",
+            "createdAt": "2023-01-08T07:05:17.609Z",
+            "updatedAt": "2023-01-08T07:05:17.609Z"
+        },
+        "UserLanguages": [
+            {
+                "id": 8,
+                "type": "native",
+                "UserId": 4,
+                "LanguageId": 1,
+                "createdAt": "2023-01-08T07:05:18.644Z",
+                "updatedAt": "2023-01-08T07:05:18.644Z",
+                "Language": {
+                    "id": 1,
+                    "name": "Afrikaans",
+                    "createdAt": "2023-01-08T07:05:18.565Z",
+                    "updatedAt": "2023-01-08T07:05:18.565Z"
+                }
+            }
+        ],
+        "UserInterests": [],
+        "isOnline": false
+    },
+    {
+        "id": 5,
+        "username": "Beryle Glaisner",
+        "email": "bglaisner4@arizona.edu",
+        "country": "Czech Republic",
+        "status": "curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien",
+        "phoneNumber": "+370 246 259 3472",
+        "verified": true,
+        "AvatarId": 5,
+        "Avatar": {
+            "id": 5,
+            "name": "avatar",
+            "url": "https://oyster.ignimgs.com/mediawiki/apis.ign.com/iron-man-2-movie/e/e7/Rhodey-im2.jpg",
+            "format": "image/jpg",
+            "createdAt": "2023-01-08T07:05:17.609Z",
+            "updatedAt": "2023-01-08T07:05:17.609Z"
+        },
+        "UserLanguages": [
+            {
+                "id": 9,
+                "type": "native",
+                "UserId": 5,
+                "LanguageId": 1,
+                "createdAt": "2023-01-08T07:05:18.644Z",
+                "updatedAt": "2023-01-08T07:05:18.644Z",
+                "Language": {
+                    "id": 1,
+                    "name": "Afrikaans",
+                    "createdAt": "2023-01-08T07:05:18.565Z",
+                    "updatedAt": "2023-01-08T07:05:18.565Z"
+                }
+            }
+        ],
+        "UserInterests": [],
+        "isOnline": false
+    }
+]
 ```
 
 
@@ -2309,7 +2419,116 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+[
+    {
+        "id": 1,
+        "name": "Military History and Wars",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 2,
+        "name": "PC Master Race",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 3,
+        "name": "Anime",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 4,
+        "name": "Politic",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 5,
+        "name": "Manga",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 6,
+        "name": "Economy",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 7,
+        "name": "Programming",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 8,
+        "name": "Philosophy",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 9,
+        "name": "Movies",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 10,
+        "name": "Smart Phone",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 11,
+        "name": "AI and Machine Learning",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 12,
+        "name": "Music",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 13,
+        "name": "Investing and Personal Finance",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 14,
+        "name": "Planes",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 15,
+        "name": "Engineering",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 16,
+        "name": "Archeology",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 17,
+        "name": "Tech trends",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    },
+    {
+        "id": 18,
+        "name": "Drone Zone",
+        "createdAt": "2023-01-08T07:05:18.709Z",
+        "updatedAt": "2023-01-08T07:05:18.709Z"
+    }
+]
 ```
 
 
@@ -2333,7 +2552,82 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+{
+    "id": 2,
+    "username": "Krispin Admin",
+    "email": "admin@admin.com",
+    "country": "Cuba",
+    "status": "saya punya anak kambing 3",
+    "phoneNumber": "+86 589 929 4346",
+    "verified": false,
+    "AvatarId": 2,
+    "Avatar": {
+        "id": 2,
+        "name": "avatar",
+        "url": "https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/10/21/Pictures/_7e701072-1375-11eb-9315-b00ef9141a48.jpg",
+        "format": "image/jpg",
+        "createdAt": "2023-01-08T07:05:17.609Z",
+        "updatedAt": "2023-01-08T07:05:17.609Z"
+    },
+    "UserLanguages": [
+        {
+            "id": 4,
+            "type": "interest",
+            "UserId": 2,
+            "LanguageId": 1,
+            "createdAt": "2023-01-08T07:05:18.644Z",
+            "updatedAt": "2023-01-08T07:05:18.644Z",
+            "Language": {
+                "id": 1,
+                "name": "Afrikaans",
+                "createdAt": "2023-01-08T07:05:18.565Z",
+                "updatedAt": "2023-01-08T07:05:18.565Z"
+            }
+        },
+        {
+            "id": 2,
+            "type": "native",
+            "UserId": 2,
+            "LanguageId": 3,
+            "createdAt": "2023-01-08T07:05:18.644Z",
+            "updatedAt": "2023-01-08T07:05:18.644Z",
+            "Language": {
+                "id": 3,
+                "name": "Arabic",
+                "createdAt": "2023-01-08T07:05:18.565Z",
+                "updatedAt": "2023-01-08T07:05:18.565Z"
+            }
+        }
+    ],
+    "UserInterests": [
+        {
+            "id": 4,
+            "UserId": 2,
+            "InterestId": 4,
+            "createdAt": "2023-01-08T07:05:18.832Z",
+            "updatedAt": "2023-01-08T07:05:18.832Z",
+            "Interest": {
+                "id": 4,
+                "name": "Politic",
+                "createdAt": "2023-01-08T07:05:18.709Z",
+                "updatedAt": "2023-01-08T07:05:18.709Z"
+            }
+        },
+        {
+            "id": 5,
+            "UserId": 2,
+            "InterestId": 5,
+            "createdAt": "2023-01-08T07:05:18.832Z",
+            "updatedAt": "2023-01-08T07:05:18.832Z",
+            "Interest": {
+                "id": 5,
+                "name": "Manga",
+                "createdAt": "2023-01-08T07:05:18.709Z",
+                "updatedAt": "2023-01-08T07:05:18.709Z"
+            }
+        }
+    ]
+}
 ```
 
 
