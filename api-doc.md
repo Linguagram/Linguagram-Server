@@ -4,42 +4,45 @@
 
 List of available endpoints:
 
-- `POST /users/register`
-- `POST /users/login`
-- `POST /users/verify`
-- `GET /groups/:groupId/messages`
-- `POST /groups/:groupId/messages`
-- `GET /groups/:groupId/messages/:messageId`
-- `PUT /groups/:groupId/messages/:messageId`
-- `DELETE /groups/:groupId/messages/:messageId`
-- `GET /groups/@me`
-- `POST /users/avatar`
-- `GET /users/:userId`
-- `GET /languages`
-- `PUT /users/@me`
-- `GET /languages/@me`
-- `GET /friends`
-- `POST /friends/:friendId`
-- `DELETE /users/avatar`
-- `PATCH /friendships/:userId`
-- `DELETE /friendships/:friendId`
-- `POST /groups/:groupId/join`
-- `DELETE /groupmembers/:groupId`
-- `PUT /groups/:groupId`
-- `POST /translate`
-- `POST /groups`
-- `PATCH /users/status`
-- `PATCH /groups/:groupId/messages`
-- `GET /explore/users`
-- `GET /explore/groups`
-- `GET /interests`
-- `GET /users/@me`
-- `GET /groups/:userId`
+- [Linguagram API Documentation](#linguagram-api-documentation)
+  - [Endpoints](#endpoints)
+  - [1. POST /users/register](#1-post-usersregister)
+  - [2. POST /users/login](#2-post-userslogin)
+  - [3. POST /users/verify](#3-post-usersverify)
+  - [4. GET /groups/:groupId/messages](#4-get-groupsgroupidmessages)
+  - [5. POST /groups/:groupId/messages](#5-post-groupsgroupidmessages)
+  - [6. GET /groups/:groupId/messages/:messageId](#6-get-groupsgroupidmessagesmessageid)
+  - [7. PUT /groups/:groupId/messages/:messageId](#7-put-groupsgroupidmessagesmessageid)
+  - [8. DELETE /groups/:groupId/messages/:messageId](#8-delete-groupsgroupidmessagesmessageid)
+  - [9. GET /groups/@me](#9-get-groupsme)
+  - [10. POST /users/avatar](#10-post-usersavatar)
+  - [11. GET /users/:userId](#11-get-usersuserid)
+  - [12. GET /languages](#12-get-languages)
+  - [13. PUT /users/@me](#13-put-usersme)
+  - [14. GET /languages/@me](#14-get-languagesme)
+  - [15. GET /friends](#15-get-friends)
+  - [16. POST /friends/:friendId](#16-post-friendsfriendid)
+  - [17. DELETE /users/avatar](#17-delete-usersavatar)
+  - [18. PATCH /friendships/:userId](#18-patch-friendshipsuserid)
+  - [19. DELETE /friendships/:friendId](#19-delete-friendshipsfriendid)
+  - [20. POST /groups/:groupId/join](#20-post-groupsgroupidjoin)
+  - [21. DELETE /groupmembers/:groupId](#21-delete-groupmembersgroupid)
+  - [22. PUT /groups/:groupId](#22-put-groupsgroupid)
+  - [23. POST /translate](#23-post-translate)
+  - [24. POST /groups](#24-post-groups)
+  - [25. PATCH /users/status](#25-patch-usersstatus)
+  - [26. PATCH /groups/:groupId/messages](#26-patch-groupsgroupidmessages)
+  - [27. GET /explore/users](#27-get-exploreusers)
+  - [28. GET /explore/groups](#28-get-exploregroups)
+  - [29. GET /interests](#29-get-interests)
+  - [30. GET /users/@me](#30-get-usersme)
+  - [31. GET /groups/:userId](#31-get-groupsuserid)
+  - [Global Error](#global-error)
 
 &nbsp;
 
-
 ## 1. POST /users/register
+
 
 Description :
 
@@ -314,21 +317,7 @@ _Response (200 - OK)_
                         "createdAt": "2023-01-06T08:46:50.281Z",
                         "updatedAt": "2023-01-06T08:46:50.281Z"
                     }
-                },
-                {
-                    "id": 1,
-                    "type": "native",
-                    "UserId": 1,
-                    "LanguageId": 10,
-                    "createdAt": "2023-01-06T08:46:50.289Z",
-                    "updatedAt": "2023-01-06T08:46:50.289Z",
-                    "Language": {
-                        "id": 10,
-                        "name": "Moldovan",
-                        "createdAt": "2023-01-06T08:46:50.281Z",
-                        "updatedAt": "2023-01-06T08:46:50.281Z"
-                    }
-                }
+                },...
             ],
             "UserInterests": [
                 {
@@ -343,33 +332,7 @@ _Response (200 - OK)_
                         "createdAt": "2023-01-06T08:46:50.295Z",
                         "updatedAt": "2023-01-06T08:46:50.295Z"
                     }
-                },
-                {
-                    "id": 2,
-                    "UserId": 1,
-                    "InterestId": 2,
-                    "createdAt": "2023-01-06T08:46:50.298Z",
-                    "updatedAt": "2023-01-06T08:46:50.298Z",
-                    "Interest": {
-                        "id": 2,
-                        "name": "PC Master Race",
-                        "createdAt": "2023-01-06T08:46:50.295Z",
-                        "updatedAt": "2023-01-06T08:46:50.295Z"
-                    }
-                },
-                {
-                    "id": 3,
-                    "UserId": 1,
-                    "InterestId": 1,
-                    "createdAt": "2023-01-06T08:46:50.298Z",
-                    "updatedAt": "2023-01-06T08:46:50.298Z",
-                    "Interest": {
-                        "id": 1,
-                        "name": "Military History and Wars",
-                        "createdAt": "2023-01-06T08:46:50.295Z",
-                        "updatedAt": "2023-01-06T08:46:50.295Z"
-                    }
-                }
+                },...
             ]
         },
         "Medium": null,
@@ -490,21 +453,7 @@ _Response (200 - OK)_
                     "createdAt": "2023-01-06T08:46:50.281Z",
                     "updatedAt": "2023-01-06T08:46:50.281Z"
                 }
-            },
-            {
-                "id": 1,
-                "type": "native",
-                "UserId": 1,
-                "LanguageId": 10,
-                "createdAt": "2023-01-06T08:46:50.289Z",
-                "updatedAt": "2023-01-06T08:46:50.289Z",
-                "Language": {
-                    "id": 10,
-                    "name": "Moldovan",
-                    "createdAt": "2023-01-06T08:46:50.281Z",
-                    "updatedAt": "2023-01-06T08:46:50.281Z"
-                }
-            }
+            },...
         ],
         "UserInterests": [
             {
@@ -519,33 +468,7 @@ _Response (200 - OK)_
                     "createdAt": "2023-01-06T08:46:50.295Z",
                     "updatedAt": "2023-01-06T08:46:50.295Z"
                 }
-            },
-            {
-                "id": 2,
-                "UserId": 1,
-                "InterestId": 2,
-                "createdAt": "2023-01-06T08:46:50.298Z",
-                "updatedAt": "2023-01-06T08:46:50.298Z",
-                "Interest": {
-                    "id": 2,
-                    "name": "PC Master Race",
-                    "createdAt": "2023-01-06T08:46:50.295Z",
-                    "updatedAt": "2023-01-06T08:46:50.295Z"
-                }
-            },
-            {
-                "id": 3,
-                "UserId": 1,
-                "InterestId": 1,
-                "createdAt": "2023-01-06T08:46:50.298Z",
-                "updatedAt": "2023-01-06T08:46:50.298Z",
-                "Interest": {
-                    "id": 1,
-                    "name": "Military History and Wars",
-                    "createdAt": "2023-01-06T08:46:50.295Z",
-                    "updatedAt": "2023-01-06T08:46:50.295Z"
-                }
-            }
+            },...
         ]
     }
 }
@@ -844,21 +767,7 @@ _Response (200 - OK)_
                     "createdAt": "2023-01-07T04:59:24.346Z",
                     "updatedAt": "2023-01-07T04:59:24.346Z"
                 }
-            },
-            {
-                "id": 1,
-                "type": "native",
-                "UserId": 1,
-                "LanguageId": 10,
-                "createdAt": "2023-01-07T04:59:24.358Z",
-                "updatedAt": "2023-01-07T04:59:24.358Z",
-                "Language": {
-                    "id": 10,
-                    "name": "Moldovan",
-                    "createdAt": "2023-01-07T04:59:24.346Z",
-                    "updatedAt": "2023-01-07T04:59:24.346Z"
-                }
-            }
+            },...
         ],
         "UserInterests": [
             {
@@ -873,33 +782,7 @@ _Response (200 - OK)_
                     "createdAt": "2023-01-07T04:59:24.366Z",
                     "updatedAt": "2023-01-07T04:59:24.366Z"
                 }
-            },
-            {
-                "id": 2,
-                "UserId": 1,
-                "InterestId": 2,
-                "createdAt": "2023-01-07T04:59:24.369Z",
-                "updatedAt": "2023-01-07T04:59:24.369Z",
-                "Interest": {
-                    "id": 2,
-                    "name": "PC Master Race",
-                    "createdAt": "2023-01-07T04:59:24.366Z",
-                    "updatedAt": "2023-01-07T04:59:24.366Z"
-                }
-            },
-            {
-                "id": 3,
-                "UserId": 1,
-                "InterestId": 1,
-                "createdAt": "2023-01-07T04:59:24.369Z",
-                "updatedAt": "2023-01-07T04:59:24.369Z",
-                "Interest": {
-                    "id": 1,
-                    "name": "Military History and Wars",
-                    "createdAt": "2023-01-07T04:59:24.366Z",
-                    "updatedAt": "2023-01-07T04:59:24.366Z"
-                }
-            }
+            },...
         ],
         "isOnline": false
     }
@@ -982,27 +865,7 @@ _Response (200 - OK)_
                     "updatedAt": "2023-01-07T04:59:24.147Z",
                     "isOnline": false
                 }
-            },
-            {
-                "id": 2,
-                "GroupId": 1,
-                "UserId": 2,
-                "createdAt": "2023-01-07T04:59:24.342Z",
-                "updatedAt": "2023-01-07T04:59:24.342Z",
-                "User": {
-                    "id": 2,
-                    "username": "Krispin Admin",
-                    "email": "admin@admin.com",
-                    "country": "Cuba",
-                    "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
-                    "phoneNumber": "+86 589 929 4346",
-                    "verified": false,
-                    "AvatarId": 2,
-                    "createdAt": "2023-01-07T04:59:24.171Z",
-                    "updatedAt": "2023-01-07T04:59:24.171Z",
-                    "isOnline": false
-                }
-            }
+            },...
         ]
     },...
 ]
@@ -1147,33 +1010,7 @@ _Response (200 - OK)_
                 "createdAt": "2023-01-07T04:59:24.366Z",
                 "updatedAt": "2023-01-07T04:59:24.366Z"
             }
-        },
-        {
-            "id": 2,
-            "UserId": 1,
-            "InterestId": 2,
-            "createdAt": "2023-01-07T04:59:24.369Z",
-            "updatedAt": "2023-01-07T04:59:24.369Z",
-            "Interest": {
-                "id": 2,
-                "name": "PC Master Race",
-                "createdAt": "2023-01-07T04:59:24.366Z",
-                "updatedAt": "2023-01-07T04:59:24.366Z"
-            }
-        },
-        {
-            "id": 3,
-            "UserId": 1,
-            "InterestId": 1,
-            "createdAt": "2023-01-07T04:59:24.369Z",
-            "updatedAt": "2023-01-07T04:59:24.369Z",
-            "Interest": {
-                "id": 1,
-                "name": "Military History and Wars",
-                "createdAt": "2023-01-07T04:59:24.366Z",
-                "updatedAt": "2023-01-07T04:59:24.366Z"
-            }
-        }
+        },...
     ],
     "isOnline": false
 }
@@ -1530,16 +1367,46 @@ _Response (200 - OK)_
     "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
     "phoneNumber": "+1 339 769 7021",
     "verified": true,
-    "AvatarId": null,
+    "AvatarId": 1,
     "Avatar": {
         "id": 1,
         "name": "avatar",
         "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
         "format": "image/jpg",
-        "createdAt": "2023-01-04T23:55:30.182Z",
-        "updatedAt": "2022-12-28T23:37:42.002Z"
+        "createdAt": "2023-01-08T04:09:06.355Z",
+        "updatedAt": "2023-01-08T04:09:06.355Z"
     },
-    "updatedAt": "2023-01-05T09:22:13.746Z"
+    "UserLanguages": [
+        {
+            "id": 3,
+            "type": "interest",
+            "UserId": 1,
+            "LanguageId": 3,
+            "createdAt": "2023-01-08T04:09:06.612Z",
+            "updatedAt": "2023-01-08T04:09:06.612Z",
+            "Language": {
+                "id": 3,
+                "name": "Lao",
+                "createdAt": "2023-01-08T04:09:06.603Z",
+                "updatedAt": "2023-01-08T04:09:06.603Z"
+            }
+        },...
+    ],
+    "UserInterests": [
+        {
+            "id": 1,
+            "UserId": 1,
+            "InterestId": 3,
+            "createdAt": "2023-01-08T04:09:06.622Z",
+            "updatedAt": "2023-01-08T04:09:06.622Z",
+            "Interest": {
+                "id": 3,
+                "name": "Anime",
+                "createdAt": "2023-01-08T04:09:06.620Z",
+                "updatedAt": "2023-01-08T04:09:06.620Z"
+            }
+        },...
+    ]
 }
 ```
 
@@ -2269,7 +2136,19 @@ _Response (200 - OK)_
 
 ```json
 {
-// !TODO
+    "id": 1,
+    "username": "Sissie Forrest",
+    "email": "sforrest0@chron.com",
+    "country": "Switzerland",
+    "status": "test update status",
+    "phoneNumber": "+1 339 769 7021",
+    "verified": true,
+    "AvatarId": null,
+    "Avatar": null,
+    "UserLanguages": [],
+    "UserInterests": [],
+    "isOnline": false,
+    "updatedAt": "2023-01-08T03:49:07.066Z"
 }
 ```
 

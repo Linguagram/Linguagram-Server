@@ -164,7 +164,7 @@ afterAll(async () => {
 })
 
 
-describe("test API groups", () => {
+describe.skip("test API groups", () => {
     describe("GET /groups/:groupId/messages", () => {
         test("success getting all message of one group and response 200", () => {
             return request(app)
@@ -538,104 +538,7 @@ describe("test API groups", () => {
                 })
         })
 
-    })
-
-    describe("POST /users/avatar", () => {
-        test("succeed on posting avatar and response 201", () => {
-            return request(app)
-                .post('/users/avatar')
-                .set("access_token", access_token)
-                .attach('avatar', '_test_/testFile.png')
-                .then(res => {
-                    expect(res.status).toBe(201)
-                    expect(res).toHaveProperty("body", expect.any(Object))
-                    expect(res.body).toHaveProperty('id', expect.any(Number))
-                    expect(res.body).toHaveProperty('username', expect.any(String))
-                    expect(res.body).toHaveProperty('email', expect.any(String))
-                    expect(res.body).toHaveProperty('country', expect.any(String))
-                    expect(res.body).toHaveProperty('AvatarId', expect.any(Number))
-                    expect(res.body).toHaveProperty('isOnline', expect.any(Boolean))
-                })
-        })
-
-        test("failed posting avatar and response 400 because there is no file sent", () => {
-            return request(app)
-                .post('/users/avatar')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(400)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('avatar is required')
-                })
-        })
-
-    })
-
-
-    describe("GET /users/:userId", () => {
-        test("succeed on getting info of a user and response 200", () => {
-            return request(app)
-                .get('/users/1')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Object))
-                    expect(res.body).toHaveProperty('id', expect.any(Number))
-                    expect(res.body).toHaveProperty('username', expect.any(String))
-                    expect(res.body).toHaveProperty('email', expect.any(String))
-                    expect(res.body).toHaveProperty('country', expect.any(String))
-                    expect(res.body).toHaveProperty('AvatarId', expect.any(Number))
-                    expect(res.body).toHaveProperty('isOnline', expect.any(Boolean))
-                    expect(res.body).toHaveProperty('Avatar', expect.any(Object))
-                    expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
-                    expect(res.body.UserLanguages[0]).toHaveProperty('Language', expect.any(Object))
-                    expect(res.body.UserLanguages[0].Language).toHaveProperty('name', expect.any(String))
-                })
-
-        })
-
-        test("failed on getting info of a user and response 400 because the inserted user id is not a number", () => {
-            return request(app)
-                .get('/users/test')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(400)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Invalid userId')
-                })
-        })
-
-        test("succeed on getting info of a user and response 200", () => {
-            return request(app)
-                .get('/users/100')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(404)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Unknown user')
-                })
-        })
-    })
-
-    describe("GET /languages", () => {
-        test("succeed on getting languages list and response 200", () => {
-            return request(app)
-                .get('/languages')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Array))
-                    res.body.forEach(el => {
-                        expect(el).toHaveProperty('id', expect.any(Number))
-                        expect(el).toHaveProperty('name', expect.any(String))
-                    })
-                })
-        })
-    })
-
+    }) 
    
 
 

@@ -14,6 +14,7 @@ const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
 let access_token;
+let access_token2;
 let linkUnverified;
 let linkVerified;
 let linkFakeId;
@@ -39,20 +40,14 @@ beforeAll(async () => {
         return el
     }))
 
-    const res = await request(app)
-        .post('/users/login')
-        .send({
-            email: "nmatusovsky2@mlb.com",
-            password: "gHWHJB",
-        })
 
-    access_token = res.body.access_token
-    linkVerified = res.body.access_token
+    access_token = signToken({ id: 1 })
+    linkVerified = access_token
 
 
-    linkUnverified = signToken({id:8})
-    linkFakeId = signToken({id:80})
-    access_token = signToken({id:1})
+    linkUnverified = signToken({ id: 8 })
+    linkFakeId = signToken({ id: 80 })
+    access_token2 = signToken({ id: 1 })
     const payload = verifyToken(linkUnverified)
 
 
@@ -487,15 +482,15 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    email : "sforrest0@chron.com",
-                    password : "WDbnhZZ63W1",
-                    newPassword : "WDbnhZZ63W1",
-                    confirmNewPassword : "WDbnhZZ63W1",
-                    username : "Sissie Forrest",
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "WDbnhZZ63W1",
+                    confirmNewPassword: "WDbnhZZ63W1",
+                    username: "Sissie Forrest",
                 })
                 .then(res => {
                     expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Object))                    
+                    expect(res).toHaveProperty("body", expect.any(Object))
                     expect(res.body).toHaveProperty('id', expect.any(Number))
                     expect(res.body).toHaveProperty('username', expect.any(String))
                     expect(res.body).toHaveProperty('email', expect.any(String))
@@ -511,10 +506,10 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    password : "WDbnhZZ63W1",
-                    newPassword : "WDbnhZZ63W1",
-                    confirmNewPassword : "WDbnhZZ63W1",
-                    username : "Sissie Forrest",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "WDbnhZZ63W1",
+                    confirmNewPassword: "WDbnhZZ63W1",
+                    username: "Sissie Forrest",
                 })
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -530,8 +525,8 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    email : "sforrest0@chron.com",                    
-                    username : "Sissie Forrest",
+                    email: "sforrest0@chron.com",
+                    username: "Sissie Forrest",
                 })
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -546,11 +541,11 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    email : "sforrest0@chron.com",
-                    password : "WDbnhZZ63W1",
-                    newPassword : "WDbnhZZ63W1",
-                    confirmNewPassword : "WDbnhZZ63W1f",
-                    username : "Sissie Forrest",
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "WDbnhZZ63W1",
+                    confirmNewPassword: "WDbnhZZ63W1f",
+                    username: "Sissie Forrest",
                 })
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -565,10 +560,10 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    email : "sforrest0@chron.com",
-                    password : "WDbnhZZ63W1",
-                    newPassword : "WDbnhZZ63W1",
-                    confirmNewPassword : "WDbnhZZ63W1",
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "WDbnhZZ63W1",
+                    confirmNewPassword: "WDbnhZZ63W1",
                 })
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -583,11 +578,11 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    email : "sforrest0fsd",
-                    password : "WDbnhZZ63W1",
-                    newPassword : "WDbnhZZ63W1",
-                    confirmNewPassword : "WDbnhZZ63W1",
-                    username : "Sissie Forrest",
+                    email: "sforrest0fsd",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "WDbnhZZ63W1",
+                    confirmNewPassword: "WDbnhZZ63W1",
+                    username: "Sissie Forrest",
                 })
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -602,11 +597,11 @@ describe("test api user", () => {
                 .put('/users/@me')
                 .set("access_token", access_token)
                 .send({
-                    email : "sforrest0@chron.com",
-                    password : "WDbnhZZ63W1",
-                    newPassword : "fsdf",
-                    confirmNewPassword : "fsdf",
-                    username : "Sissie Forrest",
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "fsdf",
+                    confirmNewPassword: "fsdf",
+                    username: "Sissie Forrest",
                 })
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -616,6 +611,151 @@ describe("test api user", () => {
                 })
         })
     })
+
+    describe("POST /users/avatar", () => {
+        test("succeed on posting avatar and response 201", () => {
+            return request(app)
+                .post('/users/avatar')
+                .set("access_token", access_token)
+                .attach('avatar', '_test_/testFile.png')
+                .then(res => {
+                    expect(res.status).toBe(201)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty('id', expect.any(Number))
+                    expect(res.body).toHaveProperty('username', expect.any(String))
+                    expect(res.body).toHaveProperty('email', expect.any(String))
+                    expect(res.body).toHaveProperty('country', expect.any(String))
+                    expect(res.body).toHaveProperty('AvatarId', expect.any(Number))
+                    expect(res.body).toHaveProperty('isOnline', expect.any(Boolean))
+                })
+        })
+
+        test("failed posting avatar and response 400 because there is no file sent", () => {
+            return request(app)
+                .post('/users/avatar')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('avatar is required')
+                })
+        })
+
+    })
+
+
+    describe("GET /users/:userId", () => {
+        test.only("succeed on getting info of a user and response 200", () => {
+            return request(app)
+                .get('/users/1')
+                .set("access_token", access_token2)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty('id', expect.any(Number))
+                    expect(res.body).toHaveProperty('username', expect.any(String))
+                    expect(res.body).toHaveProperty('email', expect.any(String))
+                    expect(res.body).toHaveProperty('country', expect.any(String))
+                    expect(res.body).toHaveProperty('AvatarId', expect.any(Number))
+                    expect(res.body).toHaveProperty('isOnline', expect.any(Boolean))
+                    expect(res.body).toHaveProperty('Avatar', expect.any(Object))
+                    expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
+                    expect(res.body).toHaveProperty('UserInterests', expect.any(Array))
+                    res.body.UserLanguages.forEach(el => {
+                        expect(el).toHaveProperty('InterestId', expect.any(Number))
+
+                    })
+
+                })
+        })
+
+
+
+        test("failed on getting info of a user and response 400 because the inserted user id is not a number", () => {
+            return request(app)
+                .get('/users/test')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid userId')
+                })
+        })
+
+        test("succeed on getting info of a user and response 200", () => {
+            return request(app)
+                .get('/users/100')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Unknown user')
+                })
+        })
+    })
+
+    describe("GET /languages", () => {
+        test("succeed on getting languages list and response 200", () => {
+            return request(app)
+                .get('/languages')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Array))
+                    res.body.forEach(el => {
+                        expect(el).toHaveProperty('id', expect.any(Number))
+                        expect(el).toHaveProperty('name', expect.any(String))
+                    })
+                })
+        })
+    })
+
+    describe("GET /users/@me", () => {
+        test("succeed on getting user's profile and response 200", () => {
+            return request(app)
+                .get('/users/@me')
+                .set("access_token", access_token2)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty("username", expect.any(String))
+                    expect(res.body).toHaveProperty("email", expect.any(String))
+                    expect(res.body).toHaveProperty("country", expect.any(String))
+                    expect(res.body).toHaveProperty("phoneNumber", expect.any(String))
+                    expect(res.body).toHaveProperty("verified", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("AvatarId", expect.any(Number))
+                    expect(res.body).toHaveProperty("status", expect.any(String))
+                    expect(res.body).toHaveProperty("status", expect.any(String))
+                })
+        })
+    })
+
+    describe("DELETE /users/avatar", () => {
+        test("succeed on deleting user's avatar and response 200", () => {
+            return request(app)
+                .delete('/users/avatar')
+                .set("access_token", access_token2)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty("username", expect.any(String))
+                    expect(res.body).toHaveProperty("email", expect.any(String))
+                    expect(res.body).toHaveProperty("country", expect.any(String))
+                    expect(res.body).toHaveProperty("status", expect.any(String))
+                    expect(res.body).toHaveProperty("verified", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("isOnline", expect.any(Boolean))
+
+                })
+        })
+    })
+
+
+
+
+
 
 
 

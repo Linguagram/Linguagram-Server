@@ -14,19 +14,24 @@
     "name" : "private"
 },
 {
-    "name" : "high school"
+    "name" : "high school",
+    "type" : "group"
 },
 {
-    "name" : "family"
+    "name" : "family",
+    "type" : "group"
 },
 {
-    "name" : "family"
+    "name" : "family",
+    "type" : "group"
 },
 {
-    "name" : "high school"
+    "name" : "high school",
+    "type" : "group"
 },
 {
-    "name" : "work"
+    "name" : "work",
+    "type" : "group"
 },
 {
     "name" : "home"
