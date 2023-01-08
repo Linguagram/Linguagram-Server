@@ -332,7 +332,7 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
       UserId: req.userInfo.id,
     });
 
-    newMember.dataValues.isOnline = isOnline(newMember.id);
+    // newMember.dataValues.isOnline = isOnline(newMember.UserId);
 
     const members = await getGroupMembers(group.id, req);
 

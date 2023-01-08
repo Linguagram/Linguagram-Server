@@ -1856,7 +1856,12 @@ _Response (200 - OK)_
 
 ```json
 {
-// !TODO
+    "id": 14,
+    "GroupId": 7,
+    "UserId": 2,
+    "updatedAt": "2023-01-08T05:40:11.685Z",
+    "createdAt": "2023-01-08T05:40:11.685Z",
+    "isOnline": false
 }
 ```
 
