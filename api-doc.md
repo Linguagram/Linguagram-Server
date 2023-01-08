@@ -2651,7 +2651,29 @@ Request :
 _Response (200 - OK)_
 
 ```json
-// !TODO
+{
+    "id": 1,
+    "name": "private",
+    "type": "dm",
+    "createdAt": "2023-01-08T07:05:18.467Z",
+    "updatedAt": "2023-01-08T07:05:18.467Z",
+    "GroupMembers": [
+        {
+            "id": 1,
+            "GroupId": 1,
+            "UserId": 1,
+            "createdAt": "2023-01-08T07:05:18.533Z",
+            "updatedAt": "2023-01-08T07:05:18.533Z"
+        },
+        {
+            "id": 2,
+            "GroupId": 1,
+            "UserId": 2,
+            "createdAt": "2023-01-08T07:05:18.533Z",
+            "updatedAt": "2023-01-08T07:05:18.533Z"
+        }
+    ]
+}
 ```
 
 _Response (400 - Bad Request)_
