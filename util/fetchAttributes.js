@@ -61,10 +61,12 @@ const friendshipFetchAttributes = (userId) => {
     },
     include: [
       {
+        ...userFetchAttributes(),
         model: User,
         as: "User",
       },
       {
+        ...userFetchAttributes(),
         model: User,
         as: "Friend",
       },
@@ -88,10 +90,12 @@ const oneFriendshipFetchAttributes = (userId, friendId) => {
     },
     include: [
       {
+        ...userFetchAttributes(),
         model: User,
         as: "User",
       },
       {
+        ...userFetchAttributes(),
         model: User,
         as: "Friend",
       },
