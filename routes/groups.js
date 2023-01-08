@@ -310,6 +310,11 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
   try {
     const group = await getGroup(validateGroupId(req.params.groupId));
 
+    if (group.type !== "group") throw {
+      status: 404,
+      message: "Unknown Group",
+    };
+
     const alreadyMember = await GroupMember.findByPk(req.userInfo.id);
 
     if (alreadyMember) throw {

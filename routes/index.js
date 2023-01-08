@@ -91,7 +91,7 @@ router.patch("/users/status", async (req, res, next) => {
 
     await user.save();
 
-    res.status(201).json(user);
+    res.status(200).json(user);
 
     sendUserUpdate(user);
   } catch (err) {
