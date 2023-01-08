@@ -28,6 +28,7 @@ const {
   friendshipFetchAttributes,
   oneFriendshipFetchAttributes,
 } = require("../util/fetchAttributes");
+const { sendNewFriendReqMail } = require("../helpers/nodemailer");
 
 // ========= Controller imports END
 
@@ -73,11 +74,13 @@ router.post("/friends/:friendId", async (req, res, next) => {
 
     newFriend.dataValues.User = req.userInfo;
     newFriend.dataValues.User.dataValues.isOnline = isOnline(req.userInfo.id);
-    newFriend.dataValues.Friend.dataValues.isOnline = isOnline(newFriend.Friend.id);
+    newFriend.dataValues.Friend.dataValues.isOnline = isOnline(newFriend.dataValues.Friend.id);
 
     res.status(200).json(newFriend);
 
     sendFriendRequest(friend, newFriend);
+
+    sendNewFriendReqMail(friend.email, friend.username);
   } catch (err) {
     next(err);
   }

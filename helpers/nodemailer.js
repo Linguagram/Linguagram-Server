@@ -30,7 +30,7 @@ const sendMail = async (recipientEmail, username, link) => {
   });
 };
 
-const sendNewFriendReqMail = async (recipientEmail, username, link) => {
+const sendNewFriendReqMail = async (recipientEmail, username) => {
   // send mail with defined transport object
   return transporter.sendMail({
     from: `"Linguagram 🛰" <do-not-reply@linguagram.com>`, // sender address

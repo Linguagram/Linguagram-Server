@@ -1,17 +1,10 @@
 "use strict";
 
 const {
-  Friendship,
-  Group,
-  Groupmember,
-  Language,
-  Media,
-  Message,
   Schedule,
   User,
   UserLanguage,
   UserSchedule,
-  Interest,
   UserInterest,
   sequelize,
 } = require('../models')
