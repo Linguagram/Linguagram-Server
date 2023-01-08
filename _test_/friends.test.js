@@ -14,7 +14,7 @@ const userSchedules = require('../data/userSchedules.json')
 const interests = require('../data/interests.json')
 const userInterests = require('../data/userInterests.json')
 let access_token;
-let access_token2;
+let access_token3;
 let linkUnverified;
 let linkVerified;
 let linkFakeId;
@@ -47,7 +47,7 @@ beforeAll(async () => {
 
     linkUnverified = signToken({ id: 8 })
     linkFakeId = signToken({ id: 80 })
-    access_token2 = signToken({ id: 1 })
+    access_token3 = signToken({ id: 3 })
     const payload = verifyToken(linkUnverified)
 
 
@@ -196,8 +196,8 @@ describe("test api friends", () => {
         })
     })
 
-    describe.only("POST /friends/:friendId", () => {
-        test("success get friend list and response 200", () => {
+    describe("POST /friends/:friendId", () => {
+        test("success sending friend request and response 200", () => {
             return request(app)
                 .post('/friends/4')
                 .set("access_token", access_token)
@@ -215,4 +215,26 @@ describe("test api friends", () => {
                 })
         })
     })
+
+    describe.only("PATCH /friendships/:userId", () => {
+        test("success accepting friend request and response 200", () => {
+            return request(app)
+                .patch('/friendships/1')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body).toHaveProperty("UserId", expect.any(Number))
+                    expect(res.body).toHaveProperty("FriendId", expect.any(Number))
+                    expect(res.body).toHaveProperty("isAccepted", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("User", expect.any(Object))
+                    expect(res.body).toHaveProperty("Friend", expect.any(Object))
+                    expect(res.body.User).toHaveProperty("username", expect.any(String))
+                    expect(res.body.User).toHaveProperty("email", expect.any(String))
+                    expect(res.body.Friend).toHaveProperty("username", expect.any(String))
+                    expect(res.body.Friend).toHaveProperty("email", expect.any(String))
+                })
+        })
+    })
+
+    
 })
