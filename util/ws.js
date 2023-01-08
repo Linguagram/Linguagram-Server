@@ -80,9 +80,9 @@ const createServer = (httpServer) => {
 const emitSocket = (socket, event, msg) => {
   if (!(socket instanceof Socket)) throw new TypeError("Expected socket instance of Socket, got " + (typeof socket));
   if (typeof event !== "string") throw new TypeError("Expected event as string, got " + (typeof event));
-  if (typeof msg !== "string") throw new TypeError("Expected msg as string, got " + (typeof msg));
   if (!event) throw new TypeError("event can't be empty");
   if (!msg) throw new TypeError("msg can't be empty");
+  if (typeof msg !== "object") throw new TypeError("Expected msg as object, got " + (typeof msg));
 
   io.to(socket.id).emit(event, msg);
 }
