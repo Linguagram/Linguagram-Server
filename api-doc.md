@@ -220,7 +220,20 @@ _Response (200 - OK)_
 
 ```json
 {
-  "message" : "<email> has been verified"
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk4NzExNH0.-QIqOmTKHe_UZp_--AO1xlQqvSjJxi9xsz_p3DKOOO0",
+    "user": {
+        "id": 13,
+        "username": "sipri",
+        "email": "admin@test.com",
+        "country": null,
+        "status": null,
+        "phoneNumber": null,
+        "verified": false,
+        "AvatarId": null,
+        "Avatar": null,
+        "UserLanguages": [],
+        "UserInterests": []
+    }
 }
 ```
 
@@ -1822,7 +1835,7 @@ _Response (200 - OK)_
 
 ```json
 {
-// !TODO
+    "translated": "ຂ້ອຍມີແບ້ 3"
 }
 ```
 
