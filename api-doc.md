@@ -1905,7 +1905,18 @@ _Response (200 - OK)_
 
 ```json
 {
-// !TODO
+    "id": 15,
+    "GroupId": 8,
+    "UserId": 2,
+    "createdAt": "2023-01-08T06:10:16.377Z",
+    "updatedAt": "2023-01-08T06:10:16.377Z",
+    "Group": {
+        "id": 8,
+        "name": "family",
+        "type": "group",
+        "createdAt": "2023-01-08T05:02:55.113Z",
+        "updatedAt": "2023-01-08T05:02:55.113Z"
+    }
 }
 ```
 

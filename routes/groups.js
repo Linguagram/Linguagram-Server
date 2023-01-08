@@ -353,6 +353,7 @@ router.delete("/groupmembers/:groupId", async (req, res, next) => {
         GroupId: groupId,
         UserId: req.userInfo.id,
       },
+      include: [Group],
     });
 
     if (!groupMember) {
@@ -362,8 +363,9 @@ router.delete("/groupmembers/:groupId", async (req, res, next) => {
       };
     }
 
-    await groupMember.destroy();
     const members = await getGroupMembers(groupId, req);
+
+    await groupMember.destroy();
 
     res.status(200).json(groupMember);
 
@@ -393,8 +395,8 @@ router.delete("/groupmembers/:groupId", async (req, res, next) => {
 //       };
 //     }
 
-//     await groupMember.destroy();
 //     const members = groupMember.Group.GroupMembers;
+//     await groupMember.destroy();
 
 //     res.status(200).json(groupMember);
 
@@ -422,8 +424,8 @@ router.delete("/groupmembers/:groupId", async (req, res, next) => {
 //       };
 //     }
 
-//     await groupMember.destroy();
 //     const members = await getGroupMembers(groupId, req);
+//     await groupMember.destroy();
 
 //     res.status(200).json(groupMember);
 
