@@ -1,267 +1,311 @@
-[
+[   
     {
-        "name": "Papiamento"
+            "name": "Afrikaans"
     },
     {
-        "name": "Northern Sotho"
+            "name": "Albanian"
     },
     {
-        "name": "Lao"
+            "name": "Arabic"
     },
     {
-        "name": "Catalan"
+            "name": "Armenian"
     },
     {
-        "name": "Kashmiri"
+            "name": "Azerbaijani"
     },
     {
-        "name": "Danish"
+            "name": "Basque"
     },
     {
-        "name": "Aymara"
+            "name": "Belarusian"
     },
     {
-        "name": "Zulu"
+            "name": "Bengali"
     },
     {
-        "name": "Nepali"
+            "name": "Bosnian"
     },
     {
-        "name": "Moldovan"
+            "name": "Bulgarian"
     },
     {
-        "name": "Punjabi"
+            "name": "Catalan"
     },
     {
-        "name": "Ndebele"
+            "name": "Cebuano"
     },
     {
-        "name": "Croatian"
+            "name": "Chichewa"
     },
     {
-        "name": "Zulu"
+            "name": "Chinese Simplified"
     },
     {
-        "name": "Portuguese"
+            "name": "Chinese Traditional"
     },
     {
-        "name": "Arabic"
-    },   
+            "name": "Corsican"
+    },
+    {
+            "name": "Croatian"
+    },
+    {
+            "name": "Czech"
+    },
+    {
+            "name": "Danish"
+    },
+    {
+            "name": "Dutch"
+    },
+    {
+            "name": "English"
+    },
+    {
+            "name": "Esperanto"
+    },
+    {
+            "name": "Estonian"
+    },
+    {
+            "name": "Filipino"
+    },
     {
-        "name": "Mongolian"
+            "name": "Finnish"
     },
     {
-        "name": "Romanian"
+            "name": "French"
     },
     {
-        "name": "Thai"
+            "name": "Frisian"
     },
     {
-        "name": "English"
+            "name": "Galician"
     },
     {
-        "name": "Assamese"
-    },   
+            "name": "Georgian"
+    },
+    {
+            "name": "German"
+    },
+    {
+            "name": "Greek"
+    },
+    {
+            "name": "Gujarati"
+    },
+    {
+            "name": "Haitian Creole"
+    },
+    {
+            "name": "Hausa"
+    },
+    {
+            "name": "Hawaiian"
+    },
+    {
+            "name": "Hebrew"
+    },
     {
-        "name": "Arabic"
+            "name": "Hindi"
     },
     {
-        "name": "German"
+            "name": "Hmong"
     },
     {
-        "name": "Gagauz"
+            "name": "Hungarian"
     },
     {
-        "name": "Kannada"
+            "name": "Icelandic"
     },
     {
-        "name": "Arabic"
+            "name": "Igbo"
     },
     {
-        "name": "Irish Gaelic"
+            "name": "Indonesian"
     },
     {
-        "name": "Croatian"
+            "name": "Irish"
     },
     {
-        "name": "Thai"
+            "name": "Italian"
     },
     {
-        "name": "Maltese"
+            "name": "Japanese"
     },
     {
-        "name": "New Zealand Sign Language"
+            "name": "Javanese"
     },
     {
-        "name": "Hiri Motu"
+            "name": "Kannada"
     },
     {
-        "name": "Tetum"
+            "name": "Kazakh"
     },
     {
-        "name": "Quechua"
+            "name": "Khmer"
     },
     {
-        "name": "Kazakh"
+            "name": "Korean"
     },
     {
-        "name": "Dutch"
+            "name": "Kurdish (Kurmanji)"
     },
     {
-        "name": "Latvian"
+            "name": "Kyrgyz"
     },
     {
-        "name": "Tswana"
+            "name": "Lao"
     },
     {
-        "name": "Italian"
+            "name": "Latin"
     },
     {
-        "name": "Tetum"
+            "name": "Latvian"
     },
     {
-        "name": "Māori"
+            "name": "Lithuanian"
     },
     {
-        "name": "Dhivehi"
+            "name": "Luxembourgish"
     },
     {
-        "name": "French"
+            "name": "Macedonian"
     },
     {
-        "name": "Bengali"
+            "name": "Malagasy"
     },
     {
-        "name": "Aymara"
+            "name": "Malay"
     },
     {
-        "name": "Filipino"
+            "name": "Malayalam"
     },
     {
-        "name": "Persian"
+            "name": "Maltese"
     },
     {
-        "name": "Japanese"
+            "name": "Maori"
     },
     {
-        "name": "Arabic"
+            "name": "Marathi"
     },
     {
-        "name": "Nepali"
+            "name": "Mongolian"
     },
     {
-        "name": "Hebrew"
+            "name": "Myanmar (Burmese)"
     },
     {
-        "name": "Filipino"
+            "name": "Nepali"
     },
     {
-        "name": "Arabic"
+            "name": "Norwegian"
     },
     {
-        "name": "Croatian"
+            "name": "Pashto"
     },
     {
-        "name": "Hebrew"
+            "name": "Persian"
     },
     {
-        "name": "Czech"
+            "name": "Polish"
     },
     {
-        "name": "Dutch"
+            "name": "Portuguese"
     },
     {
-        "name": "Danish"
+            "name": "Punjabi"
     },
     {
-        "name": "Swahili"
+            "name": "Romanian"
     },
     {
-        "name": "Tok Pisin"
+            "name": "Russian"
     },
     {
-        "name": "Khmer"
+            "name": "Samoan"
     },
     {
-        "name": "Yiddish"
+            "name": "Scots Gaelic"
     },
     {
-        "name": "Korean"
+            "name": "Serbian"
     },
     {
-        "name": "Italian"
-    }, 
+            "name": "Sesotho"
+    },
     {
-        "name": "Afrikaans"
+            "name": "Shona"
     },
     {
-        "name": "Maltese"
+            "name": "Sindhi"
     },
     {
-        "name": "Bulgarian"
-    },    
+            "name": "Sinhala"
+    },
     {
-        "name": "Afrikaans"
+            "name": "Slovak"
     },
-    
     {
-        "name": "Icelandic"
+            "name": "Slovenian"
     },
     {
-        "name": "Indonesian"
+            "name": "Somali"
     },
     {
-        "name": "Malay"
+            "name": "Spanish"
     },
     {
-        "name": "Irish Gaelic"
+            "name": "Sudanese"
     },
     {
-        "name": "German"
+            "name": "Swahili"
     },
     {
-        "name": "Northern Sotho"
+            "name": "Swedish"
     },
     {
-        "name": "Tswana"
+            "name": "Tajik"
     },
     {
-        "name": "Telugu"
+            "name": "Tamil"
     },
     {
-        "name": "Gagauz"
+            "name": "Telugu"
     },
     {
-        "name": "Bosnian"
+            "name": "Thai"
     },
     {
-        "name": "Filipino"
+            "name": "Turkish"
     },
     {
-        "name": "Kazakh"
+            "name": "Ukrainian"
     },
     {
-        "name": "Azeri"
+            "name": "Urdu"
     },
     {
-        "name": "Persian"
+            "name": "Uzbek"
     },
     {
-        "name": "Georgian"
+            "name": "Vietnamese"
     },
     {
-        "name": "Dutch"
+            "name": "Welsh"
     },
     {
-        "name": "Pashto"
+            "name": "Xhosa"
     },
     {
-        "name": "Malagasy"
+            "name": "Yiddish"
     },
     {
-        "name": "Hungarian"
+            "name": "Yoruba"
     },
     {
-        "name": "Zulu"
+            "name": "Zulu"
     }
 ]
