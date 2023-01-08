@@ -190,12 +190,18 @@ router.post("/translate", async (req, res, next) => {
       message: "No target language specified",
     };
 
-    const result = await translate(text, {
+    const opts = {
       from: from || "auto",
       to: toLang,
-    });
+    };
 
-    res.status(200).json(result);
+    console.log(opts);
+
+    const result = await translate(text, opts);
+
+    console.log(result);
+
+    res.status(200).json({ translated: result });
   } catch (err) {
     next(err);
   }
