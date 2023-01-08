@@ -323,8 +323,14 @@ class Controller {
         }
       });
 
-      res.status(200).json({ message: `${theSearchedUser.email} has been verified` })
+      const userPayload = {
+        id: theSearchedUser.id
+      }
 
+      const access_token = signToken(userPayload)
+      delete theSearchedUser.dataValues.password
+      delete theSearchedUser._previousDataValues.password;
+      res.status(200).json({ access_token, user: theSearchedUser, message: `${theSearchedUser.email} has been verified` })
     } catch (err) {
       next(err)
     }
