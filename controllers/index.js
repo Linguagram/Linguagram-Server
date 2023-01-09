@@ -75,7 +75,8 @@ class Controller {
           })
           ),
           // filter duplicates
-        ].reduce((prev, val) =>
+        ]
+        .reduce((prev, val) =>
           prev.some(pval =>
             pval.LanguageId === val.LanguageId
             && pval.type === val.type)
@@ -91,7 +92,7 @@ class Controller {
           ...interests.map(inter => {
             return {
               InterestId: inter,
-              UserId: req.userInfo.id,
+              UserId: createdUser.id,
             };
           }),
         ];
@@ -194,8 +195,7 @@ class Controller {
         await user.save();
 
         // create user languages ===
-        const createUserLanguages = [
-          ...nativeLanguages.map(lang => ({
+        const createUserLanguages = [...nativeLanguages.map(lang => ({
             type: "native",
             UserId: user.id,
             LanguageId: lang,
