@@ -4,9 +4,10 @@ const {
   User,
   Media,
   Message,
+  GroupMember,
+  Group,
 } = require("../models");
 const { userFetchAttributes } = require("./fetchAttributes");
-const { baseGetGroupMembers } = require("./restUtil");
 const { validateGroupId, validateUserId } = require("./validators");
 
 const getUserWs = async (userId) => {
@@ -20,6 +21,31 @@ const getUserWs = async (userId) => {
   return user;
 }
 
+const getGroupMembersWs = async (groupId, userId) => {
+  const groupMembers = await GroupMember.findAll({
+    where: {
+      GroupId: groupId,
+    },
+    include: [
+      Group,
+      {
+        ...userFetchAttributes(),
+        model: User,
+      },
+    ],
+  });
+
+  // check if user is actually in the group
+  if (!groupMembers.some(member => member.UserId === userId)) {
+    throw {
+      status: 404,
+      message: "Unknown Group",
+    };
+  }
+
+  return groupMembers;
+}
+
 const onMessage = async (message) => {
   if (!message) throw {
     error: true,
@@ -29,7 +55,7 @@ const onMessage = async (message) => {
   const groupId = validateGroupId(message.GroupId);
   const userId = validateUserId(message.UserId);
 
-  const groupMembers = await baseGetGroupMembers(groupId, userId);
+  const groupMembers = await getGroupMembersWs(groupId, userId);
 
   const newAttachment = { id: message.MediaId };
 

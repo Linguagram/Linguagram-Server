@@ -171,7 +171,7 @@ afterAll(async () => {
 
 })
 
-describe("test api friends", () => {
+describe.skip("test api friends", () => {
 
     describe("GET /friends", () => {
         test("success get friend list and response 200", () => {

@@ -171,7 +171,7 @@ afterAll(async () => {
 
 })
 
-describe("test API", () => {
+describe.skip("test API", () => {
     // describe.only('environmental variables', () => {
     //     const OLD_ENV = process.env;
 

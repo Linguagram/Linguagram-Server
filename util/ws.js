@@ -285,8 +285,13 @@ const loadListeners = () => {
 
       socket.on(SOCKET_EVENTS.MESSAGE, async (message) => {
         try {
-          const newMessage = await onMessage(message);
-          newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
+          const data = await onMessage(message);
+
+          for (const gm of data.groupMembers) {
+            gm.User.dataValues.isOnline = isOnline(gm.UserId);
+          }
+
+          data.newMessage.dataValues.User.dataValues.isOnline = isOnline(data.newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
         } catch (err) {
           handleSocketError(err);
         }

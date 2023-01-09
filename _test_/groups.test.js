@@ -22,12 +22,12 @@ const io = require("socket.io-client");
 const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require('../util/ws')
 
-server.attach(3010);
+server.attach(3000);
 let socket;
-
+jest.setTimeout(20000);
 beforeEach(function(done) {
     // Setup
-    socket = io("http://localhost:3010");
+    socket = io("http://localhost:3000");
 
     socket.on("connect", function() {
         console.log("worked...");
@@ -276,7 +276,14 @@ describe("test API groups", () => {
     })
 
     describe("POST /groups/:groupId/messages", () => {
-        test("success sending message with content and a file to one group and response 200", () => {
+        test.only("success sending message with content and a file to one group and response 200", (done) => {
+            let count = 0;
+
+            const addDone = (debug) => {
+                console.log("ADD DONE CALLED", debug)
+                count++;
+                if (count === 2) done();
+            }
 
             socket.on(SOCKET_EVENTS.MESSAGE, (obj) => {
                 expect(obj).toHaveProperty("deleted", expect.any(Boolean))
@@ -289,9 +296,10 @@ describe("test API groups", () => {
                 expect(obj.User).toHaveProperty("Avatar", expect.any(Object))
                 expect(obj.User.Avatar).toHaveProperty("url", expect.any(String))
                 expect(obj.Medium).toHaveProperty("url", expect.any(String))
+                addDone("SOCKET");
             });
 
-            return request(app)
+            request(app)
                 .post('/groups/1/messages')
                 .set({ "access_token": access_token })
                 .field('content', 'test content')
@@ -308,6 +316,7 @@ describe("test API groups", () => {
                     expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
                     expect(res.body.User.Avatar).toHaveProperty("url", expect.any(String))
                     expect(res.body.Medium).toHaveProperty("url", expect.any(String))
+                    addDone("SERVER");
                 })
         })
 

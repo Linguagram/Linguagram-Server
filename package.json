@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand --forceExit",
+    "testnoexit": "jest --runInBand",
     "coverage": "jest --runInBand --coverage --forceExit",
     "start": "node bin/www",
     "dev": "nodemon bin/www"
