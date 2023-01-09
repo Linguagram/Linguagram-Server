@@ -57,6 +57,7 @@ Request :
     "username" : "string | required",
     "email" : "string | email format | unique | required",
     "password" : "string | required | min length 8",
+    "confirmPassword" : "string | required to match password"
     "country" : "string",
     "phoneNumber" : "string",
     "status" : "string",
@@ -71,11 +72,11 @@ _Response (201 - created)_
 
 ```json
 {
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3Mjk4NzExNH0.-QIqOmTKHe_UZp_--AO1xlQqvSjJxi9xsz_p3DKOOO0",
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY3MzI0MjI1MX0.zGa7T_fyXa1NIIjEIJeF4OIjD4feYnrwXi94KVcSXsc",
     "user": {
-        "id": 13,
-        "username": "sipri",
-        "email": "admin@test.com",
+        "id": 11,
+        "username": "asdawed",
+        "email": "sforrest210@chron.com",
         "country": null,
         "status": null,
         "phoneNumber": null,
