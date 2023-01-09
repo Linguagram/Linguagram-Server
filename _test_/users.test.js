@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('../app')
+const app = require('../app').server
 const { sequelize } = require('../models')
 let friendships = require('../data/friendships.json')
 let groupMembers = require('../data/groupMembers.json')
@@ -172,7 +172,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test api user", () => {
+describe("test api user", () => {
 
     describe("post /users/register", () => {
         test("success create user and response 201", () => {

@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('../app')
+const app = require('../app').server
 const { sequelize } = require('../models')
 let friendships = require('../data/friendships.json')
 let groupMembers = require('../data/groupMembers.json')
@@ -168,7 +168,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test API groups", () => {
+describe("test API groups", () => {
     describe("GET /groups/:groupId/messages", () => {
         test("failed getting all message of one group and response 401 because token is invalid", () => {
             return request(app)
