@@ -18,14 +18,39 @@ const { signToken } = require('../helpers/jwt')
 let access_token;
 let fakeaccess_token;
 let access_token5;
+const io = require("socket.io-client");
+const { io: server } = require("../app");
+const { SOCKET_EVENTS } = require('../util/ws')
 
+server.attach(3010);
+let socket;
 
+beforeEach(function(done) {
+    // Setup
+    socket = io("http://localhost:3010");
 
+    socket.on("connect", function() {
+        console.log("worked...");
+        done();
+    });
+    socket.on("disconnect", function() {
+        console.log("disconnected...");
+    });
+});
 
+afterEach(function(done) {
+    // Cleanup
+    if (socket.connected) {
+        console.log("disconnecting...");
+        socket.disconnect();
+    } else {
+        // There will not be a connection unless you have done() in beforeEach, socket.on('connect'...)
+        console.log("no connection to break...");
+    }
+    done();
+});
 
 beforeAll(async () => {
-
-
 
     await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
         el.createdAt = new Date();
@@ -164,7 +189,8 @@ afterAll(async () => {
         truncate: true, restartIdentity: true, cascade: true
     })
 
-
+    socket.disconnect();
+    return server.close();
 })
 
 
@@ -251,6 +277,20 @@ describe("test API groups", () => {
 
     describe("POST /groups/:groupId/messages", () => {
         test("success sending message with content and a file to one group and response 200", () => {
+
+            socket.on(SOCKET_EVENTS.MESSAGE, (obj) => {
+                expect(obj).toHaveProperty("deleted", expect.any(Boolean))
+                expect(obj).toHaveProperty("Medium", expect.any(Object))
+                expect(obj).toHaveProperty("content", expect.any(String))
+                expect(obj).toHaveProperty("GroupId", expect.any(Number))
+                expect(obj).toHaveProperty("User", expect.any(Object))
+                expect(obj.User).toHaveProperty("id", expect.any(Number))
+                expect(obj.User).toHaveProperty("UserLanguages", expect.any(Array))
+                expect(obj.User).toHaveProperty("Avatar", expect.any(Object))
+                expect(obj.User.Avatar).toHaveProperty("url", expect.any(String))
+                expect(obj.Medium).toHaveProperty("url", expect.any(String))
+            });
+
             return request(app)
                 .post('/groups/1/messages')
                 .set({ "access_token": access_token })
