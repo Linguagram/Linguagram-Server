@@ -190,10 +190,17 @@ const loadListeners = () => {
           console.log(data)
           console.log(userSockets.keys())
           const userSocket = getUserSocket(data.userToCall);
-          console.log(userSocket.id, "socket id yang mau di call")
-          io.to(userSocket.id).emit('incomingCall', {
-            from: data.from
-          });
+          if (userSocket) {
+            console.log(userSocket.id, "socket id yang mau di call")
+            io.to(userSocket.id).emit('incomingCall', {
+              from: data.from
+            });
+          }
+          else throw {
+            error: true,
+            message: "No socket of user " + data.userToCall,
+            data,
+          };
         } catch (err) {
           handleSocketError(socket, err);
         }
