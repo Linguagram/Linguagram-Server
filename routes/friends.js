@@ -143,12 +143,12 @@ router.delete("/friendships/:friendId", async (req, res, next) => {
       message: "Friendship not found",
     };
 
-    if (![req.userInfo.id, friendId].every(id => [friendship.UserId, friendship.FriendId].includes(id))) {
-      throw {
-        status: 403,
-        message: "Forbidden",
-      };
-    }
+    // if (![req.userInfo.id, friendId].every(id => [friendship.UserId, friendship.FriendId].includes(id))) {
+    //   throw {
+    //     status: 403,
+    //     message: "Forbidden",
+    //   };
+    // }
 
     await friendship.destroy();
 

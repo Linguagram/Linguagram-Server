@@ -22,24 +22,14 @@ module.exports = (sequelize, DataTypes) => {
   Group.init({
     name: {
       type: DataTypes.STRING,
-      validate: {
-        groupName(value) {
-          if (this.type === "group" && !value) {
-            throw new TypeError("Group name is required");
-          }
-        },
+      validate: {        
       },
     },
     type: {
       type: DataTypes.STRING,
       defaultValue: "dm",
       validate: {
-        type(value) {
-          const allowedTypes = ["dm", "group"];
-          if (!allowedTypes.includes(value)) {
-            throw new TypeError("Invalid Group type");
-          }
-        },
+        
       },
     },
   }, {

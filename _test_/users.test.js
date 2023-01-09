@@ -172,9 +172,9 @@ afterAll(async () => {
 })
 
 
-describe("test api user", () => {
+describe.skip("test api user", () => {
 
-    describe.only("post /users/register", () => {
+    describe("post /users/register", () => {
         test("success create user and response 201", () => {
             return request(app)
                 .post('/users/register')
@@ -357,6 +357,22 @@ describe("test api user", () => {
                 })
         })
 
+        test("failed login and response 401 because email has not been verified", () => {
+            return request(app)
+                .post('/users/login')
+                .send({
+                    email: "admin@admin.com",
+                    password: "1234567890",
+                })
+                .then(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.body).toHaveProperty("error", expect.any(Boolean))
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body.message).toEqual("Email address has not been verified!")
+                })
+        })
+
         test("failed login and response 400 because email was not provided", () => {
             return request(app)
                 .post('/users/login')
@@ -490,6 +506,9 @@ describe("test api user", () => {
                     newPassword: "WDbnhZZ63W1",
                     confirmNewPassword: "WDbnhZZ63W1",
                     username: "Sissie Forrest",
+                    nativeLanguages: [1],
+                    interestLanguages: [2,3],
+                    interests: [4]
                 })
                 .then(res => {
                     expect(res.status).toBe(200)

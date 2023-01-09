@@ -870,6 +870,41 @@ describe.skip("test API groups", () => {
         })
     })
 
+    describe("POST /groups", () => {
+        test("succeed on creating a group and response 200", () => {
+            return request(app)
+                .post('/groups')
+                .set({ "access_token": access_token })
+                .send({
+                    name : "test name"
+                })
+                .then(res => {
+                    expect(res.status).toBe(201)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty("id", expect.any(Number))
+                    expect(res.body).toHaveProperty("name", expect.any(String))
+                    expect(res.body).toHaveProperty("type", expect.any(String))
+                    expect(res.body).toHaveProperty("GroupMembers", expect.any(Array))
+                    expect(res.body.type).toEqual('group')                   
+                })
+        })
+
+        test("failed on creating a group and response 400 because no group name was provided", () => {
+            return request(app)
+                .post('/groups')
+                .set({ "access_token": access_token })
+                .send({
+                })
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Group name is required')
+                   
+                })
+        })
+    })
+
 
 
 

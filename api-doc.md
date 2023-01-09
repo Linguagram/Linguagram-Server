@@ -2019,6 +2019,8 @@ _Response (200 - OK)_
 _Response (400 - Bad Request)_
 
 ```json
+
+{
 {
     "error": true,
     "message": "Group name is required"
