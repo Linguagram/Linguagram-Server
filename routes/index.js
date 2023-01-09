@@ -39,6 +39,17 @@ const { sendUserUpdate, isOnline } = require("../util/ws");
 
 // ======= Controller imports end
 
+// get all interests
+router.get("/interests", async (req, res, next) => {
+  try {
+    const interests = await Interest.findAll();
+
+    res.status(200).json(interests);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.use(userRouter);
 router.use(authentication);
 
@@ -208,17 +219,6 @@ router.post("/translate", async (req, res, next) => {
       })
       return
     }
-    next(err);
-  }
-});
-
-// get all interests
-router.get("/interests", async (req, res, next) => {
-  try {
-    const interests = await Interest.findAll();
-
-    res.status(200).json(interests);
-  } catch (err) {
     next(err);
   }
 });

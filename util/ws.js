@@ -136,6 +136,7 @@ const userOffline = (user) => {
 */
 const loadListeners = () => {
   io.on(SOCKET_EVENTS.CONNECTION, (socket) => {
+    console.log("TRIGGERED CONNECTION", socket);
     
     try {
       socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
