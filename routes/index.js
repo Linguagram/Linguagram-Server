@@ -195,14 +195,19 @@ router.post("/translate", async (req, res, next) => {
       to: toLang,
     };
 
-    console.log(opts);
-
     const result = await translate(text, opts);
 
     console.log(result);
 
     res.status(200).json({ translated: result });
   } catch (err) {
+    if (err.message.startsWith('The language ')) {
+      next({
+        status: 400,
+        message: err.message
+      })
+      return
+    }
     next(err);
   }
 });

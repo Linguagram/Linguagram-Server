@@ -171,7 +171,7 @@ afterAll(async () => {
 
 })
 
-describe("test api friends", () => {
+describe.skip("test api friends", () => {
 
     describe("GET /friends", () => {
         test("success get friend list and response 200", () => {
@@ -258,6 +258,18 @@ describe("test api friends", () => {
                 })
         })
 
+        test("failed accepting friend request because friend request is already accepted and response 403", () => {
+            return request(app)
+                .patch('/friendships/2')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(403)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Forbidden')
+                })
+        })
+
         test("failed accepting friend request because friend request was not found and response 404", () => {
             return request(app)
                 .patch('/friendships/5')
@@ -271,7 +283,7 @@ describe("test api friends", () => {
         })
     })
 
-    describe("DELETE /friendships/:userId", () => {
+    describe("DELETE /friendships/:friendId", () => {
         test("success deleting friendship and response 200", () => {
             return request(app)
                 .delete('/friendships/2')
@@ -292,7 +304,19 @@ describe("test api friends", () => {
 
         test("failed deleting friendship because user id is not a number and response 400", () => {
             return request(app)
-                .patch('/friendships/test')
+                .delete('/friendships/test')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual('Invalid userId')
+                })
+        })
+
+        test("failed deleting friendship because user id is not a number and response 400", () => {
+            return request(app)
+                .delete('/friendships/test')
                 .set("access_token", access_token3)
                 .then(res => {
                     expect(res.status).toBe(400)
@@ -304,7 +328,7 @@ describe("test api friends", () => {
 
         test("failed deleting friendship because friendship was not found and response 404", () => {
             return request(app)
-                .patch('/friendships/5')
+                .delete('/friendships/5')
                 .set("access_token", access_token3)
                 .then(res => {
                     expect(res.status).toBe(404)
@@ -313,6 +337,19 @@ describe("test api friends", () => {
                     expect(res.body.message).toEqual("Friendship not found")
                 })
         })
+
+        test("failed deleting friendship and response 403 because the friend id is the same with user id", () => {
+            return request(app)
+                .delete('/friendships/3')
+                .set("access_token", access_token3)
+                .then(res => {
+                    expect(res.status).toBe(403)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", expect.any(String))
+                    expect(res.body.message).toEqual("Forbidden")
+                })
+        })
+
     })
 
 

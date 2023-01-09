@@ -187,7 +187,8 @@
         "content": "Quality-focused explicit migration",
         "MediaId": null,
         "UserId": 1,
-        "GroupId": 4
+        "GroupId": 4,
+        "isRead" : true
       }, {
         "content": "Synchronised stable functionalities",
         "MediaId": null,

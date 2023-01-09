@@ -1,14 +1,17 @@
 [{
     "UserId": 1,
-    "FriendId" : 2
+    "FriendId" : 2,
+    "isAccepted" : false
 },
 {
     "UserId": 1,
-    "FriendId" : 3
+    "FriendId" : 3,
+    "isAccepted" : false
 },
 {
     "UserId": 2,
-    "FriendId" : 4
+    "FriendId" : 4,
+    "isAccepted" : false
 },
 {
     "UserId": 2,
@@ -17,17 +20,21 @@
 },
 {
     "UserId": 1,
-    "FriendId" : 5
+    "FriendId" : 5,
+    "isAccepted" : false
 },
 {
     "UserId": 4,
-    "FriendId" : 5
+    "FriendId" : 5,
+    "isAccepted" : false
 },
 {
     "UserId": 5,
-    "FriendId" : 6
+    "FriendId" : 6,
+    "isAccepted" : false
 },
 {
     "UserId": 6,
-    "FriendId" : 7
+    "FriendId" : 7,
+    "isAccepted" : false
 }]

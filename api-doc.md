@@ -31,7 +31,7 @@ List of available endpoints:
   - [23. POST /translate](#23-post-translate)
   - [24. POST /groups](#24-post-groups)
   - [25. PATCH /users/status](#25-patch-usersstatus)
-  - [26. PATCH /groups/:groupId/messages](#26-patch-groupsgroupidmessages)
+  - [26. PATCH /groups/:groupId/messages/:messageId](#26-patch-groupsgroupidmessagesmessageid)
   - [27. GET /explore/users](#27-get-exploreusers)
   - [28. GET /explore/groups](#28-get-exploregroups)
   - [29. GET /interests](#29-get-interests)
@@ -540,42 +540,81 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id": 11,
-    "content": null,
-    "deleted": false,
-    "MediaId": 11,
+    "id": 1,
+    "content": "hello there",
+    "deleted": null,
+    "MediaId": 1,
     "UserId": 1,
     "GroupId": 1,
-    "createdAt": "2023-01-05T12:28:01.213Z",
-    "updatedAt": "2023-01-05T12:28:01.213Z",
+    "isRead": null,
+    "createdAt": "2023-01-08T19:56:28.006Z",
+    "updatedAt": "2023-01-08T19:56:28.006Z",
     "User": {
         "id": 1,
         "username": "Sissie Forrest",
         "email": "sforrest0@chron.com",
-        "password": "$2a$08$KfkLz6wbZs7yi1l30fdGQOoWpTBssKbvdLwye773h7IWP5u1j1jFy",
         "country": "Switzerland",
         "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
         "phoneNumber": "+1 339 769 7021",
         "verified": true,
         "AvatarId": 1,
-        "createdAt": "2023-01-05T10:41:33.325Z",
-        "updatedAt": "2023-01-05T10:41:33.325Z"
+        "Avatar": {
+            "id": 1,
+            "name": "avatar",
+            "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+            "format": "image/jpg",
+            "createdAt": "2023-01-08T19:56:27.810Z",
+            "updatedAt": "2023-01-08T19:56:27.810Z"
+        },
+        "UserLanguages": [
+            {
+                "id": 3,
+                "type": "interest",
+                "UserId": 1,
+                "LanguageId": 3,
+                "createdAt": "2023-01-08T19:56:28.022Z",
+                "updatedAt": "2023-01-08T19:56:28.022Z",
+                "Language": {
+                    "id": 3,
+                    "name": "Arabic",
+                    "createdAt": "2023-01-08T19:56:28.014Z",
+                    "updatedAt": "2023-01-08T19:56:28.014Z"
+                }
+            },...
+        ],
+        "UserInterests": [
+            {
+                "id": 1,
+                "UserId": 1,
+                "InterestId": 3,
+                "createdAt": "2023-01-08T19:56:28.032Z",
+                "updatedAt": "2023-01-08T19:56:28.032Z",
+                "Interest": {
+                    "id": 3,
+                    "name": "Anime",
+                    "createdAt": "2023-01-08T19:56:28.029Z",
+                    "updatedAt": "2023-01-08T19:56:28.029Z"
+                }
+            },...
+        ],
+        "isOnline": false
     },
     "Medium": {
-        "id": 11,
-        "name": "d06951e8c51d6aa65f001bf80291aa61_RnRvpvMA-",
-        "url": "https://ik.imagekit.io/sjhgfksjhdgflasfudoi/d06951e8c51d6aa65f001bf80291aa61_RnRvpvMA-",
-        "format": "image/png",
-        "createdAt": "2023-01-05T12:28:01.204Z",
-        "updatedAt": "2023-01-05T12:28:01.204Z"
+        "id": 1,
+        "name": "avatar",
+        "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+        "format": "image/jpg",
+        "createdAt": "2023-01-08T19:56:27.810Z",
+        "updatedAt": "2023-01-08T19:56:27.810Z"
     },
     "Group": {
         "id": 1,
         "name": "private",
         "type": "dm",
-        "createdAt": "2023-01-05T10:41:33.523Z",
-        "updatedAt": "2023-01-05T10:41:33.523Z"
-    }
+        "createdAt": "2023-01-08T19:56:28.003Z",
+        "updatedAt": "2023-01-08T19:56:28.003Z"
+    },
+    "edited": false
 }
 ```
 
@@ -1658,7 +1697,7 @@ _Response (404 - Not Found)_
 ```json
 {
     "error": true,
-    "message": "Unknown Group"
+    "message": "Group not found"
 }
 
 ```
@@ -1858,7 +1897,7 @@ OR
 
 Description :
 
-- Edit group
+- Create group
 
 Request :
 
@@ -2084,7 +2123,7 @@ _Response (400 - Bad Request)_
 ```
 
 
-## 26. PATCH /groups/:groupId/messages
+## 26. PATCH /groups/:groupId/messages/:messageId
 
 Description :
 
@@ -2105,6 +2144,24 @@ _Response (200 - OK)_
 ```json
 {
     "isRead": true
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "error": true,
+    "message":  "Invalid groupId"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+    "error": true,
+    "message": "Unknown Group"
 }
 ```
 

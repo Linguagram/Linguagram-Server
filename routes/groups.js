@@ -327,7 +327,7 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
     };
 
     const alreadyMember = await GroupMember.findOne({
-      where : {
+      where: {
         GroupId: group.id,
         UserId: req.userInfo.id,
       },
@@ -470,7 +470,12 @@ router.put("/groups/:groupId", async (req, res, next) => {
     const group = await getGroup(groupId);
 
     const { name } = req.body;
-
+    if (!name) {
+      throw {
+        status: 400,
+        message: "Group name is required",
+      };
+    }
     group.name = name;
 
     await group.save;
