@@ -139,10 +139,10 @@ const loadListeners = () => {
           const mapId = Number(userId);
 
           if (isNaN(mapId)) {
-            return emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+            throw {
               error: true,
               message: "Invalid userId",
-            }));
+            };
           }
 
           // save user socket for use
