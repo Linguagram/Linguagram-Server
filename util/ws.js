@@ -210,7 +210,7 @@ const loadListeners = () => {
           handleSocketError(socket, err);
         }
       });
- 
+
       socket.on('declineCall', (data) => {
         try {
 
@@ -223,7 +223,7 @@ const loadListeners = () => {
           handleSocketError(socket, err);
         }
       });
-      
+
        socket.on('leaveCall', (data) => {
         try {
 
@@ -267,12 +267,21 @@ const loadListeners = () => {
 
       socket.on(SOCKET_EVENTS.ACCEPT_CALL, (data) => {
         try {
+          console.log("[ws ACCEPT_CALL]", data);
           const userSocket = getUserSocket(data.to);
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_ACCEPT, data.signal);
         } catch (err) {
           handleSocketError(socket, err);
         }
         });
+
+      socket.on(SOCKET_EVENTS.MESSAGE, async (message) => {
+      });
+
+      socket.on(SOCKET_EVENTS.MESSAGE_EDIT, async (message) => {});
+
+      socket.on(SOCKET_EVENTS.MESSAGE_DELETE, async (message) => {});
+
     } catch (err) {
       handleSocketError(socket, err);
     }

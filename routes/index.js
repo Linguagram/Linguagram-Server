@@ -26,7 +26,7 @@ const {
 const handleUploaded = require('../util/handleUploaded');
 
 const {
-  getUser,
+  getUser, fileAction,
 } = require("../util/restUtil");
 
 const {
@@ -296,6 +296,21 @@ router.get("/explore/groups", async (req, res, next) => {
     });
 
     res.status(200).json(groups);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/attachment", upload.single("attachment"), async (req, res, next) => {
+  try {
+    if (!req.file) throw {
+      status: 400,
+      message: "attachment is required",
+    };
+
+    const newAttachment = await fileAction(req);
+
+    res.status(201).json(newAttachment);
   } catch (err) {
     next(err);
   }
