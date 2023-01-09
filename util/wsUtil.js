@@ -7,7 +7,14 @@ const {
 const { userFetchAttributes } = require("./fetchAttributes");
 
 const getUserWs = async (userId) => {
-  return User.findByPk(userId, userFetchAttributes(Media));
+  const user = await User.findByPk(userId, userFetchAttributes(Media));
+
+  if (!user) throw {
+    error: true,
+    message: "Unknown user",
+  };
+
+  return user;
 }
 
 module.exports = {

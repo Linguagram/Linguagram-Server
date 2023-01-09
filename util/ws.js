@@ -98,6 +98,22 @@ const emitGlobal = (event, msg) => {
   }
 }
 
+const handleSocketError = (socket, err) => {
+  console.error("[IDENTIFY ERROR]", err);
+
+  if (err && typeof err === "object"
+    && Object.keys(err).length === 2
+    && err.error === true
+    && err.message?.length) {
+    return emitSocket(socket, SOCKET_EVENTS.ERROR, err);
+  }
+
+  emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+    error: true,
+    message: "Internal Server Error",
+  }));
+}
+
 const userOnline = (user) => {
   user.dataValues.isOnline = true;
   emitGlobal(SOCKET_EVENTS.ONLINE, user);
@@ -113,63 +129,73 @@ const userOffline = (user) => {
 */
 const loadListeners = () => {
   io.on(SOCKET_EVENTS.CONNECTION, (socket) => {
-    socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
+    try {
+      socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
+        try {
+          console.log(msg);
 
-      console.log(msg);
+          const json = jParse(msg);
+          const { userId } = json;
+          const mapId = Number(userId);
 
-      try {
-        const json = jParse(msg);
-        const { userId } = json;
-        const mapId = Number(userId);
+          if (isNaN(mapId)) {
+            return emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+              error: true,
+              message: "Invalid userId",
+            }));
+          }
 
-        if (isNaN(mapId)) {
-          return emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
-            error: true,
-            message: "Invalid userId",
-          }));
+          // save user socket for use
+          userSockets.set(mapId, socket);
+
+          getUserWs(mapId).then(user => userOnline(user));
+        } catch (err) {
+          handleSocketError(socket, err);
         }
-
-        // save user socket for use
-        userSockets.set(mapId, socket);
-
-        getUserWs(mapId).then(user => userOnline(user));
-      } catch (err) {
-        console.error("[IDENTIFY ERROR]", err);
-
-        emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
-          error: true,
-          message: "Internal Server Error",
-        }));
-      }
-    });
-
-    socket.on(SOCKET_EVENTS.DISCONNECT, () => {
-      let uId;
-      for (const [id, usocket] of userSockets) {
-        if (socket.id === usocket.id) {
-          uId = id;
-          break;
-        }
-      }
-
-      if (uId) {
-        userSockets.delete(uId);
-        getUserWs(uId).then(user => userOffline(user));
-      }
-    });
-
-    socket.on("callUser", (data) => {
-      const userSocket = getUserSocket(data.userToCall);
-      io.to(userSocket.id).emit('hey', {
-        signal: data.signalData,
-        from: data.from,
       });
-    });
 
-    socket.on("acceptCall", (data) => {
-      const userSocket = getUserSocket(data.to.id);
-      io.to(userSocket.id).emit('callAccepted', data.signal);
-    });
+      socket.on(SOCKET_EVENTS.DISCONNECT, () => {
+        try {
+          let uId;
+          for (const [id, usocket] of userSockets) {
+            if (socket.id === usocket.id) {
+              uId = id;
+              break;
+            }
+          }
+
+          if (uId) {
+            userSockets.delete(uId);
+            getUserWs(uId).then(user => userOffline(user));
+          }
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+
+      socket.on("callUser", (data) => {
+        try {
+          const userSocket = getUserSocket(data.userToCall);
+          io.to(userSocket.id).emit('hey', {
+            signal: data.signalData,
+            from: data.from,
+          });
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+
+      socket.on("acceptCall", (data) => {
+        try {
+          const userSocket = getUserSocket(data.to.id);
+          io.to(userSocket.id).emit('callAccepted', data.signal);
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+        });
+    } catch (err) {
+      handleSocketError(socket, err);
+    }
   });
 
   console.log("[ws] Loaded listeners");
