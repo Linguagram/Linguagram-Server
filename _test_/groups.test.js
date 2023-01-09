@@ -250,7 +250,7 @@ describe.skip("test API groups", () => {
     })
 
     describe("POST /groups/:groupId/messages", () => {
-        test.skip("success sending message with content and a file to one group and response 200", () => {
+        test("success sending message with content and a file to one group and response 200", () => {
             return request(app)
                 .post('/groups/1/messages')
                 .set({ "access_token": access_token })
