@@ -37,6 +37,6 @@ app.use(routes)
 app.use(errorHandler)
 
 const server = http.createServer(app);
-init(server);
+const io = init(server);
 
-module.exports = { server /*, io */ };
+module.exports = { server, io };

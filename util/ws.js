@@ -303,6 +303,7 @@ const init = (httpServer) => {
   io = createServer(httpServer);
   console.log("[ws] Init, instance created");
   loadListeners();
+  return io;
 }
 
 /**
