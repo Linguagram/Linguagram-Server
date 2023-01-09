@@ -72,7 +72,7 @@ const createServer = (httpServer) => {
   console.log("[ws] Client URI:", CLIENT_URI);
   return new Server(httpServer, {
     cors: {
-      origin: CLIENT_URI || "http://localhost:5173",
+      origin: CLIENT_URI || "http://localhost:3001",
       methods: ["GET", "POST"]
     },
   });
@@ -136,11 +136,11 @@ const userOffline = (user) => {
 */
 const loadListeners = () => {
   io.on(SOCKET_EVENTS.CONNECTION, (socket) => {
+    
     try {
       socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
+        console.log(msg, 'identify')
         try {
-          console.log(msg);
-
           const json = jParse(msg);
           const { userId } = json;
           const mapId = Number(userId);
@@ -154,7 +154,9 @@ const loadListeners = () => {
 
           // save user socket for use
           userSockets.set(mapId, socket);
-
+          console.log(userSockets.keys(), 'usersockets')
+          console.log(userSockets.get(mapId).id, "socket id diri sendiri")
+          io.to(userSockets.get(mapId).id).emit("yourID", userSockets.get(mapId).id);
           getUserWs(mapId).then(user => userOnline(user));
         } catch (err) {
           handleSocketError(socket, err);
@@ -173,6 +175,7 @@ const loadListeners = () => {
           }
 
           if (uId) {
+            socket.broadcast.emit("user left", {user_left: uId})
             userSockets.delete(uId);
             getUserWs(uId).then(user => userOffline(user));
           }
@@ -181,9 +184,78 @@ const loadListeners = () => {
         }
       });
 
+      socket.on('clickCall', (data) => {
+        try {
+          console.log(data)
+          console.log(userSockets.keys())
+          const userSocket = getUserSocket(data.userToCall);
+          console.log(userSocket.id, "socket id yang mau di call")
+          io.to(userSocket.id).emit('incomingCall', {
+            from: data.from
+          });
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+
+      socket.on('cancelCall', (data) => {
+        try {
+
+          const userSocket = getUserSocket(data.userToCall);
+
+          io.to(userSocket.id).emit('callIsCanceled', {
+            from: data.from
+          });
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+ 
+      socket.on('declineCall', (data) => {
+        try {
+
+          const userSocket = getUserSocket(data.userToDecline);
+
+          io.to(userSocket.id).emit('callIsDeclined', {
+            from: data.from
+          });
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+      
+       socket.on('leaveCall', (data) => {
+        try {
+
+          const userSocket = getUserSocket(data.userToInform);
+
+          io.to(userSocket.id).emit('anotherUserLeaveTheCall', {
+            from: data.from
+          });
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+
+      socket.on('acceptCall', (data) => {
+        try {
+          console.log(data, "acceptCall")
+          const userSocket = getUserSocket(data.userToReceive);
+
+          io.to(userSocket.id).emit('confirmAcceptCall', {
+            from: data.from
+          });
+          console.log(userSocket.id)
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+
       socket.on(SOCKET_EVENTS.CALL, (data) => {
         try {
+          console.log(data)
           const userSocket = getUserSocket(data.userToCall);
+
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_CONNECT, {
             signal: data.signalData,
             from: data.from,
@@ -195,7 +267,7 @@ const loadListeners = () => {
 
       socket.on(SOCKET_EVENTS.ACCEPT_CALL, (data) => {
         try {
-          const userSocket = getUserSocket(data.to.id);
+          const userSocket = getUserSocket(data.to);
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_ACCEPT, data.signal);
         } catch (err) {
           handleSocketError(socket, err);
