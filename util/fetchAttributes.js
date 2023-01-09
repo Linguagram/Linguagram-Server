@@ -141,7 +141,7 @@ AND "Messages"."GroupId" = "Group"."id"
   return ret;
 }
 
-const messagesFetchAttributes = (groupId) => {
+const messagesFetchAttributes = (groupId, desc) => {
   const where = {
     GroupId: groupId,
   };
@@ -156,7 +156,7 @@ const messagesFetchAttributes = (groupId) => {
       Media,
       Group,
     ],
-    order: [["createdAt", "DESC"]],
+    order: [["createdAt", desc ? "DESC" : "ASC"]],
   }
 }
 

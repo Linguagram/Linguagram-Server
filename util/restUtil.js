@@ -52,7 +52,7 @@ const getGroupMembersFromUserId = async (userId) => {
   const groupFetchOpts = groupFetchAttributes(userId);
 
   groupFetchOpts.include.push({
-    ...messagesFetchAttributes(),
+    ...messagesFetchAttributes(null, true),
     limit: 1,
     model: Message,
   });
