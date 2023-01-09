@@ -2021,23 +2021,8 @@ _Response (400 - Bad Request)_
 ```json
 {
     "error": true,
-    "message":  "Invalid groupId" 
-}
-OR
-{
-    "error": true,
     "message": "Group name is required"
 }
-```
-
-_Response (404 - Not Found)_
-
-```json
-{
-    "error": true,
-    "message": "Unknown Group"
-}
-
 ```
 
 
