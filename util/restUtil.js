@@ -19,7 +19,7 @@ const {
 const handleUploaded = require("./handleUploaded");
 const { isOnline } = require("./ws");
 
-const getGroupMembers = async (groupId, req) => {
+const baseGetGroupMembers = async (groupId, userId) => {
   const groupMembers = await GroupMember.findAll({
     where: {
       GroupId: groupId,
@@ -34,7 +34,7 @@ const getGroupMembers = async (groupId, req) => {
   });
 
   // check if user is actually in the group
-  if (!groupMembers.some(member => member.UserId === req.userInfo.id)) {
+  if (!groupMembers.some(member => member.UserId === userId)) {
     throw {
       status: 404,
       message: "Unknown Group",
@@ -46,6 +46,10 @@ const getGroupMembers = async (groupId, req) => {
   }
 
   return groupMembers;
+}
+
+const getGroupMembers = async (groupId, req) => {
+  return baseGetGroupMembers(groupId, req.userInfo.id);
 }
 
 const getGroupMembersFromUserId = async (userId) => {

@@ -3,7 +3,7 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
-const { getUserWs } = require("./wsUtil");
+const { getUserWs, onMessage } = require("./wsUtil");
 const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
@@ -284,6 +284,12 @@ const loadListeners = () => {
         });
 
       socket.on(SOCKET_EVENTS.MESSAGE, async (message) => {
+        try {
+          const newMessage = await onMessage(message);
+          newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
+        } catch (err) {
+          handleSocketError(err);
+        }
       });
 
       socket.on(SOCKET_EVENTS.MESSAGE_EDIT, async (message) => {});
