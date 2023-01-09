@@ -33,6 +33,11 @@ const SOCKET_EVENTS = {
   FRIEND_REQUEST_DELETE: "friend_request_delete",
   FRIEND_REQUEST_ACCEPT: "friend_request_accept",
 
+  CALL: "call",
+  CALL_CONNECT: "call_connect",
+  ACCEPT_CALL: "accept_call",
+  CALL_ACCEPT: 'call_accepted',
+
   SCHEDULE: "schedule",
   SCHEDULE_CANCEL: "schedule_cancel",
 }
@@ -64,7 +69,7 @@ const validateUserId = (userId) => {
 }
 
 const createServer = (httpServer) => {
-  console.log("[ws createServer] Client URI:", CLIENT_URI);
+  console.log("[ws] Client URI:", CLIENT_URI);
   return new Server(httpServer, {
     cors: {
       origin: CLIENT_URI || "http://localhost:5173",
@@ -116,11 +121,13 @@ const handleSocketError = (socket, err) => {
 
 const userOnline = (user) => {
   user.dataValues.isOnline = true;
+  console.log("[ws ONLINE]", user.id);
   emitGlobal(SOCKET_EVENTS.ONLINE, user);
 };
 
 const userOffline = (user) => {
   user.dataValues.isOnline = false;
+  console.log("[ws OFFLINE]", user.id);
   emitGlobal(SOCKET_EVENTS.OFFLINE, user);
 };
 
@@ -156,6 +163,7 @@ const loadListeners = () => {
 
       socket.on(SOCKET_EVENTS.DISCONNECT, () => {
         try {
+          console.log("[ws DISCONNECT] Disconnected:", socket.id);
           let uId;
           for (const [id, usocket] of userSockets) {
             if (socket.id === usocket.id) {
@@ -173,10 +181,10 @@ const loadListeners = () => {
         }
       });
 
-      socket.on("callUser", (data) => {
+      socket.on(SOCKET_EVENTS.CALL, (data) => {
         try {
           const userSocket = getUserSocket(data.userToCall);
-          io.to(userSocket.id).emit('hey', {
+          io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_CONNECT, {
             signal: data.signalData,
             from: data.from,
           });
@@ -185,10 +193,10 @@ const loadListeners = () => {
         }
       });
 
-      socket.on("acceptCall", (data) => {
+      socket.on(SOCKET_EVENTS.ACCEPT_CALL, (data) => {
         try {
           const userSocket = getUserSocket(data.to.id);
-          io.to(userSocket.id).emit('callAccepted', data.signal);
+          io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_ACCEPT, data.signal);
         } catch (err) {
           handleSocketError(socket, err);
         }
