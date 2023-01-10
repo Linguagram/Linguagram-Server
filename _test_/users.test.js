@@ -119,6 +119,7 @@ beforeAll(async () => {
 
 })
 
+
 afterAll(async () => {
     await sequelize.queryInterface.bulkDelete('Media', {}, {
         truncate: true, restartIdentity: true, cascade: true

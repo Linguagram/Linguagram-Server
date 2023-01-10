@@ -194,7 +194,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test API groups", () => {
+describe("test API groups", () => {
     describe("POST /groups/:groupId/messages", () => {
         test("success sending message with content and a file to one group and response 200", () => {
 
