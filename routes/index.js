@@ -50,6 +50,17 @@ router.get("/interests", async (req, res, next) => {
   }
 });
 
+// get all languages
+router.get("/languages", async (req, res, next) => {
+  try {
+    const languages = await Language.findAll();
+
+    res.status(200).json(languages);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.use(userRouter);
 router.use(authentication);
 
@@ -149,17 +160,6 @@ router.get("/users/:userId", async (req, res, next) => {
     }
 
     res.status(200).json(user);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// get all languages
-router.get("/languages", async (req, res, next) => {
-  try {
-    const languages = await Language.findAll();
-
-    res.status(200).json(languages);
   } catch (err) {
     next(err);
   }
