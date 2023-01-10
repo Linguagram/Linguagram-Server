@@ -2,7 +2,7 @@
     {
         "username": "Sissie Forrest",
         "password": "WDbnhZZ63W1",
-        "status": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
+        "status": "Busy",
         "email": "sforrest0@chron.com",
         "phoneNumber": "+1 339 769 7021",
         "country": "Switzerland",
@@ -13,7 +13,7 @@
         "username": "Krispin Admin",
         "email": "admin@admin.com",
         "password": "1234567890",
-        "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
+        "status": "Idle",
         "phoneNumber": "+86 589 929 4346",
         "country": "Cuba",
         "verified": true,
@@ -22,7 +22,7 @@
     {
         "username": "Nev Matusovsky",
         "password": "gHWHJB",
-        "status": "justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in",
+        "status": "Busy",
         "email": "nmatusovsky2@mlb.com",
         "phoneNumber": "+966 878 394 6703",
         "country": "Sweden",
@@ -32,7 +32,7 @@
     {
         "username": "Ashleigh Brabban",
         "password": "li8P4FRjZ",
-        "status": "gravida nisi at nibh in hac habitasse platea dictumst aliquam",
+        "status": "Idle",
         "email": "abrabban3@angelfire.com",
         "phoneNumber": "+33 648 933 7445",
         "country": "Sweden",
@@ -42,7 +42,7 @@
     {
         "username": "Beryle Glaisner",
         "password": "cZ8SluLNyw",
-        "status": "curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien",
+        "status": "Do not disturb",
         "email": "bglaisner4@arizona.edu",
         "phoneNumber": "+370 246 259 3472",
         "country": "Czech Republic",
@@ -52,7 +52,7 @@
     {
         "username": "Aguistin Pipping",
         "password": "23KKvs",
-        "status": "in felis donec semper sapien a libero nam dui proin",
+        "status": "Busy",
         "email": "apipping5@discuz.net",
         "phoneNumber": "+7 264 139 2313",
         "country": "Thailand",
@@ -62,7 +62,7 @@
     {
         "username": "Isa Yesson",
         "password": "sCRkI0D",
-        "status": "quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis",
+        "status": "Available",
         "email": "iyesson6@51.la",
         "phoneNumber": "+86 760 945 2008",
         "country": "Slovenia",
@@ -72,7 +72,7 @@
     {
         "username": "Oliy Portwain",
         "password": "27QQStfasdf",
-        "status": "sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum",
+        "status": "Available",
         "email": "oportwain7@prlog.org",
         "phoneNumber": "+7 667 868 7462",
         "country": "Guatemala",
@@ -82,7 +82,7 @@
     {
         "username": "Adey Carbonell",
         "password": "HZu8Vc",
-        "status": "mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas",
+        "status": "Available",
         "email": "acarbonell8@scribd.com",
         "phoneNumber": "+351 527 147 2165",
         "country": "China",
@@ -93,7 +93,7 @@
         "username": "Dori Rogers",
         "email": "drogers9@si.edu",
         "password": "jsKLk9",
-        "status": "nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper",
+        "status": "Busy",
         "phoneNumber": "+49 366 109 1205",
         "country": "Indonesia",
         "verified": true,
@@ -102,7 +102,7 @@
     {
         "username": "Charita Branche",
         "password": "sDo52fT6",
-        "status": "Managed disintermediate neural-net",
+        "status": "Idle",
         "email": "cbranche0@delicious.com",
         "phoneNumber": "154-763-8573",
         "country": "Sweden",
@@ -111,7 +111,7 @@
       }, {
         "username": "Almeta Whitland",
         "password": "UbxDtQ2kvC2",
-        "status": "Open-architected leading edge moratorium",
+        "status": "Available",
         "email": "awhitland1@umich.edu",
         "phoneNumber": "297-285-4262",
         "country": "Thailand",
@@ -120,7 +120,7 @@
       }, {
         "username": "Knox Boate",
         "password": "IKso8bSLz",
-        "status": "De-engineered tertiary Graphical User Interface",
+        "status": "Available",
         "email": "kboate2@smh.com.au",
         "phoneNumber": "357-860-1742",
         "country": "Russia",
@@ -129,7 +129,7 @@
       }, {
         "username": "Garvin Baumler",
         "password": "3C03PPmuN5",
-        "status": "Fundamental didactic product",
+        "status": "Busy",
         "email": "gbaumler3@php.net",
         "phoneNumber": "261-784-0038",
         "country": "Philippines",
@@ -138,7 +138,7 @@
       }, {
         "username": "Melinda Dubarry",
         "password": "bX6q518k",
-        "status": "Pre-emptive modular hardware",
+        "status": "Do not disturb",
         "email": "mdubarry4@rediff.com",
         "phoneNumber": "966-536-2755",
         "country": "Indonesia",
@@ -147,7 +147,7 @@
       }, {
         "username": "Shanta Jozefowicz",
         "password": "RyK1qx",
-        "status": "Customer-focused dynamic flexibility",
+        "status": "Do not disturb",
         "email": "sjozefowicz5@discovery.com",
         "phoneNumber": "544-781-9017",
         "country": "Indonesia",
@@ -156,7 +156,7 @@
       }, {
         "username": "Jeremiah Hammill",
         "password": "RGarp8C",
-        "status": "Re-engineered executive projection",
+        "status": "Busy",
         "email": "jhammill6@bbc.co.uk",
         "phoneNumber": "670-462-7329",
         "country": "Cuba",
@@ -165,7 +165,7 @@
       }, {
         "username": "Janina Arpe",
         "password": "cAnGzt",
-        "status": "Sharable transitional migration",
+        "status": "Busy",
         "email": "jarpe7@posterous.com",
         "phoneNumber": "626-631-7863",
         "country": "Netherlands",
@@ -174,7 +174,7 @@
       }, {
         "username": "Nathanael Blitz",
         "password": "nYFnveaYkez",
-        "status": "Horizontal secondary ability",
+        "status": "Do not disturb",
         "email": "nblitz8@blogs.com",
         "phoneNumber": "297-470-9247",
         "country": "Moldova",
@@ -183,7 +183,7 @@
       }, {
         "username": "Mellisa Clemes",
         "password": "PFBAjKY0",
-        "status": "Synchronised non-volatile standardization",
+        "status": "Do not disturb",
         "email": "mclemes9@icq.com",
         "phoneNumber": "942-253-5336",
         "country": "Canada",
