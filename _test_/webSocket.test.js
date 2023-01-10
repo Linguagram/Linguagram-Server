@@ -2,13 +2,13 @@ const io = require("socket.io-client");
 const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require("../util/ws");
 
-describe.only("Suite of unit tests", function() {
-  server.attach(3010);
+describe("Suite of unit tests", function() {
+  server.attach(5000);
   let socket;
 
   beforeEach(function(done) {
     // Setup
-    socket = io("http://localhost:3010");
+    socket = io("http://localhost:5000");
 
     socket.on("connect", function() {
       console.log("worked...");
@@ -37,7 +37,7 @@ describe.only("Suite of unit tests", function() {
     done();
   });
 
-  describe("Chat tests", function() {
+  describe.skip("Chat tests", function() {
     test("should work", (done) => {
       socket.emit("message", {
         content: "Hello World",

@@ -172,43 +172,6 @@ afterAll(async () => {
 })
 
 describe.skip("test API", () => {
-    // describe.only('environmental variables', () => {
-    //     const OLD_ENV = process.env;
-
-    //     beforeEach(() => {
-    //         jest.resetModules() // Most important - it clears the cache
-    //         process.env = { ...OLD_ENV }; // Make a copy
-    //     });
-
-    //     afterAll(() => {
-    //         process.env = OLD_ENV; // Restore old environment
-    //     });
-
-    //     test('will receive process.env variables', () => {
-    //         // Set the variables
-
-    //         process.env.JWT_SECRET_KEY = 'test'
-    //         process.env.NODE_ENV = 'development'
-
-    //         // const testedModule = require('../.env').default
-
-    //         return request(require('../app'))
-    //             .post('/translate')
-    //             .set("access_token", access_token6)
-    //             .send({
-    //                 "text": "test translate",
-    //                 "from": "English"
-    //             })
-    //             .then(res => {
-    //                 expect(res.status).toBe(400)
-    //                 expect(res.body.error).toEqual(true)
-    //                 expect(res.body).toHaveProperty("message", expect.any(String))
-    //                 expect(res.body.message).toEqual("No target language specified")
-    //             })
-    //     });
-    // });
-
-
 
     describe("GET /languages/@me", () => {
         test("succeed on getting user's languages list and response 200", () => {
@@ -375,4 +338,6 @@ describe.skip("test API", () => {
                 })
         })
     })
+
+    
 })

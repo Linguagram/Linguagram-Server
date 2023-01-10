@@ -172,7 +172,7 @@ afterAll(async () => {
 })
 
 
-describe.skip("test api user", () => {
+describe("test api user", () => {
 
     describe("post /users/register", () => {
         test("success create user and response 201", () => {
@@ -348,10 +348,10 @@ describe.skip("test api user", () => {
                     password: "WDbnhZZ63W1",
                 })
                 .then(res => {
+                    console.log(res.body,'<<<<res');
                     expect(res.status).toBe(200)
                     expect(res.body).toHaveProperty("access_token", expect.any(String))
                     expect(res.body.user).toHaveProperty("email", expect.any(String))
-                    expect(res.body.user).toHaveProperty("id", expect.any(Number))
                     expect(res.body.user).toHaveProperty("id", expect.any(Number))
                     expect(res.body.user.password).toEqual(undefined)
                 })
@@ -361,8 +361,8 @@ describe.skip("test api user", () => {
             return request(app)
                 .post('/users/login')
                 .send({
-                    email: "admin@admin.com",
-                    password: "1234567890",
+                    email: "oportwain7@prlog.org",
+                    password: "27QQStfasdf",
                 })
                 .then(res => {
                     expect(res.status).toBe(401)

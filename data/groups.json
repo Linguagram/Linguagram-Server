@@ -12,38 +12,47 @@
 },
 {
     "name" : "headquarter",
-    "type" : "group"
+    "type" : "group",
+    "description" : "Where we all get together"
 },
 {
-    "name" : "discord",
-    "type" : "group"
+    "name" : "Programming",
+    "type" : "group",
+    "description" : "Full stack Javascript"
+},
+{
+    "name" : "Anime",
+    "type" : "group",
+    "description" : "Where we all get together"
+},
+{
+    "name" : "Politic",
+    "type" : "group",
+    "description" : "Where we all fight"
+},
+{
+    "name" : "Military",
+    "type" : "group",
+    "description" : "Main family tree"
 },
 {
     "name" : "high school",
-    "type" : "group"
-},
-{
-    "name" : "family",
-    "type" : "group"
-},
-{
-    "name" : "family",
-    "type" : "group"
-},
-{
-    "name" : "high school",
-    "type" : "group"
+    "type" : "group",
+    "description" : "High school XXI"
 },
 {
     "name" : "work",
-    "type" : "group"
+    "type" : "group",
+    "description" : "Team 4 star"
 },
 {
-    "name" : "home",
-    "type" : "group"
+    "name" : "Switzerland",
+    "type" : "group",
+    "description" : "Home sweet home"
 },
 {
-    "name" : "family",
-    "type" : "group"
+    "name" : "PC",
+    "type" : "group",
+    "description" : "Where we all get together"
 }
 ]

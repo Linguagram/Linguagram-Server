@@ -21,6 +21,7 @@ const {
   User,
   Group,
   GroupMember,
+  Friendship
 } = require("../models")
 
 const handleUploaded = require('../util/handleUploaded');
@@ -34,7 +35,7 @@ const {
 } = require('../util/validators');
 
 const translate = require('translate-google');
-const { userFetchAttributes } = require('../util/fetchAttributes');
+const { userFetchAttributes, friendshipFetchAttributes } = require('../util/fetchAttributes');
 const { sendUserUpdate, isOnline } = require("../util/ws");
 
 // ======= Controller imports end
@@ -263,11 +264,33 @@ router.get("/explore/users", async (req, res, next) => {
 
     // console.log(opts);
     console.log(inspect(opts, false, 10, true));
-    const users = await User.findAll(opts);
+    let users = await User.findAll(opts);
 
-    for (const user of users) {
-      user.dataValues.isOnline = isOnline(user.id);
+    const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
+
+    for(const x in users){
+      console.log(users[x].dataValues,'<<<<');
+      for(const friend of friends){
+        if(users[x].dataValues.id==friend.UserId || users[x].dataValues.id==friend.FriendId ){
+          delete users[x]
+          break
+        }
+      }
     }
+
+
+
+    if(users[0]){
+      for (const user of users) {
+      
+        user.dataValues.isOnline = isOnline(user.id);
+      }
+    }else{
+      users = []
+    }
+
+
+    
 
     res.status(200).json(users);
   } catch (err) {

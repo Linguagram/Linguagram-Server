@@ -218,8 +218,8 @@ describe.skip("test api friends", () => {
     describe("PATCH /friendships/:userId", () => {
         test("success accepting friend request and response 200", () => {
             return request(app)
-                .patch('/friendships/1')
-                .set("access_token", access_token3)
+                .patch('/friendships/5')
+                .set("access_token", access_token)
                 .then(res => {
                     expect(res.status).toBe(200)
                     expect(res.body).toHaveProperty("UserId", expect.any(Number))
@@ -248,7 +248,7 @@ describe.skip("test api friends", () => {
 
         test("failed accepting friend request because friend request is already accepted and response 400", () => {
             return request(app)
-                .patch('/friendships/2')
+                .patch('/friendships/10')
                 .set("access_token", access_token3)
                 .then(res => {
                     expect(res.status).toBe(400)
