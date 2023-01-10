@@ -195,17 +195,17 @@ class Controller {
         await user.save();
 
         // create user languages ===
-        const createUserLanguages = [...nativeLanguages.map(lang => ({
+        const createUserLanguages = [...(nativeLanguages.map(lang => ({
             type: "native",
             UserId: user.id,
             LanguageId: lang,
-          })
+          }))
           ),
-          ...interestLanguages.map(lang => ({
+          ...(interestLanguages.map(lang => ({
             type: "interest",
             UserId: user.id,
             LanguageId: lang,
-          })
+          }))
           ),
           // filter duplicates
         ].reduce((prev, val) =>

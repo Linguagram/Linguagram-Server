@@ -4,14 +4,16 @@
         "MediaId": 1,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted": false
     },
     {
         "content": "General Kenobi",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted": false
     },
     {
         "content": "I have the high ground",
@@ -26,206 +28,237 @@
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted" : false
     },
     {
         "content": "What are you doing step brother",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },
     {
         "content": "Nothing, really",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },
     {
         "content": "That's all?",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },
     {
         "content": "Yes, what did you expect me to say?",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },
     {
         "content": "Let's finish this final project",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "hell yeah brother",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "test1",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "test again",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "test await",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "test async",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "test  try",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "catch",
         "MediaId": 7,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "finally",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 3
+        "GroupId": 3,
+        "deleted" : false
     },
     {
         "content": "And it's going to blow your a**",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted" : false
     },
     {
         "content": "But I have nothing at all",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted" : false
     },
     {
         "content": "You will have something someday",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted" : false
     },
     {
         "content": "That's a lie",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1
+        "GroupId": 1,
+        "deleted" : false
     },
     {
         "content": "Let's finish this final project",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },
     {
         "content": "hell yeah brother",
         "MediaId": 8,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },
     {
         "content": "hell yeah !!",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 2
+        "GroupId": 2,
+        "deleted" : false
     },{
         "content": "Multi-tiered static intranet",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Realigned intermediate data-warehouse",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Expanded 24/7 algorithm",
         "MediaId": null,
         "UserId": 5,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Operative multi-tasking capacity",
         "MediaId": null,
         "UserId": 3,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Managed optimizing approach",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Up-sized optimizing hub",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Robust client-driven workforce",
         "MediaId": null,
         "UserId": 5,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Integrated cohesive data-warehouse",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }, {
         "content": "Quality-focused explicit migration",
         "MediaId": null,
         "UserId": 1,
         "GroupId": 4,
+        "deleted" : false,
         "isRead" : true
       }, {
         "content": "Synchronised stable functionalities",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 4
+        "GroupId": 4,
+        "deleted" : false
       }
 ]

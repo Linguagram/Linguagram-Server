@@ -1,55 +1,54 @@
-[{
-    "name" : "Military History and Wars"
-},
-{
-    "name" : "PC Master Race"
-},
-{
-    "name" : "Anime"
-},
+[
+
 {
     "name" : "Politic"
 },
 {
-    "name" : "Manga"
+    "name" : "Natural Science"
 },
 {
     "name" : "Economy"
 },
 {
-    "name" : "Programming"
-},
-{
-    "name" : "Philosophy"
-},
-{
-    "name" : "Movies"
-},
-{
-    "name" : "Smart Phone"
-},
-{
-    "name" : "AI and Machine Learning"
-},
-{
-    "name" : "Music"
-},
-{
-    "name" : "Investing and Personal Finance"
-},
-{
-    "name" : "Planes"
+    "name" : "Environment"
 },
 {
     "name" : "Engineering"
 },
 {
-    "name" : "Archeology"
+    "name" : "Education"
 },
 {
-    "name" : "Tech trends"
+    "name" : "Travel"
 },
 {
-    "name" : "Drone Zone"
+    "name" : "Tech"
+},
+{
+    "name" : "Sport"
+},
+{
+    "name" : "Music"
+},
+{
+    "name" : "Fashion"
+},
+{
+    "name" : "Health & Medicine"
+},
+{
+    "name" : "Military"
+},
+{
+    "name" : "Banking and Finance"
+},
+{
+    "name" : "Art and Culture"
+},
+{
+    "name" : "Religion"
+},
+{
+    "name" : "Anime"
 }
 ]

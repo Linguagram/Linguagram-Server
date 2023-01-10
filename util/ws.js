@@ -114,7 +114,7 @@ const emitGlobal = (event, msg) => {
 }
 
 const handleSocketError = (socket, err) => {
-  console.error("[ws ERROR]", err);
+  console.log("[ws ERROR]", err);
 
   if (err && typeof err === "object"
     && (err.error === true || !isNaN(Number(err.status)))
@@ -146,7 +146,7 @@ const userOffline = (user) => {
 const loadListeners = () => {
   io.on(SOCKET_EVENTS.CONNECTION, (socket) => {
     // console.log("TRIGGERED CONNECTION", socket);
-    
+
     try {
       socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
         console.log(msg, 'identify baru')
@@ -185,7 +185,7 @@ const loadListeners = () => {
           }
 
           if (uId) {
-            socket.broadcast.emit("user left", {user_left: uId})
+            socket.broadcast.emit("user left", { user_left: uId })
             userSockets.delete(uId);
             getUserWs(uId).then(user => userOffline(user));
           }
@@ -249,7 +249,7 @@ const loadListeners = () => {
         }
       });
 
-       socket.on(SOCKET_EVENTS.LEAVE_CALL, (data) => {
+      socket.on(SOCKET_EVENTS.LEAVE_CALL, (data) => {
         try {
 
           const userSocket = getUserSocket(data.userToInform);
@@ -314,7 +314,7 @@ const loadListeners = () => {
         } catch (err) {
           handleSocketError(socket, err);
         }
-        });
+      });
 
       socket.on(SOCKET_EVENTS.MESSAGE, async (message) => {
         try {

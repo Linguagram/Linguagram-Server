@@ -693,7 +693,7 @@ describe.skip("test API groups", () => {
         })
     })
 
-    describe.only("GET /groups/@me", () => {
+    describe("GET /groups/@me", () => {
         test("succeed on getting group list the user is a member of and response 200", () => {
             return request(app)
                 .get('/groups/@me')

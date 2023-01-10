@@ -3,24 +3,24 @@ const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require("../util/ws");
 
 
-describe("Suite of unit tests", function() {
-  server.attach(5000);
+describe("Suite of unit tests", function () {
+  server.attach(3010);
   let socket;
 
-  beforeEach(function(done) {
+  beforeEach(function (done) {
     // Setup
-    socket = io("http://localhost:5000");
+    socket = io("http://localhost:3010");
 
-    socket.on("connect", function() {
+    socket.on("connect", function () {
       console.log("worked...");
       done();
     });
-    socket.on("disconnect", function() {
+    socket.on("disconnect", function () {
       console.log("disconnected...");
     });
   });
 
-  afterEach(function(done) {
+  afterEach(function (done) {
     // Cleanup
     if (socket.connected) {
       console.log("disconnecting...");
@@ -32,25 +32,48 @@ describe("Suite of unit tests", function() {
     done();
   });
 
-  afterAll(function(done) {
+  afterAll(function (done) {
     socket.disconnect();
     server.close();
     done();
   });
 
-  describe.skip("Chat tests", function() {
-    test("should work", (done) => {
-      socket.emit("message", {
+  describe("Chat tests", function () {
+    test('should communicate', (done) => {
+      // once connected, emit Hello World
+      server.emit('message', {
         content: "Hello World",
         UserId: 1,
         GroupId: 1,
+      });
+      
+      socket.once('message', (payload) => {
+        // Check that the message matches
+        console.log(payload,'<<<');
+        expect(payload).toEqual(expect.any(Object));
+        expect(payload).toHaveProperty("UserIds");
+        expect(payload).toHaveProperty("GroupId");;
+        done();
+      });
+      
+      // server.on('connection', (mySocket) => {
+      //   expect(mySocket).toBeDefined();
+      // });
+    });
+
+    
+
+
+    test.skip("should work", (done) => {
+      socket.emit("message", {
+        content: "Hello World",
+      
       });
 
       socket.on("message", (payload) => {
         try {
           console.log(payload);
-          expect(payload).toHaveProperty("User");
-          expect(payload).toHaveProperty("message");
+          expect(payload).toHaveProperty("content");
           done();
         } catch (err) {
           done(err);
@@ -93,7 +116,7 @@ describe("Suite of unit tests", function() {
       });
     })
 
-    
+
     test("success decline call", () => {
       socket.emit(SOCKET_EVENTS.DECLINE_CALL, {
         userToDecline: 2,
@@ -129,7 +152,7 @@ describe("Suite of unit tests", function() {
     test("user makes a video call connection", () => {
       socket.emit(SOCKET_EVENTS.CALL, {
         userToCall: 2,
-        signalData: 'P24asdAKUs141yssAsd', 
+        signalData: 'P24asdAKUs141yssAsd',
         from: 1,
       });
 
@@ -160,7 +183,7 @@ describe("Suite of unit tests", function() {
       });
     })
 
-    
+
   })
 
 

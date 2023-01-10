@@ -506,6 +506,8 @@ describe.skip("test api user", () => {
                     password: "WDbnhZZ63W1",
                     newPassword: "WDbnhZZ63W1",
                     confirmNewPassword: "WDbnhZZ63W1",
+                    country : "Norway",
+                    phoneNumber: "6541984196",
                     username: "Sissie Forrest",
                     nativeLanguages: [1],
                     interestLanguages: [2,3],
