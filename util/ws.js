@@ -117,7 +117,6 @@ const handleSocketError = (socket, err) => {
   console.error("[ws ERROR]", err);
 
   if (err && typeof err === "object"
-    && Object.keys(err).length === 2
     && (err.error === true || !isNaN(Number(err.status)))
     && err.message?.length) {
     return emitSocket(socket, SOCKET_EVENTS.ERROR, err);
@@ -207,8 +206,8 @@ const loadListeners = () => {
             });
           }
           else throw {
-            error: true,
-            message: "No socket of user " + data.userToCall,
+            status: 400,
+            message: "User is offline",
             data,
           };
         } catch (err) {
