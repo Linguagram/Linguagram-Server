@@ -108,7 +108,7 @@ const handleSocketError = (socket, err) => {
 
   if (err && typeof err === "object"
     && Object.keys(err).length === 2
-    && err.error === true
+    && (err.error === true || !isNaN(Number(err.status)))
     && err.message?.length) {
     return emitSocket(socket, SOCKET_EVENTS.ERROR, err);
   }
