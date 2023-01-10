@@ -38,36 +38,43 @@ describe("Suite of unit tests", function () {
     done();
   });
 
+
+  jest.useRealTimers('legacy')
   describe("Chat tests", function () {
     test('should communicate', (done) => {
       // once connected, emit Hello World
-      server.emit('message', {
-        content: "Hello World",
-        UserId: 1,
-        GroupId: 1,
-      });
       
-      socket.once('message', (payload) => {
+      server.once(SOCKET_EVENTS.MESSAGE, (payload) => {
         // Check that the message matches
-        console.log(payload,'<<<');
+        console.log(payload, '<<<');
         expect(payload).toEqual(expect.any(Object));
         expect(payload).toHaveProperty("UserIds");
         expect(payload).toHaveProperty("GroupId");;
         done();
       });
+      socket.emit(SOCKET_EVENTS.MESSAGE, {
+        content: "Hello World",
+        UserId: 1,
+        GroupId: 4,
+      });
       
+
+    
+
+
+
       // server.on('connection', (mySocket) => {
       //   expect(mySocket).toBeDefined();
       // });
     });
 
-    
+
 
 
     test.skip("should work", (done) => {
       socket.emit("message", {
         content: "Hello World",
-      
+
       });
 
       socket.on("message", (payload) => {
