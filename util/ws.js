@@ -255,7 +255,7 @@ const loadListeners = () => {
           const userSocket = getUserSocket(data.userToInform);
           if (!userSocket) throw {
             status: 400,
-            message: "User is offline",
+            message: "User already left the call",
           };
 
           io.to(userSocket.id).emit(SOCKET_EVENTS.USER_LEAVES_THE_CALL, {
@@ -386,7 +386,6 @@ const init = (httpServer) => {
 const getSocket = () => io;
 
 const getUserSocket = (userId) => {
-  userId = validateUserId(userId);
   return userSockets.get(userId);
 }
 
