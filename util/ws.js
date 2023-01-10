@@ -3,7 +3,7 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
-const { getUserWs, onMessage, onMessageEdit } = require("./wsUtil");
+const { getUserWs, onMessage, onMessageEdit, onMessageDelete } = require("./wsUtil");
 const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
@@ -316,9 +316,9 @@ const loadListeners = () => {
         try {
           console.log("[ws MESSAGE_DELETE]", message);
           const data = await onMessageDelete(message);
-    response.User.dataValues.isOnline = isOnline(response.User.id);
+          data.response.User.dataValues.isOnline = isOnline(data.response.User.id);
 
-    deleteMessage(groupMembers, response);
+          deleteMessage(data.groupMembers, data.response);
         } catch (err) {
           handleSocketError(socket, err);
         }

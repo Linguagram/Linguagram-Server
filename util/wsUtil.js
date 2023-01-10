@@ -170,41 +170,48 @@ const onMessageDelete = async (data) => {
     message: "data can't be empty",
   };
 
-  const { content, MessageId, GroupId, UserId } = data;
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
-    const messageId = validateMessageId(req.params.messageId);
+  const { MessageId, GroupId, UserId } = data;
+  // strict check groupId
+  const groupId = validateGroupId(GroupId);
+  const messageId = validateMessageId(MessageId);
+  const userId = validateMessageId(UserId);
 
-    const groupMembers = await getGroupMembers(groupId, req);
-    const message = await getMessage(messageId, groupId);
+  const groupMembers = await getGroupMembersWs(groupId, userId);
 
-    if (message.UserId !== req.userInfo.id) throw {
-      status: 403,
-      message: "Forbidden",
+  const message = await getMessageWs(messageId, groupId);
+
+  if (message.UserId !== userId) throw {
+    status: 403,
+    message: "Forbidden",
+  };
+
+  if (message.deleted) {
+    throw {
+      status: 400,
+      message: "This message has already been deleted",
     };
+  }
 
-    if (message.deleted) {
-      throw {
-        status: 400,
-        message: "This message has already been deleted",
-      };
-    }
+  message.deleted = true;
+  await message.save();
 
-    message.deleted = true;
-    await message.save();
+  const response = {
+    id: message.id,
+    deleted: true,
+    Group: message.Group,
+    UserId: userId,
+    User: message.User,
+  };
 
-    const response = {
-      id: message.id,
-      deleted: true,
-      Group: message.Group,
-      UserId: req.userInfo.id,
-      User: message.User,
-    };
-
+  return {
+    groupMembers,
+    response,
+  };
 }
 
 module.exports = {
   getUserWs,
   onMessage,
   onMessageEdit,
+  onMessageDelete,
 }
