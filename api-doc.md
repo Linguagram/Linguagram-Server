@@ -37,6 +37,7 @@ List of available endpoints:
   - [29. GET /interests](#29-get-interests)
   - [30. GET /users/@me](#30-get-usersme)
   - [31. GET /groups/:userId](#31-get-groupsuserid)
+  - [32. POST /attachment](#32-post-attachment)
   - [Global Error](#global-error)
 
 &nbsp;
@@ -57,7 +58,7 @@ Request :
     "username" : "string | required",
     "email" : "string | email format | unique | required",
     "password" : "string | required | min length 8",
-    "confirmPassword" : "string | required to match password"
+    "confirmPassword" : "string | required to match password",
     "country" : "string",
     "phoneNumber" : "string",
     "status" : "string",
@@ -2736,6 +2737,54 @@ _Response (404 - Not Found)_
 {
     "error": true,
     "message": "Group not found"
+}
+```
+
+
+## 32. POST /attachment
+
+Description :
+
+- Create message attachment
+
+Request :
+
+- headers :
+
+```json
+{
+    "access_token" : "string | required",
+    "Content-Type": "multipart/form-data"
+}
+```
+
+- body :
+
+```json
+{
+    "attachment": "file upload"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+{
+    "id": 1,
+    "name": "attachment",
+    "url": "https://www.syfy.com/sites/syfy/files/styles/1200x1200/public/thanos-avengers-infinity-war.jpg?itok=trgl94eg&timestamp=1525386653",
+    "format": "image/jpg",
+    "createdAt": "2023-01-06T08:46:50.080Z",
+    "updatedAt": "2023-01-06T08:46:50.080Z"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "status": 400,
+    "message": "attachment is required",
 }
 ```
 
