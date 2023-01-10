@@ -220,6 +220,10 @@ const loadListeners = () => {
         try {
 
           const userSocket = getUserSocket(data.userToCall);
+          if (!userSocket) throw {
+            status: 400,
+            message: "User is offline",
+          };
 
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_IS_CANCELLED, {
             from: data.from
@@ -233,6 +237,10 @@ const loadListeners = () => {
         try {
 
           const userSocket = getUserSocket(data.userToDecline);
+          if (!userSocket) throw {
+            status: 400,
+            message: "User is offline",
+          };
 
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_IS_DECLINED, {
             from: data.from
@@ -246,6 +254,10 @@ const loadListeners = () => {
         try {
 
           const userSocket = getUserSocket(data.userToInform);
+          if (!userSocket) throw {
+            status: 400,
+            message: "User is offline",
+          };
 
           io.to(userSocket.id).emit(SOCKET_EVENTS.USER_LEAVES_THE_CALL, {
             from: data.from
@@ -259,6 +271,10 @@ const loadListeners = () => {
         try {
           console.log(data, "acceptCall")
           const userSocket = getUserSocket(data.userToReceive);
+          if (!userSocket) throw {
+            status: 400,
+            message: "User is offline",
+          };
 
           io.to(userSocket.id).emit(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, {
             from: data.from
@@ -273,6 +289,10 @@ const loadListeners = () => {
         try {
           console.log(data)
           const userSocket = getUserSocket(data.userToCall);
+          if (!userSocket) throw {
+            status: 400,
+            message: "User is offline",
+          };
           console.log(userSocket.id, "user id yg mau dicall", data.signalData, "signal yg dikirim caller")
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_CONNECT, {
             signal: data.signalData,
@@ -287,6 +307,10 @@ const loadListeners = () => {
         try {
           console.log("[ws ACCEPT_CALL]", data);
           const userSocket = getUserSocket(data.to);
+          if (!userSocket) throw {
+            status: 400,
+            message: "User is offline",
+          };
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_ACCEPT, data.signal);
         } catch (err) {
           handleSocketError(socket, err);
