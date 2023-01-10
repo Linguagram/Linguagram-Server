@@ -217,6 +217,7 @@ const loadListeners = () => {
 
       socket.on(SOCKET_EVENTS.CANCEL_CALL, (data) => {
         try {
+          console.log("[ws CANCEL_CALL]", data);
 
           const userSocket = getUserSocket(data.userToCall);
           if (!userSocket) throw {

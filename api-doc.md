@@ -31,7 +31,7 @@ List of available endpoints:
   - [23. POST /translate](#23-post-translate)
   - [24. POST /groups](#24-post-groups)
   - [25. PATCH /users/status](#25-patch-usersstatus)
-  - [26. PATCH /groups/:groupId/messages/:messageId](#26-patch-groupsgroupidmessagesmessageid)
+  - [26. PATCH /groups/:groupId/messages](#26-patch-groupsgroupidmessages)
   - [27. GET /explore/users](#27-get-exploreusers)
   - [28. GET /explore/groups](#28-get-exploregroups)
   - [29. GET /interests](#29-get-interests)
@@ -2112,7 +2112,7 @@ _Response (400 - Bad Request)_
 ```
 
 
-## 26. PATCH /groups/:groupId/messages/:messageId
+## 26. PATCH /groups/:groupId/messages
 
 Description :
 
