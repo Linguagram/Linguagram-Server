@@ -384,6 +384,7 @@ const distributeMessage = (groupMembers, data, event) => {
     // if (memberId === fromUserId) continue;
 
     const socket = userSockets.get(memberId);
+    console.log("[ws distributeMessage]", memberId, socket?.id);
     if (socket) emitSocket(socket, event, jString(data));
   }
 }
