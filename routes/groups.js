@@ -255,16 +255,9 @@ router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => 
 router.get("/groups/@me", async (req, res, next) => {
   try {
     const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
-    res.status(200).json((groupMembers.map(gm => gm.Group)).map(gr => {
-      const temp = gr.dataValues.GroupMembers.map(mem => {
-        const memtemp = mem.dataValues.User.dataValues
-        delete memtemp.password
-        mem.dataValues.User.dataValues = memtemp
-        return mem
-      })
+    res.status(200).json((groupMembers.map(gm => gm.Group)).map(gr => {     
       const converted = Number(gr.dataValues.unreadMessageCount)
       gr.dataValues.unreadMessageCount = converted
-      gr.dataValues.GroupMembers = temp
       return gr
     }));
   } catch (err) {

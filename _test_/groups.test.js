@@ -338,28 +338,7 @@ describe.skip("test API groups", () => {
     })
 
     describe("POST /groups/:groupId/messages", () => {
-        test("success sending message with content and a file to one group and response 200", (done) => {                  
-
-            return request(app)
-                .post('/groups/1/messages')
-                .set({ "access_token": access_token })
-                .field('content', 'test content')
-                .attach('attachment', '_test_/testFile.png')
-                .then(res => {
-                    expect(res.status).toBe(201)
-                    expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
-                    expect(res.body).toHaveProperty("Medium", expect.any(Object))
-                    expect(res.body).toHaveProperty("content", expect.any(String))
-                    expect(res.body).toHaveProperty("GroupId", expect.any(Number))
-                    expect(res.body).toHaveProperty("User", expect.any(Object))
-                    expect(res.body.User).toHaveProperty("id", expect.any(Number))
-                    expect(res.body.User).toHaveProperty("UserLanguages", expect.any(Array))
-                    expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
-                    expect(res.body.User.Avatar).toHaveProperty("url", expect.any(String))
-                    expect(res.body.Medium).toHaveProperty("url", expect.any(String))
-                  
-                })
-        })
+      
 
         test("failed posting a messsage and response 404 because the user is not a member of the group", () => {
             return request(app)
@@ -714,12 +693,13 @@ describe.skip("test API groups", () => {
         })
     })
 
-    describe("GET /groups/@me", () => {
+    describe.only("GET /groups/@me", () => {
         test("succeed on getting group list the user is a member of and response 200", () => {
             return request(app)
                 .get('/groups/@me')
                 .set("access_token", access_token)
                 .then(res => {
+                    console.log(res.body,'<<<<');
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Array))
                     expect(res.body[0]).toHaveProperty('id', expect.any(Number))

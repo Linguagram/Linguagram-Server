@@ -27,7 +27,7 @@ const {
 const handleUploaded = require('../util/handleUploaded');
 
 const {
-  getUser, fileAction,
+  getUser, fileAction, getGroupMembersFromUserId,
 } = require("../util/restUtil");
 
 const {
@@ -209,7 +209,6 @@ router.post("/translate", async (req, res, next) => {
 
     const result = await translate(text, opts);
 
-    console.log(result);
 
     res.status(200).json({ translated: result });
   } catch (err) {
@@ -263,13 +262,13 @@ router.get("/explore/users", async (req, res, next) => {
     };
 
     // console.log(opts);
-    console.log(inspect(opts, false, 10, true));
+    // console.log(inspect(opts, false, 10, true));
     let users = await User.findAll(opts);
 
     const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
 
     for (const friend of friends) {
-      users = users.filter(user=>(user.dataValues.id !== friend.UserId && user.dataValues.id != friend.FriendId))      
+      users = users.filter(user => (user.dataValues.id !== friend.UserId && user.dataValues.id != friend.FriendId))
     }
 
     // for(const x in users){
@@ -301,7 +300,7 @@ router.get("/explore/users", async (req, res, next) => {
 // explore groups
 router.get("/explore/groups", async (req, res, next) => {
   try {
-    const groups = await Group.findAll({
+    let groups = await Group.findAll({
       where: {
         type: "group",
       },
@@ -317,6 +316,12 @@ router.get("/explore/groups", async (req, res, next) => {
         },
       ],
     });
+
+    let groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
+    groupMembers = (groupMembers.map(gm => gm.Group))
+    for (const member of groupMembers) {
+      groups = groups.filter(group => (group.dataValues.id !== member.id))
+    }
 
     res.status(200).json(groups);
   } catch (err) {

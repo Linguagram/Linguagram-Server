@@ -337,11 +337,11 @@ class Controller {
   }
 
   static async getUser(req, res, next) {
-    try {
+    // try {
       res.status(200).json(req.userInfo)
-    } catch (err) {
-      next(err)
-    }
+    // } catch (err) {
+    //   next(err)
+    // }
   }
 }
 

@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: {        
       },
     },
+    description:{
+      type: DataTypes.STRING,
+    },
     type: {
       type: DataTypes.STRING,
       defaultValue: "dm",
