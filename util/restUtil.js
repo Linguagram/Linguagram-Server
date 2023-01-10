@@ -188,6 +188,9 @@ const getDmGroup = async (userId, friendId) => {
         },
       },
     ],
+    where: {
+      type: "dm",
+    },
   })).filter(g => g.GroupMembers.length === 2 && [userId, friendId].every(id => g.GroupMembers.some(gm => gm.UserId === id)))[0];
 
   if (!group) {
