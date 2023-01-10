@@ -1,6 +1,7 @@
-const io = require("socket.io-client");
+const io = require('socket.io-client');
 const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require("../util/ws");
+
 
 describe("Suite of unit tests", function() {
   server.attach(5000);
@@ -57,4 +58,110 @@ describe("Suite of unit tests", function() {
       });
     });
   });
+
+  describe.skip("Video call", () => {
+
+    test("success receive incoming call notification from caller", () => {
+      socket.emit(SOCKET_EVENTS.CLICK_CALL, {
+        userToCall: 2,
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.INCOMING_CALL, (payload) => {
+        try {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
+    test("success cancel call", () => {
+      socket.emit(SOCKET_EVENTS.CANCEL_CALL, {
+        userToCall: 2,
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.CALL_IS_CANCELLED, (payload) => {
+        try {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
+    
+    test("success decline call", () => {
+      socket.emit(SOCKET_EVENTS.DECLINE_CALL, {
+        userToDecline: 2,
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.CALL_IS_DECLINED, (payload) => {
+        try {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
+    test("user leaves call", () => {
+      socket.emit(SOCKET_EVENTS.LEAVE_CALL, {
+        userToInform: 2,
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.USER_LEAVES_THE_CALL, (payload) => {
+        try {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
+    test("user makes a video call connection", () => {
+      socket.emit(SOCKET_EVENTS.CALL, {
+        userToCall: 2,
+        signalData: 'P24asdAKUs141yssAsd', 
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.CALL_CONNECT, (payload) => {
+        try {
+          expect(payload).toHaveProperty("signal", expect.any(String));
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
+    test("user accepts video call connection", () => {
+      socket.emit(SOCKET_EVENTS.ACCEPT_VIDEO, {
+        signal: 'P24asdAKUs141yssAsd',
+        incomingCaller: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, (payload) => {
+        try {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
+    
+  })
+
+
 });
