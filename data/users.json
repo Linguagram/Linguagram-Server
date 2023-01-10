@@ -6,7 +6,7 @@
         "email": "sforrest0@chron.com",
         "phoneNumber": "+1 339 769 7021",
         "country": "Switzerland",
-        "verified": "true",
+        "verified": true,
         "AvatarId": 1
     },
     {
@@ -16,7 +16,7 @@
         "status": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
         "phoneNumber": "+86 589 929 4346",
         "country": "Cuba",
-        "verified": "true",
+        "verified": true,
         "AvatarId": 2
     },
     {
@@ -26,7 +26,7 @@
         "email": "nmatusovsky2@mlb.com",
         "phoneNumber": "+966 878 394 6703",
         "country": "Sweden",
-        "verified": "true",
+        "verified": true,
         "AvatarId": 3
     },
     {
@@ -36,7 +36,7 @@
         "email": "abrabban3@angelfire.com",
         "phoneNumber": "+33 648 933 7445",
         "country": "Sweden",
-        "verified": "true",
+        "verified": true,
         "AvatarId": 4
     },
     {
@@ -46,7 +46,7 @@
         "email": "bglaisner4@arizona.edu",
         "phoneNumber": "+370 246 259 3472",
         "country": "Czech Republic",
-        "verified": "true",
+        "verified": true,
         "AvatarId": 5
     },
     {
@@ -56,8 +56,8 @@
         "email": "apipping5@discuz.net",
         "phoneNumber": "+7 264 139 2313",
         "country": "Thailand",
-        "verified": "true",
-        "AvatarId": 9
+        "verified": true,
+        "AvatarId": 6
     },
     {
         "username": "Isa Yesson",
@@ -66,8 +66,8 @@
         "email": "iyesson6@51.la",
         "phoneNumber": "+86 760 945 2008",
         "country": "Slovenia",
-        "verified": "true",
-        "AvatarId": 6
+        "verified": true,
+        "AvatarId": 7
     },
     {
         "username": "Oliy Portwain",
@@ -76,8 +76,8 @@
         "email": "oportwain7@prlog.org",
         "phoneNumber": "+7 667 868 7462",
         "country": "Guatemala",
-        "verified": "false",
-        "AvatarId": 7
+        "verified": false,
+        "AvatarId": 8
     },
     {
         "username": "Adey Carbonell",
@@ -86,8 +86,8 @@
         "email": "acarbonell8@scribd.com",
         "phoneNumber": "+351 527 147 2165",
         "country": "China",
-        "verified": "true",
-        "AvatarId": 8
+        "verified": true,
+        "AvatarId": 9
     },
     {
         "username": "Dori Rogers",
@@ -96,7 +96,98 @@
         "status": "nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper",
         "phoneNumber": "+49 366 109 1205",
         "country": "Indonesia",
-        "verified": "true",
+        "verified": true,
         "AvatarId": 10
-    }
+    },
+    {
+        "username": "Charita Branche",
+        "password": "sDo52fT6",
+        "status": "Managed disintermediate neural-net",
+        "email": "cbranche0@delicious.com",
+        "phoneNumber": "154-763-8573",
+        "country": "Sweden",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Almeta Whitland",
+        "password": "UbxDtQ2kvC2",
+        "status": "Open-architected leading edge moratorium",
+        "email": "awhitland1@umich.edu",
+        "phoneNumber": "297-285-4262",
+        "country": "Thailand",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Knox Boate",
+        "password": "IKso8bSLz",
+        "status": "De-engineered tertiary Graphical User Interface",
+        "email": "kboate2@smh.com.au",
+        "phoneNumber": "357-860-1742",
+        "country": "Russia",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Garvin Baumler",
+        "password": "3C03PPmuN5",
+        "status": "Fundamental didactic product",
+        "email": "gbaumler3@php.net",
+        "phoneNumber": "261-784-0038",
+        "country": "Philippines",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Melinda Dubarry",
+        "password": "bX6q518k",
+        "status": "Pre-emptive modular hardware",
+        "email": "mdubarry4@rediff.com",
+        "phoneNumber": "966-536-2755",
+        "country": "Indonesia",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Shanta Jozefowicz",
+        "password": "RyK1qx",
+        "status": "Customer-focused dynamic flexibility",
+        "email": "sjozefowicz5@discovery.com",
+        "phoneNumber": "544-781-9017",
+        "country": "Indonesia",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Jeremiah Hammill",
+        "password": "RGarp8C",
+        "status": "Re-engineered executive projection",
+        "email": "jhammill6@bbc.co.uk",
+        "phoneNumber": "670-462-7329",
+        "country": "Cuba",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Janina Arpe",
+        "password": "cAnGzt",
+        "status": "Sharable transitional migration",
+        "email": "jarpe7@posterous.com",
+        "phoneNumber": "626-631-7863",
+        "country": "Netherlands",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Nathanael Blitz",
+        "password": "nYFnveaYkez",
+        "status": "Horizontal secondary ability",
+        "email": "nblitz8@blogs.com",
+        "phoneNumber": "297-470-9247",
+        "country": "Moldova",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Mellisa Clemes",
+        "password": "PFBAjKY0",
+        "status": "Synchronised non-volatile standardization",
+        "email": "mclemes9@icq.com",
+        "phoneNumber": "942-253-5336",
+        "country": "Canada",
+        "verified": true,
+        "AvatarId": null
+      }
 ]

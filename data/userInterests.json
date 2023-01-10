@@ -8,6 +8,14 @@
 },
 {
     "UserId" : 1,
+    "InterestId" : 10
+},
+{
+    "UserId" : 1,
+    "InterestId" : 15
+},
+{
+    "UserId" : 1,
     "InterestId" : 1
 },
 {

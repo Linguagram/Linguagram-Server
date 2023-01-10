@@ -268,29 +268,29 @@ router.get("/explore/users", async (req, res, next) => {
 
     const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
 
-    for(const x in users){
-      console.log(users[x].dataValues,'<<<<');
-      for(const friend of friends){
-        if(users[x].dataValues.id==friend.UserId || users[x].dataValues.id==friend.FriendId ){
-          delete users[x]
-          break
-        }
-      }
+    for (const friend of friends) {
+      users = users.filter(user=>(user.dataValues.id !== friend.UserId && user.dataValues.id != friend.FriendId))      
+    }
+
+    // for(const x in users){
+    //   console.log(users[x].dataValues,'<<<<');
+    //   for(const friend of friends){
+    //     if(users[x].dataValues.id==friend.UserId || users[x].dataValues.id==friend.FriendId ){
+    //       delete users[x]
+    //       break
+    //     }
+    //   }
+    // }
+
+
+    for (const user of users) {
+
+      user.dataValues.isOnline = isOnline(user.id);
     }
 
 
 
-    if(users[0]){
-      for (const user of users) {
-      
-        user.dataValues.isOnline = isOnline(user.id);
-      }
-    }else{
-      users = []
-    }
 
-
-    
 
     res.status(200).json(users);
   } catch (err) {
