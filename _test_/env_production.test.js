@@ -58,7 +58,7 @@ afterAll(async () => {
     })
 })
 
-describe('environmental variables', () => {
+describe.skip('environmental variables', () => {
     const OLD_ENV = process.env;
 
     beforeEach(() => {

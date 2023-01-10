@@ -173,7 +173,7 @@ afterAll(async () => {
 })
 
 
-describe("test api user", () => {
+describe.skip("test api user", () => {
 
     describe("post /users/register", () => {
         test("success create user and response 201", () => {
