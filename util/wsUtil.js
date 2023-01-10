@@ -195,17 +195,9 @@ const onMessageDelete = async (data) => {
   message.deleted = true;
   await message.save();
 
-  const response = {
-    id: message.id,
-    deleted: true,
-    Group: message.Group,
-    UserId: userId,
-    User: message.User,
-  };
-
   return {
     groupMembers,
-    response,
+    message,
   };
 }
 

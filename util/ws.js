@@ -326,9 +326,9 @@ const loadListeners = () => {
         try {
           console.log("[ws MESSAGE_DELETE]", message);
           const data = await onMessageDelete(message);
-          data.response.User.dataValues.isOnline = isOnline(data.response.User.id);
+          data.message.User.dataValues.isOnline = isOnline(data.message.User.id);
 
-          deleteMessage(data.groupMembers, data.response);
+          deleteMessage(data.groupMembers, data.message);
         } catch (err) {
           handleSocketError(socket, err);
         }
