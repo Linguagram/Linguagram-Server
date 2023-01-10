@@ -104,7 +104,7 @@ const emitGlobal = (event, msg) => {
 }
 
 const handleSocketError = (socket, err) => {
-  console.error("[IDENTIFY ERROR]", err);
+  console.error("[ws ERROR]", err);
 
   if (err && typeof err === "object"
     && Object.keys(err).length === 2
@@ -287,13 +287,15 @@ const loadListeners = () => {
         try {
           const data = await onMessage(message);
 
+          data.newMessage.dataValues.User.dataValues.isOnline = isOnline(data.newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
+
           for (const gm of data.groupMembers) {
             gm.User.dataValues.isOnline = isOnline(gm.UserId);
           }
 
-          data.newMessage.dataValues.User.dataValues.isOnline = isOnline(data.newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
+          sendMessage(data.groupMembers, data.newMessage);
         } catch (err) {
-          handleSocketError(err);
+          handleSocketError(socket, err);
         }
       });
 

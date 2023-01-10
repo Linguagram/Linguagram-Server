@@ -24,7 +24,7 @@ const { SOCKET_EVENTS } = require('../util/ws')
 
 server.attach(3000);
 let socket;
-jest.setTimeout(20000);
+// jest.setTimeout(20000);
 beforeEach(function(done) {
     // Setup
     socket = io("http://localhost:3000");
@@ -189,7 +189,7 @@ afterAll(async () => {
         truncate: true, restartIdentity: true, cascade: true
     })
 
-    socket.disconnect();
+    socket?.disconnect();
     return server.close();
 })
 

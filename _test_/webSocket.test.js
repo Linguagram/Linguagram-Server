@@ -2,7 +2,7 @@ const io = require("socket.io-client");
 const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require("../util/ws");
 
-describe.skip("Suite of unit tests", function() {
+describe.only("Suite of unit tests", function() {
   server.attach(3010);
   let socket;
 
@@ -39,14 +39,16 @@ describe.skip("Suite of unit tests", function() {
 
   describe("Chat tests", function() {
     test("should work", (done) => {
-      socket.emit("message:send", {
-        name: "Udin",
-        message: "Hello world",
+      socket.emit("message", {
+        content: "Hello World",
+        UserId: 1,
+        GroupId: 1,
       });
 
-      socket.on("message:send", (payload) => {
+      socket.on("message", (payload) => {
         try {
-          expect(payload).toHaveProperty("name");
+          console.log(payload);
+          expect(payload).toHaveProperty("User");
           expect(payload).toHaveProperty("message");
           done();
         } catch (err) {
