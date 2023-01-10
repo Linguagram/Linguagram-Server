@@ -759,7 +759,11 @@ describe("test API groups", () => {
     })
 
     describe("POST /groups/:groupId/join", () => {
+<<<<<<< Updated upstream
         test("succeed on joining a group and response 200", () => {
+=======
+        test("success sending message with content and a file to one group and response 200", () => {
+>>>>>>> Stashed changes
             return request(app)
                 .post('/groups/11/join')
                 .set({ "access_token": access_token })
