@@ -166,6 +166,11 @@ router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), 
       content,
     } = req.body;
 
+    if (!content) throw {
+      status: 400,
+      message: "Content is required to edit message",
+    };
+
     if (!newAttachment) {
       await message.update({ MediaId: null })
       delete message.dataValues.Medium

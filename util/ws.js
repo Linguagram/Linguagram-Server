@@ -3,7 +3,7 @@
 // STRICT MODE HERE
 
 const { Server, Socket } = require("socket.io");
-const { getUserWs, onMessage } = require("./wsUtil");
+const { getUserWs, onMessage, onMessageEdit } = require("./wsUtil");
 const { wsValidator } = require("./validators");
 const { CLIENT_URI } = process.env;
 
@@ -300,9 +300,29 @@ const loadListeners = () => {
         }
       });
 
-      socket.on(SOCKET_EVENTS.MESSAGE_EDIT, async (message) => {});
+      socket.on(SOCKET_EVENTS.MESSAGE_EDIT, async (message) => {
+        try {
+          console.log("[ws MESSAGE_EDIT]", message);
+          const data = await onMessageEdit(message);
 
-      socket.on(SOCKET_EVENTS.MESSAGE_DELETE, async (message) => {});
+          data.message.User.dataValues.isOnline = isOnline(data.message.UserId);
+          editMessage(data.groupMembers, data.message);
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
+
+      socket.on(SOCKET_EVENTS.MESSAGE_DELETE, async (message) => {
+        try {
+          console.log("[ws MESSAGE_DELETE]", message);
+          const data = await onMessageDelete(message);
+    response.User.dataValues.isOnline = isOnline(response.User.id);
+
+    deleteMessage(groupMembers, response);
+        } catch (err) {
+          handleSocketError(socket, err);
+        }
+      });
 
     } catch (err) {
       handleSocketError(socket, err);

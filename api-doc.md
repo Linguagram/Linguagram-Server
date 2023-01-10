@@ -731,7 +731,7 @@ _Response (400 - Bad Request)_
 OR
 {
     "error": true,
-    "message": "One upload or text content is required"
+    "message": "Content is required to edit message"
 }
 ```
 
