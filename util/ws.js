@@ -285,6 +285,7 @@ const loadListeners = () => {
 
       socket.on(SOCKET_EVENTS.MESSAGE, async (message) => {
         try {
+          console.log("[ws MESSAGE]", message);
           const data = await onMessage(message);
 
           data.newMessage.dataValues.User.dataValues.isOnline = isOnline(data.newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
@@ -350,7 +351,7 @@ const distributeMessage = (groupMembers, data, event) => {
   for (const member of groupMembers) {
     if (!member) throw new TypeError("member can't be falsy");
     const memberId = validateUserId(member.UserId);
-    if (memberId === fromUserId) continue;
+    // if (memberId === fromUserId) continue;
 
     const socket = userSockets.get(memberId);
     if (socket) emitSocket(socket, event, jString(data));
