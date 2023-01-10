@@ -37,6 +37,16 @@ const SOCKET_EVENTS = {
   CALL_CONNECT: "call_connect",
   ACCEPT_CALL: "accept_call",
   CALL_ACCEPT: 'call_accepted',
+  CLICK_CALL: 'clickCall',
+  INCOMING_CALL: 'incomingCall',
+  CANCEL_CALL: 'cancelCall',
+  CALL_IS_CANCELLED: 'callIsCanceled',
+  DECLINE_CALL: 'declineCall',
+  CALL_IS_DECLINED: 'callIsDeclined',
+  LEAVE_CALL: 'leaveCall',
+  USER_LEAVES_THE_CALL: 'anotherUserLeaveTheCall',
+  ACCEPT_VIDEO: 'acceptCall',
+  CONFIRM_ACCEPT_VIDEO: 'confirmAcceptCall',
 
   SCHEDULE: "schedule",
   SCHEDULE_CANCEL: "schedule_cancel",
@@ -140,7 +150,7 @@ const loadListeners = () => {
     
     try {
       socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
-        console.log(msg, 'identify')
+        console.log(msg, 'identify baru')
         try {
           const json = jParse(msg);
           const { userId } = json;
@@ -185,14 +195,14 @@ const loadListeners = () => {
         }
       });
 
-      socket.on('clickCall', (data) => {
+      socket.on(SOCKET_EVENTS.CLICK_CALL, (data) => {
         try {
           console.log(data)
           console.log(userSockets.keys())
           const userSocket = getUserSocket(data.userToCall);
           if (userSocket) {
             console.log(userSocket.id, "socket id yang mau di call")
-            io.to(userSocket.id).emit('incomingCall', {
+            io.to(userSocket.id).emit(SOCKET_EVENTS.INCOMING_CALL, {
               from: data.from
             });
           }
@@ -206,12 +216,12 @@ const loadListeners = () => {
         }
       });
 
-      socket.on('cancelCall', (data) => {
+      socket.on(SOCKET_EVENTS.CANCEL_CALL, (data) => {
         try {
 
           const userSocket = getUserSocket(data.userToCall);
 
-          io.to(userSocket.id).emit('callIsCanceled', {
+          io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_IS_CANCELLED, {
             from: data.from
           });
         } catch (err) {
@@ -219,12 +229,12 @@ const loadListeners = () => {
         }
       });
 
-      socket.on('declineCall', (data) => {
+      socket.on(SOCKET_EVENTS.DECLINE_CALL, (data) => {
         try {
 
           const userSocket = getUserSocket(data.userToDecline);
 
-          io.to(userSocket.id).emit('callIsDeclined', {
+          io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_IS_DECLINED, {
             from: data.from
           });
         } catch (err) {
@@ -232,12 +242,12 @@ const loadListeners = () => {
         }
       });
 
-       socket.on('leaveCall', (data) => {
+       socket.on(SOCKET_EVENTS.LEAVE_CALL, (data) => {
         try {
 
           const userSocket = getUserSocket(data.userToInform);
 
-          io.to(userSocket.id).emit('anotherUserLeaveTheCall', {
+          io.to(userSocket.id).emit(SOCKET_EVENTS.USER_LEAVES_THE_CALL, {
             from: data.from
           });
         } catch (err) {
@@ -245,12 +255,12 @@ const loadListeners = () => {
         }
       });
 
-      socket.on('acceptCall', (data) => {
+      socket.on(SOCKET_EVENTS.ACCEPT_VIDEO, (data) => {
         try {
           console.log(data, "acceptCall")
           const userSocket = getUserSocket(data.userToReceive);
 
-          io.to(userSocket.id).emit('confirmAcceptCall', {
+          io.to(userSocket.id).emit(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, {
             from: data.from
           });
           console.log(userSocket.id)
@@ -263,7 +273,7 @@ const loadListeners = () => {
         try {
           console.log(data)
           const userSocket = getUserSocket(data.userToCall);
-
+          console.log(userSocket.id, "user id yg mau dicall", data.signalData, "signal yg dikirim caller")
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_CONNECT, {
             signal: data.signalData,
             from: data.from,
