@@ -341,28 +341,28 @@ describe("test API groups", () => {
 
     describe("POST /groups/:groupId/messages", () => {
         test.only("success sending message with content and a file to one group and response 200", (done) => {
-            // let count = 0;
+            let count = 0;
 
-            // const addDone = (debug) => {
-            //     console.log("ADD DONE CALLED", debug)
-            //     count++;
-            //     if (count === 2) done();
-            // }
+            const addDone = (debug) => {
+                console.log("ADD DONE CALLED", debug)
+                count++;
+                if (count === 2) done();
+            }
 
 
-            // socket.on(SOCKET_EVENTS.MESSAGE, (obj) => {
-            //     expect(obj).toHaveProperty("deleted", expect.any(Boolean))
-            //     expect(obj).toHaveProperty("Medium", expect.any(Object))
-            //     expect(obj).toHaveProperty("content", expect.any(String))
-            //     expect(obj).toHaveProperty("GroupId", expect.any(Number))
-            //     expect(obj).toHaveProperty("User", expect.any(Object))
-            //     expect(obj.User).toHaveProperty("id", expect.any(Number))
-            //     expect(obj.User).toHaveProperty("UserLanguages", expect.any(Array))
-            //     expect(obj.User).toHaveProperty("Avatar", expect.any(Object))
-            //     expect(obj.User.Avatar).toHaveProperty("url", expect.any(String))
-            //     expect(obj.Medium).toHaveProperty("url", expect.any(String))
-            //     addDone("SOCKET");
-            // });
+            socket.on(SOCKET_EVENTS.MESSAGE, (obj) => {
+                expect(obj).toHaveProperty("deleted", expect.any(Boolean))
+                expect(obj).toHaveProperty("Medium", expect.any(Object))
+                expect(obj).toHaveProperty("content", expect.any(String))
+                expect(obj).toHaveProperty("GroupId", expect.any(Number))
+                expect(obj).toHaveProperty("User", expect.any(Object))
+                expect(obj.User).toHaveProperty("id", expect.any(Number))
+                expect(obj.User).toHaveProperty("UserLanguages", expect.any(Array))
+                expect(obj.User).toHaveProperty("Avatar", expect.any(Object))
+                expect(obj.User.Avatar).toHaveProperty("url", expect.any(String))
+                expect(obj.Medium).toHaveProperty("url", expect.any(String))
+                addDone("SOCKET");
+            });
 
             return request(app)
                 .post('/groups/1/messages')
