@@ -247,19 +247,19 @@ router.get("/explore/users", async (req, res, next) => {
       [Op.or]: orNatives,
     };
 
-    const includeInter = opts.include[2].include[0];
+    // const includeInter = opts.include[2].include[0];
 
-    const orInterests = [];
+    // const orInterests = [];
 
-    for (const interest of req.userInfo.UserInterests) {
-      orInterests.push({
-        name: interest.Interest.name,
-      });
-    }
+    // for (const interest of req.userInfo.UserInterests) {
+    //   orInterests.push({
+    //     name: interest.Interest.name,
+    //   });
+    // }
 
-    includeInter.where = {
-      [Op.or]: orInterests,
-    };
+    // includeInter.where = {
+    //   [Op.or]: orInterests,
+    // };
 
     // console.log(opts);
     console.log(inspect(opts, false, 10, true));
