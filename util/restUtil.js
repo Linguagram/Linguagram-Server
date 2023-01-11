@@ -48,6 +48,43 @@ const baseGetGroupMembers = async (groupId, userId) => {
   return groupMembers;
 }
 
+const getGroupMember = async (groupMemberId) => {
+  const groupMember = await GroupMember.findByPk(groupMemberId, {
+    include: [
+      {
+        model: Group,
+        include: [
+          {
+            model: GroupMember,
+            include: [
+              {
+                ...userFetchAttributes(),
+                model: User,
+              },
+            ],
+          }
+        ],
+      },
+      {
+        ...userFetchAttributes(),
+        model: User,
+      },
+    ],
+  });
+
+  // check if user is actually in the group
+  if (!groupMember) {
+    throw {
+      status: 404,
+      message: "Unknown Group Member",
+    };
+  }
+
+  groupMember.User.dataValues.isOnline = isOnline(groupMember.UserId);
+
+  return groupMember;
+}
+
 const getGroupMembers = async (groupId, req) => {
   return baseGetGroupMembers(groupId, req.userInfo.id);
 }
@@ -239,4 +276,5 @@ module.exports = {
   getUser,
   getGroup,
   getDmGroup,
+  getGroupMember,
 }

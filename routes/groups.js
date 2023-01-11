@@ -38,6 +38,7 @@ const {
   getMessages,
   getGroup,
   getDmGroup,
+  getGroupMember,
 } = require("../util/restUtil");
 const { userFetchAttributes } = require("../util/fetchAttributes");
 
@@ -317,7 +318,9 @@ router.post("/groups", async (req, res, next) => {
 // join user group
 router.post("/groups/:groupId/join", async (req, res, next) => {
   try {
+    console.log("[groupId]", req.params.groupId);
     const group = await getGroup(validateGroupId(req.params.groupId));
+    console.log("[group]", group);
 
     if (group.type !== "group") throw {
       status: 404,
@@ -344,10 +347,12 @@ router.post("/groups/:groupId/join", async (req, res, next) => {
     // newMember.dataValues.isOnline = isOnline(newMember.UserId);
 
     const members = await getGroupMembers(group.id, req);
+    const member = await getGroupMember(newMember.id);
+    console.log("[member]", member);
 
-    res.status(200).json(newMember);
+    res.status(200).json(member);
 
-    sendGroupJoin(members, newMember);
+    sendGroupJoin(members, member);
   } catch (err) {
     next(err);
   }
