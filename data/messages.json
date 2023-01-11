@@ -8,7 +8,7 @@
         "deleted": false
     },
     {
-        "content": "General Kenobi",
+        "content": "hello!",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
@@ -16,7 +16,7 @@
         "deleted": false
     },
     {
-        "content": "I have the high ground",
+        "content": "I wanna learn english with you",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
@@ -24,7 +24,7 @@
         "deleted" : true
     },
     {
-        "content": "But I have the death star cannon",
+        "content": "sure! let's talk about what do you like first",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
@@ -32,15 +32,15 @@
         "deleted" : false
     },
     {
-        "content": "What are you doing step brother",
+        "content": "Halo brother",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 4,
         "isRead" : false,
         "GroupId": 2,
         "deleted" : false
     },
     {
-        "content": "Nothing, really",
+        "content": "halo juga, kamu baru belajar bahasa indonesia?",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
@@ -48,15 +48,15 @@
         "deleted" : false
     },
     {
-        "content": "That's all?",
+        "content": "Iya. Aku mohon bantuannya!",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 4,
         "isRead" : false,
         "GroupId": 2,
         "deleted" : false
     },
     {
-        "content": "Yes, what did you expect me to say?",
+        "content": "Hahaha okay, tentu aja!",
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
@@ -64,91 +64,91 @@
         "deleted" : false
     },
     {
-        "content": "Let's finish this final project",
+        "content": "Bicaralah denganku",
         "MediaId": null,
-        "UserId": 2,
+        "UserId": 6,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "hell yeah brother",
+        "content": "Aku ingin belajar bahasa indonesia",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 6,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "test1",
+        "content": "Halo. okay tentu saja!",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 1,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "test again",
+        "content": "Bicaralah dengan santai yaa",
         "MediaId": null,
-        "UserId": 2,
+        "UserId": 1,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "test await",
+        "content": "Hahhah ok. aku baru belajar bahasa indonesia selama 3 bulan",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 6,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "test async",
+        "content": "Oh wow! dan bahasa indonesiamu bagus ya!",
         "MediaId": null,
-        "UserId": 2,
+        "UserId": 1,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "test  try",
+        "content": "hahha thank you?",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 6,
         "isRead" : false,
         "GroupId": 3,
         "deleted" : false
     },
     {
-        "content": "catch",
+        "content": "hello guys",
         "MediaId": 7,
-        "UserId": 2,
+        "UserId": 1,
         "isRead" : false,
-        "GroupId": 3,
+        "GroupId": 4,
         "deleted" : false
     },
     {
-        "content": "finally",
+        "content": "hello there. let's learn english together, shall we?",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 5,
         "isRead" : false,
-        "GroupId": 3,
+        "GroupId": 4,
         "deleted" : false
     },
     {
-        "content": "And it's going to blow your a**",
+        "content": "help me ya guys. thank you",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1,
+        "GroupId": 4,
         "deleted" : false
     },
     {
-        "content": "But I have nothing at all",
+        "content": "don't worry",
         "MediaId": null,
-        "UserId": 2,
+        "UserId": 5,
         "isRead" : false,
-        "GroupId": 1,
+        "GroupId": 4,
         "deleted" : false
     },
     {
@@ -156,7 +156,7 @@
         "MediaId": null,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 1,
+        "GroupId": 4,
         "deleted" : false
     },
     {
@@ -164,15 +164,15 @@
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 1,
+        "GroupId": 4,
         "deleted" : false
     },
     {
-        "content": "Let's finish this final project",
+        "content": "Why i have to lie??",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 1,
         "isRead" : false,
-        "GroupId": 2,
+        "GroupId": 4,
         "deleted" : false
     },
     {
@@ -180,7 +180,7 @@
         "MediaId": 8,
         "UserId": 1,
         "isRead" : false,
-        "GroupId": 2,
+        "GroupId": 5,
         "deleted" : false
     },
     {
@@ -188,77 +188,28 @@
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 2,
+        "GroupId": 5,
         "deleted" : false
     },{
-        "content": "Multi-tiered static intranet",
+        "content": "ayo belajar bahasa indonesia",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 4,
         "isRead" : false,
-        "GroupId": 4,
+        "GroupId": 5,
         "deleted" : false
       }, {
-        "content": "Realigned intermediate data-warehouse",
+        "content": "loh, aayoo! kita mulai darimana?",
         "MediaId": null,
-        "UserId": 3,
+        "UserId": 1,
         "isRead" : false,
-        "GroupId": 4,
+        "GroupId": 5,
         "deleted" : false
       }, {
-        "content": "Expanded 24/7 algorithm",
-        "MediaId": null,
-        "UserId": 5,
-        "isRead" : false,
-        "GroupId": 4,
-        "deleted" : false
-      }, {
-        "content": "Operative multi-tasking capacity",
-        "MediaId": null,
-        "UserId": 3,
-        "isRead" : false,
-        "GroupId": 4,
-        "deleted" : false
-      }, {
-        "content": "Managed optimizing approach",
+        "content": "dari mana saja bisa",
         "MediaId": null,
         "UserId": 2,
         "isRead" : false,
-        "GroupId": 4,
-        "deleted" : false
-      }, {
-        "content": "Up-sized optimizing hub",
-        "MediaId": null,
-        "UserId": 1,
-        "isRead" : false,
-        "GroupId": 4,
-        "deleted" : false
-      }, {
-        "content": "Robust client-driven workforce",
-        "MediaId": null,
-        "UserId": 5,
-        "isRead" : false,
-        "GroupId": 4,
-        "deleted" : false
-      }, {
-        "content": "Integrated cohesive data-warehouse",
-        "MediaId": null,
-        "UserId": 2,
-        "isRead" : false,
-        "GroupId": 4,
-        "deleted" : false
-      }, {
-        "content": "Quality-focused explicit migration",
-        "MediaId": null,
-        "UserId": 1,
-        "GroupId": 4,
-        "deleted" : false,
-        "isRead" : true
-      }, {
-        "content": "Synchronised stable functionalities",
-        "MediaId": null,
-        "UserId": 1,
-        "isRead" : false,
-        "GroupId": 4,
+        "GroupId": 5,
         "deleted" : false
       }
 ]

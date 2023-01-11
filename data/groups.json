@@ -11,48 +11,28 @@
     "type" : "dm"
 },
 {
-    "name" : "headquarter",
+    "name" : "Learning English",
     "type" : "group",
-    "description" : "Where we all get together"
+    "description" : "Learn English together"
 },
 {
-    "name" : "Programming",
+    "name" : "Learning Indonesian",
     "type" : "group",
-    "description" : "Full stack Javascript"
+    "description" : "Yuk belajar Bahasa Indonesia"
 },
 {
-    "name" : "Anime",
+    "name" : "Technology Talks",
     "type" : "group",
-    "description" : "Where we all get together"
+    "description" : "Chats about tech while learn English"
 },
 {
-    "name" : "Politic",
+    "name" : "Who likes movies?",
     "type" : "group",
-    "description" : "Where we all fight"
+    "description" : "Movie is our passion"
 },
 {
-    "name" : "Military",
+    "name" : "Budaya Indonesia",
     "type" : "group",
-    "description" : "Main family tree"
-},
-{
-    "name" : "high school",
-    "type" : "group",
-    "description" : "High school XXI"
-},
-{
-    "name" : "work",
-    "type" : "group",
-    "description" : "Team 4 star"
-},
-{
-    "name" : "Switzerland",
-    "type" : "group",
-    "description" : "Home sweet home"
-},
-{
-    "name" : "PC",
-    "type" : "group",
-    "description" : "Where we all get together"
+    "description" : "Belajar bahasa sambil belajar budaya di Indonesia"
 }
 ]
