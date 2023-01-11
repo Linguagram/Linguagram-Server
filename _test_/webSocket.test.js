@@ -2,18 +2,18 @@ const io = require('socket.io-client');
 const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require("../util/ws");
 const { sequelize } = require('../models')
-let friendships = require('../data/friendships.json')
-let groupMembers = require('../data/groupMembers.json')
-let groups = require('../data/groups.json')
-const media = require('../data/media.json')
-const users = require('../data/users.json')
-const messages = require('../data/messages.json')
-const languages = require('../data/languages.json')
-const schedules = require('../data/schedules.json')
-const userLanguages = require('../data/userLanguages.json')
-const userSchedules = require('../data/userSchedules.json')
-const interests = require('../data/interests.json')
-const userInterests = require('../data/userInterests.json')
+let friendships = require('./data/friendships.json')
+let groupMembers = require('./data/groupMembers.json')
+let groups = require('./data/groups.json')
+const media = require('./data/media.json')
+const users = require('./data/users.json')
+const messages = require('./data/messages.json')
+const languages = require('./data/languages.json')
+const schedules = require('./data/schedules.json')
+const userLanguages = require('./data/userLanguages.json')
+const userSchedules = require('./data/userSchedules.json')
+const interests = require('./data/interests.json')
+const userInterests = require('./data/userInterests.json')
 let access_token;
 let access_token3;
 let linkUnverified;
@@ -136,6 +136,8 @@ describe("Suite of unit tests", function () {
     socket.emit(SOCKET_EVENTS.IDENTIFY, {
       userId: 2,
     });
+
+
   });
 
   afterEach(function (done) {
@@ -199,7 +201,7 @@ describe("Suite of unit tests", function () {
       truncate: true, restartIdentity: true, cascade: true
     })
 
-    server.close();
+    return server.close();
 
   });
 
@@ -227,7 +229,7 @@ describe("Suite of unit tests", function () {
         content: "Hello World",
         UserId: 1,
         GroupId: 4,
-        MediaId : 2
+        MediaId: 2
       });
 
       // server.on('connection', (mySocket) => {
@@ -256,7 +258,7 @@ describe("Suite of unit tests", function () {
         content: "Hello World",
         UserId: 1,
         GroupId: 4,
-        MediaId : 2
+        MediaId: 2
       });
 
       // server.on('connection', (mySocket) => {
@@ -285,10 +287,10 @@ describe("Suite of unit tests", function () {
         content: "Hello Worldfsd",
         UserId: 2,
         GroupId: 1,
-        MessageId : 2
+        MessageId: 2
       });
 
-     
+
     });
 
     test('Failed on editing a message because the message does not exist', (done) => {
@@ -306,9 +308,9 @@ describe("Suite of unit tests", function () {
         content: "Hello Worldfsd",
         UserId: 2,
         GroupId: 1,
-        MessageId : 200
+        MessageId: 200
       });
-     
+
     });
 
     test('Failed on edit a message because there is nothing sent', (done) => {
@@ -318,12 +320,31 @@ describe("Suite of unit tests", function () {
         // Check that the message matches
         console.log(payload, '<<<< PAYLOAD');
         expect(payload).toHaveProperty("status", 400);
-        expect(payload).toHaveProperty("message","data can't be empty");
+        expect(payload).toHaveProperty("message", "data can't be empty");
         done();
       });
 
-      socket.emit(SOCKET_EVENTS.MESSAGE_EDIT,null);
-     
+      socket.emit(SOCKET_EVENTS.MESSAGE_EDIT, null);
+
+    });
+
+    test('Failed on edit a message because there is no content', (done) => {
+      // once connected, emit Hello World
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        // Check that the message matches
+        console.log(payload, '<<<< PAYLOAD');
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message", "Content is required to edit message");
+        done();
+      });
+
+      socket.emit(SOCKET_EVENTS.MESSAGE_EDIT,  {
+        UserId: 2,
+        GroupId: 1,
+        MessageId: 200
+      });
+
     });
 
     test('Failed on deleting a message because there is nothing sent', (done) => {
@@ -333,12 +354,29 @@ describe("Suite of unit tests", function () {
         // Check that the message matches
         console.log(payload, '<<<< PAYLOAD');
         expect(payload).toHaveProperty("status", 400);
-        expect(payload).toHaveProperty("message","data can't be empty");
+        expect(payload).toHaveProperty("message", "data can't be empty");
         done();
       });
 
-      socket.emit(SOCKET_EVENTS.MESSAGE_DELETE,null);
-     
+      socket.emit(SOCKET_EVENTS.MESSAGE_DELETE, null);
+
+    });
+
+    test('Failed on IDENTIFY', (done) => {
+      // once connected, emit Hello World
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        // Check that the message matches
+        console.log(payload, '<<<< PAYLOAD');
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message", "Invalid userId");
+        done();
+      });
+
+      socket.emit(SOCKET_EVENTS.IDENTIFY, {
+        userId: 'test',
+      });
+
     });
 
     test('Success on deleting a message ', (done) => {
@@ -362,9 +400,9 @@ describe("Suite of unit tests", function () {
         content: "Hello Worldfsd",
         UserId: 2,
         GroupId: 1,
-        MessageId : 2
+        MessageId: 2
       });
-     
+
     });
 
     test('Failed on deleting a message because the message has already been deleted', (done) => {
@@ -374,7 +412,7 @@ describe("Suite of unit tests", function () {
         // Check that the message matches
         console.log(payload, '<<<< PAYLOAD');
         expect(payload).toHaveProperty("status", 400);
-        expect(payload).toHaveProperty("message","This message has already been deleted");
+        expect(payload).toHaveProperty("message", "This message has already been deleted");
         done();
       });
 
@@ -382,9 +420,9 @@ describe("Suite of unit tests", function () {
         content: "Hello Worldfsd",
         UserId: 2,
         GroupId: 1,
-        MessageId : 2
+        MessageId: 2
       });
-     
+
     });
 
     test("no groupid", (done) => {
@@ -431,7 +469,6 @@ describe("Suite of unit tests", function () {
   });
 
   describe("Video call", () => {
-
     test("success receive incoming call notification from caller", (done) => {
       socket.emit(SOCKET_EVENTS.CLICK_CALL, {
         userToCall: 2,
@@ -445,6 +482,34 @@ describe("Suite of unit tests", function () {
         } catch (err) {
           done(err);
         }
+      });
+    })
+
+    test("success receive incoming call notification from caller", (done) => {
+      socket.emit(SOCKET_EVENTS.CLICK_CALL, {
+        userToCall: 2,
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.INCOMING_CALL, (payload) => {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+      });
+    })
+
+    test("failed receive incoming call notification from caller", (done) => {
+      socket.emit(SOCKET_EVENTS.CLICK_CALL, {
+        userToCall: 3,
+        from: 1,
+      });
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+          console.log(payload,'<<<<PAYLOAD');
+          expect(payload).toHaveProperty("status", 400);
+          expect(payload).toHaveProperty("message", "User is offline");
+          expect(payload).toHaveProperty("data", expect.any(Object));
+
+          done();
       });
     })
 
@@ -464,6 +529,24 @@ describe("Suite of unit tests", function () {
       });
     })
 
+    test('Failed cancel call', (done) => {
+      // once connected, emit Hello World
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        // Check that the message matches
+        console.log(payload, '<<<< PAYLOAD');
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message",  "User is offline");
+        done();
+      });
+
+      socket.emit(SOCKET_EVENTS.CANCEL_CALL, {
+        userToCall: 3,
+        from: 2,
+      });
+
+    });
+
 
     test("success decline call", (done) => {
       socket.emit(SOCKET_EVENTS.DECLINE_CALL, {
@@ -481,22 +564,25 @@ describe("Suite of unit tests", function () {
       });
     })
 
-    test("users accepts call", (done) => {
+    test('Failed decline call', (done) => {
+      // once connected, emit Hello World
 
-      socket.emit(SOCKET_EVENTS.ACCEPT_VIDEO, {
-        incomingCaller: 2,
-        from: 1,
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        // Check that the message matches
+        console.log(payload, '<<<< PAYLOAD');
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message",  "User is offline");
+        done();
       });
-      
-      socket.on(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, (payload) => {
-        try {
-          expect(payload).toHaveProperty("from", expect.any(Number));
-          done();
-        } catch (err) {
-          done(err);
-        }
+
+      socket.emit(SOCKET_EVENTS.DECLINE_CALL, {
+        userToDecline: 'test',
+        from: 2,
       });
-    })
+
+    });
+
+  
 
     test("user leaves call", (done) => {
       socket.emit(SOCKET_EVENTS.LEAVE_CALL, {
@@ -514,8 +600,21 @@ describe("Suite of unit tests", function () {
       });
     })
 
+    test("failed leaves call", (done) => {
+      socket.emit(SOCKET_EVENTS.LEAVE_CALL, {
+        userToInform: 3,
+        from: 2,
+      });
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message", 'User already left the call');
+          done();
+      });
+    })
+
     test("user makes a video call connection", (done) => {
-      
+
       socket.on(SOCKET_EVENTS.CALL_CONNECT, (payload) => {
         try {
           expect(payload).toHaveIn
@@ -537,6 +636,56 @@ describe("Suite of unit tests", function () {
         from: 1,
       });
     })
+
+    test("failed to call because receiver is offline", (done) => {
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        // Check that the message matches
+        console.log(payload, '<<<< PAYLOAD');
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message",  "User is offline");
+        done();
+      });
+
+      socket.emit(SOCKET_EVENTS.CALL, {
+        userToCall: 3,
+        from: 2,
+      });
+    });
+
+
+    test("user accepts video call connection", (done) => {
+      socket.on(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, (payload) => {
+        console.log(payload, '<<<<<PAYLOAD');
+        expect(payload).toHaveProperty("from", 2);
+        done();
+      });
+
+      socket.emit(SOCKET_EVENTS.ACCEPT_VIDEO, {
+        userToReceive: 2,
+        from: 2,
+      });
+
+
+    })
+
+    test("failed because receiver is offline", (done) => {
+
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        // Check that the message matches
+        console.log(payload, '<<<< PAYLOAD');
+        expect(payload).toHaveProperty("status", 400);
+        expect(payload).toHaveProperty("message",  "User is offline");
+        done();
+      });
+
+      socket.emit(SOCKET_EVENTS.ACCEPT_VIDEO, {
+        userToReceive: 3,
+        from: 2,
+      });
+    });
+
+    
 
     const signal = {
       "type": "offer",
@@ -721,21 +870,23 @@ describe("Suite of unit tests", function () {
         "a=max-message-size: 262144\r\n"
     }
 
-    test.skip("user accepts video call connection", (done) => {
-      socket.emit(SOCKET_EVENTS.ACCEPT_CALL, {
-        signal,
-        incomingCaller: 1,
+    test.skip("user fails to accept  call request", (done) => {
+      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+        console.log(payload, '<<<<<PAYLOAD');
+        done();
       });
 
-      socket.on(SOCKET_EVENTS.CALL_ACCEPT, (payload) => {
-        console.log(payload, '<<<<<PAYLOAD');
-        try {
-          expect(payload).toHaveProperty("from", expect.any(Number));
-          done();
-        } catch (err) {
-          done(err);
-        }
+      socket.emit(SOCKET_EVENTS.ACCEPT_CALL, {
+        to: 10,
+        signal : {sdp :'test'}
       });
+
+
     })
+
+
+    
+
+   
   })
 });

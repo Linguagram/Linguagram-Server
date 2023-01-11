@@ -157,7 +157,7 @@ const loadListeners = () => {
 
           if (isNaN(mapId)) {
             throw {
-              error: true,
+              status: 400,
               message: "Invalid userId",
             };
           }
@@ -274,10 +274,13 @@ const loadListeners = () => {
         try {
           console.log(data, "acceptCall")
           const userSocket = getUserSocket(data.userToReceive);
-          if (!userSocket) throw {
-            status: 400,
-            message: "User is offline",
-          };
+          if (!userSocket) {
+            console.log('<<<ERRROR');
+            throw {
+              status: 400,
+              message: "User is offline",
+            };
+          }
 
           io.to(userSocket.id).emit(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, {
             from: data.from

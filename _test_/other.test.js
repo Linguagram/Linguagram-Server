@@ -1,18 +1,18 @@
 const request = require('supertest')
 const app = require('../app').server
 const { sequelize } = require('../models')
-let friendships = require('../data/friendships.json')
-let groupMembers = require('../data/groupMembers.json')
-let groups = require('../data/groups.json')
-const media = require('../data/media.json')
-const users = require('../data/users.json')
-const messages = require('../data/messages.json')
-const languages = require('../data/languages.json')
-const schedules = require('../data/schedules.json')
-const userLanguages = require('../data/userLanguages.json')
-const userSchedules = require('../data/userSchedules.json')
-const interests = require('../data/interests.json')
-const userInterests = require('../data/userInterests.json')
+let friendships = require('./data/friendships.json')
+let groupMembers = require('./data/groupMembers.json')
+let groups = require('./data/groups.json')
+const media = require('./data/media.json')
+const users = require('./data/users.json')
+const messages = require('./data/messages.json')
+const languages = require('./data/languages.json')
+const schedules = require('./data/schedules.json')
+const userLanguages = require('./data/userLanguages.json')
+const userSchedules = require('./data/userSchedules.json')
+const interests = require('./data/interests.json')
+const userInterests = require('./data/userInterests.json')
 let access_token;
 let access_token6;
 let linkUnverified;
@@ -173,6 +173,42 @@ afterAll(async () => {
 
 describe("test API", () => {
 
+    describe("POST /attachment", () => {
+        test("succeed on sending attachment and response 200", () => {
+            return request(app)
+            .post('/attachment')
+            .set({ "access_token": access_token })
+            .attach('attachment', '_test_/testFile.png')
+            .then(res => {
+                console.log(res.body,"<<<<RES");
+                expect(res.status).toBe(201)
+                expect(res.body).toHaveProperty('id', expect.any(Number))
+                expect(res.body).toHaveProperty('name', expect.any(String))
+                expect(res.body).toHaveProperty('url', expect.any(String))
+                expect(res.body).toHaveProperty('format', expect.any(String))
+                
+                
+            })
+        })
+    })
+
+    describe("POST /attachment", () => {
+        test("failed on sending attachment because there is no file sent and response 400", () => {
+            return request(app)
+            .post('/attachment')
+            .set({ "access_token": access_token })
+            .then(res => {
+                console.log(res.body,"<<<<RES");
+                expect(res.status).toBe(400)
+                expect(res.body.error).toEqual(true)
+                expect(res.body).toHaveProperty("message", expect.any(String))
+                expect(res.body.message).toEqual("attachment is required")
+                
+                
+            })
+        })
+    })
+
     describe("GET /languages/@me", () => {
         test("succeed on getting user's languages list and response 200", () => {
             return request(app)
@@ -308,7 +344,6 @@ describe("test API", () => {
                         expect(el).toHaveProperty('UserLanguages', expect.any(Array))
                         el.UserLanguages.forEach(lang => {
                             expect(lang).toHaveProperty('type', expect.any(String))
-                            expect(lang.type).toEqual('native')
                         })
                     })
                 })

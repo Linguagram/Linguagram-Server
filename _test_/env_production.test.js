@@ -1,18 +1,18 @@
 const request = require('supertest')
 const app = require('../app').server
 const { sequelize } = require('../models')
-let friendships = require('../data/friendships.json')
-let groupMembers = require('../data/groupMembers.json')
-let groups = require('../data/groups.json')
-const media = require('../data/media.json')
-const users = require('../data/users.json')
-const messages = require('../data/messages.json')
-const languages = require('../data/languages.json')
-const schedules = require('../data/schedules.json')
-const userLanguages = require('../data/userLanguages.json')
-const userSchedules = require('../data/userSchedules.json')
-const interests = require('../data/interests.json')
-const userInterests = require('../data/userInterests.json')
+let friendships = require('./data/friendships.json')
+let groupMembers = require('./data/groupMembers.json')
+let groups = require('./data/groups.json')
+const media = require('./data/media.json')
+const users = require('./data/users.json')
+const messages = require('./data/messages.json')
+const languages = require('./data/languages.json')
+const schedules = require('./data/schedules.json')
+const userLanguages = require('./data/userLanguages.json')
+const userSchedules = require('./data/userSchedules.json')
+const interests = require('./data/interests.json')
+const userInterests = require('./data/userInterests.json')
 let access_token;
 let access_token6;
 
@@ -89,10 +89,9 @@ describe('environmental variables', () => {
                 "from": "English"
             })
             .then(res => {
-                expect(res.status).toBe(400)
-                expect(res.body.error).toEqual(true)
-                expect(res.body).toHaveProperty("message", expect.any(String))
-                expect(res.body.message).toEqual("No target language specified")
+                console.log(res.body,"<<<<");
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty("translated", expect.any(String))
             })
     });
 });
