@@ -36,6 +36,19 @@ beforeEach(function(done) {
     socket.on("disconnect", function() {
         console.log("disconnected...");
     });
+
+    socket.on(SOCKET_EVENTS.IDENTIFY, (res) => {
+        console.log("[IDENTIFY]", res);
+        if (res.ok) done();
+      });
+      
+      socket.on(SOCKET_EVENTS.ERROR, (res) => {
+        console.log("[ERROR]", res);
+      });
+  
+      socket.emit(SOCKET_EVENTS.IDENTIFY, {
+        userId: 2,
+      });
 });
 
 afterEach(function(done) {
@@ -191,6 +204,7 @@ afterAll(async () => {
 
     socket?.disconnect();
     return server.close();
+    
 })
 
 
@@ -411,6 +425,24 @@ describe("test API groups", () => {
                     expect(res.body.GroupMembers.some(el=> el.UserId == 2)).toEqual(true)
                 })
         })
+
+        test("succeed on automatically creating dm group list and response 200", () => {
+            return request(app)
+                .get('/groups/8')
+                .set({ "access_token": access_token })
+                .then(res => {
+                    console.log(res.body,'<<<<RES');
+                    expect(res.status).toBe(200)
+                    expect(res.body.error).toEqual(undefined)
+                    expect(res.body).toHaveProperty("id", expect.any(Number))
+                    expect(res.body).toHaveProperty("type", "dm")
+                    expect(res.body).toHaveProperty("GroupMembers", expect.any(Object))
+                    expect(res.body.GroupMembers.some(el=> el.UserId == 1)).toEqual(true)
+                    expect(res.body.GroupMembers.some(el=> el.UserId == 8)).toEqual(true)
+                })
+        })
+
+     
 
         test("failed on getting dm group list and response 400 because user id is not a number", () => {
             return request(app)

@@ -34,7 +34,7 @@ const { sendNewFriendReqMail } = require("../helpers/nodemailer");
 
 // get user friends
 router.get("/friends", async (req, res, next) => {
-  try {
+  // try {
     const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
 
     for (const friend of friends) {
@@ -43,9 +43,9 @@ router.get("/friends", async (req, res, next) => {
     }
 
     res.status(200).json(friends);
-  } catch (err) {
-    next(err);
-  }
+  // } catch (err) {
+  //   next(err);
+  // }
 });
 
 // send friend request
@@ -63,7 +63,7 @@ router.post("/friends/:friendId", async (req, res, next) => {
     if (alreadyFriend) {
       throw {
         status: 400,
-        message: "Already has friendship in progress",
+        message: "Already has friendship on progress",
       };
     }
 

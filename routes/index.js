@@ -42,24 +42,24 @@ const { sendUserUpdate, isOnline } = require("../util/ws");
 
 // get all interests
 router.get("/interests", async (req, res, next) => {
-  try {
+  // try {
     const interests = await Interest.findAll();
 
     res.status(200).json(interests);
-  } catch (err) {
-    next(err);
-  }
+  // } catch (err) {
+  //   next(err);
+  // }
 });
 
 // get all languages
 router.get("/languages", async (req, res, next) => {
-  try {
+  // try {
     const languages = await Language.findAll();
 
     res.status(200).json(languages);
-  } catch (err) {
-    next(err);
-  }
+  // } catch (err) {
+  //   next(err);
+  // }
 });
 
 router.use(userRouter);
@@ -124,7 +124,7 @@ router.patch("/users/status", async (req, res, next) => {
 
 // delete avatar
 router.delete("/users/avatar", async (req, res, next) => {
-  try {
+  // try {
     const userId = req.userInfo.id;
 
     const user = await getUser(userId);
@@ -138,9 +138,9 @@ router.delete("/users/avatar", async (req, res, next) => {
     res.status(200).json(user);
 
     sendUserUpdate(user);
-  } catch (err) {
-    next(err);
-  }
+  // } catch (err) {
+  //   next(err);
+  // }
 });
 
 router.put("/users/@me", Controller.editMe);

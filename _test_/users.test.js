@@ -185,7 +185,7 @@ describe("test api user", () => {
                     password: "12345678",
                     confirmPassword: "12345678",
                     nativeLanguages: [1],
-                    interestLanguages: [2,3],
+                    interestLanguages: [2,3,3,4],
                     interests: [4]
                 })
                 .then(res => {
@@ -496,35 +496,7 @@ describe("test api user", () => {
         })
     })
 
-    describe("PUT /users/@me", () => {
-        test("succeed on updating user's profile and response 200", () => {
-            return request(app)
-                .put('/users/@me')
-                .set("access_token", access_token)
-                .send({
-                    email: "sforrest0@chron.com",
-                    password: "WDbnhZZ63W1",
-                    newPassword: "WDbnhZZ63W1",
-                    confirmNewPassword: "WDbnhZZ63W1",
-                    country : "Norway",
-                    phoneNumber: "6541984196",
-                    username: "Sissie Forrest",
-                    nativeLanguages: [1],
-                    interestLanguages: [2,3],
-                    interests: [4]
-                })
-                .then(res => {
-                    expect(res.status).toBe(200)
-                    expect(res).toHaveProperty("body", expect.any(Object))
-                    expect(res.body).toHaveProperty('id', expect.any(Number))
-                    expect(res.body).toHaveProperty('username', expect.any(String))
-                    expect(res.body).toHaveProperty('email', expect.any(String))
-                    expect(res.body).toHaveProperty('country', expect.any(String))
-                    expect(res.body).toHaveProperty('verified', expect.any(Boolean))
-                    expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
-                    expect(res.body).toHaveProperty('UserInterests', expect.any(Array))
-                })
-        })
+    describe("PUT /users/@me", () => {      
 
         test("failed on updating user's profile because no email sent and response 400", () => {
             return request(app)
@@ -652,6 +624,35 @@ describe("test api user", () => {
                     expect(res.body.error).toEqual(true)
                     expect(res.body).toHaveProperty("message", expect.any(String))
                     expect(res.body.message).toEqual('Password must have at least 8 characters')
+                })
+        })
+
+        test("succeed on updating user's profile and response 200", () => {
+            return request(app)
+                .put('/users/@me')
+                .set("access_token", access_token)
+                .send({
+                    email: "sforrest0@chron.com",
+                    password: "WDbnhZZ63W1",
+                    newPassword: "fasdfasderwsea",
+                    confirmNewPassword: "fasdfasderwsea",
+                    country : "Norway",
+                    phoneNumber: "6541984196",
+                    username: "Sissie Forrest",
+                    nativeLanguages: [1],
+                    interestLanguages: [2,3,3,4],
+                    interests: [4]
+                })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res).toHaveProperty("body", expect.any(Object))
+                    expect(res.body).toHaveProperty('id', expect.any(Number))
+                    expect(res.body).toHaveProperty('username', expect.any(String))
+                    expect(res.body).toHaveProperty('email', expect.any(String))
+                    expect(res.body).toHaveProperty('country', expect.any(String))
+                    expect(res.body).toHaveProperty('verified', expect.any(Boolean))
+                    expect(res.body).toHaveProperty('UserLanguages', expect.any(Array))
+                    expect(res.body).toHaveProperty('UserInterests', expect.any(Array))
                 })
         })
     })

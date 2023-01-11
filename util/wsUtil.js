@@ -48,7 +48,7 @@ const getGroupMembersWs = async (groupId, userId) => {
 
 const onMessage = async (data) => {
   if (!data) throw {
-    error: true,
+    status: 400,
     message: "data can't be empty",
   };
 
@@ -127,7 +127,7 @@ const getMessageWs = async (messageId, groupId) => {
 
 const onMessageEdit = async (data) => {
   if (!data) throw {
-    error: true,
+    status: 400,
     message: "data can't be empty",
   };
 
@@ -166,7 +166,7 @@ const onMessageEdit = async (data) => {
 
 const onMessageDelete = async (data) => {
   if (!data) throw {
-    error: true,
+    status: 400,
     message: "data can't be empty",
   };
 

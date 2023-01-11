@@ -122,10 +122,10 @@ const handleSocketError = (socket, err) => {
     return emitSocket(socket, SOCKET_EVENTS.ERROR, err);
   }
 
-  emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
-    error: true,
-    message: "Internal Server Error",
-  }));
+  // emitSocket(socket, SOCKET_EVENTS.ERROR, jString({
+  //   error: true,
+  //   message: "Internal Server Error",
+  // }));
 }
 
 const userOnline = (user) => {
@@ -400,8 +400,8 @@ const getUserSockets = () => userSockets;
 
 const distributeMessage = (groupMembers, data, event) => {
   if (!groupMembers) throw new TypeError("groupMembers can't be falsy");
-  if (!data) throw new TypeError("data can't be falsy");
-  const fromUserId = validateUserId(data.UserId);
+  // if (!data) throw new TypeError("data can't be falsy");
+  // const fromUserId = validateUserId(data.UserId);
   if (!Array.isArray(groupMembers)) throw new TypeError("Expected groupMembers as array, got " + groupMembers);
 
   for (const member of groupMembers) {
@@ -426,7 +426,7 @@ const distributeFriendship = (to, data, event) => {
 }
 
 const sendMessage = (groupMembers, data) => {
-  io.emit(SOCKET_EVENTS.MESSAGE, { test: "ok" });
+  // io.emit(SOCKET_EVENTS.MESSAGE, { sendMessage: "ok" });
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE);
 };
 

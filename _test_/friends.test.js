@@ -213,6 +213,17 @@ describe("test api friends", () => {
                     expect(res.body.Friend).toHaveProperty("email", expect.any(String))
                 })
         })
+
+        test("failed because friend request is already on progress", () => {
+            return request(app)
+                .post('/friends/5')
+                .set("access_token", access_token)
+                .then(res => {
+                    expect(res.status).toBe(400)
+                    expect(res.body.error).toEqual(true)
+                    expect(res.body).toHaveProperty("message", "Already has friendship on progress")
+                })
+        })
     })
 
     describe("PATCH /friendships/:userId", () => {
