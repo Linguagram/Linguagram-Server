@@ -23,163 +23,23 @@ let linkFakeId;
 const { generateHash } = require('../helpers/bcryptjs')
 const { signToken, verifyToken } = require('../helpers/jwt')
 
-beforeAll(async () => {
-
-
-  await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('Users', users.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      el.password = generateHash(el.password)
-      return el
-  }))
-
-
-
-
-
-  await sequelize.queryInterface.bulkInsert('Friendships', friendships.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('Groups', groups.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('Messages', messages.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('GroupMembers', groupMembers.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('Languages', languages.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('Schedules', schedules.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('UserLanguages', userLanguages.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('UserSchedules', userSchedules.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('Interests', interests.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-  await sequelize.queryInterface.bulkInsert('UserInterests', userInterests.map(el => {
-      el.createdAt = new Date();
-      el.updatedAt = new Date();
-      return el
-  }))
-
-
-
-
-
-
-})
-
-
-afterAll(async () => {
-  // await sequelize.queryInterface.bulkDelete('Media', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Users', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Friendships', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Groups', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Messages', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('GroupMembers', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Languages', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Schedules', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('UserLanguages', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('UserSchedules', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('Interests', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-  // await sequelize.queryInterface.bulkDelete('UserInterests', {}, {
-  //     truncate: true, restartIdentity: true, cascade: true
-  // })
-
-
-})
-
 describe("Suite of unit tests", function () {
   server.attach(3010);
   let socket;
 
   beforeAll(async () => {
-    // await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('Users', users.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   el.password = generateHash(el.password)
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Users', users.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      el.password = generateHash(el.password)
+      return el
+    }))
 
 
     access_token = signToken({ id: 1 })
@@ -191,65 +51,65 @@ describe("Suite of unit tests", function () {
     access_token3 = signToken({ id: 3 })
     const payload = verifyToken(linkUnverified)
 
-    // await sequelize.queryInterface.bulkInsert('Friendships', friendships.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Friendships', friendships.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('Groups', groups.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Groups', groups.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('Messages', messages.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Messages', messages.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('GroupMembers', groupMembers.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('GroupMembers', groupMembers.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('Languages', languages.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Languages', languages.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('Schedules', schedules.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Schedules', schedules.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('UserLanguages', userLanguages.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('UserLanguages', userLanguages.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('UserSchedules', userSchedules.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('UserSchedules', userSchedules.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('Interests', interests.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('Interests', interests.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
 
-    // await sequelize.queryInterface.bulkInsert('UserInterests', userInterests.map(el => {
-    //   el.createdAt = new Date();
-    //   el.updatedAt = new Date();
-    //   return el
-    // }))
+    await sequelize.queryInterface.bulkInsert('UserInterests', userInterests.map(el => {
+      el.createdAt = new Date();
+      el.updatedAt = new Date();
+      return el
+    }))
   })
 
   beforeEach(function (done) {
@@ -291,53 +151,53 @@ describe("Suite of unit tests", function () {
   });
 
   afterAll(async function (done) {
-    // await sequelize.queryInterface.bulkDelete('Media', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Media', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Users', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Users', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Friendships', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Friendships', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Groups', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Groups', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Messages', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Messages', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('GroupMembers', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('GroupMembers', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Languages', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Languages', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Schedules', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Schedules', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('UserLanguages', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('UserLanguages', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('UserSchedules', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('UserSchedules', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('Interests', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('Interests', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
-    // await sequelize.queryInterface.bulkDelete('UserInterests', {}, {
-    //   truncate: true, restartIdentity: true, cascade: true
-    // })
+    await sequelize.queryInterface.bulkDelete('UserInterests', {}, {
+      truncate: true, restartIdentity: true, cascade: true
+    })
 
     socket.disconnect();
     server.close();
@@ -353,7 +213,7 @@ describe("Suite of unit tests", function () {
       socket.on(SOCKET_EVENTS.MESSAGE, (payload) => {
         // Check that the message matches
         console.log(payload, '<<< PAYLOAD');
-        expect(payload).toHaveProperty("deletedlwgeflkwuyiegf", false)
+        expect(payload).toHaveProperty("deleted", false)
         expect(payload).toHaveProperty("content", "Hello World")
         expect(payload).toHaveProperty("GroupId", 4)
         expect(payload).toHaveProperty("User", expect.any(Object))
@@ -367,7 +227,7 @@ describe("Suite of unit tests", function () {
       socket.emit(SOCKET_EVENTS.MESSAGE, {
         content: "Hello World",
         UserId: 1,
-        GroupId: 1,
+        GroupId: 4,
       });
 
       // server.on('connection', (mySocket) => {
