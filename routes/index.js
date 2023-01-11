@@ -268,7 +268,7 @@ router.get("/explore/users", async (req, res, next) => {
     const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
 
     for (const friend of friends) {
-      users = users.filter(user => (user.dataValues.id !== friend.UserId && user.dataValues.id != friend.FriendId))
+      users = users.filter(user => (user.dataValues.id !== friend.UserId && user.dataValues.id !== friend.FriendId))
     }
 
     // for(const x in users){
@@ -281,15 +281,16 @@ router.get("/explore/users", async (req, res, next) => {
     //   }
     // }
 
+    users = await User.findAll({
+      ...userFetchAttributes(),
+      where: {
+        [Op.or]: users.map(u => ({id: u.id})),
+      },
+    });
 
     for (const user of users) {
-
       user.dataValues.isOnline = isOnline(user.id);
     }
-
-
-
-
 
     res.status(200).json(users);
   } catch (err) {
