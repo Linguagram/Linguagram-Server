@@ -387,11 +387,6 @@ describe("Suite of unit tests", function () {
      
     });
 
-
-   
-
-    
-
     test("no groupid", (done) => {
       socket.on(SOCKET_EVENTS.ERROR, (payload) => {
         // console.log(payload, "<<<<< ERROR");
@@ -486,6 +481,23 @@ describe("Suite of unit tests", function () {
       });
     })
 
+    test("users accepts call", (done) => {
+
+      socket.emit(SOCKET_EVENTS.ACCEPT_VIDEO, {
+        incomingCaller: 2,
+        from: 1,
+      });
+      
+      socket.on(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, (payload) => {
+        try {
+          expect(payload).toHaveProperty("from", expect.any(Number));
+          done();
+        } catch (err) {
+          done(err);
+        }
+      });
+    })
+
     test("user leaves call", (done) => {
       socket.emit(SOCKET_EVENTS.LEAVE_CALL, {
         userToInform: 2,
@@ -503,20 +515,26 @@ describe("Suite of unit tests", function () {
     })
 
     test("user makes a video call connection", (done) => {
-      socket.emit(SOCKET_EVENTS.CALL, {
-        userToCall: 2,
-        signalData: 'P24asdAKUs141yssAsd',
-        from: 1,
-      });
-
+      
       socket.on(SOCKET_EVENTS.CALL_CONNECT, (payload) => {
         try {
-          expect(payload).toHaveProperty("signal", expect.any(String));
+          expect(payload).toHaveIn
+          expect(payload.signal).toHaveProperty("type", expect.any(String));
+          expect(payload.signal).toHaveProperty("sdp", expect.any(String));
           expect(payload).toHaveProperty("from", expect.any(Number));
           done();
         } catch (err) {
           done(err);
         }
+      });
+
+      socket.emit(SOCKET_EVENTS.CALL, {
+        userToCall: 2,
+        signalData: {
+          type: 'offer',
+          sdp: 'asdbkasuydas'
+        },
+        from: 1,
       });
     })
 
@@ -704,12 +722,12 @@ describe("Suite of unit tests", function () {
     }
 
     test.skip("user accepts video call connection", (done) => {
-      socket.emit(SOCKET_EVENTS.ACCEPT_VIDEO, {
+      socket.emit(SOCKET_EVENTS.ACCEPT_CALL, {
         signal,
         incomingCaller: 1,
       });
 
-      socket.on(SOCKET_EVENTS.CONFIRM_ACCEPT_VIDEO, (payload) => {
+      socket.on(SOCKET_EVENTS.CALL_ACCEPT, (payload) => {
         console.log(payload, '<<<<<PAYLOAD');
         try {
           expect(payload).toHaveProperty("from", expect.any(Number));
