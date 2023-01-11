@@ -2699,7 +2699,7 @@ _Response (200 - OK)_
 ```json
 {
     "id": 1,
-    "name": "private",
+    "name": null,
     "type": "dm",
     "createdAt": "2023-01-08T07:05:18.467Z",
     "updatedAt": "2023-01-08T07:05:18.467Z",

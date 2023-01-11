@@ -186,6 +186,12 @@ const getDmGroup = async (userId, friendId) => {
             },
           ],
         },
+        include: [
+          {
+            ...userFetchAttributes(),
+            model: User,
+          },
+        ],
       },
     ],
     where: {
