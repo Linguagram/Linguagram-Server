@@ -1,7 +1,9 @@
 "use strict";
 
-if (process.env.NODE_ENV !== 'production') {
-require('dotenv').config();
+const { NODE_ENV } = process.env;
+
+if (NODE_ENV !== 'production') {
+  require('dotenv').config();
 }
 
 const http = require('http');
@@ -37,6 +39,6 @@ app.use(routes)
 app.use(errorHandler)
 
 const server = http.createServer(app);
-const io = init(server);
+const io = init(server, NODE_ENV === "test");
 
 module.exports = { server, io };

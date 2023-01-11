@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'GroupId'
       })
       Message.belongsTo(models.User, {
-        foreignKey: 'GroupId'
+        foreignKey: 'UserId'
       })
       Message.belongsTo(models.Media, {
         foreignKey: 'MediaId'

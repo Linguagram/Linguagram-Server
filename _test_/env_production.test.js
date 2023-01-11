@@ -58,15 +58,15 @@ afterAll(async () => {
     })
 })
 
-describe.skip('environmental variables', () => {
+describe('environmental variables', () => {
     const OLD_ENV = process.env;
 
     beforeEach(() => {
         jest.resetModules() // Most important - it clears the cache
         process.env = { ...OLD_ENV }; // Make a copy
-        process.env.CLIENT_URI = "https://linguagram-h8.web.app/"
+        process.env.CLIENT_URI = "https://linguagram-h8.web.app"
         process.env.DATABASE_URL = "postgresql://postgres:rXXDZWNPni7SUHyc@db.chvmffqfnbmppembyeul.supabase.co:5432/postgres"
-        process.env.JWT_SECRET_KEY = 'test'
+        // process.env.JWT_SECRET_KEY = 'test'
         process.env.NODE_ENV = 'production'
     });
 

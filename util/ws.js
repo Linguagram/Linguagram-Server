@@ -78,11 +78,11 @@ const validateUserId = (userId) => {
   return wsValidator("number", userId, "Expected userId to be number, got " + userId);
 }
 
-const createServer = (httpServer) => {
+const createServer = (httpServer, test) => {
   console.log("[ws] Client URI:", CLIENT_URI);
   return new Server(httpServer, {
     cors: {
-      origin: CLIENT_URI || "http://localhost:3001",
+      origin: test ? "*" : (CLIENT_URI || "http://localhost:3001"),
       methods: ["GET", "POST"]
     },
   });
@@ -167,7 +167,10 @@ const loadListeners = () => {
           console.log(userSockets.keys(), 'usersockets')
           console.log(userSockets.get(mapId).id, "socket id diri sendiri")
           io.to(userSockets.get(mapId).id).emit("yourID", userSockets.get(mapId).id);
-          getUserWs(mapId).then(user => userOnline(user));
+          getUserWs(mapId).then(user => {
+            userOnline(user);
+            io.to(socket.id).emit(SOCKET_EVENTS.IDENTIFY, { ok: 1 });
+          });
         } catch (err) {
           handleSocketError(socket, err);
         }
@@ -373,9 +376,9 @@ const isOnline = (userId) => {
   return !!userSockets.get(userId);
 }
 
-const init = (httpServer) => {
+const init = (httpServer, testingMode) => {
   if (io) throw new Error("Socket already initialized");
-  io = createServer(httpServer);
+  io = createServer(httpServer, testingMode);
   console.log("[ws] Init, instance created");
   loadListeners();
   return io;
