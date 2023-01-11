@@ -1,21 +1,21 @@
 [
     {
-        "username": "Sissie Forrest",
+        "username": "Luthfi Utama",
         "password": "WDbnhZZ63W1",
-        "status": "Busy",
-        "email": "sforrest0@chron.com",
-        "phoneNumber": "+1 339 769 7021",
-        "country": "Switzerland",
+        "status": "Available",
+        "email": "luthfiutama0@chron.com",
+        "phoneNumber": "+62 339 769 7021",
+        "country": "Indonesia",
         "verified": true,
         "AvatarId": 1
     },
     {
-        "username": "Krispin Admin",
-        "email": "admin@admin.com",
+        "username": "Krispin Laura",
+        "email": "krispinlaura@mail.com",
         "password": "1234567890",
         "status": "Idle",
         "phoneNumber": "+86 589 929 4346",
-        "country": "Cuba",
+        "country": "United Kingdom",
         "verified": true,
         "AvatarId": 2
     },
@@ -80,7 +80,7 @@
         "AvatarId": 8
     },
     {
-        "username": "Adey Carbonell",
+        "username": "Elisa Rahayu",
         "password": "HZu8Vc",
         "status": "Available",
         "email": "acarbonell8@scribd.com",
