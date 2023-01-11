@@ -262,7 +262,7 @@ router.get("/explore/users", async (req, res, next) => {
     };
 
     // console.log(opts);
-    // console.log(inspect(opts, false, 10, true));
+    console.log(inspect(opts, false, 10, true));
     let users = await User.findAll(opts);
 
     const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));

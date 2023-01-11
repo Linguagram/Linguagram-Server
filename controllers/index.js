@@ -145,9 +145,10 @@ class Controller {
       if (!password ) {
         throw {
           status: 400,
-          message: "Password is required",
+          message: "Password is required for security",
         };
-      } else if ( newPassword !== confirmNewPassword) {
+      }
+      else if ( newPassword !== confirmNewPassword) {
         throw {
           status: 400,
           message: "New password do not match",

@@ -199,17 +199,16 @@ describe("test API groups", () => {
         test.only("success sending message with content and a file to one group and response 200", () => {       
             socket.on(SOCKET_EVENTS.MESSAGE, (body) => {
                 console.log(body, "<<<< BODY");
-                // expect(body).toHaveProperty("deleted", expect.any(Boolean))
-                // expect(body).toHaveProperty("Medium", expect.any(Object))
-                // expect(body).toHaveProperty("content", expect.any(String))
-                // expect(body).toHaveProperty("GroupId", expect.any(Number))
-                // expect(body).toHaveProperty("User", expect.any(Object))
-                // expect(body.User).toHaveProperty("id", expect.any(Number))
-                // expect(body.User).toHaveProperty("UserLanguages", expect.any(Array))
-                // expect(body.User).toHaveProperty("Avatar", expect.any(Object))
-                // expect(body.User.Avatar).toHaveProperty("url", expect.any(String))
-                // expect(body.Medium).toHaveProperty("url", expect.any(String))
-
+                expect(body).toHaveProperty("deleted", expect.any(Boolean))
+                expect(body).toHaveProperty("Medium", expect.any(Object))
+                expect(body).toHaveProperty("content", expect.any(String))
+                expect(body).toHaveProperty("GroupId", expect.any(Number))
+                expect(body).toHaveProperty("User", expect.any(Object))
+                expect(body.User).toHaveProperty("id", expect.any(Number))
+                expect(body.User).toHaveProperty("UserLanguages", expect.any(Array))
+                expect(body.User).toHaveProperty("Avatar", expect.any(Object))
+                expect(body.User.Avatar).toHaveProperty("url", expect.any(String))
+                expect(body.Medium).toHaveProperty("url", expect.any(String))
             });
 
             return request(app)
