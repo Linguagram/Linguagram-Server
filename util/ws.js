@@ -426,6 +426,7 @@ const distributeFriendship = (to, data, event) => {
 }
 
 const sendMessage = (groupMembers, data) => {
+  io.emit(SOCKET_EVENTS.MESSAGE, { test: "ok" });
   return distributeMessage(groupMembers, data, SOCKET_EVENTS.MESSAGE);
 };
 

@@ -349,9 +349,5 @@ describe("Suite of unit tests", function () {
         }
       });
     })
-
-
   })
-
-
 });
