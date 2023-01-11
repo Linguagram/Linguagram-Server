@@ -576,7 +576,7 @@ describe("test api user", () => {
                     expect(res.status).toBe(400)
                     expect(res.body.error).toEqual(true)
                     expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Password is required')
+                    expect(res.body.message).toEqual('Password is required for security')
                 })
         })
 

@@ -196,7 +196,7 @@ afterAll(async () => {
 
 describe("test API groups", () => {
     describe("POST /groups/:groupId/messages", () => {
-        test.only("success sending message with content and a file to one group and response 200", () => {       
+        test("success sending message with content and a file to one group and response 200", () => {       
             socket.on(SOCKET_EVENTS.MESSAGE, (body) => {
                 console.log(body, "<<<< BODY");
                 expect(body).toHaveProperty("deleted", expect.any(Boolean))
