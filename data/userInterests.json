@@ -1,0 +1,153 @@
+[{
+    "UserId" : 1,
+    "InterestId" : 3
+},
+{
+    "UserId" : 1,
+    "InterestId" : 2
+},
+{
+    "UserId" : 1,
+    "InterestId" : 10
+},
+{
+    "UserId" : 2,
+    "InterestId" : 4
+},
+{
+    "UserId" : 2,
+    "InterestId" : 3
+},
+{
+    "UserId" : 2,
+    "InterestId" : 5
+},
+{
+    "UserId" : 3,
+    "InterestId" : 6
+},
+{
+    "UserId" : 3,
+    "InterestId" : 7
+},
+{
+    "UserId" : 3,
+    "InterestId" : 3
+},
+{
+    "UserId" : 4,
+    "InterestId" : 7
+},
+{
+    "UserId" : 4,
+    "InterestId" : 8
+},
+{
+    "UserId" : 4,
+    "InterestId" : 9
+},
+{
+    "UserId" : 5,
+    "InterestId" : 10
+},
+{
+    "UserId" : 5,
+    "InterestId" : 17
+},
+{
+    "UserId" : 5,
+    "InterestId" : 9
+},
+{
+    "UserId" : 6,
+    "InterestId" : 1
+},
+{
+    "UserId" : 6,
+    "InterestId" : 3
+},
+{
+    "UserId" : 7,
+    "InterestId" : 14
+},
+{
+    "UserId" : 7,
+    "InterestId" : 11
+},
+{
+    "UserId" : 7,
+    "InterestId" : 4
+},
+{
+    "UserId" : 8,
+    "InterestId" : 5
+},
+{
+    "UserId" : 9,
+    "InterestId" : 1
+},
+{
+    "UserId" : 10,
+    "InterestId" : 10
+},
+{
+    "UserId" : 11,
+    "InterestId" : 15
+},
+{
+    "UserId" : 11,
+    "InterestId" : 13
+},
+{
+    "UserId" : 12,
+    "InterestId" : 17
+},
+{
+    "UserId" : 12,
+    "InterestId" : 12
+},
+{
+    "UserId" : 13,
+    "InterestId" : 1
+},
+{
+    "UserId" : 14,
+    "InterestId" : 12
+},
+{
+    "UserId" : 15,
+    "InterestId" : 11
+},
+{
+    "UserId" : 15,
+    "InterestId" : 15
+},
+{
+    "UserId" : 16,
+    "InterestId" : 8
+},
+{
+    "UserId" : 16,
+    "InterestId" : 3
+},
+{
+    "UserId" : 17,
+    "InterestId" : 1
+},
+{
+    "UserId" : 18,
+    "InterestId" : 2
+},
+{
+    "UserId" : 19,
+    "InterestId" : 9
+},
+{
+    "UserId" : 20,
+    "InterestId" : 3
+},
+{
+    "UserId" : 20,
+    "InterestId" : 13
+}
+]

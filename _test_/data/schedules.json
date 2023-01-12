@@ -1,0 +1,40 @@
+[{
+    "name" : "work meeting ",
+    "description" : "talking about final project",
+    "scheduleDate" : "2023-12-28 14:22:37.481 +0700"
+},
+{
+    "name" : "just wants to talk ",
+    "description" : "so many things to talk about",
+    "scheduleDate" : "2023-01-12 14:22:37.481 +0700"
+},
+{
+    "name" : "Interview",
+    "description" : "phase three of recruitment screening",
+    "scheduleDate" : "2023-02-07 09:00:37.481 +0700"
+},
+{
+    "name" : "Another Interview",
+    "description" : "Final phase of recruitment screening",
+    "scheduleDate" : "2023-02-12 09:00:37.481 +0700"
+},
+{
+    "name" : "Something unimportant",
+    "description" : "just light talks",
+    "scheduleDate" : "2023-01-15 01:22:37.481 +0700"
+},
+{
+    "name" : "Anime talks",
+    "description" : "Talking about popular anime and specific animes",
+    "scheduleDate" : "2023-05-01 14:22:37.481 +0700"
+},
+{
+    "name" : "Ethical Hacking ",
+    "description" : "Discussion on how to find security risk in a system",
+    "scheduleDate" : "2023-01-22 15:22:37.481 +0700"
+},
+{
+    "name" : "How to move mountains ",
+    "description" : "Discussion on fantasy novel creation",
+    "scheduleDate" : "2023-03-27 10:59:37.481 +0700"
+}]

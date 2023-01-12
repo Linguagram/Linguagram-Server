@@ -1,0 +1,58 @@
+[{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "headquarter",
+    "type" : "group",
+    "description" : "Where we all get together"
+},
+{
+    "name" : "Programming",
+    "type" : "group",
+    "description" : "Full stack Javascript"
+},
+{
+    "name" : "Anime",
+    "type" : "group",
+    "description" : "Where we all get together"
+},
+{
+    "name" : "Politic",
+    "type" : "group",
+    "description" : "Where we all fight"
+},
+{
+    "name" : "Military",
+    "type" : "group",
+    "description" : "Main family tree"
+},
+{
+    "name" : "high school",
+    "type" : "group",
+    "description" : "High school XXI"
+},
+{
+    "name" : "work",
+    "type" : "group",
+    "description" : "Team 4 star"
+},
+{
+    "name" : "Switzerland",
+    "type" : "group",
+    "description" : "Home sweet home"
+},
+{
+    "name" : "PC",
+    "type" : "group",
+    "description" : "Where we all get together"
+}
+]

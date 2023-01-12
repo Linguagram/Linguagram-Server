@@ -1,0 +1,193 @@
+[
+    {
+        "username": "Luthfi Utama",
+        "password": "WDbnhZZ63W1",
+        "status": "Available",
+        "email": "luthfiutama0@chron.com",
+        "phoneNumber": "+62 339 769 7021",
+        "country": "Indonesia",
+        "verified": true,
+        "AvatarId": 1
+    },
+    {
+        "username": "Krispin Laura",
+        "email": "krispinlaura@mail.com",
+        "password": "1234567890",
+        "status": "Idle",
+        "phoneNumber": "+86 589 929 4346",
+        "country": "United Kingdom",
+        "verified": true,
+        "AvatarId": 2
+    },
+    {
+        "username": "Nev Matusovsky",
+        "password": "gHWHJB",
+        "status": "Busy",
+        "email": "nmatusovsky2@mlb.com",
+        "phoneNumber": "+966 878 394 6703",
+        "country": "Sweden",
+        "verified": true,
+        "AvatarId": 3
+    },
+    {
+        "username": "Ashleigh Brabban",
+        "password": "li8P4FRjZ",
+        "status": "Idle",
+        "email": "abrabban3@angelfire.com",
+        "phoneNumber": "+33 648 933 7445",
+        "country": "Sweden",
+        "verified": true,
+        "AvatarId": 4
+    },
+    {
+        "username": "Beryle Glaisner",
+        "password": "cZ8SluLNyw",
+        "status": "Do not disturb",
+        "email": "bglaisner4@arizona.edu",
+        "phoneNumber": "+370 246 259 3472",
+        "country": "Czech Republic",
+        "verified": true,
+        "AvatarId": 5
+    },
+    {
+        "username": "Aguistin Pipping",
+        "password": "23KKvs",
+        "status": "Busy",
+        "email": "apipping5@discuz.net",
+        "phoneNumber": "+7 264 139 2313",
+        "country": "Thailand",
+        "verified": true,
+        "AvatarId": 6
+    },
+    {
+        "username": "Isa Yesson",
+        "password": "sCRkI0D",
+        "status": "Available",
+        "email": "iyesson6@51.la",
+        "phoneNumber": "+86 760 945 2008",
+        "country": "Slovenia",
+        "verified": true,
+        "AvatarId": 7
+    },
+    {
+        "username": "Oliy Portwain",
+        "password": "27QQStfasdf",
+        "status": "Available",
+        "email": "oportwain7@prlog.org",
+        "phoneNumber": "+7 667 868 7462",
+        "country": "Guatemala",
+        "verified": false,
+        "AvatarId": 8
+    },
+    {
+        "username": "Elisa Rahayu",
+        "password": "HZu8Vc",
+        "status": "Available",
+        "email": "acarbonell8@scribd.com",
+        "phoneNumber": "+351 527 147 2165",
+        "country": "China",
+        "verified": true,
+        "AvatarId": 9
+    },
+    {
+        "username": "Dori Rogers",
+        "email": "drogers9@si.edu",
+        "password": "jsKLk9",
+        "status": "Busy",
+        "phoneNumber": "+49 366 109 1205",
+        "country": "Indonesia",
+        "verified": true,
+        "AvatarId": 10
+    },
+    {
+        "username": "Charita Branche",
+        "password": "sDo52fT6",
+        "status": "Idle",
+        "email": "cbranche0@delicious.com",
+        "phoneNumber": "154-763-8573",
+        "country": "Sweden",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Almeta Whitland",
+        "password": "UbxDtQ2kvC2",
+        "status": "Available",
+        "email": "awhitland1@umich.edu",
+        "phoneNumber": "297-285-4262",
+        "country": "Thailand",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Knox Boate",
+        "password": "IKso8bSLz",
+        "status": "Available",
+        "email": "kboate2@smh.com.au",
+        "phoneNumber": "357-860-1742",
+        "country": "Russia",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Garvin Baumler",
+        "password": "3C03PPmuN5",
+        "status": "Busy",
+        "email": "gbaumler3@php.net",
+        "phoneNumber": "261-784-0038",
+        "country": "Philippines",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Melinda Dubarry",
+        "password": "bX6q518k",
+        "status": "Do not disturb",
+        "email": "mdubarry4@rediff.com",
+        "phoneNumber": "966-536-2755",
+        "country": "Indonesia",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Shanta Jozefowicz",
+        "password": "RyK1qx",
+        "status": "Do not disturb",
+        "email": "sjozefowicz5@discovery.com",
+        "phoneNumber": "544-781-9017",
+        "country": "Indonesia",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Jeremiah Hammill",
+        "password": "RGarp8C",
+        "status": "Busy",
+        "email": "jhammill6@bbc.co.uk",
+        "phoneNumber": "670-462-7329",
+        "country": "Cuba",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Janina Arpe",
+        "password": "cAnGzt",
+        "status": "Busy",
+        "email": "jarpe7@posterous.com",
+        "phoneNumber": "626-631-7863",
+        "country": "Netherlands",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Nathanael Blitz",
+        "password": "nYFnveaYkez",
+        "status": "Do not disturb",
+        "email": "nblitz8@blogs.com",
+        "phoneNumber": "297-470-9247",
+        "country": "Moldova",
+        "verified": true,
+        "AvatarId": null
+      }, {
+        "username": "Mellisa Clemes",
+        "password": "PFBAjKY0",
+        "status": "Do not disturb",
+        "email": "mclemes9@icq.com",
+        "phoneNumber": "942-253-5336",
+        "country": "Canada",
+        "verified": true,
+        "AvatarId": null
+      }
+]

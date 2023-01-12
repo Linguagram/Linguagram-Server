@@ -1,0 +1,38 @@
+[{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "private",
+    "type" : "dm"
+},
+{
+    "name" : "Learning English",
+    "type" : "group",
+    "description" : "Learn English together"
+},
+{
+    "name" : "Learning Indonesian",
+    "type" : "group",
+    "description" : "Yuk belajar Bahasa Indonesia"
+},
+{
+    "name" : "Technology Talks",
+    "type" : "group",
+    "description" : "Chats about tech while learn English"
+},
+{
+    "name" : "Who likes movies?",
+    "type" : "group",
+    "description" : "Movie is our passion"
+},
+{
+    "name" : "Budaya Indonesia",
+    "type" : "group",
+    "description" : "Belajar bahasa sambil belajar budaya di Indonesia"
+}
+]

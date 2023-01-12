@@ -1,0 +1,35 @@
+[{
+    "UserId": 1,
+    "FriendId" : 2,
+    "isAccepted" : true
+},
+{
+    "UserId": 1,
+    "FriendId" : 4,
+    "isAccepted" : false
+},
+{
+    "UserId": 2,
+    "FriendId" : 12,
+    "isAccepted" : true
+},
+{
+    "UserId": 6,
+    "FriendId" : 1,
+    "isAccepted" : true
+},
+{
+    "UserId": 12,
+    "FriendId" : 1,
+    "isAccepted" : true
+},
+{
+    "UserId": 14,
+    "FriendId" : 1,
+    "isAccepted" : true
+},
+{
+    "UserId": 19,
+    "FriendId" : 1,
+    "isAccepted" : false
+}]
