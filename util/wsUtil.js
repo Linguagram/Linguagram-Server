@@ -14,7 +14,7 @@ const getUserWs = async (userId) => {
   const user = await User.findByPk(userId, userFetchAttributes(Media));
 
   if (!user) throw {
-    error: true,
+    status: 404,
     message: "Unknown user",
   };
 

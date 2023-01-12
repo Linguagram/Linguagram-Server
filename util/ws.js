@@ -309,6 +309,7 @@ const loadListeners = () => {
         }
       });
 
+      // probably replaced with ACCEPT_VIDEO
       socket.on(SOCKET_EVENTS.ACCEPT_CALL, (data) => {
         try {
           console.log("[ws ACCEPT_CALL]", data);
