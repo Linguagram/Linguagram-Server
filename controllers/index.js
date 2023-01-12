@@ -16,7 +16,7 @@ const { userFetchAttributes } = require('../util/fetchAttributes');
 const { sendUserUpdate } = require('../util/ws');
 const { getUser } = require('../util/restUtil');
 
-const { CLIENT_URL } = process.env;
+const { CLIENT_URI } = process.env;
 
 class Controller {
 
@@ -109,7 +109,7 @@ class Controller {
       // console.log(newUser);
 
       const verificationId = signToken({id:newUser.id})
-      const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
+      const link = `${CLIENT_URI}/users/verify?verification=${verificationId}`
       sendMail(newUser.email, newUser.username, link)
 
       const payload = {
@@ -277,7 +277,7 @@ class Controller {
 
       if (!loggedInUser.verified) {
         const verificationId = signToken({id:loggedInUser.id})
-        const link = `${CLIENT_URL}/users/verify?verification=${verificationId}`
+        const link = `${CLIENT_URI}/users/verify?verification=${verificationId}`
         sendMail(loggedInUser.email, loggedInUser.username, link)
         throw {
           status: 401,
