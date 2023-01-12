@@ -110,6 +110,7 @@ class Controller {
 
       const verificationId = signToken({id:newUser.id})
       const link = `${CLIENT_URI}/users/verify?verification=${verificationId}`
+      console.log(link, CLIENT_URI, "<<<<<<<<<< LINK VERIFICATION");
       sendMail(newUser.email, newUser.username, link)
 
       const payload = {
@@ -278,6 +279,7 @@ class Controller {
       if (!loggedInUser.verified) {
         const verificationId = signToken({id:loggedInUser.id})
         const link = `${CLIENT_URI}/users/verify?verification=${verificationId}`
+        console.log(link, CLIENT_URI, "<<<<<<<<<< LINK VERIFICATION");
         sendMail(loggedInUser.email, loggedInUser.username, link)
         throw {
           status: 401,
