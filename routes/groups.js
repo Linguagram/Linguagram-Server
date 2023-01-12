@@ -68,12 +68,12 @@ router.patch("/groups/:groupId/messages", async (req, res, next) => {
     // check if user is in this group
     const groupMembers = await getGroupMembers(groupId, req);
 
-    await Message.update({ isRead: true }, {
-      where: {
-        GroupId: groupId,
-        isRead: false,
-      },
-    });
+    const query = `
+        UPDATE "Messages"
+        SET "isRead" = TRUE
+        WHERE "GroupId" = '${groupId}' AND "isRead" = FALSE
+    `;
+    await sequelize.query(query);
 
     res.status(200).json({ isRead: true });
   } catch (err) {
