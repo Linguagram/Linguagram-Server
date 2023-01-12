@@ -320,6 +320,7 @@ const loadListeners = () => {
           };
           io.to(userSocket.id).emit(SOCKET_EVENTS.CALL_ACCEPT, data.signal);
         } catch (err) {
+          console.log("<<<<ERRORR");
           handleSocketError(socket, err);
         }
       });

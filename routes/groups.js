@@ -113,7 +113,7 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     const newMessage = await Message.create(createMessage);
     const message = await getMessage(newMessage.id, newMessage.GroupId);
 
-    message.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
+    message.dataValues.User.dataValues.isOnline = isOnline(message.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
 
     sendMessage(groupMembers, message);
 

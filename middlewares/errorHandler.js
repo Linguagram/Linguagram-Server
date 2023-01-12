@@ -38,7 +38,7 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  console.error("[STATUS] UNHANDLED ERROR: 500");
+  // console.error("[STATUS] UNHANDLED ERROR: 500");
   res.status(500).json({
     error: true,
     message: "Internal Server Error",

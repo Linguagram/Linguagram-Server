@@ -19,6 +19,7 @@ let access_token6;
 
 
 
+
 const { generateHash } = require('../helpers/bcryptjs')
 const { signToken, verifyToken } = require('../helpers/jwt')
 
@@ -65,7 +66,7 @@ describe('environmental variables', () => {
         jest.resetModules() // Most important - it clears the cache
         process.env = { ...OLD_ENV }; // Make a copy
         process.env.CLIENT_URI = "https://linguagram-h8.web.app"
-        process.env.DATABASE_URL = "postgresql://postgres:rXXDZWNPni7SUHyc@db.chvmffqfnbmppembyeul.supabase.co:5432/postgres"
+        process.env.DATABASE_URL = OLD_ENV.DATABASE_URL
         // process.env.JWT_SECRET_KEY = 'test'
         process.env.NODE_ENV = 'production'
     });

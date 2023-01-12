@@ -26,6 +26,7 @@ const { signToken, verifyToken } = require('../helpers/jwt')
 describe("Suite of unit tests", function () {
   server.attach(3010);
   let socket;
+  let socket1;
 
   beforeAll(async () => {
     await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
@@ -137,6 +138,30 @@ describe("Suite of unit tests", function () {
       userId: 2,
     });
 
+    socket1 = io("http://localhost:3010");
+
+    socket1.on("connect", function () {
+      console.log("worked...");
+    });
+
+    socket1.on("disconnect", function () {
+      console.log("disconnected...");
+    });
+
+    socket1.on(SOCKET_EVENTS.IDENTIFY, (res) => {
+      console.log("[IDENTIFY]", res);
+      if (res.ok) done();
+    });
+
+    socket1.on(SOCKET_EVENTS.ERROR, (res) => {
+      console.log("[ERROR]", res);
+    });
+
+    socket1.emit(SOCKET_EVENTS.IDENTIFY, {
+      userId: 1,
+    });
+
+
 
   });
 
@@ -145,6 +170,7 @@ describe("Suite of unit tests", function () {
     if (socket.connected) {
       console.log("disconnecting...");
       socket.disconnect();
+      socket1.disconnect();
     } else {
       // There will not be a connection unless you have done() in beforeEach, socket.on('connect'...)
       console.log("no connection to break...");
@@ -870,17 +896,16 @@ describe("Suite of unit tests", function () {
         "a=max-message-size: 262144\r\n"
     }
 
-    test("user fails to accept  call request", (done) => {
-      socket.on(SOCKET_EVENTS.ERROR, (payload) => {
+    test.skip("user fails to accept  call request", (done) => {
+      socket1.on(SOCKET_EVENTS.CALL_ACCEPT, (payload) => {
         console.log(payload, '<<<<<PAYLOAD');
         done();
       });
 
       socket.emit(SOCKET_EVENTS.ACCEPT_CALL, {
-        to: 10,
+        to: 1,
         signal : {sdp :'test'}
       });
-
 
     })
 

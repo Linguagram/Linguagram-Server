@@ -152,7 +152,7 @@ beforeAll(async () => {
 
 })
 
-afterAll(async (done) => {
+afterAll(async () => {
     await sequelize.queryInterface.bulkDelete('Media', {}, {
         truncate: true, restartIdentity: true, cascade: true
     })
@@ -203,7 +203,6 @@ afterAll(async (done) => {
 
     // socket?.disconnect();
     // return server.close();
-    done();    
 })
 
 
@@ -218,8 +217,7 @@ describe("test API groups", () => {
                 .field('content', 'test content')
                 .attach('attachment', '_test_/testFile.png')
                 .then(res => {
-                    console.log("CONSOLE DIATAS SOCKET");
-
+                    console.log(res.body)
                     expect(res.status).toBe(201)
                     expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
                     expect(res.body).toHaveProperty("Medium", expect.any(Object))
