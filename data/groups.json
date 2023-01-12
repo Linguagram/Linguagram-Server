@@ -1,37 +1,38 @@
 [{
-    "name" : "private"
+    "name" : "private",
+    "type" : "dm"
 },
 {
-    "name" : "private"
+    "name" : "private",
+    "type" : "dm"
 },
 {
-    "name" : "private"
+    "name" : "private",
+    "type" : "dm"
 },
 {
-    "name" : "private"
+    "name" : "Learning English",
+    "type" : "group",
+    "description" : "Learn English together"
 },
 {
-    "name" : "private"
+    "name" : "Learning Indonesian",
+    "type" : "group",
+    "description" : "Yuk belajar Bahasa Indonesia"
 },
 {
-    "name" : "high school"
+    "name" : "Technology Talks",
+    "type" : "group",
+    "description" : "Chats about tech while learn English"
 },
 {
-    "name" : "family"
+    "name" : "Who likes movies?",
+    "type" : "group",
+    "description" : "Movie is our passion"
 },
 {
-    "name" : "family"
-},
-{
-    "name" : "high school"
-},
-{
-    "name" : "work"
-},
-{
-    "name" : "home"
-},
-{
-    "name" : "family"
+    "name" : "Budaya Indonesia",
+    "type" : "group",
+    "description" : "Belajar bahasa sambil belajar budaya di Indonesia"
 }
 ]

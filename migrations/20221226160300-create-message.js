@@ -13,8 +13,8 @@ module.exports = {
         type: Sequelize.TEXT
       },
       deleted: {
-	type: Sequelize.BOOLEAN,
-	defaultValue: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       MediaId: {
         type: Sequelize.INTEGER,

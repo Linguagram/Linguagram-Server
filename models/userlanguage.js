@@ -27,36 +27,29 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {msg: 'User Language type is required'},
-	 notEmpty: {msg: 'User Language type is required'},
-	 type(value) {
-	   // !TODO: Confirm type names are correct
-	   const allowedTypes = ["native", "interest"];
-	   if (!allowedTypes.includes(value)) {
-	     throw new TypeError("Invalid UserLanguage type");
-	   }
-	 },
+        notEmpty: {msg: 'User Language type is required'}
       },
     },
     UserId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-	 notNull: {msg: 'User ID is required'},
-	 notEmpty: {msg: 'User ID is required'}
+        notNull: {msg: 'User ID is required'},
+        notEmpty: {msg: 'User ID is required'}
       }
     },
     LanguageId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-	 notNull: {msg: 'Language ID is required'},
-	 notEmpty: {msg: 'Language ID is required'}
+        notNull: {msg: 'Language ID is required'},
+        notEmpty: {msg: 'Language ID is required'}
       }
     },
   }, {
-    sequelize,
-    modelName: 'UserLanguage',
-  });
+      sequelize,
+      modelName: 'UserLanguage',
+    });
 
   return UserLanguage;
 };

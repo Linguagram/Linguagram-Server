@@ -32,7 +32,7 @@ const handleUploaded = async (reqFile) => {
     format: mimetype,
   }
 
-  return await Media.create(createMedia);
+  return Media.create(createMedia);
 
   // =============== End upload processing
 }

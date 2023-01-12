@@ -1,0 +1,102 @@
+[
+    {
+        "type": "native",
+        "UserId": 1,
+        "LanguageId": 21
+    },
+    {
+        "type": "native",
+        "UserId": 2,
+        "LanguageId": 3
+    },
+    {
+        "type": "interest",
+        "UserId": 1,
+        "LanguageId": 3
+    },
+    {
+        "type": "interest",
+        "UserId": 2,
+        "LanguageId": 1
+    },
+    {
+        "type": "interest",
+        "UserId": 3,
+        "LanguageId": 4
+    },
+    {
+        "type": "interest",
+        "UserId": 3,
+        "LanguageId": 2
+    },
+    {
+        "type": "native",
+        "UserId": 3,
+        "LanguageId": 1
+    },
+    {
+        "type": "native",
+        "UserId": 4,
+        "LanguageId": 42
+    },
+    {
+        "type": "native",
+        "UserId": 4,
+        "LanguageId": 1
+    },
+    {
+        "type": "interest",
+        "UserId": 1,
+        "LanguageId": 42
+    },
+    {
+        "type": "interest",
+        "UserId": 2,
+        "LanguageId": 42
+    },
+    {
+        "type": "interest",
+        "UserId": 2,
+        "LanguageId": 42
+    },
+    {
+        "type": "native",
+        "UserId": 5,
+        "LanguageId": 42
+    },
+    {
+        "type": "interest",
+        "UserId": 5,
+        "LanguageId": 21
+    },
+    {
+        "type": "native",
+        "UserId": 10,
+        "LanguageId": 30
+    },
+    {
+        "type": "interest",
+        "UserId": 10,
+        "LanguageId": 21
+    },
+    {
+        "type": "native",
+        "UserId": 15,
+        "LanguageId": 42
+    },
+    {
+        "type": "interest",
+        "UserId": 15,
+        "LanguageId": 21
+    },
+    {
+        "type": "native",
+        "UserId": 12,
+        "LanguageId": 42
+    },
+    {
+        "type": "native",
+        "UserId": 20,
+        "LanguageId": 42
+    }
+]

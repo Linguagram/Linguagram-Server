@@ -1,48 +1,74 @@
 "use strict";
 
+const { inspect } = require("util");
 const router = require('express').Router()
 const { authentication } = require('../middlewares/authentication')
 const Controller = require("../controllers");
 
-const userRouter = require('../routes/userRouter');
+const userRouter = require('./userRouter');
+const groupsRouter = require("./groups");
+const friendsRouter = require("./friends");
 
 // ======= Controller imports
 
 const { Op } = require("sequelize");
+
 const { upload } = require("../util/multer");
 const {
-  Message,
   Language,
   UserLanguage,
-  Friendship,
+  Interest,
   User,
+  Group,
+  GroupMember,
+  Friendship
 } = require("../models")
+
 const handleUploaded = require('../util/handleUploaded');
-const {
-  validateGroupId,
-  validateMessageId,
-  validateUserId,
-  validateFriendId,
-} = require('../util/validators');
-const { sendMessage, editMessage, deleteMessage } = require('../util/ws');
 
 const {
-  getMessage,
-  getGroupMembers,
-  getGroupMembersFromUserId,
-  fileAction,
-  getMessages,
-  getUser,
+  getUser, fileAction, getGroupMembersFromUserId,
 } = require("../util/restUtil");
+
+const {
+  validateUserId,
+} = require('../util/validators');
+
+const translate = require('translate-google');
+const { userFetchAttributes, friendshipFetchAttributes } = require('../util/fetchAttributes');
+const { sendUserUpdate, isOnline } = require("../util/ws");
 
 // ======= Controller imports end
 
-router.use(userRouter)
+// get all interests
+router.get("/interests", async (req, res, next) => {
+  // try {
+    const interests = await Interest.findAll();
 
-router.use(authentication)
+    res.status(200).json(interests);
+  // } catch (err) {
+  //   next(err);
+  // }
+});
 
-router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
+// get all languages
+router.get("/languages", async (req, res, next) => {
+  // try {
+    const languages = await Language.findAll();
+
+    res.status(200).json(languages);
+  // } catch (err) {
+  //   next(err);
+  // }
+});
+
+router.use(userRouter);
+router.use(authentication);
+
+router.post("/users/avatar", upload.single("avatar"), async (req, res, next) => {
   try {
+    const userId = req.userInfo.id;
+
     if (!req.file) {
       throw {
         status: 400,
@@ -52,190 +78,81 @@ router.post("/avatar", upload.single("avatar"), async (req, res, next) => {
 
     const newAvatar = await handleUploaded(req.file);
 
-    const user = await getUser(req.userInfo.id);
+    const user = await getUser(userId);
 
     user.AvatarId = newAvatar.id;
 
     await user.save();
 
-    user.Avatar = newAvatar;
+    user.dataValues.Avatar = newAvatar;
 
     res.status(201).json(user);
+
+    sendUserUpdate(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// pathc user status
+router.patch("/users/status", async (req, res, next) => {
+  try {
+    const { status } = req.body;
+
+    if (!status?.length) {
+      throw {
+        status: 400,
+        message: "Status is required",
+      };
+    }
+
+    const userId = req.userInfo.id;
+
+    const user = await getUser(userId);
+
+    user.status = status;
+
+    await user.save();
+
+    res.status(200).json(user);
+
+    sendUserUpdate(user);
   } catch (err) {
     next(err);
   }
 });
 
 // delete avatar
-router.delete("/avatar", async (req, res, next) => {
-  try {
-    const user = await getUser(req.userInfo.id);
+router.delete("/users/avatar", async (req, res, next) => {
+  // try {
+    const userId = req.userInfo.id;
+
+    const user = await getUser(userId);
 
     user.AvatarId = null;
 
     await user.save();
 
+    delete user.dataValues.Avatar;
+
     res.status(200).json(user);
-  } catch (err) {
-    next(err);
-  }
+
+    sendUserUpdate(user);
+  // } catch (err) {
+  //   next(err);
+  // }
 });
 
-router.get("/groups/:groupId/messages", async (req, res, next) => {
-  try {
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
+router.put("/users/@me", Controller.editMe);
+router.get("/users/@me", Controller.getUser);
 
-    // check if user is in this group
-    const groupMembers = await getGroupMembers(groupId, req);
-
-    const messages = await getMessages(groupId);
-
-    res.status(200).json(messages);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.post("/groups/:groupId/messages", upload.single("attachment"), async (req, res, next) => {
-  try {
-    const groupId = validateGroupId(req.params.groupId);
-
-    const groupMembers = await getGroupMembers(groupId, req);
-
-    const newAttachment = await fileAction(req);
-
-    const {
-      content,
-    } = req.body;
-
-    if (!content && !newAttachment) {
-      throw {
-        status: 400,
-        message: "One upload or text content is required",
-      };
-    }
-
-    const createMessage = {
-      content,
-      GroupId: groupId,
-      UserId: req.userInfo.id,
-    };
-
-    if (newAttachment?.id) {
-      createMessage.MediaId = newAttachment.id;
-    }
-
-    const newMessage = await Message.create(createMessage);
-    newMessage.User = req.userInfo;
-
-    if (newAttachment?.id) {
-      newMessage.Media = newAttachment;
-    }
-
-    sendMessage(groupMembers, newMessage);
-
-    res.status(201).json(newMessage);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/groups/:groupId/messages/:messageId", async (req, res, next) => {
-  try {
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
-    //
-    // check if user is in this group
-    const groupMembers = await getGroupMembers(groupId, req);
-
-    const messageId = validateMessageId(req.params.messageId);
-
-    const message = await getMessage(messageId, groupId);
-
-    res.status(200).json(message);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.put("/groups/:groupId/messages/:messageId", upload.single("attachment"), async (req, res, next) => {
-  try {
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
-    const messageId = validateMessageId(req.params.messageId);
-
-    const groupMembers = await getGroupMembers(groupId, req);
-
-    const message = await getMessage(messageId, groupId);
-
-    const newAttachment = await fileAction(req);
-
-    const {
-      content,
-    } = req.body;
-
-    if (!content && !newAttachment) {
-      throw {
-        status: 400,
-        message: "One upload or text content is required",
-      };
-    }
-
-    if (newAttachment?.id) {
-      message.MediaId = newAttachment.id;
-    }
-
-    message.content = content;
-
-    await message.save();
-
-    message.User = req.userInfo;
-
-    if (newAttachment?.id) {
-      message.Media = newAttachment;
-    }
-
-    message.edited = true;
-
-    editMessage(groupMembers, message);
-
-    res.status(200).json(message);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.delete("/groups/:groupId/messages/:messageId", async (req, res, next) => {
-  try {
-    // strict check groupId
-    const groupId = validateGroupId(req.params.groupId);
-    const messageId = validateMessageId(req.params.messageId);
-
-    const message = await getMessage(messageId, groupId);
-
-    const groupMembers = await getGroupMembers(groupId, req);
-
-    message.deleted = true;
-    await message.save();
-
-    const response = {
-      id: message.id,
-    };
-
-    deleteMessage(groupMembers, response);
-
-    res.status(200).json(response);
-  } catch (err) {
-    next(err);
-  }
-});
+// /groups path
+router.use(groupsRouter);
 
 // get user
 router.get("/users/:userId", async (req, res, next) => {
   try {
     const user = await getUser(validateUserId(req.params.userId));
-
     if (!user) {
       throw {
         status: 404,
@@ -243,59 +160,14 @@ router.get("/users/:userId", async (req, res, next) => {
       };
     }
 
-    res.status(200).json();
+    res.status(200).json(user);
   } catch (err) {
     next(err);
   }
 });
-
-// get user groups
-router.get("/groups", async (req, res, next) => {
-  try {
-    const groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
-
-    res.status(200).json(groupMembers);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// Group chat routes
-// // join user group
-// router.delete("/@me/groups/:groupId", async (req, res, next) => {
-//   try {
-//     res.status(200).json(await User.findByPk(req.params.userId));
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-// 
-// // leave user group
-// router.delete("/@me/groups/:groupId", async (req, res, next) => {
-//   try {
-//     res.status(200).json(await User.findByPk(req.params.userId));
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-
-// get all languages
-router.get("/languages", async (req, res, next) => {
-  try {
-    const languages = await Language.findAll();
-
-    res.status(200).json(languages);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// edit user
-router.put("/@me", Controller.editMe);
 
 // get user languages
-router.get("/@me/languages", async (req, res, next) => {
+router.get("/languages/@me", async (req, res, next) => {
   try {
     const languages = await UserLanguage.findAll({
       where: {
@@ -310,44 +182,164 @@ router.get("/@me/languages", async (req, res, next) => {
   }
 });
 
-// get user friends
-router.get("/friends", async (req, res, next) => {
+// /friends routes
+router.use(friendsRouter);
+
+// translate user message
+router.post("/translate", async (req, res, next) => {
   try {
-    const friends = await Friendship.findAll({
+    const { text, from, to } = req.body;
+    if (!text?.length) throw {
+      status: 400,
+      message: "Text is required",
+    };
+
+    const nativeLanguages = req.userInfo.UserLanguages.filter(lang => lang.type === "native").map(lang => lang.Language.name);
+    const toLang = to || nativeLanguages[0];
+
+    if (!toLang) throw {
+      status: 400,
+      message: "No target language specified",
+    };
+
+    const opts = {
+      from: from || "auto",
+      to: toLang,
+    };
+
+    const result = await translate(text, opts);
+
+
+    res.status(200).json({ translated: result });
+  } catch (err) {
+    if (err.message.startsWith('The language ')) {
+      next({
+        status: 400,
+        message: err.message
+      })
+      return
+    }
+    next(err);
+  }
+});
+
+// explore users
+router.get("/explore/users", async (req, res, next) => {
+  try {
+    const opts = userFetchAttributes();
+
+    const includeUserLang = opts.include[1];
+    const includeLang = includeUserLang.include[0];
+
+    includeUserLang.where = {
+      type: "native",
+    };
+
+    const orNatives = [];
+
+    for (const lang of req.userInfo.UserLanguages.filter(uLang => uLang.type === "interest")) {
+      orNatives.push({
+        name: lang.Language.name,
+      });
+    }
+
+    includeLang.where = {
+      [Op.or]: orNatives,
+    };
+
+    // const includeInter = opts.include[2].include[0];
+
+    // const orInterests = [];
+
+    // for (const interest of req.userInfo.UserInterests) {
+    //   orInterests.push({
+    //     name: interest.Interest.name,
+    //   });
+    // }
+
+    // includeInter.where = {
+    //   [Op.or]: orInterests,
+    // };
+
+    // console.log(opts);
+    console.log(inspect(opts, false, 10, true));
+    let users = await User.findAll(opts);
+
+    const friends = await Friendship.findAll(friendshipFetchAttributes(req.userInfo.id));
+
+    for (const friend of friends) {
+      users = users.filter(user => (user.dataValues.id !== friend.UserId && user.dataValues.id !== friend.FriendId))
+    }
+
+    // for(const x in users){
+    //   console.log(users[x].dataValues,'<<<<');
+    //   for(const friend of friends){
+    //     if(users[x].dataValues.id==friend.UserId || users[x].dataValues.id==friend.FriendId ){
+    //       delete users[x]
+    //       break
+    //     }
+    //   }
+    // }
+
+    users = await User.findAll({
+      ...userFetchAttributes(),
       where: {
-        [Op.or]: [
-          {
-            UserId: req.userInfo.id,
-          },
-          {
-            FriendId: req.userInfo.id,
-          },
-        ],
+        [Op.or]: users.map(u => ({id: u.id})),
       },
-      include: [
-        {
-          model: User,
-          as: "User",
-        },
-        {
-          model: User,
-          as: "Friend",
-        },
-      ],
     });
 
-    res.status(200).json(friends);
+    for (const user of users) {
+      user.dataValues.isOnline = isOnline(user.id);
+    }
+
+    res.status(200).json(users);
   } catch (err) {
     next(err);
   }
 });
 
-// send friend request
-router.post("/friends/:friendId", async (req, res, next) => {
+// explore groups
+router.get("/explore/groups", async (req, res, next) => {
   try {
-    const friend = await getUser(validateFriendId(req.params.friendId));
-    // !TODO
-    res.status(200).json(null);
+    let groups = await Group.findAll({
+      where: {
+        type: "group",
+      },
+      include: [
+        {
+          model: GroupMember,
+          include: [
+            {
+              ...userFetchAttributes(),
+              model: User,
+            },
+          ],
+        },
+      ],
+    });
+
+    let groupMembers = await getGroupMembersFromUserId(req.userInfo.id);
+    groupMembers = (groupMembers.map(gm => gm.Group))
+    for (const member of groupMembers) {
+      groups = groups.filter(group => (group.dataValues.id !== member.id))
+    }
+
+    res.status(200).json(groups);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/attachment", upload.single("attachment"), async (req, res, next) => {
+  try {
+    if (!req.file) throw {
+      status: 400,
+      message: "attachment is required",
+    };
+
+    const newAttachment = await fileAction(req);
+
+    res.status(201).json(newAttachment);
   } catch (err) {
     next(err);
   }

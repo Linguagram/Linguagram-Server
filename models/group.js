@@ -20,10 +20,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Group.init({
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {        
+      },
+    },
+    description:{
+      type: DataTypes.STRING,
+    },
+    type: {
+      type: DataTypes.STRING,
+      defaultValue: "dm",
+      validate: {
+        
+      },
+    },
   }, {
-    sequelize,
-    modelName: 'Group',
-  });
+      sequelize,
+      modelName: 'Group',
+    });
   return Group;
 };

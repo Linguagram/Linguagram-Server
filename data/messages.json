@@ -1,62 +1,215 @@
 [
     {
         "content": "hello there",
-        "MediaId": null,
+        "MediaId": 1,
         "UserId": 1,
-        "GroupId": 1
+        "isRead" : false,
+        "GroupId": 1,
+        "deleted": false
     },
     {
-        "content": "General Kenobi",
+        "content": "hello!",
         "MediaId": null,
         "UserId": 2,
-        "GroupId": 1
+        "isRead" : false,
+        "GroupId": 1,
+        "deleted": false
     },
     {
-        "content": "I have the high ground",
+        "content": "I wanna learn english with you",
         "MediaId": null,
         "UserId": 1,
-        "GroupId": 1
+        "isRead" : false,
+        "GroupId": 1,
+        "deleted" : true
     },
     {
-        "content": "But I have the death star cannon",
+        "content": "sure! let's talk about what do you like first",
         "MediaId": null,
         "UserId": 2,
-        "GroupId": 1
+        "isRead" : false,
+        "GroupId": 1,
+        "deleted" : false
     },
     {
-        "content": "What are you doing step brother",
+        "content": "Halo brother",
         "MediaId": null,
-        "UserId": 3,
-        "GroupId": 2
+        "UserId": 4,
+        "isRead" : false,
+        "GroupId": 2,
+        "deleted" : false
     },
     {
-        "content": "Nothing, really",
-        "MediaId": null,
-        "UserId": 1,
-        "GroupId": 2
-    },
-    {
-        "content": "That's all?",
-        "MediaId": null,
-        "UserId": 3,
-        "GroupId": 2
-    },
-    {
-        "content": "Yes, what did you expect me to say?",
+        "content": "halo juga, kamu baru belajar bahasa indonesia?",
         "MediaId": null,
         "UserId": 1,
-        "GroupId": 2
+        "isRead" : false,
+        "GroupId": 2,
+        "deleted" : false
     },
     {
-        "content": "Let's finish this final project",
+        "content": "Iya. Aku mohon bantuannya!",
+        "MediaId": null,
+        "UserId": 4,
+        "isRead" : false,
+        "GroupId": 2,
+        "deleted" : false
+    },
+    {
+        "content": "Hahaha okay, tentu aja!",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 2,
+        "deleted" : false
+    },
+    {
+        "content": "Bicaralah denganku",
+        "MediaId": null,
+        "UserId": 6,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "Aku ingin belajar bahasa indonesia",
+        "MediaId": null,
+        "UserId": 6,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "Halo. okay tentu saja!",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "Bicaralah dengan santai yaa",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "Hahhah ok. aku baru belajar bahasa indonesia selama 3 bulan",
+        "MediaId": null,
+        "UserId": 6,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "Oh wow! dan bahasa indonesiamu bagus ya!",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "hahha thank you?",
+        "MediaId": null,
+        "UserId": 6,
+        "isRead" : false,
+        "GroupId": 3,
+        "deleted" : false
+    },
+    {
+        "content": "hello guys",
+        "MediaId": 7,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
+    },
+    {
+        "content": "hello there. let's learn english together, shall we?",
+        "MediaId": null,
+        "UserId": 5,
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
+    },
+    {
+        "content": "help me ya guys. thank you",
         "MediaId": null,
         "UserId": 2,
-        "GroupId": 3
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
+    },
+    {
+        "content": "don't worry",
+        "MediaId": null,
+        "UserId": 5,
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
+    },
+    {
+        "content": "You will have something someday",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
+    },
+    {
+        "content": "That's a lie",
+        "MediaId": null,
+        "UserId": 2,
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
+    },
+    {
+        "content": "Why i have to lie??",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 4,
+        "deleted" : false
     },
     {
         "content": "hell yeah brother",
+        "MediaId": 8,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 5,
+        "deleted" : false
+    },
+    {
+        "content": "hell yeah !!",
         "MediaId": null,
-        "UserId": 3,
-        "GroupId": 3
-    }
+        "UserId": 2,
+        "isRead" : false,
+        "GroupId": 5,
+        "deleted" : false
+    },{
+        "content": "ayo belajar bahasa indonesia",
+        "MediaId": null,
+        "UserId": 4,
+        "isRead" : false,
+        "GroupId": 5,
+        "deleted" : false
+      }, {
+        "content": "loh, aayoo! kita mulai darimana?",
+        "MediaId": null,
+        "UserId": 1,
+        "isRead" : false,
+        "GroupId": 5,
+        "deleted" : false
+      }, {
+        "content": "dari mana saja bisa",
+        "MediaId": null,
+        "UserId": 2,
+        "isRead" : false,
+        "GroupId": 5,
+        "deleted" : false
+      }
 ]

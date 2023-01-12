@@ -1,0 +1,45 @@
+[{
+    "UserId": 1,
+    "FriendId" : 2,
+    "isAccepted" : true
+},
+{
+    "UserId": 1,
+    "FriendId" : 3,
+    "isAccepted" : true
+},
+{
+    "UserId": 2,
+    "FriendId" : 4,
+    "isAccepted" : true
+},
+{
+    "UserId": 2,
+    "FriendId" : 3,
+    "isAccepted" : true
+},
+{
+    "UserId": 5,
+    "FriendId" : 1,
+    "isAccepted" : false
+},
+{
+    "UserId": 4,
+    "FriendId" : 5,
+    "isAccepted" : false
+},
+{
+    "UserId": 5,
+    "FriendId" : 6,
+    "isAccepted" : false
+},
+{
+    "UserId": 6,
+    "FriendId" : 7,
+    "isAccepted" : false
+},
+{
+    "UserId": 10,
+    "FriendId" : 3,
+    "isAccepted" : true
+}]
