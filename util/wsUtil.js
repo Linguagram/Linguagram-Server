@@ -99,7 +99,20 @@ const getMessageWs = async (messageId, groupId) => {
         model: User,
       },
       Media,
-      Group,
+      {
+        model: Group,
+        include: [
+          {
+            model: GroupMember,
+            include: [
+              {
+                ...userFetchAttributes(),
+                model: User,
+              },
+            ],
+          }
+        ],
+      }
     ],
   });
 
