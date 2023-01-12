@@ -870,7 +870,7 @@ describe("Suite of unit tests", function () {
         "a=max-message-size: 262144\r\n"
     }
 
-    test.skip("user fails to accept  call request", (done) => {
+    test("user fails to accept  call request", (done) => {
       socket.on(SOCKET_EVENTS.ERROR, (payload) => {
         console.log(payload, '<<<<<PAYLOAD');
         done();

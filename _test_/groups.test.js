@@ -152,7 +152,7 @@ beforeAll(async () => {
 
 })
 
-afterAll(async () => {
+afterAll(async (done) => {
     await sequelize.queryInterface.bulkDelete('Media', {}, {
         truncate: true, restartIdentity: true, cascade: true
     })
@@ -203,7 +203,7 @@ afterAll(async () => {
 
     // socket?.disconnect();
     // return server.close();
-    
+    done();    
 })
 
 
