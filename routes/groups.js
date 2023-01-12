@@ -111,17 +111,13 @@ router.post("/groups/:groupId/messages", upload.single("attachment"), async (req
     }
 
     const newMessage = await Message.create(createMessage);
-    newMessage.dataValues.User = req.userInfo;
+    const message = await getMessage(newMessage.id, newMessage.GroupId);
 
-    if (newAttachment?.id) {
-      newMessage.dataValues.Medium = newAttachment;
-    }
+    message.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
 
-    newMessage.dataValues.User.dataValues.isOnline = isOnline(newMessage.dataValues.User.dataValues.id); // masih error tidak ada id di newMessage.User
+    sendMessage(groupMembers, message);
 
-    sendMessage(groupMembers, newMessage);
-
-    res.status(201).json(newMessage);
+    res.status(201).json(message);
   } catch (err) {
     next(err);
   }

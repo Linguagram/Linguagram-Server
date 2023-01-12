@@ -80,17 +80,7 @@ const onMessage = async (data) => {
 
   const createdMessage = await Message.create(createMessage);
 
-  const newMessage = await Message.findByPk(createdMessage.id, {
-    include: [
-      {
-        ...userFetchAttributes(),
-        model: User,
-      },
-      {
-        model: Media,
-      },
-    ],
-  });
+  const newMessage = await getMessageWs(createdMessage.id, createdMessage.GroupId);
 
   return {
     groupMembers,
