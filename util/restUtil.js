@@ -129,7 +129,7 @@ const getMessages = async (groupId) => {
   const messages = await Message.findAll(messagesFetchAttributes(groupId));
 
   return messages.map(message => {
-    message.dataValues.edited = message.createdAt.valueOf() !== message.updatedAt.valueOf();
+    message.dataValues.edited = new Date(message.createdAt).valueOf() !== new Date(message.updatedAt).valueOf();
     message.User.dataValues.isOnline = isOnline(message.UserId);
 
     return message;
@@ -158,7 +158,7 @@ const getMessage = async (messageId, groupId) => {
     };
   }
 
-  message.dataValues.edited = message.createdAt.valueOf() !== message.updatedAt.valueOf();
+  message.dataValues.edited = new Date(message.createdAt).valueOf() !== new Date(message.updatedAt).valueOf();
 
   message.User.dataValues.isOnline = isOnline(message.UserId);
 
