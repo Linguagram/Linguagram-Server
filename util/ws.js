@@ -148,7 +148,7 @@ const loadListeners = () => {
     // console.log("TRIGGERED CONNECTION", socket);
 
     try {
-      socket.on(SOCKET_EVENTS.IDENTIFY, (msg) => {
+      socket.on(SOCKET_EVENTS.IDENTIFY, async (msg) => {
         console.log(msg, 'identify baru')
         try {
           const json = jParse(msg);
@@ -167,16 +167,15 @@ const loadListeners = () => {
           console.log(userSockets.keys(), 'usersockets')
           console.log(userSockets.get(mapId).id, "socket id diri sendiri")
           io.to(userSockets.get(mapId).id).emit("yourID", userSockets.get(mapId).id);
-          getUserWs(mapId).then(user => {
-            userOnline(user);
-            io.to(socket.id).emit(SOCKET_EVENTS.IDENTIFY, { ok: 1 });
-          });
+          const user = await getUserWs(mapId);
+          userOnline(user);
+          io.to(socket.id).emit(SOCKET_EVENTS.IDENTIFY, { ok: 1, userId: user.id });
         } catch (err) {
           handleSocketError(socket, err);
         }
       });
 
-      socket.on(SOCKET_EVENTS.DISCONNECT, () => {
+      socket.on(SOCKET_EVENTS.DISCONNECT, async () => {
         try {
           console.log("[ws DISCONNECT] Disconnected:", socket.id);
           let uId;
@@ -190,7 +189,8 @@ const loadListeners = () => {
           if (uId) {
             socket.broadcast.emit("user left", { user_left: uId })
             userSockets.delete(uId);
-            getUserWs(uId).then(user => userOffline(user));
+            const user = await getUserWs(uId);
+            userOffline(user);
           }
         } catch (err) {
           handleSocketError(socket, err);
