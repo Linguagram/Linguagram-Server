@@ -194,6 +194,7 @@ const loadListeners = () => {
           }
         } catch (err) {
           handleSocketError(socket, err);
+          console.log(err,"<<<ERROR");
         }
       });
 

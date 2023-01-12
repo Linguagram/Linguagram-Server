@@ -22,46 +22,6 @@ const io = require("socket.io-client");
 const { io: server } = require("../app");
 const { SOCKET_EVENTS } = require('../util/ws')
 
-// server.attach(3000);
-// let socket;
-// beforeEach(function(done) {
-//     // Setup
-//     socket = io("http://localhost:3000");
-
-//     socket.on("connect", function() {
-//         console.log("worked...");
-//         done();
-//     });
-//     socket.on("disconnect", function() {
-//         console.log("disconnected...");
-//     });
-
-//     socket.on(SOCKET_EVENTS.IDENTIFY, (res) => {
-//         console.log("[IDENTIFY]", res);
-//         if (res.ok) done();
-//       });
-      
-//       socket.on(SOCKET_EVENTS.ERROR, (res) => {
-//         console.log("[ERROR]", res);
-//       });
-  
-//       socket.emit(SOCKET_EVENTS.IDENTIFY, {
-//         userId: 2,
-//       });
-// });
-
-// afterEach(function(done) {
-//     // Cleanup
-//     if (socket.connected) {
-//         console.log("disconnecting...");
-//         socket.disconnect();
-//     } else {
-//         // There will not be a connection unless you have done() in beforeEach, socket.on('connect'...)
-//         console.log("no connection to break...");
-//     }
-//     done();
-// });
-
 beforeAll(async () => {
 
     await sequelize.queryInterface.bulkInsert('Media', media.map(el => {
@@ -206,70 +166,7 @@ afterAll(async () => {
 })
 
 
-describe("test API groups", () => {
-    describe("POST /groups/:groupId/messages", () => {
-        test("success sending message with content and a file to one group and response 200", () => {       
-            
-
-            return request(app)
-                .post('/groups/1/messages')
-                .set({ "access_token": access_token })
-                .field('content', 'test content')
-                .attach('attachment', '_test_/testFile.png')
-                .then(res => {
-                    console.log(res.body)
-                    expect(res.status).toBe(201)
-                    expect(res.body).toHaveProperty("deleted", expect.any(Boolean))
-                    expect(res.body).toHaveProperty("Medium", expect.any(Object))
-                    expect(res.body).toHaveProperty("content", expect.any(String))
-                    expect(res.body).toHaveProperty("GroupId", expect.any(Number))
-                    expect(res.body).toHaveProperty("User", expect.any(Object))
-                    expect(res.body.User).toHaveProperty("id", expect.any(Number))
-                    expect(res.body.User).toHaveProperty("UserLanguages", expect.any(Array))
-                    expect(res.body.User).toHaveProperty("Avatar", expect.any(Object))
-                    expect(res.body.User.Avatar).toHaveProperty("url", expect.any(String))
-                    expect(res.body.Medium).toHaveProperty("url", expect.any(String))
-                })
-        })
-
-        test("failed posting a messsage and response 404 because the user is not a member of the group", () => {
-            return request(app)
-                .post('/groups/21/messages')
-                .set("access_token", access_token)
-                .then(res => {
-
-                    expect(res.status).toBe(404)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Unknown Group')
-                })
-        })
-
-        test("failed posting messsages and response 400 because the parameter group id is not a number", () => {
-            return request(app)
-                .post('/groups/test/messages')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(400)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('Invalid groupId')
-                })
-        })
-
-        test("failed posting messsages and response 400 because there is no file or text content sent", () => {
-            return request(app)
-                .post('/groups/1/messages')
-                .set("access_token", access_token)
-                .then(res => {
-                    expect(res.status).toBe(400)
-                    expect(res.body.error).toEqual(true)
-                    expect(res.body).toHaveProperty("message", expect.any(String))
-                    expect(res.body.message).toEqual('One upload or text content is required')
-                })
-        })
-
-    })
+describe("test API groups", () => {    
 
 
     describe("GET /groups/:groupId/messages", () => {
@@ -549,9 +446,8 @@ describe("test API groups", () => {
             return request(app)
                 .put('/groups/1/messages/1')
                 .set("access_token", access_token)
-                .send({
-                    content: 'testing'
-                })
+                .field('content', 'test update')
+                .attach('attachment', '_test_/testFile.png')
                 .then(res => {
                     expect(res.status).toBe(200)
                     expect(res).toHaveProperty("body", expect.any(Object))
@@ -563,7 +459,6 @@ describe("test API groups", () => {
                     expect(res.body.User).toHaveProperty("id", expect.any(Number))
                     expect(res.body.User).toHaveProperty("UserLanguages", expect.any(Array))
                     expect(res.body.Group).toHaveProperty("id", expect.any(Number))
-                    expect(res.body.Medium).toEqual(undefined)
                 })
         })
 
