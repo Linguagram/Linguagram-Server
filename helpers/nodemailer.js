@@ -2,6 +2,7 @@
 
 const nodemailer = require("nodemailer");
 const { CLIENT_URI } = process.env;
+console.log(CLIENT_URI, "<<<<<<<<<<<<<<<< CLIENT")
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -42,7 +43,7 @@ const sendNewFriendReqMail = async (recipientEmail, username) => {
             Your new friend are waiting for you to accept their friend request! Click the link below to go to Linguagram.</b>
             <br>
             <br>
-            <a href=${CLIENT_URI} style='color: blue; text-decoration-line:underline;'><b>Linguagram</b></a>
+            <a href='${CLIENT_URI}' style='color: blue; text-decoration-line:underline;'><b>Linguagram</b></a>
             ` // html body
   });
 };
